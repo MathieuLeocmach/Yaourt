@@ -9,7 +9,7 @@
 \usepackage{fontspec}
 \usepackage{kpfonts}
 %\setmainfont[Numbers=OldStyle]{Tex Gyre Pagella}
-\setsansfont[BoldFont=Lovelo-LineBold]{Lovelo-LineLight}
+\setsansfont[BoldFont=Lovelo-LineBold]{Lovelo-LineBold}
 
 \usepackage[frenchb]{babel}
 
@@ -25,7 +25,7 @@
 % Allow the usage of graphics (.jpg, .png, etc.) in the document
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,backgrounds, positioning, intersections, decorations.markings, mindmap, shapes.geometric, matrix, shapes.callouts}
+\usetikzlibrary{arrows,shapes,backgrounds, positioning, intersections, decorations.markings, mindmap, shapes.geometric, matrix, shapes.callouts,patterns}
 
 \usepackage{pgfplots}
 %\usepgfplotslibrary{units}
@@ -134,7 +134,7 @@ Motif sans attache
 	\node at (axis cs:1.3e3,2e-4) (a) {};
 	\draw[green!50!black, dashed] (axis cs:2.18e3,1e-4) -- (axis cs:2.18e3,1e4) node (b) {};
 \end{semilogyaxis}
-\draw[<-, green!50!black, ultra thick] (a) -- ++(0,-3.5em) node[left] {Fracture au bord};
+\draw[<-, green!50!black, ultra thick] (a) -- ++(0,-3.5em) node[left] {Première fracture au bord};
 \draw[<-, green!50!black, ultra thick] (b) -- ++(0,2em) node[left] {Une fracture atteint le niveau du transducteur};
 \end{tikzpicture}
 \end{frame}
@@ -204,11 +204,117 @@ Pour le 4\% 4\%, fractures et loi de puissance à bas stress, pas de fractures e
 	\addplot+[only marks,mark=square, red] table[x index=0, y index=2]{cas1_GDL1_t_cassure_sigma.txt};
 \end{groupplot}
 \end{tikzpicture}
-Note: On voit la transition dans la colonne 4\% de caséine.
+Note: Dans le 4\% 4\% le préfacteur dépend du gap.
+\end{frame}
+
+\begin{frame}{Fractures sous contrainte: exp ou pow ?}
+On voit la transition dans la colonne 4\% de caséine.
+\begin{tikzpicture}
+\begin{groupplot}[%
+	group style={
+		group size=2 by 1, 
+		y descriptions at=edge left,
+		horizontal sep=1em,
+		},
+	ymode=log,
+	ylabel={$\tau_\text{casse}$ (s)},ylabel near ticks,
+	xlabel={$\sigma$ (Pa)},
+	]
+	\nextgroupplot[
+		xmode=normal,
+		xmin=0,
+		legend style={legend pos=north east,},
+		]
+	%\draw (axis cs:200,1e3) -- (axis cs:700,5);
+	%\draw (axis cs:2,1.7e4) -- (axis cs:40,7.85e-1);
+	\addplot+[only marks,mark=triangle, green!50!black] table[x index=0, y index=1]{cas4_GDL1_t_cassure_sigma.txt};
+	\addplot+[only marks,mark=*, blue,mark options={fill=blue}] table[x index=1, y index=2]{cassure_cas4_GDL2.csv};
+	\addplot+[only marks,mark=pentagon*, purple,mark options={fill=purple}] table[x index=1, y index=2]{cassure_cas4_GDL3.csv};
+	\addplot+[only marks,mark=diamond, orange] table[x index=0, y index=2]{cas4_GDL4_t_cassure_sigma.txt};
+	\legend{4\% 1\%, 4\% 2\%, 4\% 2\%, 4\% 1\%};
+	%
+	
+	\nextgroupplot[xmode=log]
+	\draw (axis cs:150,5e5) -- (axis cs:1000,25);
+	\draw (axis cs:30,1e5) -- (axis cs:200,2e3);
+	\draw (axis cs:100,131182) -- (axis cs:200,16251);
+	\draw (axis cs:100,2e4) -- (axis cs:300,1.7e3);
+	\addplot+[only marks,mark=triangle, green!50!black] table[x index=0, y index=1]{cas4_GDL1_t_cassure_sigma.txt};
+	\addplot+[only marks,mark=*, blue,mark options={fill=blue}] table[x index=1, y index=2]{cassure_cas4_GDL2.csv};
+	\addplot+[only marks,mark=pentagon*, purple,mark options={fill=purple}] table[x index=1, y index=2]{cassure_cas4_GDL3.csv};
+	\addplot+[only marks,mark=diamond, orange] table[x index=0, y index=2]{cas4_GDL4_t_cassure_sigma.txt};
+\end{groupplot}
+\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Motifs: Ingrédients}
+\begin{center}
+\begin{tikzpicture}
+\fill[pattern=north east lines,pattern color=blue] (0,0) rectangle (12,0.5) node[midway,fill=white,inner sep=1pt] {verre};
+\fill[pattern=north east lines,pattern color=blue] (0,-1) rectangle (12,-1.5) node[midway,fill=white,inner sep=1pt] {verre};
+\draw[blue,line width=2pt,green!80!black] (0,-1) -- (12,-1) (0,-1pt) -- (12,-1pt) node[below,pos=0.30] {brosse acrylamide ($10\sim 100$ nm)};
+\fill[gray] (0,0) rectangle (0.5,-1) (12,0) rectangle (11.5,-1) node[pos=0.75, left] {spacer};
+\draw[<->] (9,-2pt) -- (9,-1) node[midway,left] {$e\sim 100\,\mu m$};
+\draw[<->] (0.5,0.75) -- (11.5,0.75) node[midway,above] {$L\sim 2.5cm$};
+\end{tikzpicture}
+\end{center}
 
+\begin{itemize}
+\item Pas d'accroche sur les plus grandes surfaces grâce aux brosses.
+\item Accroche sur les extrémités (spacers solides, pas d'interface libre)
+\item Contraintes auto-générées par la séparation de phase/gélification
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Motifs: Formation}
+%\movie{\includegraphics[width=.9\textwidth]{une_image.jpg}}{videos/une_video.avi}
+\end{frame}
+
+\begin{frame}{Motifs: Structure}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{tabular}{ccc}
+\includegraphics[width=0.3\textwidth]{fracture2_z=0um.jpg}&%
+\includegraphics[width=0.3\textwidth]{fracture2_z=15um.jpg}&%
+\includegraphics[width=0.3\textwidth]{fracture2_z=30um.jpg}\\
+\includegraphics[width=0.3\textwidth]{fracture2_z=45um.jpg}&%
+\includegraphics[width=0.3\textwidth]{fracture2_z=60um.jpg}&%
+\includegraphics[width=0.3\textwidth]{fracture2_z=75um.jpg}\\
+\includegraphics[width=0.3\textwidth]{fracture2_z=90um.jpg}&%
+\includegraphics[width=0.3\textwidth]{fracture2_z=105um.jpg}&%
+\includegraphics[width=0.3\textwidth]{fracture2_z=120um.jpg}\\
+\end{tabular} 
+\column{0.3\textwidth}
+\begin{tikzpicture}[inner sep=0]
+\node{\includegraphics[width=\textwidth]{fracture2_x10.jpg}};
+\draw[red] (-0.05\textwidth, -0.05\textwidth) rectangle (0.05\textwidth, 0.05\textwidth);
+\end{tikzpicture}
+
+\bigskip
+
+\begin{tikzpicture}[inner sep=0]
+\node{\includegraphics[width=\textwidth]{coupe_motif.pdf}};
+\node[anchor=west] at (-0.45\textwidth, 0) {gel};
+\draw[<-] (0.1\textwidth, -0.06\textwidth) -- (0.3\textwidth, -0.75) node[anchor=north west] {eau};
+\end{tikzpicture}
+Litterature des rides, crevasses\ldots
+
+Confocal demain.
+\end{columns}
+\end{frame}
+
+\begin{frame}{Motifs: Formation et structure}
+\begin{columns}
+\column{0.6\textwidth}
+\includegraphics[width=\textwidth]{intensities_by_zones.pdf}
+\column{0.4\textwidth}
+\begin{itemize}
+\item Les zones claires deviennent claires (décollement).
+\item Les lignes sombres restent sombres (matière de haut en bas).
+\item L'ensemble s’éclaircit.
+\end{itemize}
+\end{columns}
+L'expulsion d'eau est confirmée par confocal après plusieurs semaines (plus qu'une fine couche de gel).
 \end{frame}
 
 \begin{frame}{Motifs: Diagramme de phase}
