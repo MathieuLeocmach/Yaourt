@@ -19,6 +19,10 @@
 \usepackage{amssymb}
 
 \usepackage{siunitx}
+\sisetup{
+  mathsmu = \text{µ},
+  textmu  = µ
+}
 \usepackage{booktabs}
 \usepackage{multirow}
 
@@ -34,6 +38,8 @@
 \tikzset{external/system call={lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 
 %\tikzexternalize
+
+\usepackage{multimedia}
 
 %bibliography
 \usepackage{natbib}
@@ -72,7 +78,7 @@ Fractures sous contrainte
 \column{0.5\textwidth}
 Motif sans attache
 
-\includegraphics[width=\columnwidth]{pattern_100um.png}
+\includegraphics[width=\columnwidth]{pattern_100um.jpg}
 
 \end{columns}
 \end{frame}
@@ -267,7 +273,18 @@ On voit la transition dans la colonne 4\% de caséine.
 \end{frame}
 
 \begin{frame}{Motifs: Formation}
-%\movie{\includegraphics[width=.9\textwidth]{une_image.jpg}}{videos/une_video.avi}
+\begin{columns}
+\column{0.5\textwidth}
+\movie[externalviewer]{\includegraphics[width=\textwidth]{cas4_GDL4_motif_final.jpg}}{cas4_GDL_4_100um_coat_1_1_comp_4.avi}\\
+\begin{tikzpicture}
+\draw(0,0)-- (0.757\textwidth,0) node[midway, below] {1 mm};
+\end{tikzpicture}
+\column{0.5\textwidth}
+\movie[externalviewer]{\includegraphics[width=\textwidth]{pattern_100um.jpg}}{cas4_GDL_4_100um_coat_macroscope_2.avi}\\
+\begin{tikzpicture}
+\draw(0,0)-- (0.444\textwidth,0) node[midway, below] {1 cm};
+\end{tikzpicture}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Motifs: Structure}
@@ -297,7 +314,7 @@ On voit la transition dans la colonne 4\% de caséine.
 \node[anchor=west] at (-0.45\textwidth, 0) {gel};
 \draw[<-] (0.1\textwidth, -0.06\textwidth) -- (0.3\textwidth, -0.75) node[anchor=north west] {eau};
 \end{tikzpicture}
-Litterature des rides, crevasses\ldots
+Littérature des rides, crevasses, cusps\ldots
 
 Confocal demain.
 \end{columns}
@@ -318,12 +335,17 @@ L'expulsion d'eau est confirmée par confocal après plusieurs semaines (plus qu
 \end{frame}
 
 \begin{frame}{Motifs: Diagramme de phase}
+\begin{columns}
+\column{0.6\textwidth}
 \begin{tikzpicture}
 \begin{axis}[%
 	name=phasediag,
+	width=0.9\textwidth,
 	xmin=0,xmax=5,xlabel={\% caseinate},
 	ymin=0,ymax=5,ylabel={\% GDL},
-	legend style={legend pos=north west,}
+	legend style={legend pos=north west,},
+	xlabel near ticks,
+	ylabel near ticks,
 	]
 \addplot[mark=triangle*, green!50!black, only marks,forget plot] coordinates {(4,4) (4,3) (4,2) (4,1)};
 \addplot[mark=triangle, green!50!black, only marks] coordinates {(3,3)};
@@ -342,11 +364,117 @@ G^{\prime}&\nearrow\\
 \end{aligned}$};
 \draw[->] ($(phasediag.north west)+(0,1em)$) -- ($(phasediag.north east)+(0,1em)$) node[midway,above] {$G^{\prime}\nearrow$};
 \end{tikzpicture}
+\column{0.4\textwidth}
+cas 2\% GDL 1\%\\
+\includegraphics[width=\textwidth]{motif_cas2_GDL1_zoom1.png}
+
+\bigskip
+
+cas 2\% GDL 2\%\\
+\includegraphics[width=\textwidth]{motif_cas3_GDL2_zoom1.png}
+\end{columns}
+
 \end{frame}
 
 \begin{frame}{Motifs et fractures : longueurs d'onde}
-Dans les compositions où on a une loi de puissance à bas $\sigma$ (et donc des fractures) on observe des motifs. Inversement, si la loi est exponentielle (pas de fracture), on n'observe pas de motifs. Est-ce que les motifs sont les fractures à $\sigma=0$ ?
+\begin{itemize}
+\item Dans les compositions où on a une loi de puissance à bas $\sigma$ (et donc des fractures) on observe des motifs. 
+\item Inversement, si la loi est exponentielle (pas de fracture), on n'observe pas de motifs. 
+\item[$\Rightarrow$] Est-ce que les motifs sont les fractures à $\sigma=0$ ?
+\end{itemize}
 
-Est-ce que $\lambda_f$ et $\lambda_m$ évoluent de la même façon en fonction des paramètres de contrôles : gap, courbure, composition du gel, G', temps de prise, etc. ?
+Est-ce que $\lambda_\text{fracture}$ et $\lambda_\text{motif}$ évoluent de la même façon en fonction des paramètres de contrôles : gap, courbure, composition du gel, G', temps de prise, etc. ?
+\end{frame}
+
+\begin{frame}{Longueurs d'onde en fonction du gap}
+\begin{columns}\small
+\column{0.5\textwidth}
+\begin{tabular}{cc}
+\SI{50}{\micro\metre} & \SI{100}{\micro\metre}\\
+\includegraphics[width=0.4\textwidth]{pattern_50um.jpg} & \includegraphics[width=0.4\textwidth]{pattern_100um.jpg} \\ 
+\SI{250}{\micro\metre} & \SI{450}{\micro\metre}\\
+\includegraphics[width=0.4\textwidth]{pattern_250um.jpg} & \includegraphics[width=0.4\textwidth]{pattern_450um.jpg} \\
+\SI{800}{\micro\metre} & \begin{tikzpicture}
+\draw[ultra thick](0,0)-- (0.177\textwidth,0) node[midway, above, inner sep=0] {1 cm};
+\end{tikzpicture}\\
+\multicolumn{2}{c}{\includegraphics[width=0.8\textwidth]{pattern_800um_x1.jpg}} \\ 
+\end{tabular}
+4\% 4\%
+
+\column{0.5\textwidth}
+\begin{tabular}{cc}
+\SI{0.5}{\milli\metre} & \SI{1}{\milli\metre}\\
+\includegraphics[width=0.4\textwidth, trim=2cm 5mm 3cm 4cm,clip=true]{gap500um_Y195_SSC300.jpg}&
+\includegraphics[width=0.4\textwidth, trim=2cm 5mm 3cm 4cm,clip=true]{gap1mm_Y191_SSC300.jpg}\\
+\SI{1.5}{\milli\metre} & \SI{3}{\milli\metre}\\
+\includegraphics[width=0.4\textwidth, trim=2cm 5mm 3cm 4cm,clip=true]{gap1500um_Y194_SSC300.jpg}&
+\includegraphics[width=0.4\textwidth, trim=2cm 5mm 3cm 4cm,clip=true]{gap3mm_Y202_SSC40.jpg}\\
+\end{tabular}
+\begin{tikzpicture}
+\begin{axis}[%
+	width=0.8\textwidth,
+	xmin=0,xmax=3,xlabel={gap (\si{\milli\metre})},
+	ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
+	xlabel near ticks,
+	ylabel near ticks,
+	legend style={legend pos=north west,}
+	]
+	\addplot+[only marks] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
+	\addplot+[domain=0:3, no marks, blue, forget plot] {4.23*x};
+	\addplot+[only marks,error bars/.cd, y dir=both,y explicit] coordinates {
+	(0.5,1.25) +- (0,0.14)
+	(1,2.19) +- (0,0.2)
+	(1.5,3) +- (0,0.2)
+	(2,3.3) +- (0,0.2)
+	(3,4.3) +- (0,0.3)};
+	\legend{motif, fractures};
+\end{axis}
+\end{tikzpicture}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Longueurs d'onde et composition}
+\begin{columns}[T]\small
+\column{0.5\textwidth}
+4\% 4\%\\
+\includegraphics[width=0.8\textwidth]{pattern_100um.jpg}\\
+Motifs très reproductibles
+
+\bigskip
+
+\begin{tikzpicture}
+\begin{axis}[%
+	width=0.9\textwidth,
+	xmin=0,xmax=3,xlabel={gap (\si{\milli\metre})},
+	ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
+	xlabel near ticks,
+	ylabel near ticks,
+	legend style={legend pos=north west,}
+	]
+	\addplot+[only marks] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
+	\addplot+[domain=0:3, no marks, blue, forget plot] {4.23*x};
+	\addplot+[only marks,error bars/.cd, y dir=both,y explicit] coordinates {
+	(0.5,1.25) +- (0,0.14)
+	(1,2.19) +- (0,0.2)
+	(1.5,3) +- (0,0.2)
+	(2,3.3) +- (0,0.2)
+	(3,4.3) +- (0,0.3)};
+	\addplot+[only marks,error bars/.cd, y dir=both,y explicit] coordinates {
+	(0.5,1.25) +- (0,0.1)
+	(1,1.8) +- (0,0.2)
+	(1.5,2.55) +- (0,0.05)
+	(2,3.6) +- (0,0.5)};
+	\legend{motif 4\% 4\%, frac. 4\% 4\%, frac. 4\% 1\%};
+\end{axis}
+\end{tikzpicture}
+
+\column{0.5\textwidth}
+4\% 1\%\\
+\includegraphics[width=0.8\textwidth]{motif_cas4_GDL1.png}
+\begin{itemize}
+\item Difficile d'obtenir des motifs à \SI{100}{\micro\metre}, 
+\item Pas de motif à plus petit gap.
+\end{itemize}
+\end{columns}
 \end{frame}
 \end{document}
