@@ -51,9 +51,9 @@
 \usepackage{ragged2e}
 \RaggedRight
 
-\definecolor{Main}{rgb}{1, 0.66, 0}
-\definecolor{Accent1}{rgb}{1,0.45,0}
-\definecolor{Accent2}{rgb}{0.88,0.66,0}
+\definecolor{Main}{rgb}{1, 0.57, 0}
+\definecolor{Accent1}{rgb}{1,0.28,0}
+\definecolor{Accent2}{rgb}{1,0.74,0}
 
 % see documentation for a0poster class for the size options here
 \let\Textsize\normalsize
@@ -151,6 +151,7 @@ Thibaut Divoux, Sébastien Manneville}
 		xlabel={time (h)}, ylabel={\textcolor{Accent1}{pH}},
 		extra tick style={grid=major},%
 		extra y ticks={4.6}, extra y tick labels={},%
+		extra x ticks={0.55, 0.64, 0.72, 0.80, 1, 1.27, 2.5}, extra x tick labels={},%
 		axis y line*=left,
 		width=0.7\textwidth,
 		]
@@ -170,7 +171,7 @@ Thibaut Divoux, Sébastien Manneville}
 \end{textblock}
 
 \begin{textblock}{7}(4,2.5)
-	\Head{Sealed cell}
+	\Head{Sealed cell, spontaneous pattern}
 	
 	\tikzsetnextfilename{cell_brushes}
 	\tikzset{external/force remake}
@@ -188,12 +189,12 @@ Thibaut Divoux, Sébastien Manneville}
 	\item Adhesion at the edge (solid spacers, no free interface)
 	\end{itemize}
 	
-	\begin{tikzpicture}[inner sep=0, anchor=north west, thick]
-	\node (a) {\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2}};
-	\node at (a.north east) (b) {\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6}};
-	\node at (b.north east) (c) {\includegraphics[height=65mm]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
-	\draw[Accent2] (36.4mm, -25mm) rectangle +(28.9mm,-21.7mm);
-	\draw[Main] (b.north west) ++(34mm,-34mm) rectangle +(27mm,-19.7mm);
+	\begin{tikzpicture}[inner sep=0, very thick]
+	\node[anchor=west] (a) {\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2}};
+	\node at (3.5\TPHorizModule,0) (b) {\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6}};
+	\node[anchor=east] at (7\TPHorizModule,0) (c) {\includegraphics[height=65mm]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
+	\draw[Accent2] (a.north west) ++(36.4mm, -25mm) rectangle +(28.9mm,-21.7mm) -- (b.south west) (a.north west) ++(65.3mm, -25mm) -- (b.north west);
+	\draw[Main] (b.north west) ++(34mm,-34mm) rectangle +(27mm,-19.7mm) -- (c.south west) (b.north west) ++(61mm,-34mm) --(c.north west);
 	\draw[Accent1] (c.south west) ++(29mm,29mm) rectangle +(36mm,36mm);
 	%\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6}
 	%\includegraphics[height=65mm]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}
@@ -201,45 +202,98 @@ Thibaut Divoux, Sébastien Manneville}
 
 \end{textblock}
 
-\begin{textblock}{3}(8,4.5)
-	%\Head{Size distribution}
+\begin{textblock}{15}(0,8)
+	\Head{Kinetic by transmission macroscope}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccc}
+	33 min & 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
+	\includegraphics[width=2\TPHorizModule]{prise_0100_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{prise_0130_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{prise_0160_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{prise_0190_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{prise_0250_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{prise_0360_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{prise_0799_resized.jpg}\\
+	\end{tabular*}
+\end{textblock}
+
+\begin{textblock}{3}(0,10)
+	\Subhead{Length scales}
+	\begin{itemize}
+	\item A fundamental that does not evolve
+	\item Nested structures as ``harmonics''
+	\end{itemize}
+	\Subhead{Qualitatively different from}
+	\begin{itemize}
+	\item phase separation patterns 
+	\item Turing patterns
+	\item usual wrinkles
+	\end{itemize}	 
+\end{textblock}
+
+\begin{textblock}{11}(4,11)
+	\Head{Confocal Microscopy}
+\end{textblock}
+
+\begin{textblock}{3}(4,11)
+	\addvspace{2em}
+	\Subhead{Procedure}
+	\begin{itemize}
+		\item Fluorescently label 20\% of the casein
+		\item A confocal slice every \SI{5}{\micro\metre}
+		\item $(\SI{1.3}{\milli\metre})^2 \times \SI{120}{\micro\metre}$
+		\item[$\Rightarrow$] Protein density field
+		\item Detect top and bottom surfaces of the gel phase
+	\end{itemize}
+\end{textblock}
+
+\begin{textblock}{2}(8,11)
+	\addvspace{2em}
+	\Subhead{Final state}
 	
+	\includegraphics[width=\textwidth]{collage_cut}
+		
+	Tilled, enhanced relief
 \end{textblock}
-
-\begin{textblock}{7}(0,8)
-	\Head{Single-scale tracking\ldots of polydisperse particles}
 	
-\end{textblock}
 
-\begin{textblock}{3}(8,8)
-	\Head{Scale space}
+\begin{textblock}{4}(11,11)
+	\addvspace{2em}
+	\Subhead{Volume}
 	
+	\begin{tikzpicture}
+	\begin{axis}[%
+		xmin=0, xtick={20,40,...,160},
+		ymin=0.5, ymax=1, 
+		xlabel={time (min)}, ylabel={$V_\text{gel}/V_\text{cell}$},
+		extra tick style={grid=major},%
+		extra x ticks={33, 38, 43, 48, 58, 77, 150}, extra x tick labels={},%
+		%width=2.65\TPHorizModule,
+		width=3.65\TPHorizModule,
+		%width=0.8\textwidth, 
+		height=1.5\TPVertModule,
+		]
+	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}/60.+3}]{cas4_GDL4_fluo0p4_2.volume};
+	\end{axis}
+	\end{tikzpicture}
 \end{textblock}
 
-\begin{textblock}{3}(12,8)
-	\Head{Multiscale tracking}
-	
-\end{textblock}
-\begin{textblock}{4}(0,15.85)
-\end{textblock}
-
-
-\begin{textblock}{3.75}(11.25,15.85)
-	
-\end{textblock}
-
-\begin{textblock}{3}(0,12.1)
-	\Head{Buoyancy control}
-	\Subhead{by temperature control}
-\end{textblock}
-
-\begin{textblock}{7}(4,12.1)
-	\Head{Size distributions within local structures}
-	
+\begin{textblock}{15}(0,14)
+	\Head{Kinetic by confocal microscope}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccc}
+	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t065_crop_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t074_crop_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t092_crop_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t125_crop_resized.jpg}&
+	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
+\end{tabular*}
 \end{textblock}
 
 
-\begin{textblock}{15}(0,21.5)
+
+
+\begin{textblock}{15}(0,16)
 	\Head{Heterogeneous nucleation, Exclusion of small particles \& Formation of grain boundaries}
 	
 \end{textblock}
