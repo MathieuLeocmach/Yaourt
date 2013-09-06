@@ -14,7 +14,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}
 %\usepackage[oldstylenums, largesmallcaps]{kpfonts}
-\setmainfont[Numbers=OldStyle]{Tex Gyre Pagella}
+%\setmainfont[Numbers=OldStyle]{Tex Gyre Pagella}
+\setmainfont{Tex Gyre Pagella}
 \setsansfont[BoldFont=Lovelo-LineBold]{Lovelo-LineBold}
 %\renewcommand*\sfdefault{ugq}
 
@@ -293,19 +294,135 @@ Thibaut Divoux, Sébastien Manneville}
 
 
 
-\begin{textblock}{15}(0,16)
-	\Head{Heterogeneous nucleation, Exclusion of small particles \& Formation of grain boundaries}
+\begin{textblock}{4}(0,16)
+	\Head{Composition}
+	\Subhead{Less gdl}
+	\begin{itemize}
+		\item slower kinetics
+		\item stronger gel
+		\item weaker overshoot
+		\item same fundamental \linebreak wavelength
+		\item less harmonics
+	\end{itemize}
+	\Subhead{More gdl}
+	\begin{itemize}
+		\item plasticity
+	\end{itemize}
+\end{textblock}
+\begin{textblock}{2}(2,16)
+	\addvspace{4.4em}
+	\hfill bottom surface, \textsc{gdl} 5\%\\
+	\includegraphics[width=2\TPHorizModule]{plastic_confocal}
+\end{textblock}
+
+\begin{textblock}{4}(0,20)
+	\Head{Thickness}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccb{0.45\textwidth}}
+	\SI{50}{\micro\metre} & \SI{100}{\micro\metre}&
+	\multirow{4}{*}{\begin{tikzpicture}
+	\node[inner sep=0] (a) {\includegraphics[width=0.45\textwidth]{pattern_800um_x1.jpg}};
+	\node[above=0 of a] {\SI{800}{\micro\metre}};
+	\draw[ultra thick](a.north west) ++(0,2.25em) -- ++(0.0797\textwidth,0) node[midway, above, inner sep=0] {\SI{1}{\centi\metre}};
+	\end{tikzpicture}}\\
 	
+	\includegraphics[width=0.225\textwidth]{pattern_50um.jpg} & \includegraphics[width=0.225\textwidth]{pattern_100um.jpg}&
+	\\
+	
+	\SI{250}{\micro\metre} & \SI{450}{\micro\metre} &\\
+	
+	\includegraphics[width=0.225\textwidth]{pattern_250um.jpg} & \includegraphics[width=0.225\textwidth]{pattern_450um.jpg}& \\
+	\end{tabular*}
+	
+	\begin{tikzpicture}
+	\begin{axis}[%
+		width=0.95\textwidth,
+		height=0.4\textwidth,
+		xmin=0,xmax=1,xlabel={gap (\si{\milli\metre})},
+		xtick={0.1,0.3,...,0.9},
+		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
+		xlabel near ticks,
+		ylabel near ticks,
+		mark size={0.01\textwidth},
+		%legend style={legend pos=north west,}
+		]
+		\addplot+[only marks,Accent1, mark options={fill=Accent1}] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
+		\addplot+[domain=0:3, no marks, Accent1, forget plot] {4.23*x};
+	\end{axis}
+	\end{tikzpicture}
+\end{textblock}
+
+\begin{textblock}{4}(5,16)
+	\Head{Creep and fractures}
+	Couette cell, no brush, the gel sticks
+	
+	\begin{tikzpicture}
+	\begin{loglogaxis}[%
+		name=a,
+		xlabel={$t\,(s)$},
+		ylabel={Shear rate $(s^{-1})$},
+		]
+		\addplot+[no marks, Accent2] file {Y34_strain_rate_log.txt};
+		\draw[<->] (axis cs:1e-1,1) -- (axis cs:1.3e3,5e-4) node[midway,above,rotate=-21] {Andrade};
+		\node at (axis cs:1.3e3,1e-4) (det){};
+		\node at (axis cs:2.3e3,1e4) (touch){};
+	\end{loglogaxis}
+	\draw[<-, Accent1, ultra thick] (det) -- ++(0,-4em) node[left] {Fractures appear};
+	\draw[<-, Accent1, ultra thick] (touch) -- ++(0,3em) node[left] {Fractures meet};
+	\end{tikzpicture}\hfill
+	\begin{tikzpicture}[inner sep=0]
+		\node[above right] at (0,1em) {\includegraphics[width=1.5\TPHorizModule, trim=0 6mm 2cm 1cm,clip=true]{Y210_SSC300_avant_div.jpg}};
+		\node[below right] (b){\includegraphics[width=1.5\TPHorizModule, trim=0 6mm 2cm 1cm,clip=true]{Y210_SSC300_premiere_frac.jpg}};
+		\node[below left=0 of b.north east]{\includegraphics[width=0.75\TPHorizModule]{detail_premiere_frac.jpg}};
+		\draw[Accent2,radius=0.07\TPHorizModule] ++(b.north east) +(-1.14\TPHorizModule,-1.05\TPHorizModule) circle;
+		\draw[Accent2,radius=0.09\TPHorizModule] ++(b.north east) +(-0.435\TPHorizModule,-0.375\TPHorizModule) circle;
+	\end{tikzpicture}
+\end{textblock}
+
+\begin{textblock}{5}(10,16)
+	\Head{Ultrasound speckles}
+	\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group size=2 by 1, 
+			horizontal sep=\TPHorizModule,
+		},
+		width=2\TPHorizModule,
+		xmin=0,xmax=200,
+		xlabel={t},
+		axis on top,
+		xtick={28, 100, 172},
+		xticklabels={49h30, 50h, 50h30},
+		]
+		\nextgroupplot[ymin=0, ymax=32,	ylabel={$z (\si{\milli\metre})$}, title={$r=\SI{200}{\micro\metre}$}]
+		\addplot graphics[
+			xmin=0,xmax=200,
+			ymin=0,ymax=32,
+			]{Y137_speckleBF_tz.png};
+		\plot[no marks,Accent2]  {32-1/(x-187)};
+		\draw[Accent1] (axis cs:187,0)--(axis cs:187,32);
+		
+		\nextgroupplot[ymin=0, ymax=2,	ylabel={$r (\si{\milli\metre})$}, title={$z=\SI{8}{\milli\metre}$}]
+		\addplot graphics[
+			xmin=0,xmax=200,
+			ymin=0,ymax=2,
+			]{Y137_speckleBF_tr.png};
+			\draw[Accent2] (axis cs:172,0)--(axis cs:172,2) node[pos=0.66, left, font=\small] {detach from the rotor};
+			\draw[Accent1] (axis cs:187,0)--(axis cs:187,2) node[pos=0.33, left, font=\small] {global yield};
+	\end{groupplot}
+	%\draw[<-,Accent2, very thick] (decol) -- +(0,1em);
+	%\draw[<-,Accent1, very thick] (casse) -- +(0,1em);
+	\end{tikzpicture}
 \end{textblock}
 
 \textblockcolour{lightgray!50!white}
 \TPMargin*{ 0.125\TPHorizModule }
 \begin{textblock}{2.875}(12,2.625)%real width of 3
 	\Head{Take away}
-	\Subhead{A new kind of wrinkling}
+	\Subhead{A new kind of pattern}
 	\begin{itemize}
 		\item nested
 		\item self generated
+		\item boundary conditions
 	\end{itemize}
 	\Subhead{A link with fractures}
 \end{textblock}%Conclusion
