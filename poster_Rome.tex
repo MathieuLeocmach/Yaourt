@@ -398,7 +398,7 @@ Thibaut Divoux, Sébastien Manneville}
 			xmin=0,xmax=200,
 			ymin=0,ymax=32,
 			]{Y137_speckleBF_tz.png};
-		\plot[no marks,Accent2]  {32-1/(x-187)};
+		\addplot[no marks,Accent2, domain=0:32]  ({187-0.272*(x-17.6)^2}, x);
 		\draw[Accent1] (axis cs:187,0)--(axis cs:187,32);
 		
 		\nextgroupplot[ymin=0, ymax=2,	ylabel={$r (\si{\milli\metre})$}, title={$z=\SI{8}{\milli\metre}$}]
