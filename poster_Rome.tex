@@ -204,7 +204,7 @@ Thibaut Divoux, Sébastien Manneville}
 \end{textblock}
 
 \begin{textblock}{15}(0,8)
-	\Head{Kinetic by transmission macroscope}
+	\Head{Pattern kinetics by transmission macroscope}
 	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccc}
 	33 min & 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
 	\includegraphics[width=2\TPHorizModule]{prise_0100_resized.jpg}&
@@ -218,6 +218,8 @@ Thibaut Divoux, Sébastien Manneville}
 \end{textblock}
 
 \begin{textblock}{3}(0,10)
+	Corresponds with the fall of $G^\prime$.
+	
 	\Subhead{Length scales}
 	\begin{itemize}
 	\item A fundamental that does not evolve
@@ -259,7 +261,7 @@ Thibaut Divoux, Sébastien Manneville}
 
 \begin{textblock}{4}(11,11)
 	\addvspace{2em}
-	\Subhead{Volume}
+	\Subhead{Synæresis and swelling}
 	
 	\begin{tikzpicture}
 	\begin{axis}[%
@@ -279,7 +281,7 @@ Thibaut Divoux, Sébastien Manneville}
 \end{textblock}
 
 \begin{textblock}{15}(0,14)
-	\Head{Kinetic by confocal microscope}
+	\Head{Wrinkling kinetics by confocal microscope}
 	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccc}
 	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}&
 	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
@@ -353,7 +355,8 @@ Thibaut Divoux, Sébastien Manneville}
 
 \begin{textblock}{4}(5,16)
 	\Head{Creep and fractures}
-	Couette cell, no brush, the gel sticks
+	Couette cell, no brush, the gel sticks, no pattern.\\
+	Wait \SI{8}{\hour} for equilibration, then apply constant stress.
 	
 	\begin{tikzpicture}
 	\begin{loglogaxis}[%
@@ -376,13 +379,103 @@ Thibaut Divoux, Sébastien Manneville}
 		\draw[Accent2,radius=0.07\TPHorizModule] ++(b.north east) +(-1.14\TPHorizModule,-1.05\TPHorizModule) circle;
 		\draw[Accent2,radius=0.09\TPHorizModule] ++(b.north east) +(-0.435\TPHorizModule,-0.375\TPHorizModule) circle;
 	\end{tikzpicture}
+	
+	\begin{tabular}{b{0.55\textwidth}b{0.45\textwidth}}
+	\begin{tikzpicture}
+	\begin{loglogaxis}[%
+		ylabel={Breaking time (s)},ylabel near ticks,
+		xlabel={Stress $\sigma$ (Pa)},
+		xmin=10,
+		legend style={font=\small\sc}, legend pos=south west,
+		mark size={0.2em},
+		]
+		\addplot+[only marks, Accent1, mark options={fill=Accent1}] coordinates {(40, 67225) (50,29860) (100,398) (200,4)};
+		\addplot+[only marks, Accent2, mark options={fill=Accent2}] table[x index=0, y index=1]{cas4_GDL1_t_cassure_sigma.txt};
+		\legend{gdl 4\%, gdl 1\%};
+		\addplot+[Accent1, no marks, forget plot, domain=40:200] gnuplot {6.32e+14*x^{-6.14}};
+		\addplot+[Accent2, no marks, forget plot, domain=150:1000] gnuplot {3.93e+17*x^{-5.44}};
+	\end{loglogaxis}
+	\end{tikzpicture}&
+	Irreversible fractures\linebreak
+	\Subhead{Fracture\linebreak wavelength}
+	\begin{itemize}
+		\item stress-independent
+		\item composition-indep.
+		\item $\propto$ gap
+	\end{itemize}\\
+	\end{tabular}
+	
+	\begin{tikzpicture}
+	\begin{axis}[%
+		width=0.95\textwidth,
+		height=0.4\textwidth,
+		xmin=0,xmax=3.5,xlabel={gap (\si{\milli\metre})},
+		xtick={0, 0.5,...,3},
+		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
+		xlabel near ticks,
+		ylabel near ticks,
+		%mark size={0.01\textwidth},
+		legend cell align=left,
+		legend style={font=\small}, legend pos=north west,
+		]
+		\addplot+[%
+			only marks, Accent1, mark options={fill=Accent1},
+			error bars/.cd,
+			y dir=both,y explicit,
+			x dir=none,x fixed=0.05,
+			]
+			coordinates {
+				(0.5,0.6) +-(0,0.12)
+				(1, 1.33) +-(0,0.14)
+				(1.5,1.5) +-(0,0.14)
+				(1.5, 1.25) +- (0,0.77)
+				(3,3.75) +- (0,0.4)
+				(3, 4.2) +-(0,0.4)};
+		\addplot+[%
+			only marks, Main, mark options={fill=Main},
+			error bars/.cd,
+			y dir=both,y explicit,
+			x dir=none,x fixed=0.05,
+			]
+			coordinates
+			{(2.5,3.2) +- (0,0.84)};
+		\addplot+[%
+			only marks, Accent2, mark options={fill=Accent2}, mark=triangle,
+			error bars/.cd,
+			y dir=both,y explicit,
+			x dir=none,x fixed=0.05,
+			]
+			coordinates
+			{(2,2.29) +- (0,0.13)};
+		\legend{$R_\text{out}=\SI{25}{\milli\metre}$, $R_\text{out}=\SI{37.5}{\milli\metre}$, $R_\text{out}=\SI{40}{\milli\metre}$};
+		\addplot+[domain=0:3.5, no marks, Accent1, forget plot] {1.25*x};
+	\end{axis}
+	\end{tikzpicture}
 \end{textblock}
 
 \begin{textblock}{5}(10,16)
 	\Head{Ultrasound speckles}
+	\Subhead{Probe deformation inside the gap}
+	
+	\begin{tikzpicture}[ultra thick, font=\small]
+	\node[above right, inner sep=0] (sch) {\includegraphics[width=0.4\textwidth]{usv_3D_image}};
+	\draw[<-] (0.3\textwidth,0.11\textwidth) -- +(1em,0) node[right] {water in};
+	\draw[->] (0.3\textwidth,0.07\textwidth) -- +(1em,0) node[right] {water out};
+	\node[right] at (0.2\textwidth, 0.3\textwidth) (rh) {rheometer};
+	\node[above right] at (0.2\textwidth, 0) (arraylabel) {array of transducers};
+	\draw[->,dotted]	 (arraylabel.west) -- (0.1\textwidth, 0.1\textwidth);
+	\draw[->] (0.06\textwidth, 0.15\textwidth) -- (0,0.15\textwidth) node[draw, left, text width=0.18\textwidth] (mce) {multi-channel electronics};
+	\node[above=of mce, draw] (pc) {PC};
+	\draw[->] (mce)-- (pc);
+	\draw[->] (rh) -- +(0,1em) -| (pc.north);
+	\node[below right=1em and 0 of mce.south west, text width=0.18\textwidth] {Gallot et al. RSI (2013).};
+	\node[below right =of sch.north east, text width=0.32\textwidth] {3\% of \SI{30}{\micro\metre} acrylamide beads as contrast agent};
+	\end{tikzpicture}
+	
 	\begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
+			group name=grp,
 			group size=2 by 1, 
 			horizontal sep=\TPHorizModule,
 		},
@@ -406,12 +499,25 @@ Thibaut Divoux, Sébastien Manneville}
 			xmin=0,xmax=200,
 			ymin=0,ymax=2,
 			]{Y137_speckleBF_tr.png};
-			\draw[Accent2] (axis cs:172,0)--(axis cs:172,2) node[pos=0.66, left, font=\small] {detach from the rotor};
+			\draw[Accent2] (axis cs:172,0)--(axis cs:172,2) node[pos=0.66, left, font=\small] {free from the rotor};
 			\draw[Accent1] (axis cs:187,0)--(axis cs:187,2) node[pos=0.33, left, font=\small] {global yield};
 	\end{groupplot}
-	%\draw[<-,Accent2, very thick] (decol) -- +(0,1em);
-	%\draw[<-,Accent1, very thick] (casse) -- +(0,1em);
+	\node[left=of grp c2r1.south west] {rotor};
+	\node[left=of grp c2r1.north west] {stator};
 	\end{tikzpicture}
+	
+	Fractures appear when the gel detaches from the rotor. Creates a free surface that allows synæresis, relaxation of the gelation-induced \linebreak stress and possibly wrinkling.
+\end{textblock}
+
+\begin{textblock}{5}(10,22.5)
+	\Head{Non equilibrium Creep}
+	\Subhead{Fractures need complete overshoot}
+	\begin{itemize}
+		\item Wait only \SI{40}{\minute}. $G^\prime$ at maximum.
+		\item Start creep with $\sigma > \SI{200}{\pascal}$.
+		\item[$\Rightarrow$] Break before $G^\prime$ falls.
+		\item[$\Rightarrow$] No fracture
+	\end{itemize}
 \end{textblock}
 
 \textblockcolour{lightgray!50!white}
@@ -424,7 +530,18 @@ Thibaut Divoux, Sébastien Manneville}
 		\item self generated
 		\item boundary conditions
 	\end{itemize}
+	\Subhead{A good model for solids}
+	\begin{itemize}
+		\item Andrade creep over 6 decades in time
+		\item Irreversible fractures
+	\end{itemize}
 	\Subhead{A link with fractures}
+	\begin{itemize}
+		\item Wrinkles can induce plasticity
+		\item Wavelengths have the same dependence
+		\item Detachment creates a free surface
+		\item Fractures need complete overshoot
+	\end{itemize}
 \end{textblock}%Conclusion
 
 
