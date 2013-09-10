@@ -21,7 +21,7 @@
 
 \usepackage{hyperref}
 \hypersetup{%
-	pdftitle={Effects of a real world size distribution on the heterogeneous crystallisation of hard sphere colloids},%the title
+	pdftitle={Wrinkling and yielding of protein gels},%the title
 	pdfauthor={Mathieu Leocmach},%your name
 }
 
@@ -124,10 +124,10 @@
 \begin{textblock}{15}(0,0)
 \centering
 \Title{
-Wrinkling and yielding of protein gel
+Wrinkling and yielding of protein gels
 }
 
-\LHead{Mathieu Leocmach}\qquad\texttt{\color{Accent1}mathieu.leocmach@polytechnique.org}\\
+\LHead{Mathieu Leocmach}\qquad\texttt{\color{Accent1}mathieu.leocmach@ens-lyon.fr}\\
 \LHead{Mathieu Nespoulous, Christophe Perge, Nicolas Taberlet, Thomas Gibaud,
 Thibaut Divoux, Sébastien Manneville}
 
@@ -262,7 +262,7 @@ Thibaut Divoux, Sébastien Manneville}
 		\node[above right]{\includegraphics[width=\textwidth]{collage_cut}};
 		\draw[ultra thick] ++(0,0.5em) -- ++(0.33\textwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
 	\end{tikzpicture}\\
-	Tilled, enhanced relief
+	Tiled, enhanced relief
 \end{textblock}
 	
 
@@ -338,7 +338,8 @@ Thibaut Divoux, Sébastien Manneville}
 	\multirow{4}{*}{\begin{tikzpicture}
 	\node[inner sep=0] (a) {\includegraphics[width=0.45\textwidth]{pattern_800um_x1.jpg}};
 	\node[above=0 of a] {\SI{800}{\micro\metre}};
-	\draw[ultra thick](a.north west) ++(0,2.25em) -- ++(0.0797\textwidth,0) node[midway, above, inner sep=0] {\SI{1}{\centi\metre}};
+	\draw[ultra thick](a.north west) ++(0,2em) -- ++(0.2\textwidth,0) node[midway, above, inner sep=0] {\SI{5}{\milli\metre}};
+	\draw[ultra thick, Accent2, <->] (a.south west) ++(0.18\textwidth, 0.05\textwidth) -- ++(0.133\textwidth,0) node[midway,above]{$\lambda$};
 	\end{tikzpicture}}\\
 	
 	\includegraphics[width=0.225\textwidth]{pattern_50um.jpg} & \includegraphics[width=0.225\textwidth]{pattern_100um.jpg}&
@@ -395,6 +396,7 @@ Thibaut Divoux, Sébastien Manneville}
 		\draw[Accent2,radius=0.07\TPHorizModule] ++(b.north east) +(-1.14\TPHorizModule,-1.05\TPHorizModule) circle;
 		\draw[Accent2,radius=0.09\TPHorizModule] ++(b.north east) +(-0.435\TPHorizModule,-0.375\TPHorizModule) circle;
 		\draw[ultra thick] (a.south west) ++(0,0.25em) -- ++(0.5\TPHorizModule,0) node[pos=0.5, above=0, font=\small] {\SI{2}{\centi\metre}};
+		\draw[ultra thick, Accent2, <->] (a.south west) ++(0.51\TPHorizModule, \TPHorizModule) -- ++(0.09\TPHorizModule,0) node[midway,above=0.25em,font=\small]{$\lambda$};
 	\end{tikzpicture}
 	
 	\begin{tabular}{b{0.55\textwidth}b{0.45\textwidth}}
@@ -527,27 +529,25 @@ Thibaut Divoux, Sébastien Manneville}
 \end{textblock}
 
 \begin{textblock}{5}(10,22.5)
-	\Head{Non equilibrium Creep}
-	\Subhead{Fractures need complete overshoot}
-	\begin{itemize}
-		\item Wait only \SI{40}{\minute}. $G^\prime$ at maximum.
-		\item Start creep with $\sigma > \SI{200}{\pascal}$.
-		\item[$\Rightarrow$] Break before $G^\prime$ falls.
-		\item[$\Rightarrow$] No fracture
-	\end{itemize}
+	\Head{Funding}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lb{0.6\textwidth}}
+	\includegraphics[width=0.3\textwidth]{NEW-Logo-ERC-OUTLINE}&
+	The research leading to these results has received funding from the European Research Council under the European Union's Seventh \linebreak Framework Programme (FP7/2007-2013) /\linebreak ERC grant agreement n°~258803.\\
+	\end{tabular*}
 \end{textblock}
+
 
 \textblockcolour{lightgray!50!white}
 \TPMargin*{ 0.125\TPHorizModule }
 \begin{textblock}{2.875}(12,2.625)%real width of 3
-	\Norulehead{Take away}
+	\Norulehead{Take home}
 	\Subhead{A new kind of pattern}
 	\begin{itemize}
-		\item nested
-		\item self generated
-		\item boundary conditions
+		\item Nested
+		\item Self generated
+		\item Boundary conditions
 	\end{itemize}
-	\Subhead{A good model for solids}
+	\Subhead{An original yielding scenario}
 	\begin{itemize}
 		\item Andrade creep over 6 decades in time
 		\item Irreversible fractures
@@ -557,7 +557,6 @@ Thibaut Divoux, Sébastien Manneville}
 		\item Wrinkles can induce plasticity
 		\item Wavelengths have the same dependence
 		\item Detachment creates a free surface
-		\item Fractures need complete overshoot
 	\end{itemize}
 \end{textblock}%Conclusion
 
