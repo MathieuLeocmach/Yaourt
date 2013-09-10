@@ -198,16 +198,20 @@ Thibaut Divoux, Sébastien Manneville}
 	\draw[Accent2] (a.north west) ++(36.4mm, -25mm) rectangle +(28.9mm,-21.7mm) -- (b.south west) (a.north west) ++(65.3mm, -25mm) -- (b.north west);
 	\draw[Main] (b.north west) ++(34mm,-34mm) rectangle +(27mm,-19.7mm) -- (c.south west) (b.north west) ++(61mm,-34mm) --(c.north west);
 	\draw[Accent1] (c.south west) ++(29mm,29mm) rectangle +(36mm,36mm);
-	%\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6}
-	%\includegraphics[height=65mm]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}
+	\draw[ultra thick] (a.south west) ++(0,-0.25em) -- ++(30.588mm,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\centi\metre}};
+	\draw[ultra thick] (b.south west) ++(0,-0.25em) -- ++(45.774mm,0) node[pos=0.5, below=0.25em, font=\small] {\SI{5}{\milli\metre}};
+	\draw[ultra thick] (c.south west) ++(0,-0.25em) -- ++(30.415mm,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
 	\end{tikzpicture}
 
 \end{textblock}
 
 \begin{textblock}{15}(0,8)
 	\Head{Pattern kinetics by transmission macroscope}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccc}
-	33 min & 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2\TPHorizModule}llllll}
+	33 min\hfill \begin{tikzpicture}[inner sep=0]
+		\draw[ultra thick] (0,0) -- ++(0.355\TPHorizModule,0) node[pos=0.5, above=0, font=\small] {\SI{1}{\centi\metre}};
+	\end{tikzpicture}&
+	 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
 	\includegraphics[width=2\TPHorizModule]{prise_0100_resized.jpg}&
 	\includegraphics[width=2\TPHorizModule]{prise_0130_resized.jpg}&
 	\includegraphics[width=2\TPHorizModule]{prise_0160_resized.jpg}&
@@ -254,8 +258,10 @@ Thibaut Divoux, Sébastien Manneville}
 	\addvspace{2em}
 	\Subhead{Final state}
 	
-	\includegraphics[width=\textwidth]{collage_cut}
-		
+	\begin{tikzpicture}[inner sep=0]
+		\node[above right]{\includegraphics[width=\textwidth]{collage_cut}};
+		\draw[ultra thick] ++(0,0.5em) -- ++(0.33\textwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
+	\end{tikzpicture}\\
 	Tilled, enhanced relief
 \end{textblock}
 	
@@ -283,8 +289,11 @@ Thibaut Divoux, Sébastien Manneville}
 
 \begin{textblock}{15}(0,14)
 	\Head{Wrinkling kinetics by confocal microscope}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccc}
-	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}&
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lllllll}
+	\raisebox{-0.75em}{\begin{tikzpicture}[inner sep=0]
+		\node[above right]{\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}};
+		\draw[ultra thick] ++(0,0.02\TPHorizModule) -- ++(1.55\TPHorizModule,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
+	\end{tikzpicture}}&
 	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
 	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t065_crop_resized.jpg}&
 	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t074_crop_resized.jpg}&
@@ -313,8 +322,12 @@ Thibaut Divoux, Sébastien Manneville}
 	\end{itemize}
 \end{textblock}
 \begin{textblock}{2}(2,16)
-	\addvspace{4.4em}
-	\hfill bottom surface, \textsc{gdl} 5\%\\
+	\addvspace{2.4em}
+	bottom surface, \textsc{gdl} 5\%\\
+	\begin{tikzpicture}[inner sep=0]
+		\draw[ultra thick] (0,0) -- ++(1.11\TPHorizModule,0) node[pos=0.5, above=0, font=\small] {\SI{500}{\micro\metre}};
+	\end{tikzpicture}
+	
 	\includegraphics[width=2\TPHorizModule]{plastic_confocal}
 \end{textblock}
 
@@ -381,6 +394,7 @@ Thibaut Divoux, Sébastien Manneville}
 		\node[below left=0 of b.north east]{\includegraphics[width=0.75\TPHorizModule]{detail_premiere_frac.jpg}};
 		\draw[Accent2,radius=0.07\TPHorizModule] ++(b.north east) +(-1.14\TPHorizModule,-1.05\TPHorizModule) circle;
 		\draw[Accent2,radius=0.09\TPHorizModule] ++(b.north east) +(-0.435\TPHorizModule,-0.375\TPHorizModule) circle;
+		\draw[ultra thick] (a.south west) ++(0,0.25em) -- ++(0.5\TPHorizModule,0) node[pos=0.5, above=0, font=\small] {\SI{2}{\centi\metre}};
 	\end{tikzpicture}
 	
 	\begin{tabular}{b{0.55\textwidth}b{0.45\textwidth}}
