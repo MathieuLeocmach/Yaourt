@@ -41,7 +41,7 @@
 \usepackage{pgfplots}
 %\usepgfplotslibrary{units}
 \usepgfplotslibrary{groupplots}
-\pgfplotsset{every axis/.append style={xlabel near ticks,ylabel near ticks}}
+\pgfplotsset{every axis/.append style={xlabel near ticks,ylabel near ticks,mark size={0.2em}}}
 \pgfplotsset{every axis plot post/.append style={very thick}}
 
 \usepgfplotslibrary{external}
@@ -136,7 +136,7 @@ Thibaut Divoux, Sébastien Manneville}
 \end{textblock}
 
 \begin{textblock}{3}(0,2.5)
-	\Head{Casein gel}
+	\Head{Acid-induced gels}
 	
 	In millipore water
 	\begin{itemize}
@@ -148,7 +148,7 @@ Thibaut Divoux, Sébastien Manneville}
 	
 	\begin{tikzpicture}
 	\begin{axis}[%
-		xmin=0,
+		xmin=0,xmax=8,
 		ymin=0, ymax=7,
 		xlabel={time (h)}, ylabel={\textcolor{Accent1}{pH}},
 		extra tick style={grid=major},%
@@ -158,11 +158,12 @@ Thibaut Divoux, Sébastien Manneville}
 		width=0.7\textwidth,
 		]
 	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH};
+	\node[base left=0] at (axis cs:8,4.6) {isoelectric};
 	\end{axis}
 	\begin{axis}[%
-		xmin=0,
+		xmin=0,xmax=8,
 		ymin=0,
-		ylabel=\textcolor{Accent2}{$G^\prime$},
+		ylabel=\textcolor{Accent2}{$G^\prime$ (\si{\pascal})},
 		axis y line*=right,
 		axis x line=none,
 		width=0.7\textwidth,
@@ -361,7 +362,6 @@ Thibaut Divoux, Sébastien Manneville}
 		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
 		xlabel near ticks,
 		ylabel near ticks,
-		mark size={0.01\textwidth},
 		%legend style={legend pos=north west,}
 		]
 		\addplot+[only marks,Accent1, mark options={fill=Accent1}] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
@@ -382,12 +382,12 @@ Thibaut Divoux, Sébastien Manneville}
 		ylabel={Shear rate $(s^{-1})$},
 		]
 		\addplot+[no marks, Accent2] file {Y34_strain_rate_log.txt};
-		\draw[<->] (axis cs:1e-1,1) -- (axis cs:1.3e3,5e-4) node[midway,above,rotate=-21] {Andrade};
+		\draw[<->] (axis cs:1e-1,1) -- (axis cs:1.3e3,5e-4) node[midway,above,rotate=-21] {Andrade} node[pos=0.25,below=1em] {$t^{-0.86}$};
 		\node at (axis cs:1.3e3,1e-4) (det){};
 		\node at (axis cs:2.3e3,1e4) (touch){};
 	\end{loglogaxis}
-	\draw[<-, Accent1, ultra thick] (det) -- ++(0,-4em) node[left] {Fractures appear};
-	\draw[<-, Accent1, ultra thick] (touch) -- ++(0,3em) node[left] {Fractures meet};
+	\draw[<-, Accent1, ultra thick] (det) +(0,0.1em) -- ++(0,-4em) node[left] {Fractures appear} -- ++(1em,0);
+	\draw[<-, Accent1, ultra thick] (touch) +(0,-0.1em) -- ++(0,3em) node[left] {Fractures meet} -- ++(1em,0);
 	\end{tikzpicture}\hfill
 	\begin{tikzpicture}[inner sep=0]
 		\node[above right] at (0,1em) {\includegraphics[width=1.5\TPHorizModule, trim=0 6mm 2cm 1cm,clip=true]{Y210_SSC300_avant_div.jpg}};
@@ -406,7 +406,6 @@ Thibaut Divoux, Sébastien Manneville}
 		xlabel={Stress $\sigma$ (Pa)},
 		xmin=10,
 		legend style={font=\small\sc}, legend pos=south west,
-		mark size={0.2em},
 		]
 		\addplot+[only marks, Accent1, mark options={fill=Accent1}] coordinates {(40, 67225) (50,29860) (100,398) (200,4) (300,0.06)};
 		\addplot+[only marks, Accent2, mark options={fill=Accent2}] table[x index=0, y index=1]{cas4_GDL1_t_cassure_sigma.txt};
@@ -433,7 +432,6 @@ Thibaut Divoux, Sébastien Manneville}
 		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
 		xlabel near ticks,
 		ylabel near ticks,
-		%mark size={0.01\textwidth},
 		legend cell align=left,
 		legend style={font=\small}, legend pos=north west,
 		]
@@ -518,8 +516,8 @@ Thibaut Divoux, Sébastien Manneville}
 			xmin=0,xmax=200,
 			ymin=0,ymax=2,
 			]{Y137_speckleBF_tr.png};
-			\draw[Accent2] (axis cs:172,0)--(axis cs:172,2) node[pos=0.66, left, font=\small] {free from the rotor};
-			\draw[Accent1] (axis cs:187,0)--(axis cs:187,2) node[pos=0.33, left, font=\small] {global yield};
+			\draw[Accent2] (axis cs:172,0)--(axis cs:172,2) node[pos=0.66, left, font=\small, fill=gray, inner sep=1pt] {free from the rotor};
+			\draw[Accent1] (axis cs:187,0)--(axis cs:187,2) node[pos=0.33, left, font=\small, fill=gray, inner sep=1pt] {global yield};
 	\end{groupplot}
 	\node[left=of grp c2r1.south west] {rotor};
 	\node[left=of grp c2r1.north west] {stator};
