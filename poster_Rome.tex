@@ -58,14 +58,15 @@
 
 % see documentation for a0poster class for the size options here
 \let\Textsize\normalsize
-\def\Head#1{\noindent\hbox to \hsize{\hfil{\LARGE\color{Main}\raggedright\textsf{#1}}}\bigskip}
+\def\Norulehead#1{\noindent\hbox to \hsize{\hfil\LARGE\textcolor{Main}{\textsf{#1}}}\bigskip}
+\def\Head#1{\Norulehead{\dotfill #1}}
 \def\LHead#1{\noindent{\LARGE #1}\smallskip}
 \def\Subhead#1{\noindent{\large\color{Accent1}\textsc{#1}}}
 \def\Title#1{\noindent{\VeryHuge\color{Accent2}\raggedright\textsf{#1}}}
 
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
-\usepackage[absolute,overlay,showboxes
+\usepackage[absolute,overlay,%showboxes
 ]{textpos}
 % Set up the grid
 %
@@ -335,6 +336,8 @@ Thibaut Divoux, Sébastien Manneville}
 	\includegraphics[width=0.225\textwidth]{pattern_250um.jpg} & \includegraphics[width=0.225\textwidth]{pattern_450um.jpg}& \\
 	\end{tabular*}
 	
+	\vspace{1em}
+	
 	\begin{tikzpicture}
 	\begin{axis}[%
 		width=0.95\textwidth,
@@ -389,10 +392,10 @@ Thibaut Divoux, Sébastien Manneville}
 		legend style={font=\small\sc}, legend pos=south west,
 		mark size={0.2em},
 		]
-		\addplot+[only marks, Accent1, mark options={fill=Accent1}] coordinates {(40, 67225) (50,29860) (100,398) (200,4)};
+		\addplot+[only marks, Accent1, mark options={fill=Accent1}] coordinates {(40, 67225) (50,29860) (100,398) (200,4) (300,0.06)};
 		\addplot+[only marks, Accent2, mark options={fill=Accent2}] table[x index=0, y index=1]{cas4_GDL1_t_cassure_sigma.txt};
 		\legend{gdl 4\%, gdl 1\%};
-		\addplot+[Accent1, no marks, forget plot, domain=40:200] gnuplot {6.32e+14*x^{-6.14}};
+		\addplot+[Accent1, no marks, forget plot, domain=40:300] gnuplot {9.2e+15*x^{-6.8}};
 		\addplot+[Accent2, no marks, forget plot, domain=150:1000] gnuplot {3.93e+17*x^{-5.44}};
 	\end{loglogaxis}
 	\end{tikzpicture}&
@@ -523,7 +526,7 @@ Thibaut Divoux, Sébastien Manneville}
 \textblockcolour{lightgray!50!white}
 \TPMargin*{ 0.125\TPHorizModule }
 \begin{textblock}{2.875}(12,2.625)%real width of 3
-	\Head{Take away}
+	\Norulehead{Take away}
 	\Subhead{A new kind of pattern}
 	\begin{itemize}
 		\item nested
