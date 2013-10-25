@@ -54,10 +54,10 @@
 	\begin{scope}[shift=(pH.outer south west), yshift=-2em]
 		\fill[pattern=north east lines,pattern color=Accent2] (0,0) rectangle (\columnwidth,1.5em) node[midway,fill=white,inner sep=1pt] {glass};
 		\fill[pattern=north east lines,pattern color=Accent2] (0,-2.5em) rectangle (\columnwidth,-4em) node[midway,fill=white,inner sep=1pt] {glass};
-		\draw[line width=2pt,Accent1] (0.05\columnwidth,-2.5em) -- (0.95\columnwidth,-2.5em) (0.05\columnwidth,-1pt) -- (0.95\columnwidth,-1pt) node[pos=0, below right, inner sep=1pt, text width=0.4\columnwidth] {acrylamide brush ($10\sim 100$ nm)};
+		\draw[line width=2pt,Accent1] (0.05\columnwidth,-2.5em) -- (0.95\columnwidth,-2.5em) (0.05\columnwidth,-1pt) -- (0.95\columnwidth,-1pt) node[pos=0, below right, inner sep=1pt, text width=0.4\columnwidth] {acrylamide brush ($10\sim \SI{100}{\nano\metre}$)};
 		\fill[gray] (0,0) rectangle (0.05\columnwidth,-2.5em) (\columnwidth,0) rectangle (0.95\columnwidth,-2.5em) node[pos=1, above left] {spacer};
-		\draw[<->] (0.75\columnwidth,-2pt) -- (0.75\columnwidth,-2.5em) node[midway,left] {$e\sim 100\,\mu m$};
-		\draw[<->] (0.05\columnwidth,-4.25em) -- (0.95\columnwidth,-4.25em) node[midway,below] (L) {$L\sim 2.5\,cm$};
+		\draw[<->] (0.75\columnwidth,-2pt) -- (0.75\columnwidth,-2.5em) node[midway,left] {$e\sim \SI{100}{\micro\metre}$};
+		\draw[<->] (0.05\columnwidth,-4.25em) -- (0.95\columnwidth,-4.25em) node[midway,below] (L) {$L\sim\SI{2}{\centi\metre}$};
 		\node[lab] at (0,0 |- L.base) {b};
 	\end{scope}
 	\begin{scope}[inner sep=0, shift=(pH.outer south west), yshift=-10.5em]
@@ -78,5 +78,37 @@
 	\caption{Acid induced gel. (a) Evolution of the pH and of the storage modulus with sticky boundary conditions. (b) Sketch of the cell with no adhesion of the protein on the top and bottom plates. (c-e) Resulting patterns in the same sample ($e=\SI{100}{\micro\metre}$) at different magnification by (c-d) reflexion or (e) transmission optical microscopy.}
 	\label{fig:acidgel}
 \end{figure}
+
+\begin{figure*}
+	\begin{tikzpicture}
+	\matrix[matrix of nodes, inner sep=0, column sep=0.015\textwidth, row sep=0.5em] (m){
+	33 min & 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
+	\includegraphics[width=0.13\textwidth]{prise_0100_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0130_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0160_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0190_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0250_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0360_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0799_resized.jpg}\\
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t065_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t074_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t092_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t125_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
+	};
+	\draw[ultra thick] ++(m-2-1.south west) -- ++(0.023\textwidth,0);
+	\draw[ultra thick] ++(m-3-1.south west) -- ++(0.1\textwidth,0);
+%	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2\TPHorizModule}llllll}
+%	33 min\hfill \begin{tikzpicture}[inner sep=0]
+%		\draw[ultra thick] (0,0) -- ++(0.355\TPHorizModule,0) node[pos=0.5, above=0, font=\small] {\SI{1}{\centi\metre}};
+%	\end{tikzpicture}&
+%	 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
+	
+	\end{tikzpicture}
+	\caption{Dynamics of pattern formation for $e\approx\SI{100}{\micro\metre}$. (top) By light transmission microscopy. (bottom) Reconstructed from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
+	\label{fig:dynamics}
+\end{figure*}
 
 \end{document}
