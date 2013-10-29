@@ -1,18 +1,23 @@
 \documentclass[10pt,a4paper,twocolumn]{article}
 \usepackage[utf8]{inputenc}
 
+%PNAS fonts
+\usepackage{mathptmx}
+\usepackage{tgheros}
+
 \usepackage{siunitx}
+\usepackage{multirow}
 
 \usepackage{graphicx}
 
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,backgrounds, positioning, intersections, decorations.markings, decorations.shapes, mindmap, shapes.geometric, matrix, patterns}
+\usetikzlibrary{calc, positioning, intersections, matrix, patterns}
 
 \tikzset{lab/.style={above right, inner sep=0, font=\sffamily\Large\bfseries}}
 
 \usepackage{pgfplots}
 
-\pgfplotsset{every axis/.append style={xlabel near ticks,ylabel near ticks,mark size={0.2em}}}
+\pgfplotsset{compat=1.3, every axis/.append style={mark size={0.2em}}}
 
 \definecolor{Main}{rgb}{1, 0.57, 0}
 \definecolor{Accent1}{rgb}{1,0.28,0}
@@ -104,5 +109,36 @@
 	\caption{Dynamics of pattern formation for $e\approx\SI{100}{\micro\metre}$. (top) By light transmission microscopy. (bottom) Reconstructed from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
 	\label{fig:dynamics}
 \end{figure*}
+
+\begin{figure}
+	\begin{tikzpicture}
+	\begin{axis}[%
+		name=g,
+		width=\columnwidth,
+		height=0.4\columnwidth,
+		xmin=0,xmax=1,xlabel={gap (\si{\milli\metre})},
+		xtick={0.1,0.3,...,0.9},
+		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
+		]
+		\addplot+[only marks,Accent1, mark options={fill=Accent1}] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
+		\addplot+[domain=0:3, no marks, Accent1, forget plot] {4.23*x};
+	\end{axis}
+	
+	\matrix[matrix of nodes, inner sep=0, matrix anchor=south west, column sep=0.033\columnwidth, row sep=0.5em] at ($(g.outer north west)+(0,0.5em)$) (m) {
+		\SI{50}{\micro\metre} & \SI{100}{\micro\metre}\\
+		\includegraphics[width=0.225\columnwidth]{pattern_50um.jpg} &
+		\includegraphics[width=0.225\columnwidth]{pattern_100um.jpg}\\
+		\SI{250}{\micro\metre} & \SI{450}{\micro\metre}\\
+		\includegraphics[width=0.225\columnwidth]{pattern_250um.jpg} &
+		\includegraphics[width=0.225\columnwidth]{pattern_450um.jpg}\\
+	};
+	\node[inner sep=0, below left] at ($(m-2-1.north west) + (\columnwidth,0)$) (x800) {\includegraphics[width=0.45\columnwidth]{pattern_800um_x1.jpg}};
+	\node[anchor=base] at (x800.north |- m-1-2.base) {\SI{800}{\micro\metre}};
+	\draw[ultra thick, Accent2, <->] (x800.south west) ++(0.18\columnwidth, 0.05\columnwidth) -- ++(0.133\columnwidth,0) node[midway,above]{$\lambda$};
+	\draw[ultra thick](x800.south east) ++(0,-0.5em) -- ++(-0.2\columnwidth,0) node[midway, below] {\SI{5}{\milli\metre}};
+	\end{tikzpicture}
+	\caption{Cell thickness dependence of the patterns. Scale bar is common for all 5 transmission microscopy pictures.}
+	\label{fig:thickness}
+\end{figure}
 
 \end{document}
