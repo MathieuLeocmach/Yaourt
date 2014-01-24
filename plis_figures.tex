@@ -16,6 +16,7 @@
 \tikzset{lab/.style={above right, inner sep=0, font=\sffamily\Large\bfseries}}
 
 \usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
 
 \pgfplotsset{compat=1.3, every axis/.append style={mark size={0.2em}}}
 
@@ -80,7 +81,7 @@
 	\node[lab] at (c.west |- M.base) {e};
 	\end{scope}
 	\end{tikzpicture}
-	\caption{Acid induced gel. (a) Evolution of the pH and of the storage modulus with sticky boundary conditions. (b) Sketch of the cell with no adhesion of the protein on the top and bottom plates. (c-e) Resulting patterns in the same sample ($e=\SI{100}{\micro\metre}$) at different magnification by (c-d) reflexion or (e) transmission optical microscopy.}
+	\caption{Acid induced gel. (a) Evolution of the pH and of the storage modulus with sticky boundary conditions. (b) Sketch of the cell with no adhesion of the protein on the top and bottom plates. (c-e) Resulting patterns in the same sample ($e=\SI{100}{\micro\metre}$) at different magnification by (c-d) reflexion or (e) transmission optical microscopy (tiled).}
 	\label{fig:acidgel}
 \end{figure}
 
@@ -106,7 +107,7 @@
 	\draw[ultra thick] ++(m-2-1.south west) -- ++(0.023\textwidth,0);
 	\draw[ultra thick] ++(m-3-1.south west) -- ++(0.1\textwidth,0);
 	\end{tikzpicture}
-	\caption{Dynamics of pattern formation for $e\approx\SI{100}{\micro\metre}$. (top) By light transmission microscopy. (bottom) Reconstructed from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
+	\caption{Dynamics of pattern formation for $e\approx\SI{100}{\micro\metre}$. (top) By light transmission microscopy. (bottom) Reconstructed from fluorescent confocal microscopy (corresponds to the squared area in Fig.~\ref{fig:acidgel}e). Scale bars are \SI{1}{\milli\metre}.}
 	\label{fig:dynamics}
 \end{figure*}
 
@@ -139,6 +140,32 @@
 	\end{tikzpicture}
 	\caption{Cell thickness dependence of the patterns. Scale bar is common for all 5 transmission microscopy pictures.}
 	\label{fig:thickness}
+\end{figure}
+
+\begin{figure}
+	\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={group name=g, group size=1 by 2},
+		xmin=0, xmax=200, xtick={20,40,...,180},
+		xlabel={time (min)}, 
+		extra tick style={grid=major},%
+		extra x tick labels={},%
+		width=\columnwidth,
+		height=0.5\columnwidth,
+		]
+	\nextgroupplot[ylabel={Relative volume}, ymin=0.3, ymax=1, extra x ticks={12.55}]
+	\addplot+[no marks,Accent1] table{volume_rel_half_cas8.txt};
+	\node[rotate=90, anchor=base] at (axis cs:12.55,0.75) (syn) {synæresis};
+	\node[right=0 of syn.south west] {swelling};
+	
+	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=4, extra x ticks={26.7, 42.8}]
+	\addplot+[no marks,Accent1] table{excess_area_pc_half_cas8.txt};
+	\end{groupplot}
+	
+	%\node[inner sep=0, anchor=south east] (g-1-1.outer north west){\includegraphics[width=0.45\columnwidth]{plastic_confocal}};
+	\end{tikzpicture}
+	\caption{Syneresis and swelling (c) Evolution of the volume of the gel phase. (d) Evolution of the midsurface area.}
+	\label{fig:wrinkles}
 \end{figure}
 
 \end{document}
