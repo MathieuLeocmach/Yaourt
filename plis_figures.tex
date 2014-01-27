@@ -43,25 +43,37 @@
 		height=0.5\columnwidth,
 		]
 	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH};
-	\node[base left=0] at (axis cs:8,4.6) {isoelectric};
+	%\node[base left=0] at (axis cs:8,4.6) {isoelectric};
 	\end{axis}
 	\begin{axis}[%
 		xmin=0,xmax=8,
 		ymin=0,
-		ylabel=\textcolor{Accent2}{$G^\prime$ (\si{\pascal})},
+		ylabel=\textcolor{Main}{$G^\prime$ (\si{\pascal})},
 		axis y line*=right,
 		axis x line=none,
 		width=0.925\columnwidth,
 		height=0.5\columnwidth,
 		]
-	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600.+0.05}]{Y235_28800s.prise};
+	\addplot+[no marks,Main] table[x expr={\thisrowno{0}/3600.+0.05}]{Y235_28800s.prise};
 	\end{axis}
 	\node[lab, yshift=0.5em] at (pH.outer south west) {a};
 	\begin{scope}[shift=(pH.outer south west), yshift=-2em]
-		\fill[pattern=north east lines,pattern color=Accent2] (0,0) rectangle (\columnwidth,1.5em) node[midway,fill=white,inner sep=1pt] {glass};
+		\fill[pattern=north east lines,pattern color=Accent2] (0,0) rectangle (\columnwidth,1.5em) node[midway,fill=white,inner sep=1pt] (glabeltop) {glass};
 		\fill[pattern=north east lines,pattern color=Accent2] (0,-2.5em) rectangle (\columnwidth,-4em) node[midway,fill=white,inner sep=1pt] {glass};
-		\draw[line width=2pt,Accent1] (0.05\columnwidth,-2.5em) -- (0.95\columnwidth,-2.5em) (0.05\columnwidth,-1pt) -- (0.95\columnwidth,-1pt) node[pos=0, below right, inner sep=1pt, text width=0.4\columnwidth] {acrylamide brush ($10\sim \SI{100}{\nano\metre}$)};
-		\fill[gray] (0,0) rectangle (0.05\columnwidth,-2.5em) (\columnwidth,0) rectangle (0.95\columnwidth,-2.5em) node[pos=1, above left] {spacer};
+		%acrylamide
+		\begin{scope}[Accent1]
+			\draw[line width=2pt] (0.05\columnwidth,-2.5em) -- (0.95\columnwidth,-2.5em) (0.05\columnwidth,-1pt) -- (0.95\columnwidth,-1pt);
+			\node[inner sep=1pt, anchor=west] at (0.05\columnwidth,-1.25em) (brushlabel) {acrylamide brush};
+			\draw[->] (brushlabel.base) -- +(0,-0.8em);
+			\draw[->] (brushlabel.north) -- +(0,+0.4em);
+		\end{scope}
+		%spacer
+		\begin{scope}[gray]
+			\fill (0,0) rectangle (0.05\columnwidth,-2.5em) (\columnwidth,0) rectangle (0.95\columnwidth,-2.5em);
+			\node[above left=0] at (\columnwidth,1.5em) (spacerlabel){spacer};
+			\draw[->] (spacerlabel.base) -- (0.975\columnwidth,1pt);
+		\end{scope}
+		%
 		\draw[<->] (0.75\columnwidth,-2pt) -- (0.75\columnwidth,-2.5em) node[midway,left] {$e\sim \SI{100}{\micro\metre}$};
 		\draw[<->] (0.05\columnwidth,-4.25em) -- (0.95\columnwidth,-4.25em) node[midway,below] (L) {$L\sim\SI{2}{\centi\metre}$};
 		\node[lab] at (0,0 |- L.base) {b};
@@ -81,7 +93,7 @@
 	\node[lab] at (c.west |- M.base) {e};
 	\end{scope}
 	\end{tikzpicture}
-	\caption{Acid induced gel. (a) Evolution of the pH and of the storage modulus with sticky boundary conditions. (b) Sketch of the cell with no adhesion of the protein on the top and bottom plates. (c-e) Resulting patterns in the same sample ($e=\SI{100}{\micro\metre}$) at different magnification by (c-d) reflexion or (e) transmission optical microscopy (tiled).}
+	\caption{Acid induced gel. (a) Evolution of the pH and of the storage modulus with sticky boundary conditions. Horizontal line is the isoelectric pH. (b) Sketch of the cell with no adhesion of the protein on the top and bottom plates. (c-e) Resulting patterns in the same sample ($e=\SI{100}{\micro\metre}$) at different magnification by (c-d) reflexion or (e) transmission optical microscopy (tiled).}
 	\label{fig:acidgel}
 \end{figure}
 
@@ -150,16 +162,16 @@
 			xticklabels at=edge bottom,
 			vertical sep=0,
 			},
-		xmin=0, xmax=200, xtick={20,40,...,180},
+		xmin=0, xmax=200, xtick={30,60,...,180},
 		extra tick style={grid=major},%
 		extra x tick labels={},%
 		width=1.04\columnwidth,
 		height=0.5\columnwidth,
 		]
-	\nextgroupplot[ylabel={Rel. volume}, ymin=0.3, ymax=1, extra x ticks={12.55}]
-	\addplot+[no marks,Accent1] table{volume_rel_half_cas8.txt};
-	\addplot+[only marks,Accent2, mark=+] table{volume_rel_half_cas8_toi.txt};
-	\node[rotate=90, anchor=base] at (axis cs:12.55,0.75) (syn) {synæresis};
+	\nextgroupplot[ylabel={Volume (\%)}, ymin=20, ymax=100, extra x ticks={12.55}]
+	\addplot+[no marks,Accent1] table[y expr={\thisrowno{1}*100}]{volume_rel_half_cas8.txt};
+	\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*100}]{volume_rel_half_cas8_toi.txt};
+	\node[rotate=90, anchor=base east] at (axis cs:12.55,100) (syn) {synæresis};
 	\node[above right=0 of syn.south west] {swelling};
 	\node[lab,below left=0.2em] at (rel axis cs:1,1) {a};
 	
