@@ -167,10 +167,28 @@
 	\node[rotate=90, anchor=east] at (axis cs:34.75,1) {wrinkling};
 	\node[anchor=west] at (axis cs:45,0.25) {wrinkling and buckling};
 	\end{groupplot}
+	\matrix[matrix of nodes, matrix anchor=north west, inner sep=0, column sep=0.02\textwidth, row sep=2pt] at (g c1r2.outer south west) (m){
+	Synæresis & Swelling\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t000.png}&
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t023.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t006.png}&
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t049.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t008.png}&
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t051.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t010.png}&
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t053.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t012.png}&
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t078.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t014.png}&
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t088.png}\\
+	};
+	\begin{scope}[->,gray,ultra thick]
+		\draw (m-2-1.east) -- (m-7-1.east) -- (m-2-2.west) -- (m-7-2.west);
+	\end{scope}
 	
 	%\node[inner sep=0, anchor=south east] (g-1-1.outer north west){\includegraphics[width=0.45\columnwidth]{plastic_confocal}};
 	\end{tikzpicture}
-	\caption{Syneresis and swelling (c) Evolution of the volume of the gel phase. (d) Evolution of the midsurface area.}
+	\caption{Synæresis and swelling (c) Evolution of the volume of the gel phase. (d) Evolution of the midsurface area.}
 	\label{fig:wrinkles}
 \end{figure}
 
