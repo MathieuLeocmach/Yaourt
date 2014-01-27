@@ -25,19 +25,15 @@
 %\clubpenalty=1000
 %\preprint{APS/123-QED}
 
-%\title{Stress-induced yielding of a protein gel: the rupture of a model soft solid}
-
- \title{Stress-induced fracture of a biopolymer gel}
+ \title{Creep and brittle failure of a protein gel under stress}
 
 \author{M.~Leocmach}
+\email{mathieu.leocmach@ens-lyon.fr}
 \affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
 \author{C.~Perge}
 \affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
-\author{N.~Taberlet}
-\affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
-\affiliation{UFR de Physique, Universit\'e Claude Bernard Lyon 1, 43 boulevard du 11 novembre, 69100 Villeurbanne, France}
 \author{T.~Divoux}
-\email{divoux@crpp-bordeaux.cnrs.fr}
+%\email{divoux@crpp-bordeaux.cnrs.fr}
 \affiliation{Centre de Recherche Paul Pascal, CNRS UPR 8641 - 115 avenue Schweitzer, 33600 Pessac, France}
 \author{S.~Manneville}
 \affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
@@ -45,197 +41,196 @@
 \date{\today}
 
 \begin{abstract}
-Biopolymer gels are known to behave qualitatively as soft solids: under external stress they display macroscopic fractures followed by an \textit{irreversible} yielding which has not been much investigated. As such, biopolymers strongly differ from the far more studied yield stress fluids such as emulsions, colloidal gels and glasses, etc. which also display a solid behavior at rest, but can be shear rejuvenated after yielding.
-In this letter, combining optical and ultrasonic imaging to rheology we shed new light on the failure scenario of an acid-induced protein gel. Stress-controlled experiments reveal a brittle-like rupture: after a power-law primary creep regime, fully accounted for by the linear elastic properties of the gel, fractures nucleate and slowly grow as the log of time perpendicularly to the shear, up to the suddden rupture. The total duration of this failure process surprisingly follows a decreasing power-law with the applied shear stress, strongly reminiscent of Basquin's law of solids. These results are discussed in the frame of theoretical approaches including Fiber's Bundles Models.
-
-%Acid-induced protein gels are soft materials that are known to behave qualitatively as soft solids. Indeed, under external shear their non-linear behavior feature macroscopic fractures followed by an \textit{irreversible} yielding, and once broken, no shear or rest period allow them to recover their initial elastic properties contrarily to soft glassy materials such as emulsions, colloidal gels and glasses, etc. which can be shear rejuvenated.
-
-%The failure time follows a decreasing power-law with the applied shear stress strongly reminiscent of Basquin's law. 
-%Our results are discussed within the frame of Fiber's Bundles Models which account for the fracture growth but fail to reproduce the scaling of the faillure time.   
-
-
-%Under external stress, their non-linear behavior display brittle-like features through the growth of fractures followed by an irreversible yielding. In this letter, we report on the stress induced rupture scenario of such protein gels combining optics and ultrasonic velocimetry to rheology. We show that protein gels experience a three step rupture . The rupture time decreases as an exponentially with the applied shear-stress 
+Biomaterials such as protein or polysaccharide gels are known to behave qualitatively as soft solids in that they rupture under an external load. Combining optical and ultrasonic imaging to shear rheology we show that the failure scenario of a protein gel is typical of brittle solids: after a power-law creep regime fully accounted for by linear viscoelasticity and homogeneous deformation, fractures nucleate and grow logarithmically perpendicularly to shear up to sudden rupture. The failure time surprisingly follows a decreasing power-law with the applied shear stress strongly reminiscent of the Basquin law of fatigue for solids. These results are in excellent agreement with recent fiber-bundle models that include damage accumulation on elastic fibers and exemplify protein gels as model brittle soft solids.
 \end{abstract}
 
 \pacs{}
 \maketitle
 
+%Under a constant external load, a solid deforms and may eventually fail. The resulting slow deformation, referred to as {\it creep}, has been investigated over a century on solid materials \cite{Andrade:1910,Nechad:2005,Miguel:2002} but only a handful of papers have dealt with creep on soft solids, i.e. gels made through the reversible association of biopolymers such as proteins or polysaccharides \cite{Higgs:1990,vanVliet:1995}. These materials, whose physical properties play a key role not only in food science, from set-style yogurt or cheese to jelly-based deserts \cite{Mezzenga:2005} but also in biomechanics, biochemistry and microbiology \cite{Viovy:2000,Grinnell:2010}, behave as elastic solids under small deformations but display remarkable nonlinear behavior featuring fractures prior to irreversible rupture \cite{Bonn:1998,Baumberger:2006,Daniels:2007,Brenner:2013}. Irreversibility directly stems from the existence of an external control parameter, namely temperature (resp. pH) in the case of thermoreversible gels (resp. acid-induced gels), which makes the system impossible to shear-rejuvenate after failure, contrary to other soft glassy materials such as emulsions, colloidal gels and glasses \cite{Cloitre:2000,Divoux:2012,Siebenburger:2012}. While great effort has been devoted to designing protein- and polysaccharide-based soft solids with specific properties and textures at rest \cite{Dickinson:2006,Gibaud:2012}, their nonlinear mechanical behavior under a shear stress has only been partially addressed \cite{vanVliet:1995} and several simple issues remain unexplored such as the spatially resolved scenario for creep and fracture or the physical relevance of the analogy with the failure of hard, brittle solids.
 
-%Under a constant external load, a solid deforms and may eventually fail. The resulting slow deformation refered as creep has been investigated over a century \cite{Andrade:1910} and differs depending on the nature of the material. Brittle materials such as ceramics, cold metals, etc. exhibit low plastic deformation prior rupture that is characterized by fast crack propagation perpendicular to the applied stress and a clear-cut fracture, whereas ductile materials such as metals at room temperature, polymers, etc. display large plastic deformation and even flow prior any rupture is observed [XXX]. Interestingly, these two categories defined for hard materials hold true for very soft solids such as viscoelastic fluids and yield stress fluids. On the one hand, ductile-like behavior is commonly observed for soft glassy materials such as emulsions, foams microgels, colloidal glass and gels, etc \cite{Gibaud:2010,Schall:2010,Divoux:2011,Siebenburger:2012,Sprakel:2011} which experience extensive plastic deformations and flow without fracture under external stress. On the other hand, brittleness has been reported on viscoelastic materials, mostly on transient networks \cite{Ligoure:2013}, and thermoreversible gels \cite{Bonn:1998,Baumberger:2006,Daniels:2007,Brenner:2013}. 
+Biogels formed through the self-association of polysaccharide coils, collagen, actin filaments or attractive globular proteins play a major role in biochemistry and microbiology \cite{Viovy:2000}, biological networks and cell mechanics \cite{Stricker:2010} as well as in food science \cite{Mezzenga:2005}. These biomaterials all behave as elastic solids under small deformations but display remarkable nonlinear behavior generally featuring stress- or strain-stiffening \cite{Gardel:2004} and fractures prior to irreversible rupture \cite{Bonn:1998,Baumberger:2006,Daniels:2007}. Irreversibility stems from the existence of an external control parameter, e.g. temperature or pH in the case of thermoreversible or acid-induced gels respectively, which makes such biogels impossible to shear-rejuvenate after failure, contrary to other soft glassy materials such as emulsions, colloidal gels and glasses \cite{Cloitre:2000,Divoux:2012,Siebenburger:2012}. So far huge effort has been devoted to designing protein gels with specific properties and textures at rest \cite{Dickinson:2006,Gibaud:2012}. However, their mechanical behavior under a shear stress deep into the nonlinear regime has only been partially addressed \cite{Higgs:1990,vanVliet:1995} and several simple issues remain unexplored such as the spatially resolved rupture scenario or the physical relevance of the analogy brittle failure in hard solids.
 
-
-Under a constant external load, a solid deforms and may eventually fail. The resulting slow deformation refered to as {\it creep} has been investigated over a century on solid materials \cite{Andrade:1910,Nechad:2005,Miguel:2002} but only a handful of papers have dealt with such issue on soft solids \cite{Higgs:1990,vanVliet:1995}, none of which reporting local measurements. Soft solids denotes gels made through the reversible association of biopolymers such as proteins or polysaccharides and play key role in food science, from set-style yogourt or cheese, to jelly based deserts, etc. \cite{Mezzenga:2005}.
-These materials behave as elastic solids under small deformations, but display remarkable non-linear behavior featuring fractures followed by irreversible rupture \cite{Bonn:1998,Baumberger:2006,Daniels:2007,Brenner:2013}. The irreversibility stems directly  from the existence of an external control parameter - the temperature (resp. the pH) in the case of thermoreversible gels (resp. acid-induced gels) - which, makes the system impossible to shear-rejuvenate after failure, contrarily to other soft glassy materials such as emulsions, colloidal gels and glasses \cite{Cloitre:2000}.
-
-  If a great deal of effort has been made to use proteins and polysaccharides separately or mixed to design soft materials with specific mechanical properties and texture \cite{Dickinson:2006,Gibaud:2012}, their non-linear mechanical behavior under stress has been only partially addressed \cite{vanVliet:1995}. Several simple questions remain unanswered: {\it What is the spatially resolved scenario of creep and fracture under applied shear stress}? And {\it how far does the analogy with the failure scenario of brittle solid goes}? 
 %%%%%%%%%%%%
 \begin{figure}
 \centering
-\includegraphics[width=0.9\columnwidth]{Fig1.eps}
-\caption{(color online) Strain response $\gamma(t)$ in a 4\%~wt. casein gel acidified with 1\%~wt. GDL for an imposed shear stress $\sigma=200$ (\textcolor{red!25!black}{$\bullet$}), 300 (\textcolor{red!50!black}{$\blacktriangledown$}), 400 (\textcolor{red!75!black}{$\blacksquare$}), 550 (\textcolor{red}{$\blacktriangle$}), and 1000~Pa (\textcolor{orange!50!red}{$\blacklozenge$}) from right to left. The gap width is 1~mm. The gray dotted line shows $\gamma=1$. Inset: failure time $\tau_f$ vs $\sigma$. The red line is the best power-law fit $\tau_f=A\sigma^{-\beta}$ with $\beta=5.45\pm 0.05$ and $A=40.6\pm 0.5$~s.Pa$^\beta$.
+\includegraphics[width=7cm]{Fig1.eps}
+\caption{(color online) Strain response $\gamma(t)$ in a 4\%~wt. casein gel acidified with 1\%~wt. GDL for an imposed shear stress $\sigma=200$ (\textcolor{red!25!black}{$\bullet$}), 300 (\textcolor{red!50!black}{$\blacktriangledown$}), 400 (\textcolor{red!75!black}{$\blacksquare$}), 550 (\textcolor{red}{$\blacktriangle$}), and 1000~Pa (\textcolor{orange!50!red}{$\blacklozenge$}) from right to left. The gap width is 1~mm. Gray dashes show $\gamma=1$. Inset: failure time $\tau_f$ vs $\sigma$. The red line is the best power-law fit $\tau_f=A\sigma^{-\beta}$ with $\beta=5.45\pm 0.05$ and $A=40.6\pm 0.5$~s.Pa$^\beta$.
 \label{fig1}}
 \end{figure} 
 %%%%%%%%%%%%
-In the present letter, we report on the stress-induced fracture scenario of acid-induced protein gels by means of rheology coupled to optical and ultrasonic imaging. These gels are formed reversibly by acidification of sodium caseinate solution \cite{Lucey:1998}, and at fixed low pH values, display irreversible fractures under large strain \cite{vanVliet:1995} which makes them perfect candidates to quantify brittleness in biopolymer gels and tackle the above-mentioned questions. 
-Here we demonstrate thanks to local measurements that under external load, these model soft solids display a brittle-like irreversible yielding which separates into three phases: $(i)$ a primary or Andrade-like creep regime during which the strain field is homogeneous in bulk, $(ii)$ a secondary creep during which fractures nucleate and grow logarithmically from the boundaries toward the center of the experimental cell and $(iii)$ a finite time singularity concomittent to the sudden failure of the gel. The failure time displays a non-trivial power-law scaling with the applied shear-stress that contrasts with the exponential scalings usually reported for solid brittle materials \cite{Vanel:2009}.
 
+In this Letter we report on the stress-induced fracture scenario of protein gels by means of rheology coupled to optical and ultrasonic imaging. Gels formed reversibly by slow acidification of a sodium caseinate solution \cite{Lucey:1998} display fractures under large strain at fixed low pH values \cite{vanVliet:1995}, which makes them perfect candidates to quantify brittleness in soft solids and tackle the above-mentioned issues. We demonstrate that under external load, these casein gels display brittle-like failure that results from two successive physical processes: a reversible primary (or Andrade-like) creep regime characterized by a homogeneous strain field and the irreversible nucleation and growth of fractures leading to gel failure. Our results are in full agreement with the predictions of some recent fiber-bundle models and hint to universal features of brittle failure common to both soft and hard solids.
 
 %%%%%%%%%%%%
 \begin{figure}
 \centering
 \includegraphics[width=7cm,clip]{Fig2.eps}
-\caption{(color online) Normalized shear rate responses $\gp(t)/\gpm$ corresponding to the data of Fig.~\ref{fig1} and plotted so as to emphasize each of the three successive creep regimes. $\gpm$ is the minimum shear rate reached at $\taum$ (see text and Suppl. Fig.~2). (a)~Primary creep: $\gp(t)/\gpm$ vs $t/\tau_f$ in logarithmic scales. The yellow line is $\gp(t)\sim t^{-0.85}$. Inset: Linear viscoelastic moduli $G'$ (top) and $G''$ (bottom) as a function of frequency $f$ for a strain amplitude of 1XXX~\%. Red lines are power laws $G'\sim G''\sim f^{0.15}$. (b)~Secondary creep: $\gp(t)/\gpm$ vs $t/\tau_f$ in linear scales. The yellow curve is a sixth order polynomial fit to the data showing that $\taum\simeq 0.6~\tau_f$. Inset: $\taum$ vs $\tau_f$. The red line is the best linear fit $\taum=0.598\tau_f$. (c)~Tertiary creep: $\gp(t)/\gpm$ vs $(\tau_f-t)/\tau_f$ in logarithmic scales with a reversed horizontal axis. The yellow line is $\gp(t)\sim (\tau_f-t)^{-1}$. 
-\label{fig2}}
+\caption{(color online) Normalized shear rate responses $\gp(t)/\gpm$ corresponding to the data of Fig.~\ref{fig1} and plotted so as to emphasize each of the three successive regimes. $\gpm$ is the minimum shear rate reached at $\taum$ (see text and Suppl. Fig.~2). The yellow line shows the best fit of $\gp(t)$ using Eq.~(\ref{e.fit}) with $\alpha=0.85$, leading to $\lambda=0.378\pm 0.002$ and $\mu=0.187\pm 0.002$. (a)~Primary creep: $\gp(t)/\gpm$ vs $t/\tau_f$ in logarithmic scales. Inset: Linear viscoelastic moduli $G'$ (top) and $G''$ (bottom) as a function of frequency $f$ for a strain amplitude of 0.1~\%. Red lines are power laws $G'\sim G''\sim f^{0.15}$. (b)~Secondary creep: $\gp(t)/\gpm$ vs $t/\tau_f$ in linear scales. Gray dashes show the minimum of Eq.~(\ref{e.fit}) reached at $\taum=0.556\tau_f$. Inset: $\taum$ vs $\tau_f$. The red line is $\taum=0.56\tau_f$. (c)~Tertiary creep: $\gp(t)/\gpm$ vs $(\tau_f-t)/\tau_f$ in logarithmic scales with a reversed horizontal axis.\label{fig2}}
 \end{figure} 
 %%%%%%%%%%%%
 
-\textit{Experimental set-up and protocol.-} Gels are prepared by disolving 4\% wt. of sodium caseinate powder (Firmenich) in demineralized water under gentle mixing (XX rpm) at T$=35^{\circ}$C. To induce the gelation, the solution is acidified with 1\% wt. glucono-$\delta$-lactone (GDL) in powder (Firmenich). The solution is then stirred for the GDL to dissolve before being poured into the gap of a polished Plexiglas Couette cell (height 50~mm, inner rotating cylinder 23~mm, outer fixed cylinder 25~mm, gap e=2~mm) immersed into a temperature controlled water tank at T=(25.0$\pm$0.1)$^{\circ}$C. Rheological data are recorded during the gel formation  via a stress-controled rheometer (ARG2, TA Instruments) through small amplitude oscillatory shear (see Fig.~1 in the Supplemental Material). The gelation is over when the increasing linear elastic ($G'$) and viscous ($G''$) modulii reach a plateau with $G'>G''$. A constant stress is then applied to the sample. Images of the gel are recorded simultaneously to the rheology thanks to a webcam (XXX). Displacement field and velocity maps in the (r, z) plane can also be recorded simultaneously to rheology by a custom-made ultrasonic scannner detailed in \cite{Gallot:2013}. In this case, the solution is seeded prior to the acidification with accoustic tracers -here 3\% wt. polyamide spheres, of diameter 10~$\mu$m (Orgasol 2002 EXD Nat 1, Arkema) that do not modify the final gel properties [see Supplemental Fig.~\ref{suppfig1}~(b)]. Yielding being irreversible, each creep experiment requires to prepare a new sample in-situ.  
+Gels are prepared by dissolving sodium caseinate powder (Firmenich) at 4\% wt. in deionized water under gentle mixing at 35$^{\circ}$C and 500~rpm. To induce gelation, 1\% wt. glucono-$\delta$-lactone (GDL) in powder (Firmenich) is dissolved in the solution and its hydrolysis progressively lowers the pH over the course of 8~hours [Fig.~\ref{suppfig1}(a) in the Supplemental Material]. While still liquid, the solution is poured into the gap of a polished Plexiglas Couette cell immersed into a temperature-controlled water tank at 25.0$\pm$0.1$^{\circ}$C \cite{note}. Rheological data are recorded during gel formation by a stress-controlled rheometer through small amplitude oscillatory shear at frequency $f=1$~Hz (Fig.~1 in the Supplemental Material) \cite{note}. Gelation is complete when the elastic ($G'$) and viscous ($G''$) moduli reach a plateau with $G'\gg G''$. A constant stress $\sigma$ is then applied to the sample at time $t=0$ and the subsequent strain response $\gamma(t)$ is monitored. Images of the gel are recorded simultaneously to the rheology (Logitech Webcam Pro 9000). The local velocity and strain fields can also be imaged in the gradient--vorticity plane $(r,z)$ simultaneously to rheology by a custom-made ultrasonic scanner detailed in \cite{Gallot:2013}. In this case, prior to acidification, the sodium caseinate solution is seeded with acoustic tracers here 3\% wt. polyamide spheres (Orgasol 2002 ES3 NAT 3, Arkema, diameter 30~$\mu$m, density 1.02) that do not modify the final gel properties [Fig.~\ref{suppfig1}(b) in the Supplemental Material]. Failure being irreversible, each creep experiment requires to prepare a fresh sample in-situ.  
+
+Under a constant applied shear stress $\sigma$, the global strain $\gamma(t)$ displays a robust time dependence (Fig.~\ref{fig1}): $\gamma(t)$ slowly grows with time up to $\gamma \sim 1$ then accelerates until the gel fails at a well-defined time $\tau_f$. These three successive steps are better highlighted in Fig.~\ref{fig2} by focusing on the global shear rate $\gp(t)$. Figures~\ref{fig3} and \ref{fig4} gather the results from {\it local} measurements and are discussed below together with each of the successive regimes inferred from {\it global} data. Note that these failure dynamics do not depend on the geometry as checked in a plate-plate geometry [see Movie~1 in the Supplemental Materials].
 
 %%%%%%%%%%%%
 \begin{figure*}[t]
 \centering
-\includegraphics[width=18cm,clip]{Fig3.eps}
-\caption{(color online) Ultrasonic images (left) and direct visualization of the Couette cell (right) recorded simultaneously at various times in the primary [(a)~$t/\tau_f=0.02$], secondary [(b)~$t/\tau_f=0.57\simeq\taum/\tau_f$], and tertiary  [(c) $t/\tau_f=0.93$ and (d) 0.99] creep regimes. Ultrasonic images are velocity maps $v(r,z,t)$ computed by averaging over 4~s and coded using the linear color levels shown below the images, whose position relative to the picture of the cell reflects the actual arrangement of the ultrasonic probe along the vertical direction $z$. Experiment performed on a 4\%~wt. casein gel seeded with 3\%~wt. polyamide spheres and acidified with 1\%~wt. GDL under $\sigma=300$~Pa. The gap width is 2~mm. See also Suppl. Movie~1.
+\includegraphics[width=17.5cm,clip]{Fig3.eps}
+\caption{(color online) Ultrasonic images (left) and direct visualization of the Couette cell (right) recorded simultaneously at various times in the primary [(a)~$t/\tau_f=0.02$], secondary [(b)~$t/\tau_f=0.57\simeq\taum/\tau_f$], and tertiary  [(c) $t/\tau_f=0.93$ and (d) 0.99] creep regimes. Ultrasonic images are velocity maps $v(r,z,t)$ computed by averaging over 4~s and coded using the linear color levels shown below the images, whose position relative to the picture of the cell reflects the actual arrangement of the ultrasonic probe along the vertical direction $z$. The gap width is 2~mm and $r$ is the radial distance to the inner rotating cylinder. Experiment performed on a 4\%~wt. casein gel seeded with 3\%~wt. polyamide spheres and acidified with 1\%~wt. GDL under $\sigma=300$~Pa. See also Movie~2 in the Supplemental Material.
 \label{fig3}}
 \end{figure*} 
 %%%%%%%%%%%%
 
+As seen in the inset of Fig.~\ref{fig1}, the failure time $\tau_f$ sharply decreases as a power-law of $\sigma$ with an exponent $\beta\simeq 5.5$. $\tau_f$ further allows us to rescale all the shear rate data $\gp(t)$ onto the single master curve of Fig.~\ref{fig2}(a) by plotting $\gp/\gp_{\rm min}$ vs $t/\tau_f$, where $\gp_{\rm min}$ is the minimum shear rate reached at a time $\tau_{\rm min}$ [see also Fig.~\ref{suppfig2} in the Supplemental Material for the original $\gp(t)$ data]. On about four decades for $t\lesssim 0.1\tau_f$, the shear rate decreases as a power-law $\gp(t)\sim t^{-\alpha}$ with $\alpha=0.85\pm 0.02$. This is strongly reminiscent of the {\it primary creep} observed in solids and referred to as Andrade creep \cite{Andrade:1910,Miguel:2002,Nechad:2005}. Interestingly, here, this scaling can be fully accounted for by linear viscoelasticity without invoking any irreversible plasticity. Indeed casein gels display a power-law rheology $G'(f)\sim G''(f)\sim f^{0.15}$ [inset of Fig.~\ref{fig2}(a)], which corresponds to a compliance $J(t)\equiv\gamma(t)/\sigma\sim t^{0.15}$ in the linear deformation regime \cite{Jaishankar:2013}. This nicely corresponds to the observed $\gp(t)\sim t^{-0.85}$ and suggests that primary creep is purely reversible without unrecoverable plastic events. Homogeneity and linear response are further confirmed, at least up to the available spatial ($\sim 10~\mu$m) and temporal ($\sim 1$~s) resolutions, by direct visualization which shows no sign of crack or fracture [Fig.~\ref{fig3}(a)] and by ultrasonic imaging which reveals velocity and strain fields averaged over the vertical direction $z$ that linearly decrease with the radial position $r$ within the gap [Fig.~\ref{fig4}(a-b)] with insignificant $z$-dependence [Fig.~\ref{fig3}(a, left)].
 
-\textit{Macroscopic behaviour.-} Under constant applied shear stress $\sigma$, the global deformation $\gamma$ displays the same robust evolution with time (Fig.~\ref{fig1}): it grows almost logarithmicaly with time up to $\gamma \sim 1$, than accelerates up to the moment the gel breaks. 
- The failure time $\tau_f$ of the gel decreases as a power-law of $\sigma$ [Fig.~\ref{fig1}~(inset)] and allow us to rescal all the experiments on a single mastercurve.[see fig.~\ref{suppfig2} in the Supplemental Materials]
-Figure~\ref{fig2} displays such mastercurve as the temporal evolution of the shear rate $\dot \gamma$ and each subplot (a), (b) and (c) uses a scale that lay the emphasis respectively on the primary, the secondary and the tertiary regime.
-In the primary creep regime [Fig.~\ref{fig2}~(a)], shear rates decrease as the following power-law:  $\dot \gamma(t) \sim~\dot \gamma_{min} (t/\tau_f)^{-\alpha}$, with $\alpha=0.85$ recalling the primary creep observed in solids refered to as the Andrade creep \cite{Miguel:2002}. Interestingly, here this scaling is directly linked to the linear viscoelasticity which predicts for such power-law creep the following scaling: $G(\omega) \sim \omega^{1-\alpha}$. Inset of figure~\ref{fig2}~(a) confirms that $G'(\omega)$ and $G"\sim \omega ^{0.15}$, strongly suggesting that the primary creep is purely elastic.
-During the secondary creep regime, the shear-rate reaches a minimum value at $t=\tau_{min}= (0.61\pm0.04)\tau_f$ independently of the applied stress [Fig.~\ref{fig2}~(b)-(inset)] as similarly reported for solid composite materials \cite{Nechad:2005}, colloidal gels of attractive particles \cite{Grenard:2013} and Fiber Bundles Models \cite{Kovacs:2008,Jagla:2011}. 
-In the tertiary creep regime, the shear rate increases by several orders of magnitude scaling as $(\tau_f-t)^{-1}$ and display a finite time singularity. Finally, the failure time of the gel is a decreasing function of the applied shear stress in agreement with what has been reported qualitativeley in similar systems \cite{vanVliet:1995}, and scales as the following power-law: $\tau_f \sim \sigma^{-5.45\pm 0.05}$, a key result on which we come back in the discussion section.
+For $0.1\lesssim t/\tau_f\lesssim 0.9$, $\gp(t)$ departs from power-law behavior and goes through a minimum value at time $\tau_{\rm min}= (0.56\pm0.04)\tau_f$ independently of the applied stress [Fig.~\ref{fig2}(b) and inset] as similarly reported for solid composite materials \cite{Nechad:2005} and fiber-bundles models (FBMs) \cite{Kovacs:2008,Jagla:2011}. During this {\it secondary creep} regime, regularly-spaced cracks nucleate from the top and bottom edges of the Couette cell and start growing perpendicular to the applied stress [Fig.~\ref{fig3}(b), see also Movie~2 in the Supplemental Material]. These macroscopic fractures are invaded with water expelled from the surrounding gel matrix. Although fractures have not yet entered the ultrasonic region of interest, velocity maps become heterogeneous along the $z$ direction [Fig.~\ref{fig3}(b, left)] and display intermittent fluctuations [Fig~\ref{fig4}(c,d)]. The level of these fluctuations, which can also be seen on the global response for the same applied stress [$\blacktriangledown$ in Fig.~\ref{fig2}(b)], is poorly reproducible and stress-dependent. We propose that such intermittency results from self-healing microscopic cracks which precede the tip of the fracture. Since heterogeneity is much smaller along the radial direction [compare red and black lines in Fig~\ref{fig4}(d)], these ``precursors'' either extend across the full 2-mm gap or induce long-range displacements that span the gap. In any case, such noisy features are typical of slow crack growth in solids \cite{Vanel:2009,Kun:2007} and more generally of avalanche-like behavior \cite{Sethna:2001}.
 
-\textit{Local behaviour.-} Local measurements allow us to get deeper insight into the creep regimes [see movie~1 in the Supplemental material]. During the primary regime, no cracks or failure can be seen from direct visualization [Fig.~\ref{fig3}.~(a)] while ultrasonic imaging reveals that within the spatial resolution of a few microns, the strain field is homogeneous [Fig~\ref{fig4}~(b)]. If plastic events take place in this primary regime, they occur at smaller scale. However, given the agreement between the Andrade exponent and the frequency scaling of the linear elastic modulus discussed above, it is more likely that no or a negligible amount of plastic events take place during this regime, coroborating the optical and ultrasonic measurements. 
-In the secondary creep, fractures nucleate from the top and bottom edges of the Couette cell and start growing perpendicularly to the shear. In agreement, velocity maps become heterogeneous [Fig.~\ref{fig3}.~(b)-(c)] and display intermittent fluctuations along the cell height corresponding to the independant growth of the vertical cracks [Fig~\ref{fig4}~(d)]. 
-In the tertiary creep regime, cracks have grown along the vorticity, in a periodic fashion in the orthoradial direction while the velocity map directly correlates with the crack growth [Fig.~\ref{fig3}.~(d)]. Finally, over secondary and tertiary regimes, direct visualization and ultrasonic velocimetry show that the cracks display a continuous logarithmic growth with no remarkable change between the two regimes [Fig~\ref{fig4}~(e)].
-Note that these three regimes do not depend on the geometry, and are also observed to be quantitatively the same in plate-plate geometry [see movie~2 in the Supplemental Materials].
-
-\textit{Discussion.-} As a central result, acid-induced casein gels display a remarkable brittle-like rupture scenario, different from other soft materials such as transient-network systems \cite{Ligoure:2013}, because truly irreversible. The pH is key to the irreversibility and plays the role of an additional control parameter that, when maintained at values lower than the isoelectric point, prevent the system from healing.
-Comparatively, Yield Stress Fluids (YSF) that display a solid-like behavior at rest, either because of a jammed microstructure or attractive interactions \cite{Sciortino:2005,Bonnecaze:2010}, but do not present such external control parameter, display a similar rheological signature during their stress-induced yielding. Indeed the S-shaped curved pictured in figure~\ref{fig2}~(a) has been also reported in \cite{Bauer:2006,Gibaud:2010,Divoux:2011,Siebenburger:2012,Grenard:2013}. However, their yielding scenario is fundamentally different. Local measurements conducted on both type of soft glassy materials have revealed that no fractures take place in the bulk: the microstructure rather reorganizes and flows in a ductile way. Our study reveals that acid-induced gels behave elastically up to the rupture point and that fractures develop and grow logarithmically, perpendicularly to the shear direction prior an irreversible failure which makes casein gels model {\it brittle soft solids}.
+In the {\it tertiary creep} regime, for $t\gtrsim 0.9\tau_f$, the shear rate increases by more than four orders of magnitude and diverges as $(\tau_f-t)^{-1}$ [Fig.~\ref{fig2}(c)]. This finite-time singularity corresponds to the final growth of the fractures along the vorticity direction $z$ as they accelerate and eventually meet in the middle of the Couette cell at time $\tau_f$ [Fig.~\ref{fig3}(c-d)]. Ultrasonic velocity maps directly correlate with the crack growth and reveal the complex structure of the displacement field at the tip and around the fracture. In particular, Fig.~\ref{fig3}(d, left) suggests that the fracture is initiated at the inner cylinder at $r=0$ and the presence of large positive and negative velocities in the vicinity of the crack tip is indicative of strong compression and recoil of the gel matrix. Finally, the fracture length $\ell(t)$ is observed to grow logarithmically with $(\tau_f-t)$ upon approaching $\tau_f$ [Fig~\ref{fig4}(d)]. In other words one has ${\rm d}\ell/{\rm d}t\sim\gp(t)\sim (\tau_f-t)^{-1}$, which indicates that the global shear rate is essentially governed by fracture-induced displacements.
 
 %%%%%%%%%%%%
 \begin{figure*}
 \centering
-\includegraphics[width=18cm,clip]{Fig4.eps}
-\caption{(color online) (a)~Local velocity $\langle v(r,z,t)\rangle_z$ and (b)~local strain field $\langle\gl(r,z,t)\rangle_z$ averaged over the vertical direction $z$ at various times during primary creep: $t/\tau_f=1.9\,10^{-3}$ ($\bullet$), $1.7\,10^{-2}$ (\textcolor{blue}{$\blacktriangledown$}), and 0.15 (\textcolor{red}{$\blacksquare$}). Solid lines are linear profiles. (c)~Spatiotemporal diagram of the local velocity $\langle v(r,z,t)\rangle_r$ averaged over the radial direction $r$ and plotted in linear color levels as a function of $z$ and $t/\tau_f$. (d)~Standard deviation $\delta_z v(t)$ of $\langle v(r,z,t)\rangle_r$ taken over the vertical direction $z$ (thick black line) together with corresponding standard deviation $\delta_r v(t)$ computed over the radial direction $r$ on the $z$-average $\langle v(r,z,t)\rangle_z$ (thin red line). (e)~Fracture length $\ell(t)$ vs $(\tau_f-t)/\tau_f$ as inferred from direct visualization ($\bullet$, average over 6 different fractures, error bars show the standard deviation) and from ultrasonic imaging ($\circ$) and normalized by the height $H$ of the Couette cell. Gray dots show the visualization data for the longest fracture which leads to the failure of the sample at $\tau_f$. Red lines are the best fits $\ell(t)=\alpha+\beta\log(1-t/\tau_f)$ to the visualization data. Same experiment as in Fig.~\ref{fig3}. See also Suppl. Movie~1.
+\includegraphics[width=17.5cm,clip]{Fig4.eps}
+\caption{(color online) (a)~Local velocity $\langle v(r,z,t)\rangle_z$ and (b)~local strain field $\langle\gl(r,z,t)\rangle_z$ averaged over the vertical direction $z$ at various times during primary creep: $t/\tau_f=1.9\,10^{-3}$ ($\bullet$), $1.7\,10^{-2}$ (\textcolor{blue}{$\blacktriangledown$}), and 0.15 (\textcolor{red}{$\blacksquare$}). Solid lines are linear profiles. (c)~Spatiotemporal diagram of the local velocity $\langle v(r,z,t)\rangle_r$ averaged over the radial direction $r$ and plotted in linear color levels as a function of $z$ and $t/\tau_f$. (d)~Standard deviation $\delta_z v(t)$ of $\langle v(r,z,t)\rangle_r$ taken over the vertical direction $z$ (thick black line) together with corresponding standard deviation $\delta_r v(t)$ computed over the radial direction $r$ on the $z$-average $\langle v(r,z,t)\rangle_z$ (thin red line). (e)~Fracture length $\ell(t)$ vs $(\tau_f-t)/\tau_f$ as inferred from direct visualization ($\bullet$, average over 6 different fractures, error bars show the standard deviation) and from ultrasonic imaging ($\circ$) and normalized by the height $H$ of the Couette cell. Gray dots show the visualization data for the longest fracture which leads to the failure of the sample at $\tau_f$. Red lines are the best fits $\ell(t)=a+b\log(1-t/\tau_f)$ to the visualization data.
 \label{fig4}}
 \end{figure*} 
 %%%%%%%%%%%%
 
-Let us examine in more detail the rupture process and compare it to what is seen on brittle solid materials. Here, the primary creep and its power-law exponent ($\dot \gamma \sim t^{-\alpha}$, with $\alpha=0.85$) is fully accounted for by the linear rheology while local measurements reveals in agreement an homogeneous bulk deformation. This result strongly contrasts with the primary creep of both solid materials and YSFs \cite{Bauer:2006,Divoux:2011,Siebenburger:2012,Grenard:2013} that usually exhibit a power-law creep with slightly smaller exponents (0.3 $\leq \alpha \leq 0.7$) that are not directly related to linear rheology. Besides, the linear behavior of YSF generally differs from a simple power-law scaling, while in the case of solids, the primary creep is irreversible and has been attributed to dislocation interactions in the case or cristaline materials \cite{Miguel:2002} or localized plastic rearragements which nature is still unclear in amorphous materials \cite{Rosti:2010}. \ti{ XXX The exponent in the case of casein gel is robust and neither depend on the geometry nor on the GDL concentration within the explored range ... mentioned or left aside for the long paper? XXX}
+Let us now summarize and discuss the most prominent results of this Letter. First we have shown that casein gels display a remarkable failure scenario similar to that of brittle solids and characterized by the same three successive creep regimes. Here, the primary creep and its power-law exponent [$\gp(t)\sim t^{-\alpha}$ with $\alpha=0.85\pm 0.02$] are fully accounted for by linear viscoelasticity and local measurements consistently display a homogeneous bulk deformation. Such a link between creep and viscoelasticity is shared by other biopolymer gels with power-law rheology \cite{Jaishankar:2013,Gobeaux:2010} but contrasts with the primary creep of solid materials where smaller exponents are found (0.3 $\lesssim \alpha \lesssim 0.7$). Besides primary creep in solids is irreversible and has been attributed to dislocation interactions in the case of crystalline materials \cite{Miguel:2002} or to localized plastic rearrangements in amorphous materials \cite{Rosti:2010}. Protein gels rather appear to remain purely elastic and reversible throughout primary creep, a hallmark of brittle materials.
 
-The second key feature of the failure process of casein gels is the logarithmic growth of fractures observed in the second and tertiary creep regimes [Fig.~\ref{fig4}~(d)]. Such evolution  has been also reported on solid disordered materials displaying brittle rupture (such as paper) and interpreted in the framework of Griffith-like or Local Energy Barrier (LEB) models \cite{Vanel:2009}. However, these approaches predict an exponential scaling of the rupture time with the applied stress, which gives a less convincing fit of the experimental data than the decreasing power-law we proposed in figure~\ref{fig1}~(inset). This result strongly suggests that another mechanism is at stake in the failure process of casein gels.
-\ti{XXX 1) Should we discuss in more details the LEB and Griffith models? 2) Should we mention that the log growth differs from the algebric growth of capillary fractures observed in thermo-reversible gels \cite{Daniels:2007} ?? XXX}
+The logarithmic fracture growth in the tertiary creep regime constitutes our second important result. Such an evolution is also commonly reported in disordered solid materials displaying brittle rupture (such as paper) and interpreted in the framework of Griffith-like models based on global or local energy barriers \cite{Vanel:2009}. However these approaches all predict exponential scalings for $\tau_f(\sigma)$ while our data are best fitted by the decreasing power-law $\tau_f \sim \sigma^{-\beta}$ with $\beta=5.45\pm 0.05$ [inset of Fig.~\ref{fig1}]. This last key result suggests that thermally activated crack growth is not relevant to the present soft system. Rather the power-law scaling is strikingly reminiscent of the Basquin law of fatigue found for a variety of heterogeneous or cellular materials under cyclic deformation \cite{Kun:2007,Basquin:1910,Suresh:2006}. Basquin law has also been recently predicted by FBMs that combine elastic fibers with a local yield strain and take into account damage accumulation \cite{Kun:2007,Halasz:2012}. Interestingly assuming damage accumulation to be proportional to $\sigma^\gamma$ directly leads to Basquin law with $\beta=\gamma$ and large values of $\gamma$, typically larger than 5 as found here for $\beta$, lead to macroscopic cracks due to the simultaneous rupture of a large number of fibers \cite{Halasz:2012}. More generally FBMs under compressive or elongational load predict three successive creep regimes exactly alike Fig.~\ref{fig2} with similar proportionality between $\tau_{\rm min}$ and $\tau_f$ and finite-time singularity \cite{Nechad:2005,Jagla:2011}. This highlights the relevance of FBMs in the context of creep in protein gels, whose microstructure indeed appears to be formed of strands \cite{Kalab:1983,Roefs:1990}, but also urges to study FBMs in shear geometries to check whether they would be able to predict fracture growth as observed here.
 
-The last key feature of this brittle scenario is the power-law dependance of the failure time with the applied shear stress...XXX
+Finally, we emphasize that the (reversible) Andrade-like creep and the (irreversible) crack growth are two  physical processes that effectively superimpose to yield the global rheological response. Indeed, as seen from the yellow line in Fig.~\ref{fig2}, the master curve $\gp(t)/\gp_{\rm min}$ vs $t/\tau_f$ is perfectly fitted by:
+%the master curve $\tilde{\gp}(t)=\gp(t)/\gp_{\rm min}$ vs $\tilde{t}=t/\tau_f$ is perfectly fitted by:
+\begin{equation}
+\frac{\gp(t)}{\gp_{\rm min}}=\lambda \left(\frac{t}{\tau_f}\right)^{-\alpha}+ \frac{\mu}{1-t/\tau_f}\,,
+%\tilde{\gp}(\tilde{t})=\lambda \tilde{t}^{-\alpha}+ \frac{\mu}{1-\tilde{t}}\,,
+\label{e.fit}
+\end{equation}
+with only two adjustable parameters $\lambda$ and $\mu$ once $\alpha=0.85$ is fixed. This allows us to interpret the secondary creep regime as a mere crossover from creep to crack growth. To conclude, the present time- and space-resolved study shows that protein gels qualify as model, brittle soft solids. The next step consists in a statistical study of the fluctuations associated to crack nucleation and growth as well as a systematic investigation of other systems in order to check for universality in the irreversible creep rupture of soft solids in general and of biogels in particular. Such a study is expected to have important implications in understanding the behavior of biomaterials under extreme stress conditions. 
 
-\begin{itemize}
-\item FBM are relevant here because the gel microstructure is formed of strands \cite{Kalab:1983,Roefs:1990}. FBM that rely on elastic fibers with a local yield strain (or stress) and introduce a non-linear Eyring rheology or a local coupling lead to a different scaling law than the one we find here for the failure time with the applied stress. In their law appears a ``yield stress" \cite{Kun:2003,Nechad:2005,Kovacs:2008,Jagla:2011} that is not present here. The promising approach combines elastic fibers with a local yield strain and take into account damage accumulation as in \cite{Kun:2007,Halasz:2012}. 
-\item Idem Compare to the scalings observed in YSF - in particular microgels display a similar power-law scaling, except that the yield point appears explicitely in the scaling as the critical point in a dynamical phase transition \cite{Divoux:2012}. Propose an explenation or at least raise a point.
-\item re-Read \& mention somewhere the following ref. \cite{Chaudhuri:2013} 
-\item Note for us, that some materials display a brittle or a ductile behavior depending on the strain-rate they experience - see the review by Mikko Alava on ``paper" or even foams- travail de J.C Tsai. It urges for systematic step shear experiments on casein gels :-).
-\item conclude   
-\end{itemize}
+%which separates into three successive phases: (i)~a primary (or Andrade-like) creep regime during which the strain field is homogeneous, (ii)~a secondary creep during which fractures nucleate and grow logarithmically, and (iii)~a finite-time singularity concomittant with the sudden failure of the gel. The failure time displays a non-trivial power-law scaling with the applied shear-stress that contrasts with the exponential scalings usually reported for solid brittle materials \cite{Vanel:2009}.
 
+% within the spatial resolution of a few microns, the strain field is homogeneous [Fig~\ref{fig4}~(b)]. If plastic events take place in this primary regime, they occur at smaller scale. However, given the agreement between the Andrade exponent and the frequency scaling of the linear elastic modulus discussed above, it is more likely that no or a negligible amount of plastic events take place during this regime, corroborating the optical and ultrasonic measurements. 
 
+%Compare to the scalings observed in YSF - in particular microgels display a similar power-law scaling, except that the yield point appears explicitely in the scaling as the critical point in a dynamical phase transition \cite{Divoux:2012}. Propose an explanation or at least raise a point. \cite{Chaudhuri:2013} 
 
+%FBM that rely on elastic fibers with a local yield strain (or stress) and introduce a non-linear Eyring rheology or a local coupling lead to a different scaling law than the one we find here for the failure time with the applied stress. In their law appears a ``yield stress" \cite{Kun:2003,Nechad:2005,Kovacs:2008,Jagla:2011} that is not present here. 
 
-%Acidification is reversible: one can switch reversibly from the gel to the casein solution by tuning the pH respectively below or the casein isoelectric point (pH$\sim$~4.6).    
+%different from other soft materials such as transient-network systems \cite{Ligoure:2013}, because truly irreversible. The pH is key to the irreversibility and plays the role of an additional control parameter that, when maintained at values lower than the isoelectric point, prevent the system from healing.
 
+%Comparatively, Yield Stress Fluids (YSF) that display a solid-like behavior at rest, either because of a jammed microstructure or attractive interactions \cite{Sciortino:2005,Bonnecaze:2010}, but do not present such external control parameter, display a similar rheological signature during their stress-induced yielding. Indeed the S-shaped curved pictured in figure~\ref{fig2}~(a) has been also reported in \cite{Bauer:2006,Gibaud:2010,Divoux:2011,Siebenburger:2012,Grenard:2013}. However, their yielding scenario is fundamentally different. Local measurements conducted on both type of soft glassy materials have revealed that no fractures take place in the bulk: the microstructure rather reorganizes and flows in a ductile way. Our study reveals that acid-induced gels behave elastically up to the rupture point and that fractures develop and grow logarithmically, perpendicularly to the shear direction prior to an irreversible failure which makes casein gels model {\it brittle soft solids}.
+
+%and yield stress fluids (YSFs) \cite{Bauer:2006,Divoux:2011,Siebenburger:2012,Grenard:2013} that usually exhibit a power-law creep with smaller exponents (0.3 $\lesssim \alpha \lesssim 0.7$) which are not directly related to linear rheology. Besides, the linear behavior of YSF generally differs from a simple power-law scaling, while in the case of solids
 
 \begin{acknowledgments}
-The authors thank Thomas Gibaud for fruitful discussions, Miloslav Kal\'ab for kindly providing us with unobtainable references and Alan Parker for precious advice and for providing the casein and GDL. This work was funded by the Institut Universitaire de France and by the European Research Council under the European Union's Seventh Framework Programme (FP7/2007-2013) / ERC grant agreement No.~258803. 
+The authors thank T.~Gibaud, S.~Lindstr\"om and N.~Taberlet for fruitful discussions, M.~Kal\'ab for kindly providing us with unobtainable references, and A.~Parker at Firmenich for precious advice and for providing the casein and GDL. This work was funded by the Institut Universitaire de France and by the European Research Council under the European Union's Seventh Framework Programme (FP7/2007-2013) / ERC grant agreement No.~258803. 
 \end{acknowledgments}
 
 \begin{thebibliography}{}
 
-\bibitem{Andrade:1910} E.N. Da C. Andrade Proc. R. Soc. London A {\bf 84}, 1 (1910).
+\bibitem{Viovy:2000} J.L. Viovy, Rev. Mod. Phys. {\bf 72}, 813--872 (2000); Dorfman et al., Chem. Rev. {\bf 113}, 2584--2667 (2013).
 
-\bibitem{Nechad:2005} H. Nechad et al., Phys. Rev. Lett. {\bf 94}, 045501 (2005); J. Mech. Phys. Solids {\bf 53}, 1099-1127 (2005).
+\bibitem{Stricker:2010} J. Stricker, T. Falzone and M.L. Gardel, J. Biomech. {\bf 43},  9--14 (2010); F. Grinnell and W.M. Petroll, Annu. Rev. Cell Dev. Biol. {\bf 26}, 335--361 (2010).
 
-\bibitem{Miguel:2002} M.C. Miguel, A. Vespignani, M. Zaiser and S. Zapperi, Phys. Rev. Lett. {\bf 89}, 165501 (2002); M.C. Miguel, L. Laurson and M.J. Alava, Eur. Phys. J. B {\bf 64}, 443--450 (2008).
+\bibitem{Mezzenga:2005} R. Mezzenga, P. Schurtenberger, A. Burbidge and M. Michel, Nature Materials  {\bf 4}, 729--740 (2005).
 
-\bibitem{Higgs:1990} P.G. Higgs and S.B. Ross-Murphy, Int. J. Biol. Macromol. {\bf 12}, 233--240, (1990).
+\bibitem{Gardel:2004} M.L. Gardel et al., Science {\bf 304}, 1301--1305 (2004); C. Storm et al., Nature {\bf 435}, 191--194 (2005)
 
-\bibitem{vanVliet:1995} T. van Vliet and P. Walstra, Faraday Discuss. {\bf 101}, 359--370 (1995); T. van Vliet, H.J.M. van Dijk, P. Zon and P. Walstra, Colloid Polym. Sci. {\bf 269}, 620--627 (1991); L.G.B. Bremer et al., Colloids Surf. {\bf 51}, 159--170 (1990).
-
-\bibitem{Mezzenga:2005} R. Mezzenga, P. Schurtenberger, A. Burbidge and M. Michel, Nature Materials {4}, 729--740 (2005).
-
-\bibitem{Brenner:2013} T. Brenner et al., J. Non-Newtonian fluid Mech. {\bf 196}, 1--7 (2013).
-
-\bibitem{Bonn:1998} D. Bonn et al., Science {280} 265--267 (1998).
+\bibitem{Bonn:1998} D. Bonn et al., Science {\bf 280}, 265--267 (1998).
 
 \bibitem{Baumberger:2006} T. Baumberger, C. Caroli and D. Martina, Nature Materials {\bf 5}, 552-555 (2006).
 
 \bibitem{Daniels:2007} K. Daniels et al., Phys. Rev. Lett. {\bf 99}, 124501 (2007).
 
-\bibitem{Cloitre:2000} M. Cloitre, R. Borrega and L. Leibler, Phys. Rev. Lett. {\bf 85} 4819--4822 (2000); V. Viasnoff and F. Lequeux, Phys. Rev. Lett. {\bf 89} 065701 (2002); Coussot et al., Phys. Rev. Lett. {\bf 88}, 175501 (2002).
+%\bibitem{Brenner:2013} T. Brenner et al., J. Non-Newtonian fluid Mech. {\bf 196}, 1--7 (2013).
+
+\bibitem{Cloitre:2000} M. Cloitre, R. Borrega and L. Leibler, Phys. Rev. Lett. {\bf 85}, 4819--4822 (2000); V. Viasnoff and F. Lequeux, Phys. Rev. Lett. {\bf 89}, 065701 (2002); Coussot et al., Phys. Rev. Lett. {\bf 88}, 175501 (2002).
+
+\bibitem{Divoux:2012} T. Divoux et al., Soft Matter {\bf 8}, 4151--4164 (2012).
+
+\bibitem{Siebenburger:2012} Siebenb\"urger, M. Ballauff and T. Voigtmann, Phys. Rev.
+Lett., {\bf 108}, 255701 (2012)
 
 \bibitem{Dickinson:2006} E. Dickinson, Soft Matter {\bf 2}, 642--652 (2006).
 
-\bibitem{Gibaud:2012} T. Gibaud et al., Faraday Discuss., {\bf 158}, 267--284 (2012).
+\bibitem{Gibaud:2012} T. Gibaud et al., Faraday Discuss. {\bf 158}, 267--284 (2012).
+
+\bibitem{Higgs:1990} P.G. Higgs and S.B. Ross-Murphy, Int. J. Biol. Macromol. {\bf 12}, 233--240 (1990).
+
+\bibitem{vanVliet:1995} T. van Vliet and P. Walstra, Faraday Discuss. {\bf 101}, 359--370 (1995); T. van Vliet, H.J.M. van Dijk, P. Zon and P. Walstra, Colloid Polym. Sci. {\bf 269}, 620--627 (1991); L.G.B. Bremer et al., Colloids Surf. {\bf 51}, 159--170 (1990).
 
 \bibitem{Lucey:1998} J.A. Lucey and H. Singh, Food Research Int. {\bf 30}, 529--542 (1998).
+
+\bibitem{note} Rheological data shown in Figs.~\ref{fig1} and \ref{fig2} and in Supplemental Figs.~1 and 2 were obtained with an MCR 301 rheometer (Anton Paar) in a Couette cell of height 28~mm and gap 1~mm with an inner rotating cylinder of radius 24~mm. Optical and ultrasonic imaging coupled to rheometry (Figs.~\ref{fig3} and \ref{fig4}) were performed on an AR G2 rheometer (TA Instruments) in a Couette cell of height 60~mm and gap 2~mm with an inner rotating cylinder of radius 23~mm. A detailed, quantitative study of the influence of the gap width on the failure dynamics is left for future work.
+
+\bibitem{Gallot:2013} T. Gallot et al., Rev. Sci. Instrum. {\bf 84}, 045107 (2013).
+
+\bibitem{Andrade:1910} E.N. Da C. Andrade Proc. R. Soc. London A {\bf 84}, 1--12 (1910).
+
+\bibitem{Miguel:2002} M.C. Miguel, A. Vespignani, M. Zaiser and S. Zapperi, Phys. Rev. Lett. {\bf 89}, 165501 (2002); M.C. Miguel, L. Laurson and M.J. Alava, Eur. Phys. J. B {\bf 64}, 443--450 (2008).
+
+\bibitem{Nechad:2005} H. Nechad et al., Phys. Rev. Lett. {\bf 94}, 045501 (2005); J. Mech. Phys. Solids {\bf 53}, 1099-1127 (2005).
+
+\bibitem{Jaishankar:2013} A. Jaishankar and G.H. McKinley, Proc. R. Soc. A {\bf 469}, 20120284 (2013).
+
+\bibitem{Kovacs:2008} K. Kov\'acs et al., Phys. Rev. E \textbf{77}, 036102 (2008).
+
+\bibitem{Jagla:2011} E.A. Jagla, Phys. Rev. E {\bf 83}, 046119 (2011).
+
+\bibitem{Vanel:2009} L. Vanel et al., J. Phys. D: Appl. Phys. {\bf 42}, 214007 (2009).
+
+\bibitem{Kun:2007} F. Kun et al., J. Stat. Mech. P02003 (2007); Phys. Rev. Lett. {\bf 100}, 094301 (2008); J. Stat. Mech. P01021 (2009)
+
+\bibitem{Sethna:2001} J.P. Sethna, K.A. Dahmen and C.R. Myers, Nature {\bf 410}, 242--250 (2001).
+
+\bibitem{Gobeaux:2010} F. Gobeaux et al., Soft Matter {\bf 6}, 3769--3777 (2010).
+
+\bibitem{Rosti:2010} J. Rosti, J. Koivisto, L. Laurson, M.J. Alava, Phys. Rev. Lett. {\bf 105}, 100601 (2010).
+
+\bibitem{Basquin:1910} O.H. Basquin, Proceedings of the American Society for Testing and Materials ASTEA, {\bf 10}, 625--630 (1910).
+
+\bibitem{Suresh:2006} S. Suresh, {\it Fatigue of Materials} (Cambridge University Press, Cambridge, England, 2006)
+
+\bibitem{Halasz:2012} Z. Hal\'asz, Z. Danku and F. Kun, Phys. Rev. E {\bf 85}, 016116 (2012).
+
+\bibitem{Roefs:1990} S.P.F.M. Roefs, A.E.A. De Groot-Mostert and T. Van Vliet, Colloids Surf. {\bf 50}, 141--159 (1990).
+
+\bibitem{Kalab:1983} M. Kal\'ab, P. Allan-Wojtas and B.E. Phipps-Todd, Food Microstruct. {\bf 2}, 51--66 (1983).
 
 %\bibitem{vanVliet:1991} T. van Vliet, H.J.M. van Dijk, P. Zon and P. Walstra, Colloid Polym. Sci. {\bf 269}, 620--627 (1991).
 
 %\bibitem{Bremer:1990} L.G.B. Bremer et al., Colloids Surf. {\bf 51}, 159--170 (1990).
 
-\bibitem{Vanel:2009} L. Vanel et al., J. Phys. D: Appl. Phys. {\bf 42} 214007 (2009).
+%\bibitem{Grenard:2013} V. Grenard, T. Divoux, N. Taberlet and S. Manneville, Soft Matter (2013) - DOI: 10.1039/C3SM52548A 
 
-\bibitem{Gallot:2013} T. Gallot et al., Rev. Sci. Instrum. {\bf 84}, 045107 (2013).
+%\bibitem{Sciortino:2005} F. Sciortino and P. Tartaglia, Advances in Physics {\bf 54}, 471--524 (2005).
 
-\bibitem{Grenard:2013} V. Grenard, T. Divoux, N. Taberlet and S. Manneville, Soft Matter (2013) - DOI: 10.1039/C3SM52548A 
+%\bibitem{Bonnecaze:2010} R.T. Bonnecaze and M. Cloitre, Adv. Polym. Sci. {\bf 236}, 117--161 (2010).
 
-\bibitem{Jagla:2011} E.A. Jagla, Phys. Rev. E {\bf 83} 046119 (2011).
+%\bibitem{Bauer:2006} T. Bauer, J. Oberdisse and L. Ramos, Phys. Rev. Lett. {\bf 97}, 258303 (2006).
 
-\bibitem{Kovacs:2008} K. Kov\'acs et al., Phys. Rev. E \textbf{77}, 036102 (2008).
+%\bibitem{Divoux:2011} T. Divoux, C. Barentin and S. Manneville, Soft Matter {\bf 7}, 8409--8418 (2011).
 
-\bibitem{Sciortino:2005} F. Sciortino and P. Tartaglia, Advances in Physics {\bf 54}, 471--524 (2005).
-
-\bibitem{Bonnecaze:2010} R.T. Bonnecaze and M. Cloitre, Adv. Polym. Sci. {\bf 236}, 117--161 (2010).
-
-\bibitem{Bauer:2006} T. Bauer, J. Oberdisse and L. Ramos, Phys. Rev. Lett. {\bf 97}, 258303 (2006).
-
-\bibitem{Divoux:2011} T. Divoux, C. Barentin and S. Manneville, Soft Matter {\bf 7}, 8409--8418 (2011).
-
-\bibitem{Siebenburger:2012} Siebenb\"urger, M. Ballauff and T. Voigtmann, Phys. Rev.
-Lett., {\bf 108}, 255701 (2012)
-
-\bibitem{Gibaud:2010} T. Gibaud, D. Frelat and S. Manneville, Soft Matter {\bf 6}, 3482--3488 (2010).
-
-\bibitem{Rosti:2010} J. Rosti, J. Koivisto, L. Laurson, M.J. Alava, Phys. Rev. Lett. {\bf 105}, 100601 (2010).
+%\bibitem{Gibaud:2010} T. Gibaud, D. Frelat and S. Manneville, Soft Matter {\bf 6}, 3482--3488 (2010).
 
 %\bibitem{Sprakel:2011} J. Sprakel et al., Phys. Rev. Lett. {\bf 106}, 248303 (2011).
 
-\bibitem{Kun:2003} F. Kun et al., Phys. Rev. E {\bf 67} 061802 (2003).
+%\bibitem{Kun:2003} F. Kun et al., Phys. Rev. E {\bf 67}, 061802 (2003).
 
 %\bibitem{Ghofraniha:2012} N. Ghofraniha et al., Soft Matter {\bf 8}, 6214 (2012).
 
-\bibitem{Ligoure:2013} C. Ligoure and S. Mora, Rheol. Acta {\bf 52}, 91-114 (2013).
-
-\bibitem{Kun:2007} F. Kun et al., J. Stat. Mech. P02003 (2007); F. Kun et al., Phys. Rev. Lett. {\bf 100}, 094301 (2008).
-
-\bibitem{Roefs:1990} S.P.F.M. Roefs, A.E.A. De Groot-Mostert and T. Van Vliet, Colloids Surf. {\bf 50}, 141--159 (1990).
-
-\bibitem{Kalab:1983} M. Kal\'ab, P. Allan-Wojtas and B.E. Phipps-Todd, Food Microstructure {\bf 2}, 51--66 (1983).
-
-\bibitem{Divoux:2012} T. Divoux, D. Tamarii, C. Barentin, S. Teitel and S. Manneville, Soft Matter {\bf 8}, 4151---164 (2012).
-
-\bibitem{Halasz:2012} Z. Hal\'asz, Z. Danku and F. Kun, Phys. Rev. E {\bf 85}, 016116 (2012).
+%\bibitem{Ligoure:2013} C. Ligoure and S. Mora, Rheol. Acta {\bf 52}, 91-114 (2013).
 
 %\bibitem{Roefs:1986} S.P.F.M. Roefs, {\it Structure of acid casein gels. A study of gels formed after acidification in the cold. PhD Thesis}, Wageningen Agricultural University, The Netherlands (1986).
 
 %\bibitem{Schall:2010} P. Schall and M. van Hecke, Annu. Rev. Fluid Mech. {\bf 42} 67--88 (2010).
 
-\bibitem{Chaudhuri:2013} P. Chaudhuri and J. Horbach, Phys. Rev. E {\bf 88}, 040301(R) (2013).
-
+%\bibitem{Chaudhuri:2013} P. Chaudhuri and J. Horbach, Phys. Rev. E {\bf 88}, 040301(R) (2013).
 
 \end{thebibliography}
-
 
 \clearpage
 \newpage
@@ -245,19 +240,21 @@ Lett., {\bf 108}, 255701 (2012)
 
 \subsection*{Supplemental movies}
 
-Supplemental Movie~1 shows the creep experiment analyzed in Figs.~\ref{fig3} and \ref{fig4} and performed under $\sigma=300$~Pa on a 4\%~wt. casein gel seeded with 3\%~wt. polyamide spheres and acidified with 1\%~wt. GDL. The gap width of the Couette cell is 2~mm and its height is 60~mm. Images recorded by a standard webcam are shown on the top left. Velocity maps $v(r,z,t)$ inferred from ultrasonic imaging by averaging over 4~s are shown on the top right using linear color levels. The vertical position $z=0$ on the ultrasonic images corresponds to about 20~mm below the top of the Couette cell. The two bottom graphs show the shear rate response $\gp(t)$ (left) and the strain response $\gamma(t)$.
+Supplemental Movie~1 shows the failure of a 4\%~wt. casein gel acidified with 1\%~wt. GDL in a plate-plate geometry for an imposed shear stress $\sigma=XXX$~Pa. The plate diameter is 40XXX~mm and the gap width is 1XXX~mm. Fractures grow parallel to the vorticity direction, i.e. along the radial direction in this case. The global rheological response is fully similar to that measured in the Couette geometry.
 
-Supplemental Movie~2 shows the failure of a 4\%~wt. casein gel acidified with 1\%~wt. GDL in a plate-plate geometry for an imposed shear stress $\sigma=XXX$~Pa. The plate diameter is 40XXX~mm and the gap width is 1XXX~mm. In this case fractures grow parallel to the vorticitty direction, i.e. along the radial direction. The shear rate response is fully similar to that in the Couette geometry.
+Supplemental Movie~2 shows the creep experiment analyzed in Figs.~\ref{fig3} and \ref{fig4} and performed under $\sigma=300$~Pa on a 4\%~wt. casein gel seeded with 3\%~wt. polyamide spheres and acidified with 1\%~wt. GDL. The gap width of the Couette cell is 2~mm and its height is 60~mm. Images recorded by a standard webcam (Logitech Webcam Pro 9000) are shown in the top left panel. Velocity maps $v(r,z,t)$ inferred from ultrasonic imaging by averaging over 4~s are shown in the top right panel using linear color levels. The vertical position $z=0$ on the ultrasonic images corresponds to about 20~mm below the top of the Couette cell. The two bottom graphs show the global shear rate response $\gp(t)$ (left) and the strain response $\gamma(t)$ recorded by the rheometer (AR G2, TA Instruments) simultaneously to optical and ultrasonic imaging.
 
 \subsection*{Supplemental figures} 
 
-Figure~\ref{suppfig1} display the gelation process of a 4\%. sodium caseinate solution seeded with 3\% wt. polyamide spheres. The glucono-$\delta$-lactone contains an ester function which, once added to the solution, hydrolyzes spontaneously and leads to a slow decrease of the pH [Fig.~\ref{suppfig1}~(a)] towards the casein isoelectric point (pH$\simeq 4.6$) at which casein particles start to aggregate. The gelation starts in fact earlier at pH=5 as already discussed in \cite{Lucey:1998supp}. At this point, the elastic and viscous modulii display a brutal increase, then overshoot and converge toward their steady state values, where $G'~>~G''$. Note that the maximum of the overshoot is reached at the isoelectric point. The decrease of both modulii at lower pH is usually attributed to the overacidification which enhances the repulsive electrostatic interactions between caseinate particles of net positive charge \cite{Dickinson:2002supp}.   
+Supplemental Figure~\ref{suppfig1} illustrates the gelation process of a 4\%. sodium caseinate solution seeded with 3\% wt. polyamide spheres through time-resolved measurements of the elastic and viscous moduli, respectively $G'$ and $G''$, under small amplitude oscillatory shear. The glucono-$\delta$-lactone contains an ester function which, once added to the solution at time $t=0$, hydrolyzes spontaneously and leads to a slow decrease of the pH [Fig.~\ref{suppfig1}(a)] towards the casein isoelectric point (${\rm pH}\simeq 4.6$) at which casein particles aggregate. Gelation actually starts earlier at ${\rm pH}\simeq 5$ as shown by gray dashed lines and as already discussed in Ref.~\cite{Lucey:1998supp}. At this point the elastic and viscous moduli display a sudden increase then overshoot and converge towards their steady-state values where $G'\gg G''$ [Fig.~\ref{suppfig1}(b)]. Note that the maximum of the overshoot is reached around the isoelectric point. The decrease of both moduli at lower pH is usually attributed to the over-acidification which enhances the repulsive electrostatic interactions between caseinate particles of net positive charge \cite{Dickinson:2002supp}.   
+
+Supplemental Figure~\ref{suppfig2} shows the shear rate $\gp(t)$ obtained by differentiating the raw strain of Fig.~\ref{fig1} in the main text. For $0.1\lesssim t/\tau_f\lesssim 0.9$, i.e. in the secondary creep regime, $\gp(t)$ is smoothed using a moving average over $\delta t\simeq 0.01\tau_f$ in order to remove high-frequency noise due to differentiation at very small shear rates. The same data normalized by its minimum value $\gp_{\rm min}$ is plotted in Fig.~\ref{fig2}(a) as a function of $t/\tau_f$ leading to a nice collapse onto a single curve whatever the imposed shear stress.
 
  %%%%%%%%%%%%
-\begin{figure}[h]
+\begin{figure}[th]
 \centering
 \includegraphics[width=7cm,clip]{SuppFig1.eps}
-\caption{(color online) Gelation process of a 4\%~wt. casein suspension seeded with 3\%~wt. polyamide spheres and acidified with 1\%~wt. GDL. (a)~pH vs time $t$. (b)~Linear viscoelastic moduli $G'$ (top, in blue) and $G''$ (bottom, in red) recorded as a function of time $t$ for fixed frequency $f=1$~Hz and strain amplitude 0.1XXX~\%. Dashed lines indicate that the system starts to build significant elastic properties when the pH decreases below about 5. Lighter colors in (b) correspond to a sample free of polyamide spheres, showing that the addition of acoustic contrast agents does not affect significantly the gelation process and the final viscoelastic properties of the gel.
+\caption{(color online) Gelation process of a 4\%~wt. casein suspension seeded with 3\%~wt. polyamide spheres and acidified with 1\%~wt. GDL. (a)~pH vs time $t$. (b)~Linear viscoelastic moduli $G'$ (top, in blue) and $G''$ (bottom, in red) recorded as a function of time $t$ for fixed frequency $f=1$~Hz and strain amplitude 0.1~\%. Dashed lines indicate that the system starts to build significant elastic properties when the pH decreases below about 5. Lighter colors in (b) correspond to a sample free of polyamide spheres, showing that the addition of acoustic contrast agents does not affect significantly the gelation process and the final viscoelastic properties of the gel.
 \label{suppfig1}}
 \end{figure} 
 
@@ -272,9 +269,9 @@ Figure~\ref{suppfig1} display the gelation process of a 4\%. sodium caseinate so
 
 \begin{thebibliography}{}
 
-\bibitem{Lucey:1998supp} J.A. Lucey and H. Singh, Food Research International A {\bf 30}, 529--542 (1998).
+\bibitem{Lucey:1998supp} J.A. Lucey and H. Singh, Food Res. Int. A {\bf 30}, 529--542 (1998).
 
-\bibitem{Dickinson:2002supp} E. Dickison and L.M. Merino, Food Hydrocolloids {\bf 16}, 321--331 (2002).
+\bibitem{Dickinson:2002supp} E. Dickinson and L.M. Merino, Food Hydrocolloid {\bf 16}, 321--331 (2002).
 
 \end{thebibliography}
 
