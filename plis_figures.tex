@@ -64,30 +64,33 @@
 		\begin{scope}[Accent1]
 			\draw[line width=2pt] (0.05\columnwidth,-2.5em) -- (0.95\columnwidth,-2.5em) (0.05\columnwidth,-1pt) -- (0.95\columnwidth,-1pt);
 			\node[inner sep=1pt, anchor=west] at (0.05\columnwidth,-1.25em) (brushlabel) {acrylamide brush};
-			\draw[->] (brushlabel.base) -- +(0,-0.8em);
-			\draw[->] (brushlabel.north) -- +(0,+0.4em);
+			\draw[->,thick] (brushlabel.base) -- +(0,-0.8em);
+			\draw[->,thick] (brushlabel.north) -- +(0,+0.4em);
 		\end{scope}
 		%spacer
 		\begin{scope}[gray]
 			\fill (0,0) rectangle (0.05\columnwidth,-2.5em) (\columnwidth,0) rectangle (0.95\columnwidth,-2.5em);
 			\node[above left=0] at (\columnwidth,1.5em) (spacerlabel){spacer};
-			\draw[->] (spacerlabel.base) -- (0.975\columnwidth,1pt);
+			\draw[->,thick] (spacerlabel.base) -- (0.975\columnwidth,1pt);
 		\end{scope}
 		%
 		\draw[<->] (0.75\columnwidth,-2pt) -- (0.75\columnwidth,-2.5em) node[midway,left] {$e\sim \SI{100}{\micro\metre}$};
 		\draw[<->] (0.05\columnwidth,-4.25em) -- (0.95\columnwidth,-4.25em) node[midway,below] (L) {$L\sim\SI{2}{\centi\metre}$};
 		\node[lab] at (0,0 |- L.base) {b};
 	\end{scope}
-	\begin{scope}[inner sep=0, shift=(pH.outer south west), yshift=-10.5em]
-		\node[anchor=west] (a) {\includegraphics[width=0.3\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2}};
-		\node at (0.5\columnwidth,0) (b) {\includegraphics[width=0.3\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6}};
-		\node[anchor=east] at (\columnwidth,0) (c) {\includegraphics[width=0.3\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
-		\draw[Accent2] (a.north west) ++(0.126\columnwidth, -0.086\columnwidth) rectangle +(0.1\columnwidth,-0.075\columnwidth) -- (b.south west) (a.north west) ++(0.226\columnwidth, -0.086\columnwidth) -- (b.north west);
-		\draw[Main] (b.north west) ++(0.117\columnwidth,-0.117\columnwidth) rectangle +(0.093\columnwidth,-0.068\columnwidth) -- (c.south west) (b.north west) ++(0.211\columnwidth,-0.117\columnwidth) --(c.north west);
-		\draw[Accent1] (c.north west) ++(0.094\columnwidth,0) rectangle +(0.117\columnwidth,-0.117\columnwidth);
-		\draw[ultra thick] (a.south east) ++(0,-0.25em) -- ++(-0.106\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] (M) {\SI{1}{\centi\metre}};
-		\draw[ultra thick] (b.south east) ++(0,-0.25em) -- ++(-0.158\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{5}{\milli\metre}};
-		\draw[ultra thick] (c.south east) ++(0,-0.25em) -- ++(-0.099\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
+	%pictures
+	\begin{scope}[inner sep=0, shift=(pH.outer south west), yshift=-8em]
+		\node[anchor=north west] (a) {\includegraphics[width=0.28\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2_crop}};
+		\node[anchor=north] at (0.44\columnwidth,0) (b) {\includegraphics[width=0.28\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6_crop}};
+		\node[anchor=north east] at (\columnwidth,0) (c) {\includegraphics[width=0.4\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
+		%zooms
+		\draw[Accent2] (a.north west) ++(0.111\columnwidth, -0.072\columnwidth) rectangle +(0.137\columnwidth,-0.137\columnwidth) -- (b.south west) (a.north west) ++(0.248\columnwidth, -0.072\columnwidth) -- (b.north west);
+		\draw[Main] (b.north west) ++(0.097\columnwidth,-0.143\columnwidth) rectangle +(0.128\columnwidth,-0.081\columnwidth) -- (c.south west) (b.north west) ++(0.225\columnwidth,-0.143\columnwidth) --(c.north west);
+		\draw[Accent1] (c.north west) ++(0.125\columnwidth,0) rectangle +(0.156\columnwidth,-0.156\columnwidth);
+		%scale bars
+		\draw[ultra thick] (a.south east) ++(0,-0.25em) -- ++(-0.178\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] (M) {\SI{1}{\centi\metre}};
+		\draw[ultra thick] (b.south east) ++(0,-0.25em) -- ++(-0.176\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{5}{\milli\metre}};
+		\draw[ultra thick] (c.south east) ++(0,-0.25em) -- ++(-0.132\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
 	\node[lab] at (0,0 |- M.base) {c};
 	\node[lab] at (b.west |- M.base) {d};
 	\node[lab] at (c.west |- M.base) {e};
@@ -162,7 +165,7 @@
 			xticklabels at=edge bottom,
 			vertical sep=0,
 			},
-		xmin=0, xmax=200, xtick={30,60,...,180},
+		xmin=0, xmax=200, xtick={0,30,...,180},
 		extra tick style={grid=major},%
 		extra x tick labels={},%
 		width=1.04\columnwidth,
