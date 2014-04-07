@@ -85,9 +85,11 @@
 		\node[anchor=north] at (0.44\columnwidth,0) (b) {\includegraphics[width=0.28\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6_crop}};
 		\node[anchor=north east] at (\columnwidth,0) (c) {\includegraphics[width=0.4\columnwidth]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
 		%zooms
-		\draw[Accent2] (a.north west) ++(0.111\columnwidth, -0.072\columnwidth) rectangle +(0.137\columnwidth,-0.137\columnwidth) -- (b.south west) (a.north west) ++(0.248\columnwidth, -0.072\columnwidth) -- (b.north west);
-		\draw[Main] (b.north west) ++(0.097\columnwidth,-0.143\columnwidth) rectangle +(0.128\columnwidth,-0.081\columnwidth) -- (c.south west) (b.north west) ++(0.225\columnwidth,-0.143\columnwidth) --(c.north west);
-		\draw[Accent1] (c.north west) ++(0.125\columnwidth,0) rectangle +(0.156\columnwidth,-0.156\columnwidth);
+		\node[minimum width = 0.137\columnwidth, minimum height=0.137\columnwidth, anchor=north west, draw=Accent2] at ($(a.north west) +(0.111\columnwidth,-0.072\columnwidth)$) (bz){};
+		\draw[Accent2] (bz.north east) -- (b.north west) (bz.south east) -- (b.south west);
+		\node[minimum width = 0.128\columnwidth, minimum height=0.081\columnwidth, anchor=north west, draw=Main] at ($(b.north west) +(0.097\columnwidth,-0.143\columnwidth)$) (cz){};
+		\draw[Main] (cz.north east) -- (c.north west) (cz.south east) -- (c.south west);
+		\node[minimum width = 0.156\columnwidth, minimum height=0.156\columnwidth, anchor=north west, draw=Accent1] at ($(c.north west) + (0.125\columnwidth,0)$) (dz) {};
 		%scale bars
 		\draw[ultra thick] (a.south east) ++(0,-0.25em) -- ++(-0.178\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] (M) {\SI{1}{\centi\metre}};
 		\draw[ultra thick] (b.south east) ++(0,-0.25em) -- ++(-0.176\columnwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{5}{\milli\metre}};
