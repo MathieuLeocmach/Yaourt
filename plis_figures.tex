@@ -6,8 +6,9 @@
 \usepackage{tgheros}
 
 \usepackage{amssymb}
-\usepackage{siunitx}
+\usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}
 \usepackage{multirow}
+\usepackage{textcomp}
 
 \usepackage{graphicx}
 
@@ -191,7 +192,7 @@
 		xmin=0, xmax=200, xtick={0,30,...,180},
 		extra tick style={grid=major},%
 		extra x tick labels={},%
-		width=1.04\columnwidth,
+		width=1.03\columnwidth,
 		height=0.5\columnwidth,
 		]
 	\nextgroupplot[ylabel={Volume (\%)}, ymin=20, ymax=100, extra x ticks={12.55}]
@@ -201,36 +202,57 @@
 	\node[above right=0 of syn.south west] {swelling};
 	\node[lab,below left=0.2em] at (rel axis cs:1,1) {a};
 	
-	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=1.2, xlabel={time (min)}, extra x ticks={26.7, 42.8}]
+	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=1.2, xlabel={time (min)}, extra x ticks={26.2, 42.8}]
 	\addplot+[no marks,Accent1] table{excess_area_pc_half_cas8.txt};
 	\addplot+[only marks,Accent2, mark=+] table{excess_area_pc_half_cas8_toi.txt};
 	\node at (axis cs:13.35,1) {flat};
 	\node[rotate=90, anchor=east] at (axis cs:34.75,1) {wrinkling};
 	\node[anchor=west] at (axis cs:45,0.25) {wrinkling and buckling};
 	\node[lab,above left=0.2em] at (rel axis cs:1,0) (b) {b};
+	\coordinate (wr1) at (axis cs:26.2,0);
+	\coordinate (wr2) at (axis cs:42.8,0);
 	\end{groupplot}
 	
-	\matrix[matrix of nodes, matrix anchor=north west, inner sep=0, column sep=0.02\textwidth, row sep=2pt] at (g c1r2.outer south west) (m){
-	Synæresis & Swelling\\
-	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t000.png}&
+	\begin{semilogyaxis}[
+		name={zoom},
+		at={(g c1r2.below south west)},
+		anchor=above north west,
+		width=0.5\columnwidth,
+		height=0.6\columnwidth,
+		xmin=26.2, xmax=42.8, xtick={25,30,...,180},
+		ylabel={Excess area (\textperthousand)}, ymin=0.06, ymax=5,
+		xlabel={time (min)},
+		ytickten={-1,0}, yticklabels={0.1,1},
+		]
+		\addplot+[only marks,Accent1, mark=o] table[y expr={\thisrowno{1}*10}]{excess_area_pc_half_cas8.txt};
+		\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*10}]{excess_area_pc_half_cas8_toi.txt};
+		\addplot+[black, no marks,domain=25:32.5] {10*exp(x/2.71-14.6)};
+		\addplot+[black, no marks,domain=25:45] {10*exp(x/5.60-8.81)};
+		\node[lab,above left=0.2em] at (rel axis cs:1,0) (c) {c};
+	\end{semilogyaxis}
+	\draw[help lines] (wr1)--(zoom.north west);
+	\draw[help lines] (wr2)--(zoom.north east);
+	
+	\matrix[matrix of nodes, matrix anchor=north east, inner sep=0, column sep=0.02\textwidth, row sep=2pt] at (g c1r2.outer south east) (m){
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t000.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t006.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t008.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t010.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t012.png}\\
+	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t014.png}\\
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t023.png}\\
-	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t006.png}&
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t049.png}\\
-	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t008.png}&
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t051.png}\\
-	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t010.png}&
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t053.png}\\
-	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t012.png}&
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t078.png}\\
-	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t014.png}&
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t088.png}\\
 	};
-	\draw[>->,gray,ultra thick] (m-2-1.east) -- (m-7-1.east) -- (m-2-2.west) -- (m-7-2.west);
-	\node[lab,anchor=base east] at (m-1-2.base -| b.east) {c};
+	%\draw[>->,gray,ultra thick] (m-2-1.east) -- (m-7-1.east) -- (m-2-2.west) -- (m-7-2.west);
+	\node[lab,anchor=base east] at (m-1-1.north -| b.east) {d};
 	
 	%\node[inner sep=0, anchor=south east] (g-1-1.outer north west){\includegraphics[width=0.45\columnwidth]{plastic_confocal}};
 	\end{tikzpicture}
-	\caption{Synæresis and swelling, cas. 8\%, GDL 7.2\% (a) Evolution of the volume of the gel phase. (b) Evolution of the midsurface area. (c) Confocal XZ slices of the cell (field of view is $1\times\SI{0.1}{\milli\metre}$), colors indicate the protein concentration. Times of the snapshots are marked as crosses on (a) and (b). Note that swelling starts \SI{14}{\minute} before wrinkling. The thickness increase is $\approx\SI{0.2}{px}$, thus not directly visible on the pictures.}
+	\caption{Synæresis and swelling, cas. 8\%, GDL 7.2\% (a) Evolution of the volume of the gel phase. (b-c) Evolution of the midsurface area, straight lines are exponential fits with time constants \SI{170 \pm 7}{\second} and \SI{337 \pm 3}{\second}. (d) Successive confocal XZ slices of the cell (field of view is $1\times\SI{0.1}{\milli\metre}$), colors indicate the protein concentration. Times of the snapshots are marked as crosses on (a-c). Note that swelling starts \SI{14}{\minute} before wrinkling. The thickness increase is $\approx\SI{0.2}{px}$, thus not directly visible on the pictures.}
 	\label{fig:wrinkles}
 \end{figure}
 
