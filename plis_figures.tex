@@ -185,7 +185,7 @@
 	\begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
-			group name=g, group size=1 by 2,
+			group name=g, group size=1 by 3,
 			xticklabels at=edge bottom,
 			vertical sep=0,
 			},
@@ -195,12 +195,17 @@
 		width=1.03\columnwidth,
 		height=0.5\columnwidth,
 		]
+	\nextgroupplot[ylabel={Position (\%)}, ymin=0, ymax=100]
+	\addplot+[no marks,Accent1] table[y expr={\thisrowno{1}*100}]{mean_alt_rel_half_cas8.txt};
+	\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*100}]{mean_alt_rel_half_cas8_toi.txt};
+	\node[lab,below left=0.2em] at (rel axis cs:1,1) {a};
+	
 	\nextgroupplot[ylabel={Volume (\%)}, ymin=20, ymax=100, extra x ticks={12.55}]
 	\addplot+[no marks,Accent1] table[y expr={\thisrowno{1}*100}]{volume_rel_half_cas8.txt};
 	\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*100}]{volume_rel_half_cas8_toi.txt};
 	\node[rotate=90, anchor=base east] at (axis cs:12.55,100) (syn) {synæresis};
 	\node[above right=0 of syn.south west] {swelling};
-	\node[lab,below left=0.2em] at (rel axis cs:1,1) {a};
+	\node[lab,below left=0.2em] at (rel axis cs:1,1) {b};
 	
 	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=1.2, xlabel={time (min)}, extra x ticks={26.2, 42.8}]
 	\addplot+[no marks,Accent1] table{excess_area_pc_half_cas8.txt};
@@ -208,14 +213,14 @@
 	\node at (axis cs:13.35,1) {flat};
 	\node[rotate=90, anchor=east] at (axis cs:34.75,1) {wrinkling};
 	\node[anchor=west] at (axis cs:45,0.25) {wrinkling and buckling};
-	\node[lab,above left=0.2em] at (rel axis cs:1,0) (b) {b};
+	\node[lab,above left=0.2em] at (rel axis cs:1,0) (c) {c};
 	\coordinate (wr1) at (axis cs:26.2,0);
 	\coordinate (wr2) at (axis cs:42.8,0);
 	\end{groupplot}
 	
 	\begin{semilogyaxis}[
 		name={zoom},
-		at={(g c1r2.below south west)},
+		at={(g c1r3.below south west)},
 		anchor=above north west,
 		width=0.5\columnwidth,
 		height=0.6\columnwidth,
@@ -228,12 +233,12 @@
 		\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*10}]{excess_area_pc_half_cas8_toi.txt};
 		\addplot+[black, no marks,domain=25:32.5] {10*exp(x/2.71-14.6)};
 		\addplot+[black, no marks,domain=25:45] {10*exp(x/5.60-8.81)};
-		\node[lab,above left=0.2em] at (rel axis cs:1,0) (c) {c};
+		\node[lab,above left=0.2em] at (rel axis cs:1,0) (d) {d};
 	\end{semilogyaxis}
 	\draw[help lines] (wr1)--(zoom.north west);
 	\draw[help lines] (wr2)--(zoom.north east);
 	
-	\matrix[matrix of nodes, matrix anchor=north east, inner sep=0, column sep=0.02\textwidth, row sep=2pt] at (g c1r2.outer south east) (m){
+	\matrix[matrix of nodes, matrix anchor=north east, inner sep=0, column sep=0.02\textwidth, row sep=2pt] at (g c1r3.outer south east) (m){
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t000.png}\\
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t006.png}\\
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t008.png}\\
@@ -248,11 +253,11 @@
 	\includegraphics[width=0.48\columnwidth]{coupe_av10_cas8_t088.png}\\
 	};
 	%\draw[>->,gray,ultra thick] (m-2-1.east) -- (m-7-1.east) -- (m-2-2.west) -- (m-7-2.west);
-	\node[lab,anchor=base east] at (m-1-1.north -| b.east) {d};
+	\node[lab,anchor=base east] at (m-1-1.north -| c.east) {e};
 	
 	%\node[inner sep=0, anchor=south east] (g-1-1.outer north west){\includegraphics[width=0.45\columnwidth]{plastic_confocal}};
 	\end{tikzpicture}
-	\caption{Synæresis and swelling, cas. 8\%, GDL 7.2\% (a) Evolution of the volume of the gel phase. (b-c) Evolution of the midsurface area, straight lines are exponential fits with time constants \SI{170 \pm 7}{\second} and \SI{337 \pm 3}{\second}. (d) Successive confocal XZ slices of the cell (field of view is $1\times\SI{0.1}{\milli\metre}$), colors indicate the protein concentration. Times of the snapshots are marked as crosses on (a-c). Note that swelling starts \SI{14}{\minute} before wrinkling. The thickness increase is $\approx\SI{0.2}{px}$, thus not directly visible on the pictures.}
+	\caption{Synæresis and swelling, cas. 8\%, GDL 7.2\% (a) Average relative altitude, (b) volume (c-d) midsurface area of the gel phase. Straight lines are exponential fits with time constants \SI{170 \pm 7}{\second} and \SI{337 \pm 3}{\second}. (e) Successive confocal XZ slices (field of view is $1\times\SI{0.1}{\milli\metre}$), colors indicate the protein concentration. Times of the snapshots are marked as crosses on (a-d). Note that swelling starts \SI{14}{\minute} before wrinkling. The thickness increase is $\approx\SI{0.2}{px}$, thus not directly visible on the pictures.}
 	\label{fig:wrinkles}
 \end{figure}
 
