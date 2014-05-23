@@ -66,7 +66,7 @@
 
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
-\usepackage[absolute,overlay,%showboxes
+\usepackage[absolute,overlay,showboxes
 ]{textpos}
 % Set up the grid
 %
@@ -94,6 +94,9 @@
 \usepackage{bibentry}
 \def\newblock{\hskip .11em plus .33em minus .07em}
 
+
+
+\newlength{\mylength}
 
 %\includeonly{}
 
@@ -143,70 +146,75 @@ Wrinkling of a confined porous layer
 \begin{textblock}{3}(0,2.5)
 	\Head{Acid-induced gels}
 	
-	In millipore water
-	\begin{itemize}
-	\item[4\%] Sodium caseinate (milk protein)\\
-	Isoelectric point $\approx 4.6$
-	\item[4\%] $\delta$-gluconolactone (\textsc{gdl})\\
-	Slow hydrolysis into gluconic acid
-	\end{itemize}
+	Milk protein solution (4\%w sodium caseinate) acidified by the slow hydrolysis of glucono-$\delta$-lactone (4\%w \textsc{gdl})
 	
 	\begin{tikzpicture}
-	\begin{axis}[%
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 2,
+			xticklabels at=edge bottom,
+			vertical sep=0,
+			},
 		xmin=0,xmax=8,
-		ymin=0, ymax=7,
-		xlabel={time (h)}, ylabel={\textcolor{Accent1}{pH}},
+		scale only axis,
+		width=\textwidth-4em,
+		height=0.3\textwidth,
 		extra tick style={grid=major},%
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=1.5em}
+		]
+	\nextgroupplot[
+		ymin=0, ymax=7, ylabel={\textcolor{Accent1}{pH}},
 		extra y ticks={4.6}, extra y tick labels={},%
-		extra x ticks={0.55, 0.64, 0.72, 0.80, 1, 1.27, 2.5}, extra x tick labels={},%
-		axis y line*=left,
-		width=0.7\textwidth,
 		]
 	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH};
 	\node[base left=0] at (axis cs:8,4.6) {isoelectric};
-	\end{axis}
-	\begin{axis}[%
-		xmin=0,xmax=8,
-		ymin=0,
-		ylabel=\textcolor{Accent2}{$G^\prime$ (\si{\pascal})},
-		axis y line*=right,
-		axis x line=none,
-		width=0.7\textwidth,
+
+	\nextgroupplot[
+		xlabel={time (h)},
+		ymin=0, ylabel=\textcolor{Accent2}{$G^\prime$ (\si{\pascal})}
 		]
 	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600.+0.05}]{Y235_28800s.prise};
-	\end{axis}
+	\end{groupplot}
 	\end{tikzpicture}
+	
+For confocal microscopy we label 10\% of the casein.
 \end{textblock}
 
 \begin{textblock}{7}(4,2.5)
 	\Head{Sealed cell, spontaneous pattern}
 	
+	%\Subhead{Side view}\\
 	\tikzsetnextfilename{cell_brushes}
 	\tikzset{external/force remake}
 	\begin{tikzpicture}
 		\fill[pattern=north east lines,pattern color=Accent2] (0,0) rectangle (\textwidth,1.5em) node[midway,fill=white,inner sep=1pt] {glass};
 		\fill[pattern=north east lines,pattern color=Accent2] (0,-2.5em) rectangle (\textwidth,-4em) node[midway,fill=white,inner sep=1pt] {glass};
-		\draw[line width=2pt,Accent1] (0.05\textwidth,-2.5em) -- (0.95\textwidth,-2.5em) (0.05\textwidth,-1pt) -- (0.95\textwidth,-1pt) node[below,pos=0.30] {acrylamide brush ($10\sim 100$ nm)};
+		\draw[line width=2pt,Accent1] (0.05\textwidth,-2.5em) -- (0.95\textwidth,-2.5em) (0.05\textwidth,-1pt) -- (0.95\textwidth,-1pt) node[below,pos=0.30, text width=0.4\textwidth] {acrylamide brush ($10\sim 100$ nm)\linebreak $\Rightarrow$ No adhesion};
 		\fill[gray] (0,0) rectangle (0.05\textwidth,-2.5em) (\textwidth,0) rectangle (0.95\textwidth,-2.5em) node[pos=1, above left] {spacer};
 		\draw[<->] (0.75\textwidth,-2pt) -- (0.75\textwidth,-2.5em) node[midway,left] {$e\sim 100\,\mu m$};
-		\draw[<->] (0.05\textwidth,2.25em) -- (0.95\textwidth,2.25em) node[midway,above] {$L\sim 2.5\,cm$};
+		\draw[<->] (0.05\textwidth,2.25em) -- (0.95\textwidth,2.25em) node[midway,above] (L){$L\sim 2.5\,cm$};
+		\node[anchor=north west, inner sep=0] at ($(L.north) - (0.5\textwidth,0)$) {\Subhead{Side view}};
 	\end{tikzpicture}
 	
-	\begin{itemize}
-	\item No adhesion on top and bottom (polymer brushes).
-	\item Adhesion at the edge (solid spacers, no free interface)
-	\end{itemize}
-	
+	\Subhead{Top view}\\
 	\begin{tikzpicture}[inner sep=0, very thick]
-	\node[anchor=west] (a) {\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2}};
-	\node at (3.5\TPHorizModule,0) (b) {\includegraphics{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6}};
-	\node[anchor=east] at (7\TPHorizModule,0) (c) {\includegraphics[height=65mm]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
-	\draw[Accent2] (a.north west) ++(36.4mm, -25mm) rectangle +(28.9mm,-21.7mm) -- (b.south west) (a.north west) ++(65.3mm, -25mm) -- (b.north west);
-	\draw[Main] (b.north west) ++(34mm,-34mm) rectangle +(27mm,-19.7mm) -- (c.south west) (b.north west) ++(61mm,-34mm) --(c.north west);
-	\draw[Accent1] (c.south west) ++(29mm,29mm) rectangle +(36mm,36mm);
-	\draw[ultra thick] (a.south west) ++(0,-0.25em) -- ++(30.588mm,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\centi\metre}};
-	\draw[ultra thick] (b.south west) ++(0,-0.25em) -- ++(45.774mm,0) node[pos=0.5, below=0.25em, font=\small] {\SI{5}{\milli\metre}};
-	\draw[ultra thick] (c.south west) ++(0,-0.25em) -- ++(30.415mm,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
+	\setlength{\mylength}{\columnwidth}
+	\node[anchor=north west] (a) {\includegraphics[width=0.28\mylength]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2_crop}};
+		\node[anchor=north] at (0.44\mylength,0) (b) {\includegraphics[width=0.28\mylength]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6_crop}};
+		\node[anchor=north east] at (\mylength,0) (c) {\includegraphics[width=0.4\mylength]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
+		%zooms
+		\node[minimum width = 0.137\mylength, minimum height=0.137\mylength, anchor=north west, draw=Accent2] at ($(a.north west) +(0.111\mylength,-0.072\mylength)$) (bz){};
+		\draw[Accent2] (bz.north east) -- (b.north west) (bz.south east) -- (b.south west);
+		\node[minimum width = 0.128\mylength, minimum height=0.081\mylength, anchor=north west, draw=Main] at ($(b.north west) +(0.097\mylength,-0.143\mylength)$) (cz){};
+		\draw[Main] (cz.north east) -- (c.north west) (cz.south east) -- (c.south west);
+		\node[minimum width = 0.156\mylength, minimum height=0.156\mylength, anchor=north west, draw=Accent1] at ($(c.north west) + (0.125\mylength,0)$) (dz) {};
+		%scale bars
+		\draw[ultra thick] (a.south east) ++(0,-0.25em) -- ++(-0.178\mylength,0) node[pos=0.5, below=0.25em, font=\small] (M) {\SI{1}{\centi\metre}};
+		\draw[ultra thick] (b.south east) ++(0,-0.25em) -- ++(-0.176\mylength,0) node[pos=0.5, below=0.25em, font=\small] {\SI{5}{\milli\metre}};
+		\draw[ultra thick] (c.south east) ++(0,-0.25em) -- ++(-0.132\mylength,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
+		
+		%final volumic view
+		%\node[anchor=north east] at (\columnwidth,0) (c) {\includegraphics[width=0.4\mylength]{recol_volume_plis}};
 	\end{tikzpicture}
 
 \end{textblock}
@@ -321,23 +329,23 @@ Wrinkling of a confined porous layer
 \TPMargin*{ 0.125\TPHorizModule }
 \begin{textblock}{2.875}(12,2.625)%real width of 3
 	\Norulehead{Take home}
-	\Subhead{A new kind of pattern}
+	\Subhead{Poroelasticity dominates}
 	\begin{itemize}
-		\item Nested
-		\item Self generated
-		\item Boundary conditions
+		\item gravity
+		\item lubrication
 	\end{itemize}
-	\Subhead{An original yielding scenario}
+	\Subhead{Two modes}
 	\begin{itemize}
-		\item Andrade creep over 6 decades in time
-		\item Irreversible fractures
+		\item blistering
+		\item wrinkling
 	\end{itemize}
-	\Subhead{A link with fractures}
+	\Subhead{Patterns}
 	\begin{itemize}
-		\item Wrinkles can induce plasticity
-		\item Wavelengths have the same dependence
-		\item Detachment creates a free surface
+		\item self-generated
+		\item nested
+		\item kinetic wavelength
 	\end{itemize}
+
 \end{textblock}%Conclusion
 
 
