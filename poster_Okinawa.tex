@@ -220,99 +220,35 @@ For confocal microscopy we label 10\% of the casein.
 \end{textblock}
 
 \begin{textblock}{15}(0,8)
-	\Head{Pattern kinetics by transmission macroscope}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}p{2\TPHorizModule}llllll}
-	33 min\hfill \begin{tikzpicture}[inner sep=0]
-		\draw[ultra thick] (0,0) -- ++(0.355\TPHorizModule,0) node[pos=0.5, above=0, font=\small] {\SI{1}{\centi\metre}};
-	\end{tikzpicture}&
-	 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
-	\includegraphics[width=2\TPHorizModule]{prise_0100_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{prise_0130_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{prise_0160_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{prise_0190_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{prise_0250_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{prise_0360_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{prise_0799_resized.jpg}\\
-	\end{tabular*}
-\end{textblock}
-
-\begin{textblock}{3}(0,10)
-	\Subhead{Length scales}
-	\begin{itemize}
-	\item A fundamental that does not evolve
-	\item Nested structures as ``harmonics''
-	\end{itemize}
-	\Subhead{Qualitatively different from}
-	\begin{itemize}
-	\item Phase separation patterns 
-	\item Turing patterns
-	\item Usual wrinkles
-	\end{itemize}	 
-\end{textblock}
-
-\begin{textblock}{11}(4,11)
-	\Head{Confocal Microscopy}
-\end{textblock}
-
-\begin{textblock}{3}(4,11)
-	\addvspace{2em}
-	\Subhead{Procedure}
-	\begin{itemize}
-		\item Fluorescently label 20\% of the casein
-		\item A confocal slice every \SI{5}{\micro\metre}
-		\item $(\SI{1.3}{\milli\metre})^2 \times \SI{120}{\micro\metre}$
-		\item[$\Rightarrow$] Protein density field
-		\item Detect top and bottom surfaces of the gel phase
-	\end{itemize}
-\end{textblock}
-
-\begin{textblock}{2}(8,11)
-	\addvspace{2em}
-	\Subhead{Final state}
+	\Head{Initial contact with a substrate: Poroelastic blistering}
 	
-	\begin{tikzpicture}[inner sep=0]
-		\node[above right]{\includegraphics[width=\textwidth]{collage_cut}};
-		\draw[ultra thick] ++(0,0.5em) -- ++(0.33\textwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
-	\end{tikzpicture}\\
-	Tiled, enhanced elevation
 \end{textblock}
-	
 
-\begin{textblock}{4}(11,11)
-	\addvspace{2em}
-	\Subhead{Synæresis and swelling}
-	
-	\begin{tikzpicture}
-	\begin{axis}[%
-		xmin=0, xtick={20,40,...,160},
-		ymin=0.5, ymax=1, 
-		xlabel={time (min)}, ylabel={$V_\text{gel}/V_\text{cell}$},
-		extra tick style={grid=major},%
-		extra x ticks={33, 38, 43, 48, 58, 77, 150}, extra x tick labels={},%
-		%width=2.65\TPHorizModule,
-		width=3.65\TPHorizModule,
-		%width=0.8\textwidth, 
-		height=1.5\TPVertModule,
-		]
-	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}/60.+3}]{cas4_GDL4_fluo0p4_2.volume};
-	\end{axis}
-	\end{tikzpicture}
-\end{textblock}
+
 
 \begin{textblock}{15}(0,14)
-	\Head{Wrinkling kinetics by confocal microscope}
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lllllll}
-	\raisebox{-0.75em}{\begin{tikzpicture}[inner sep=0]
-		\node[above right]{\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}};
-		\draw[ultra thick] ++(0,0.02\TPHorizModule) -- ++(1.55\TPHorizModule,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
-	\end{tikzpicture}}&
-	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t065_crop_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t074_crop_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t092_crop_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t125_crop_resized.jpg}&
-	\includegraphics[width=2\TPHorizModule]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
-\end{tabular*}
+	\Head{No initial contact with a substrate: Poiseuille vs Darcy on a flying carpet}
+	\begin{tikzpicture}
+	\matrix[matrix of nodes, inner sep=0, column sep=0.015\textwidth, row sep=0.5em] (m){
+	33 min & 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
+	\includegraphics[width=0.13\textwidth]{prise_0100_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0130_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0160_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0190_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0250_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0360_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0799_color.jpg}\\
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t065_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t074_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t092_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t125_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
+	};
+	\draw[ultra thick] ++(m-2-1.south west) -- ++(0.023\textwidth,0);
+	\draw[ultra thick] ++(m-3-1.south west) -- ++(0.1\textwidth,0);
+	\end{tikzpicture}
 \end{textblock}
 
 
@@ -339,10 +275,9 @@ For confocal microscopy we label 10\% of the casein.
 		\item blistering
 		\item wrinkling
 	\end{itemize}
-	\Subhead{Patterns}
+	\Subhead{Nested patterns}
 	\begin{itemize}
-		\item self-generated
-		\item nested
+		\item generated by swelling
 		\item kinetic wavelength
 	\end{itemize}
 
