@@ -292,6 +292,7 @@ For confocal microscopy we label 10\% of the casein.
 	\draw[->, ultra thick] (axis cs:90,1.25) -- +(45:0.05\textwidth) node[pos=1, above] {$\vec{v}$};
 	\node[above] at (axis cs:-90,1.5) {$P_2$};
 	\node[below right] at (axis cs:-90,1.25) {$P_1$};
+	\draw[<->, ultra thick] (axis cs:0,0) -- (axis cs:0,2) node[midway, right] {$A$};
 \end{axis}
 \fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle (\textwidth,-1em);
 \draw[<->] ($(a.south west)+(0,-1.1em)$) -- +(\textwidth,0) node[midway, below] {$\lambda$};
@@ -301,17 +302,22 @@ For confocal microscopy we label 10\% of the casein.
 \item Synæresis then swelling
 \item First blister after $\approx\SI{1}{\hour}$ of swelling
 \item Independent blisters
-\item $\lambda \ll L \Rightarrow$ not buckling
+\item $h,H,e \ll \lambda \ll L$
 \item Once in contact with ceiling, $\lambda$ fixed
 \item Cascade buckling\linebreak \hfill\textit{Roman \& Pocheau 1999}
+\item Independent of gravity
 \end{itemize}
 \end{textblock}
 
 \begin{textblock}{3}(8,8.5)
+\Subhead{Ruck in a rug analogy}\\
+\textit{Kolinski et al 2009, Vella et al 2009}\\
 Bending energy $B$ vs vertical stress $\sigma$:
 \[ \lambda^* = \left(\frac{B}{\sigma}\right)^{1/3}\text{, eg. }\sigma =\rho g h \]
-\textit{Kolinski et al 2009, Vella et al 2009}
 
+Actual shape depends on relative excess length $\epsilon$: $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
+
+\Subhead{Poroelasticity}\\
 Here $\sigma$ is a Darcy pressure due to solvent flow through the gel (pore size $\ell_p$)
 \[\sigma = \Delta P \sim \eta h v/\ell_p^2   \]
 \end{textblock}
