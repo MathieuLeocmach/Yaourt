@@ -236,7 +236,7 @@ For confocal microscopy we label 10\% of the casein.
 	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t200.png}\\
 	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t221.png}\\
 	};
-	\begin{scope}[above left, white, fill=gray]
+	\begin{scope}[above left, white, fill=gray, inner ysep=0]
 		\node at (m-1-1.south east) {\SI{15}{\minute}};
 		\node at (m-2-1.south east) {\SI{22}{\minute}};
 		\node at (m-3-1.south east) {\SI{1}{\hour}~26};
@@ -278,8 +278,46 @@ For confocal microscopy we label 10\% of the casein.
 \end{textblock}
 
 \begin{textblock}{3}(4,8.5)
+
+\begin{tikzpicture}
+\begin{axis}[
+	scale only axis,
+	width=\textwidth-4em,
+	height=0.3\textwidth,
+	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={position (\si{\micro\metre})},
+	ymin=0, ymax=50, ylabel={altitude (\si{\micro\metre})},
+	cycle list={
+		{Accent2}, 
+		{black!15!Accent2},
+		{black!30!Accent2},
+		{black!45!Accent2},
+		{black!60!Accent2},
+		{black!75!Accent2},
+		{black}
+	},
+	no marks,
+	]
+	\foreach \x in {2,3,..., 8}
+		\addplot table[y index=\x]{alts_bottom_cloque.txt};
+		
+	\draw[ultra thick, Accent1] (axis cs:580,0) -- (axis cs:580,50);
+\end{axis}
+\end{tikzpicture}
 \includegraphics[width=\textwidth]{volume_cloque_t116.jpg}
 
+%\Subhead{Phenomenology}
+\begin{itemize}
+\item Synæresis then swelling
+\item First blister after $\approx\SI{1}{\hour}$ of swelling
+\item Independent blisters
+\item $h,H,e \ll \lambda \ll L$
+\item Once in contact with ceiling, $\lambda$ fixed
+\item Cascade buckling\linebreak \hfill\textit{Roman \& Pocheau 1999}
+\item Independent of gravity
+\end{itemize}
+\end{textblock}
+
+\begin{textblock}{3}(8,8.5)
 \begin{tikzpicture}[ultra thick]
 \begin{axis}[
 	name=a,
@@ -298,18 +336,6 @@ For confocal microscopy we label 10\% of the casein.
 \draw[<->] ($(a.south west)+(0,-1.1em)$) -- +(\textwidth,0) node[midway, below] {$\lambda$};
 \end{tikzpicture}
 
-\begin{itemize}
-\item Synæresis then swelling
-\item First blister after $\approx\SI{1}{\hour}$ of swelling
-\item Independent blisters
-\item $h,H,e \ll \lambda \ll L$
-\item Once in contact with ceiling, $\lambda$ fixed
-\item Cascade buckling\linebreak \hfill\textit{Roman \& Pocheau 1999}
-\item Independent of gravity
-\end{itemize}
-\end{textblock}
-
-\begin{textblock}{3}(8,8.5)
 \Subhead{Ruck in a rug analogy}\\
 \textit{Kolinski et al 2009, Vella et al 2009}\\
 Bending energy $B$ vs vertical stress $\sigma$:
@@ -318,7 +344,7 @@ Bending energy $B$ vs vertical stress $\sigma$:
 Actual shape depends on relative excess length $\epsilon$: $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
 
 \Subhead{Poroelasticity}\\
-Here $\sigma$ is a Darcy pressure due to solvent flow through the gel (pore size $\ell_p$)
+Here $\sigma$ is a Darcy pressure due to solvent flow through the gel (pore size $\ell_p \approx \SI{4}{\micro\metre}$)
 \[\sigma = \Delta P \sim \eta h v/\ell_p^2   \]
 \end{textblock}
 
@@ -349,7 +375,97 @@ Here $\sigma$ is a Darcy pressure due to solvent flow through the gel (pore size
 \end{textblock}
 
 
+\begin{textblock}{3}(0,17)
+	\begin{tikzpicture}
+	\matrix[matrix of nodes, matrix anchor=north east, inner sep=0, row sep=0.01\textwidth]  (m){
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t000.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t038.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t040.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t043.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t055.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t070.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t123.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png}\\
+	};
+	\begin{scope}[above left, white, fill=gray, inner ysep=0]
+		\node at (m-1-1.south east) {\SI{15}{\minute}};
+		\node at (m-2-1.south east) {\SI{23}{\minute}};
+		\node at (m-3-1.south east) {\SI{32}{\minute}};
+		\node at (m-4-1.south east) {\SI{35}{\minute}};
+		\node at (m-5-1.south east) {\SI{36}{\minute}};
+		\node at (m-6-1.south east) {\SI{38}{\minute}};
+		\node at (m-7-1.south east) {\SI{44}{\minute}};
+		\node at (m-8-1.south east) {\SI{53}{\minute}};
+		\node at (m-9-1.south east) {\SI{1}{\hour}~21};
+		\node at (m-10-1.south east) {\SI{3}{\hour}~15};
+	\end{scope}
+	\draw[<->, ultra thick] ($(m-10-1.south west)+(0,-0.25em)$) -- +(0.786\textwidth,0) node[midway, below] {\SI{1}{\milli\metre}};
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 2,
+			xticklabels at=edge bottom,
+			vertical sep=0,
+			},
+		xmin=0, xmax=180, xtick={0,30,...,150},
+		extra tick style={grid=major},%
+		extra x tick labels={},%
+		scale only axis,
+		width=\textwidth-4em,
+		height=0.3\textwidth,
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=1.25em}
+		]
+	
+	\nextgroupplot[ylabel={Volume (\%)}, ymin=20, ymax=100, ytick={40,60,80,100}, every axis y label/.append style={xshift=0.5em}]
+	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{1}*100}]{relative_volume_excess_area_plis.txt};
+	%\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*100}]{volume_rel_half_cas8_toi.txt};
+	
+	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=6, ytick={0,2,4}, 
+	xlabel={time (min)}, every axis y label/.append style={xshift=-1em}]
+	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{2}*100}]{relative_volume_excess_area_plis.txt};
+	%\addplot+[only marks,Accent2, mark=+] table{excess_area_pc_half_cas8_toi.txt};
+	\end{groupplot}
+	\end{tikzpicture}
+\end{textblock}
 
+
+\begin{textblock}{7}(4,17)
+\begin{tikzpicture}
+\begin{axis}[
+	name=a,
+	width=\textwidth, height=0.25\textwidth, scale only axis,
+	domain=0:360, no markers, ymin=-4, ymax=4,xmin=0,xmax=360,
+	axis lines=none, xtick=\empty,
+	]
+	\fill[gray!20] (axis cs:85,4) rectangle (axis cs:95,-4) (axis cs:265,4) rectangle (axis cs:275,-4);
+	\addplot+[Accent1]{sin(x)+0.5};
+	\addplot+[Accent1]{sin(x)-0.5};
+	\addplot+[dashed, black]{0.5};
+	\addplot+[dashed, black]{-0.5};
+	\draw[<->, help lines] (axis cs:180,0.5) -- (axis cs:180,4) node[midway, left] {$H$}; 
+	\draw[<->, help lines] (axis cs:30,-0.5) -- (axis cs:30,-4) node[midway, left] {$H$};
+	\node[below] at (axis cs:90,-1.5) (pb1) {$P_1$};
+	\node[above] at (axis cs:90,1.5) (ph2) {$P_2$};
+	\node[above] at (axis cs:270,1.5) (ph1) {$P_1$};
+	\node[below] at (axis cs:270,-1.5) (pb2) {$P_2$};
+	\draw[thick, ->] (ph2) -- (axis cs:90,0.5) node[midway, left] {Darcy} node[midway, right] {$v$};
+	\draw[thick, ->] (pb2) -- (pb1) node[midway, above] {Poiseuille} node[midway, below] {$u \sim \frac{\lambda}{H} v$};
+\end{axis}
+\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\textwidth,-1em) (a.north west) rectangle +(\textwidth,1em);
+\end{tikzpicture}
+
+\begin{itemize}
+\item The same $\Delta P$ can be relaxed by a Poiseuille flow
+\[\Delta P \sim 12\eta\frac{\lambda}{H^2} u \sim 12\eta\frac{\lambda^2}{H^3} v\]
+\item For the same wavelength
+\[\frac{v_\text{Darcy}}{v_\text{Poiseuille}} \sim \frac{\ell_p^2\lambda^2}{hH^3} \approx 30\]
+\end{itemize}
+
+\end{textblock}
 
 
 
