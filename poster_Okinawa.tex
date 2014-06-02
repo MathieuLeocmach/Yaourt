@@ -12,6 +12,7 @@
 
 %fonts
 \usepackage[T1]{fontenc}
+\usepackage{kpfonts}
 \usepackage{fontspec}
 %\usepackage[oldstylenums, largesmallcaps]{kpfonts}
 %\setmainfont[Numbers=OldStyle]{Tex Gyre Pagella}
@@ -67,7 +68,7 @@
 
 % The textpos package is necessary to position textblocks at arbitary 
 % places on the page.
-\usepackage[absolute,overlay,showboxes
+\usepackage[absolute,overlay,%showboxes
 ]{textpos}
 % Set up the grid
 %
@@ -220,12 +221,41 @@ Wrinkling of a confined porous layer
 
 \end{textblock}
 
-\begin{textblock}{11}(0,8)
-	\Head{Initial flat contact with a substrate: Poroelastic blistering}
-	
+\begin{textblock}{15}(0,8)
+	\Head{Dynamics: wrinkling patterns and nested buckling}
+	%\Head{No initial contact with a substrate: Poiseuille vs Darcy on a flying carpet}
+	\begin{tikzpicture}
+	\matrix[matrix of nodes, inner sep=0, column sep=0.015\textwidth, row sep=0.5em] (m){
+	33 min & 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
+	\includegraphics[width=0.13\textwidth]{prise_0100_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0130_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0160_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0190_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0250_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0360_color.jpg}&
+	\includegraphics[width=0.13\textwidth]{prise_0799_color.jpg}\\
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t065_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t074_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t092_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t125_crop_resized.jpg}&
+	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
+	};
+	\draw[ultra thick] ++(m-2-1.south west) -- ++(0.023\textwidth,0);
+	\draw[ultra thick] ++(m-3-1.south west) -- ++(0.1\textwidth,0);
+	\end{tikzpicture}
 \end{textblock}
 
-\begin{textblock}{3}(0,8.5)
+
+
+
+\begin{textblock}{7}(0,11)
+	\Head{Synæresis and swelling cause buckling}
+\end{textblock}
+
+\begin{textblock}{3}(0,11.5)
+\Subhead{Initial contact with a substrate}\\
 	\begin{tikzpicture}
 	\matrix[matrix of nodes, matrix anchor=north east, inner sep=0, row sep=0.01\textwidth]  (m){
 	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t000.png}\\
@@ -250,6 +280,41 @@ Wrinkling of a confined porous layer
 	\draw[<->, ultra thick] ($(m-8-1.south west)+(0,-0.25em)$) -- +(0.786\textwidth,0) node[midway, below] {\SI{1}{\milli\metre}};
 	\end{tikzpicture}
 	
+Cascade buckling \textit{Roman \& Pocheau 1999}
+
+\Subhead{No initial contact}\\
+\begin{tikzpicture}
+	\matrix[matrix of nodes, matrix anchor=north east, inner sep=0, row sep=0.01\textwidth]  (m){
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t000.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t038.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t040.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t043.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t055.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t070.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t123.png}\\
+	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png}\\
+	};
+	\begin{scope}[above left, white, fill=gray, inner ysep=0]
+		\node at (m-1-1.south east) {\SI{15}{\minute}};
+		\node at (m-2-1.south east) {\SI{23}{\minute}};
+		\node at (m-3-1.south east) {\SI{32}{\minute}};
+		\node at (m-4-1.south east) {\SI{35}{\minute}};
+		\node at (m-5-1.south east) {\SI{36}{\minute}};
+		\node at (m-6-1.south east) {\SI{38}{\minute}};
+		\node at (m-7-1.south east) {\SI{44}{\minute}};
+		\node at (m-8-1.south east) {\SI{53}{\minute}};
+		\node at (m-9-1.south east) {\SI{1}{\hour}~21};
+		\node at (m-10-1.south east) {\SI{3}{\hour}~15};
+	\end{scope}
+	\draw[<->, ultra thick] ($(m-10-1.south west)+(0,-0.25em)$) -- +(0.786\textwidth,0) node[midway, below] {\SI{1}{\milli\metre}};
+	\end{tikzpicture}
+	
+	Globally unstable wavelength
+\end{textblock}
+
+\begin{textblock}{3}(4,11.5)
 	\begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
@@ -288,209 +353,6 @@ Wrinkling of a confined porous layer
 	\end{tikzpicture}
 	
 	\begin{tikzpicture}
-\begin{axis}[
-	scale only axis,
-	width=\textwidth-4em,
-	height=0.3\textwidth,
-	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={position (\si{\micro\metre})},
-	ymin=0, ymax=50, ylabel={altitude (\si{\micro\metre})},
-	ylabel absolute, every axis y label/.append style={anchor=base, yshift=1.25em},
-	cycle list={
-		{Accent2}, 
-		{black!15!Accent2},
-		{black!30!Accent2},
-		{black!45!Accent2},
-		{black!60!Accent2},
-		{black!75!Accent2},
-		{black}
-	},
-	no marks,
-	]
-	\foreach \x in {2,3,..., 8}
-		\addplot table[y index=\x]{alts_bottom_cloque.txt};
-		
-	\draw[ultra thick, Accent1] (axis cs:580,0) -- (axis cs:580,50);
-\end{axis}
-\end{tikzpicture}
-	
-\end{textblock}
-
-\begin{textblock}{3}(4,8.5)
-\includegraphics[width=\textwidth]{volume_cloque_t116.jpg}
-
-\Subhead{Phenomenology}
-\begin{itemize}
-\item Synæresis then swelling
-\item First blister after $\approx\SI{1}{\hour}$ of swelling
-\item Independent blisters
-\item $h,H,e \ll \lambda \ll L$
-\item Once in contact with ceiling, $\lambda$ fixed
-\item Cascade buckling\linebreak \hfill\textit{Roman \& Pocheau 1999}
-\item Independent of gravity
-\end{itemize}
-
-\begin{tikzpicture}[ultra thick]
-\begin{axis}[
-	name=a,
-	width=\textwidth, height=0.25\textwidth, scale only axis,
-	domain=-180:180, no markers, ymin=0, ymax=4,xmin=-180,xmax=180,
-	axis lines=none, xtick=\empty,
-	]
-	\addplot+[Accent1]{cos(x)+1};
-	\addplot+[Accent1]{cos(x)+1.5};
-	\draw[->, ultra thick] (axis cs:90,1.25) -- +(45:0.05\textwidth) node[pos=1, above] {$\vec{v}$};
-	\node[above] at (axis cs:-90,1.5) {$P_2$};
-	\node[below right] at (axis cs:-90,1.25) {$P_1$};
-	\draw[<->, ultra thick] (axis cs:0,0) -- (axis cs:0,2) node[midway, right] {$A$};
-\end{axis}
-\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle (\textwidth,-1em);
-\draw[<->] ($(a.south west)+(0,-1.1em)$) -- +(\textwidth,0) node[midway, below] {$\lambda$};
-\end{tikzpicture}
-
-\Subhead{Ruck in a rug analogy}\\
-\textit{Kolinski et al 2009, Vella et al 2009}\\
-Bending energy $B$ vs vertical stress $\sigma$:
-\[ \lambda^* = \left(\frac{B}{\sigma}\right)^{1/3}\text{, eg. }\sigma =\rho g h \]
-
-%Actual shape depends on relative excess length $\epsilon$: $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
-\end{textblock}
-
-\begin{textblock}{3}(8,8.5)
-\Subhead{Poroelasticity}\\
-Usual view (\textit{Biot 1964}): pore pressure\linebreak increases transiently the bending energy.
-\begin{itemize}
-\item Solvent must flow through the gel
-\begin{itemize}
-	\item Volumic flux $v\simeq \SI{0.2}{\micro\metre\per\second}$
-	\item Pore size $\ell_p \approx \SI{4}{\micro\metre}$
-\end{itemize}
-\item $\sigma$ is a Darcy pressure
-\[\sigma = \Delta P \sim \eta h v/\ell_p^2   \]
-\item Poroelastic length
-\[\lambda^* \sim \left(\frac{B \ell_p^2}{\eta v h}\right)^\frac{1}{3} \simeq \SI{2}{\milli\metre}\]
-\end{itemize}
-\Subhead{Wet paper ?}
-
-\smallskip
-\includegraphics[width=\textwidth]{large1}
-\end{textblock}
-
-\begin{textblock}{3}(12,8)
-	\Head{Cell thickness}
-\begin{tikzpicture}
-	\matrix[matrix of nodes, inner sep=0, column sep=0.02\columnwidth, row sep=0.02\columnwidth] (m) {
-		\includegraphics[width=0.49\columnwidth]{pattern_50um.jpg}&
-		\includegraphics[width=0.49\columnwidth]{pattern_100um.jpg}\\
-		\includegraphics[width=0.49\columnwidth]{pattern_250um.jpg}&
-		\includegraphics[width=0.49\columnwidth]{pattern_450um.jpg}\\
-	};
-	\node[inner sep=0, below=0.02\columnwidth of m.south] (x800) {\includegraphics[width=0.98\columnwidth]{pattern_800um_x1.jpg}};
-	\draw[ultra thick, Accent2, <->] (x800.south west) ++(0.25\columnwidth, 0.02\columnwidth) -- ++(45:0.29\columnwidth) node[midway,above]{$\lambda$};
-	\draw[line width=0.2em,Main](x800.north east) -- ++(-0.434\columnwidth,0) node[midway,below] {\SI{5}{\milli\metre}};
-	
-	\begin{axis}[%
-		name=g,
-		anchor=left of north west,
-		at={($(x800.south west)+(-0.01\columnwidth,-0.01\columnwidth)$)},
-		scale only axis,
-		width=\textwidth-3.25em,
-		height=0.3\textwidth,
-		xmin=0,xmax=1,xlabel={gap (\si{\milli\metre})},
-		xtick={0,0.4,...,0.9},
-		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
-		%label shift=-0.5em,
-		cycle multi list={%
-			Accent1,no marks\\%
-			Accent1,only marks,every mark/.append style={fill=Accent1},mark=*\\%
-			Accent1,only marks,every mark/.append style={fill=white},mark=*\\%
-			Accent1,only marks,every mark/.append style={fill=Accent1},mark=triangle*\\%
-			Accent1,only marks,every mark/.append style={fill=white},mark=triangle*\\%
-			Accent1,only marks,every mark/.append style={fill=Accent1},mark=square*\\%
-			Accent1,only marks,every mark/.append style={fill=white},mark=square*\\%
-		},
-		mark size={0.3em},
-		]
-		\addplot+[domain=0:3] {4.23*x};
-		\addplot coordinates {(0.05,0.261)};\label{pgfplots:50}
-		\addplot coordinates {(0.1,0.458)};\label{pgfplots:100}
-		\addplot coordinates {(0.250,0.916)};\label{pgfplots:250}
-		\addplot coordinates {(0.450,2.075)};\label{pgfplots:450}
-		\addplot coordinates {(0.800,3.333)};\label{pgfplots:800}
-		%\addplot+[only marks,Accent1, mark options={fill=Accent1}] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
-	\end{axis}
-	\begin{scope}[mark size={0.3em}]
-	\node[below right=0 of m-1-1.north west] {\ref{pgfplots:50}};
-	\node[below right=0 of m-1-2.north west] {\ref{pgfplots:100}};
-	\node[below right=0 of m-2-1.north west] {\ref{pgfplots:250}};
-	\node[below right=0 of m-2-2.north west] {\ref{pgfplots:450}};
-	\node[below right=0 of x800.north west] {\ref{pgfplots:800}};
-	\end{scope}
-	\end{tikzpicture}
-	Shape of a ruck depends on relative excess length $\epsilon$: $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$.
-	
-	At contact: $A=H\equiv e-h\approx e/2$
-	
-	\[ \lambda \sim \epsilon^{-3/7} H \]
-	%\[ \epsilon \sim \left(\frac{\lambda}{e}\frac{e}{H}\right)^{-7/3} \simeq \sqrt{1.6\%} \]
-	
-\end{textblock}
-
-\begin{textblock}{15}(0,16)
-	\Head{No initial contact with a substrate: Poiseuille vs Darcy on a flying carpet}
-	\begin{tikzpicture}
-	\matrix[matrix of nodes, inner sep=0, column sep=0.015\textwidth, row sep=0.5em] (m){
-	33 min & 38 min & 43 min & 48 min & 1h & 1h15 & 2h30\\
-	\includegraphics[width=0.13\textwidth]{prise_0100_color.jpg}&
-	\includegraphics[width=0.13\textwidth]{prise_0130_color.jpg}&
-	\includegraphics[width=0.13\textwidth]{prise_0160_color.jpg}&
-	\includegraphics[width=0.13\textwidth]{prise_0190_color.jpg}&
-	\includegraphics[width=0.13\textwidth]{prise_0250_color.jpg}&
-	\includegraphics[width=0.13\textwidth]{prise_0360_color.jpg}&
-	\includegraphics[width=0.13\textwidth]{prise_0799_color.jpg}\\
-	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t047_crop_resized.jpg}&
-	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t056_crop_resized.jpg}&
-	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t065_crop_resized.jpg}&
-	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t074_crop_resized.jpg}&
-	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t092_crop_resized.jpg}&
-	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t125_crop_resized.jpg}&
-	\includegraphics[width=0.13\textwidth]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
-	};
-	\draw[ultra thick] ++(m-2-1.south west) -- ++(0.023\textwidth,0);
-	\draw[ultra thick] ++(m-3-1.south west) -- ++(0.1\textwidth,0);
-	\end{tikzpicture}
-\end{textblock}
-
-
-\begin{textblock}{3}(0,19)
-	\begin{tikzpicture}
-	\matrix[matrix of nodes, matrix anchor=north east, inner sep=0, row sep=0.01\textwidth]  (m){
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t000.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t038.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t040.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t043.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t055.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t070.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t123.png}\\
-	\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png}\\
-	};
-	\begin{scope}[above left, white, fill=gray, inner ysep=0]
-		\node at (m-1-1.south east) {\SI{15}{\minute}};
-		\node at (m-2-1.south east) {\SI{23}{\minute}};
-		\node at (m-3-1.south east) {\SI{32}{\minute}};
-		\node at (m-4-1.south east) {\SI{35}{\minute}};
-		\node at (m-5-1.south east) {\SI{36}{\minute}};
-		\node at (m-6-1.south east) {\SI{38}{\minute}};
-		\node at (m-7-1.south east) {\SI{44}{\minute}};
-		\node at (m-8-1.south east) {\SI{53}{\minute}};
-		\node at (m-9-1.south east) {\SI{1}{\hour}~21};
-		\node at (m-10-1.south east) {\SI{3}{\hour}~15};
-	\end{scope}
-	\draw[<->, ultra thick] ($(m-10-1.south west)+(0,-0.25em)$) -- +(0.786\textwidth,0) node[midway, below] {\SI{1}{\milli\metre}};
-	\end{tikzpicture}
-	
-	\begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
 			group name=g, group size=1 by 2,
@@ -519,7 +381,53 @@ Usual view (\textit{Biot 1964}): pore pressure\linebreak increases transiently t
 \end{textblock}
 
 
-\begin{textblock}{7}(4,19)
+
+
+
+
+\begin{textblock}{3}(12,12)
+\textit{Kolinski et al 2009, Vella et al 2009}\\
+Bending energy $B$ vs vertical stress $\sigma$:
+\[ \lambda^* = \left(\frac{B}{\sigma}\right)^{1/3}\text{, eg. }\sigma =\rho g h \]
+\end{textblock}
+
+\begin{textblock}{7}(8,11)
+	\Head{Wavelength: resisting stress needed}
+	\Subhead{Initial contact with a substrate : Ruck in a rug analogy}
+
+\begin{tikzpicture}[ultra thick]
+\begin{axis}[
+	name=a,
+	width=3\TPHorizModule, height=0.75\TPHorizModule, scale only axis,
+	domain=-180:180, no markers, ymin=0, ymax=4,xmin=-180,xmax=180,
+	axis lines=none, xtick=\empty,
+	]
+	\addplot+[Accent1]{cos(x)+1};
+	\addplot+[Accent1]{cos(x)+1.5};
+	\draw[->, ultra thick] (axis cs:90,1.25) -- +(45:0.05\textwidth) node[pos=1, above] {$\vec{v}$};
+	\node[above] at (axis cs:-90,1.5) {$P_2$};
+	\node[below right] at (axis cs:-90,1.25) {$P_1$};
+	\draw[<->, ultra thick] (axis cs:0,0) -- (axis cs:0,2) node[midway, right] {$A$};
+\end{axis}
+\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle ($(a.south east)+(0,-1em)$);
+\draw[<->] ($(a.south west)+(0,-1.1em)$) -- ($(a.south east)+(0,-1.1em)$) node[midway, below] {$\lambda$};
+\end{tikzpicture}
+
+Actual shape depends on relative excess length $\epsilon$: $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
+
+\Subhead{Poroelasticity instead of gravity} \hfill Vertical cells show the same wavelength
+\begin{itemize}
+\item Solvent must flow through the gel(volumic flux $v\simeq \SI{0.2}{\micro\metre\per\second}$, pore size $\ell_p \approx \SI{4}{\micro\metre}$)
+\item[$\Rightarrow$] $\sigma$ is a Darcy pressure
+$\sigma = \Delta P \sim \eta h v/\ell_p^2   $
+\hfill\fcolorbox{Main}{white}{$\Rightarrow$ Poroelastic length
+$\displaystyle \lambda^* \sim \left(\frac{B \ell_p^2}{\eta v h}\right)^\frac{1}{3} \simeq \SI{2}{\milli\metre}$}
+\item Different from usual poroelasticity (\textit{Biot 1964}) where pore pressure increases transiently the bending energy. Here Darcy flow resists large wavelength.
+\end{itemize}
+
+\Subhead{No initial contact with a substrate: Poiseuille vs Darcy on a flying carpet}
+
+\smallskip
 \begin{tikzpicture}
 \begin{axis}[
 	name=a,
@@ -543,51 +451,142 @@ Usual view (\textit{Biot 1964}): pore pressure\linebreak increases transiently t
 \end{axis}
 \fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\textwidth,-1em) (a.north west) rectangle +(\textwidth,1em);
 \end{tikzpicture}
-\end{textblock}
 
-\begin{textblock}{3}(4,21.5)
-\Subhead{Phenomenology}
 \begin{itemize}
-\item Global destabilisation
-\item Labyrinth pattern
-\item First wrinkle after $\approx\SI{13}{\minute}$ of swelling
-\item Next generations = blisters
-\end{itemize}
-\end{textblock}
-
-\begin{textblock}{3}(8,21.5)
-\begin{itemize}
-\item The same $\Delta P$ can be relaxed by\linebreak a Poiseuille flow
-\[\Delta P \sim 12\eta\frac{\lambda}{H^2} u \sim 12\eta\frac{\lambda^2}{H^3} v\]
+\item The same $\Delta P$ can be relaxed by a Poiseuille flow
+$\Delta P \sim 12\eta\frac{\lambda}{H^2} u \sim 12\eta\frac{\lambda^2}{H^3} v$
 \item For the same wavelength
-\[\frac{v_\text{Darcy}}{v_\text{Poiseuille}} \sim \frac{\ell_p^2\lambda^2}{hH^3} \approx 30\]
+$\frac{v_\text{Darcy}}{v_\text{Poiseuille}} \sim \frac{\ell_p^2\lambda^2}{hH^3} \approx 30$ \hfill$\Rightarrow$ Flow through the pores dominates
 \end{itemize}
-Flow through the pores dominate
-
 \end{textblock}
 
-\begin{textblock}{3}(12,19)
-\Head{Viscosity}
+\begin{textblock}{7}(0,18)
+	\Head{Cell thickness}
+\begin{tikzpicture}[mark size={0.3em}]
+	\matrix[matrix of nodes, inner sep=0, column sep=0.01\columnwidth, row sep=0.01\columnwidth] (m) {
+		\includegraphics[width=0.245\columnwidth]{pattern_50um.jpg}&
+		\includegraphics[width=0.245\columnwidth]{pattern_100um.jpg}&
+		\includegraphics[width=0.245\columnwidth]{pattern_250um.jpg}&
+		\includegraphics[width=0.245\columnwidth]{pattern_450um.jpg}\\
+	};
+	\node[inner sep=0, below left=0.01\columnwidth and 0 of m.south east] (x800) {\includegraphics[width=0.49\columnwidth]{pattern_800um_x1.jpg}};
+	\draw[ultra thick, Accent2, <->] (x800.south west) ++(0.196\columnwidth, 0.05\columnwidth) -- ++(0.145\columnwidth,0) node[midway,above]{$\lambda$};
+	\draw[line width=0.2em,Main](x800.north east) -- ++(-0.217\columnwidth,0) node[midway,below] {\SI{5}{\milli\metre}};
+	
+	\begin{axis}[%
+		name=g,
+		anchor=left of north west,
+		at={($(m.south west)+(0,-0.01\columnwidth)$)},
+		scale only axis,
+		width=3\TPHorizModule-4em,
+		height=0.25\columnwidth-2em,
+		xmin=0,xmax=1,xlabel={gap (\si{\milli\metre})},
+		xtick={0,0.4,...,0.9},
+		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=1.25em},
+		cycle multi list={%
+			Accent1,no marks\\%
+			Accent1,only marks,every mark/.append style={fill=Accent1},mark=*\\%
+			Accent1,only marks,every mark/.append style={fill=white},mark=*\\%
+			Accent1,only marks,every mark/.append style={fill=Accent1},mark=triangle*\\%
+			Accent1,only marks,every mark/.append style={fill=white},mark=triangle*\\%
+			Accent1,only marks,every mark/.append style={fill=Accent1},mark=square*\\%
+			Accent1,only marks,every mark/.append style={fill=white},mark=square*\\%
+		},
+		mark size={0.3em}
+		]
+		\addplot+[domain=0:3] {4.23*x};
+		\addplot coordinates {(0.05,0.261)};\label{pgfplots:50}
+		\addplot coordinates {(0.1,0.458)};\label{pgfplots:100}
+		\addplot coordinates {(0.250,0.916)};\label{pgfplots:250}
+		\addplot coordinates {(0.450,2.075)};\label{pgfplots:450}
+		\addplot coordinates {(0.800,3.333)};\label{pgfplots:800}
+		%\addplot+[only marks,Accent1, mark options={fill=Accent1}] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
+	\end{axis}
+	\node[below right=0 of m-1-1.north west] {\ref{pgfplots:50}};
+	\node[below right=0 of m-1-2.north west] {\ref{pgfplots:100}};
+	\node[below right=0 of m-1-3.north west] {\ref{pgfplots:250}};
+	\node[below right=0 of m-1-4.north west] {\ref{pgfplots:450}};
+	\node[below right=0 of x800.north west] {\ref{pgfplots:800}};
+\end{tikzpicture}
+
+\Subhead{Wavelength stop evolving after a blister touches the ceiling}
+\end{textblock}
+
+
+\begin{textblock}{3}(0,22.25)
+	\begin{tikzpicture}
+\begin{axis}[
+	scale only axis,
+	width=\textwidth-4em,
+	height=0.4\textwidth,
+	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={position (\si{\micro\metre})},
+	ymin=0, ymax=50, ylabel={altitude (\si{\micro\metre})},
+	ylabel absolute, every axis y label/.append style={anchor=base, yshift=1.25em},
+	cycle list={
+		{Accent2}, 
+		{black!15!Accent2},
+		{black!30!Accent2},
+		{black!45!Accent2},
+		{black!60!Accent2},
+		{black!75!Accent2},
+		{black}
+	},
+	no marks,
+	]
+	\foreach \x in {2,3,..., 8}
+		\addplot table[y index=\x]{alts_bottom_cloque.txt};
+		
+	\draw[ultra thick, Accent1] (axis cs:580,0) -- (axis cs:580,50);
+\end{axis}
+\end{tikzpicture}
+\end{textblock}
+
+\begin{textblock}{3}(4,22.25)
+At contact: $A=H\equiv e-h\approx e/2$
+	\[ \lambda \sim \epsilon^{-3/7} H \]
+	\[ \epsilon \sim \left(\frac{\lambda}{e}\frac{e}{H}\right)^{-7/3} \simeq 0.6\% \]
+	
+\end{textblock}
+
+
+
+\begin{textblock}{7}(8,21)
+\Head{Surprising viscosity influence}
 \begin{tikzpicture}
 	\begin{loglogaxis}[%
 		scale only axis,
-		width=\textwidth-3.25em,
-		height=0.4\textwidth,
+		width=3\TPHorizModule-4em,
+		height=2\TPHorizModule,
 		xmin=0.6,xmax=11,xlabel={viscosity (\si{\milli\pascal\second})},
 		xtick={0.7, 1, 2, 5, 10}, xticklabels={$0.7$, $1$, $2$, $5$, $10$},
 		ytick={1,2,3,4}, yticklabels={$1$,$2$,$3$,$4$},
 		ymin=1, ymax=5, ylabel={$\lambda$ (\si{\milli\metre})},
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=1.25em},
 		mark size={0.3em},
+		legend style={legend pos=south east},
 		]
+		\addplot+[no marks, domain=0.7:10, black, forget plot] {1.7*x^0.4} node[midway, below] {$\eta^{0.4}$};
 		\addplot+[only marks,Accent1, mark options={fill=Accent1}] table{eta_lambda_eau_pure.txt};
 		\addplot+[only marks,Accent2, mark options={fill=Accent2}] table{eta_lambda_eau_glycerol.txt};
-		%\addplot+[only marks,Accent1, mark options={fill=Accent1}] coordinates {(0.05,0.261) (0.1,0.458) (0.250,0.916) (0.450,2.075) (0.800,3.333)};
+		\legend{water, water-glycerol};
 	\end{loglogaxis}
 \end{tikzpicture}
-
 \end{textblock}
 
-\begin{textblock}{15}(0,25)
+\begin{textblock}{3}(12,21.5)
+\begin{itemize}
+\item $\lambda$ increases with $\eta$
+\item Can be explained only by a hidden dependence of $\eta$ on $B$, $\ell_p$, \ldots 
+\item[\Rightarrow] Viscosity influences gel formation.
+\end{itemize}
+If $\ell_p \sim \eta^{-\alpha}$ and $B\sim \mathrm{k_B}T \left(\frac{h}{\ell}\right)^3$, then
+\[ \lambda^* \sim \eta^\frac{\alpha-1}{3} \]
+\[\alpha\simeq 2.2\]
+\end{textblock}
+
+
+\begin{textblock}{15}(0,24.75)
 \small{\texttt{The research leading to these results has received funding from the European Research Council under the European Union's Seventh Framework Programme (FP7/2007-2013) / ERC grant agreement n°~258803.}}
 \end{textblock}
 
@@ -596,21 +595,28 @@ Flow through the pores dominate
 \TPMargin*{ 0.125\TPHorizModule }
 \begin{textblock}{2.875}(12,2.625)%real width of 3
 	\Norulehead{Take home}
-	\Subhead{Poroelasticity dominates}
+	\Subhead{Original patterns}
 	\begin{itemize}
-		\item gravity
-		\item lubrication
-	\end{itemize}
-	\Subhead{Two modes}
-	\begin{itemize}
-		\item blistering
-		\item wrinkling
-	\end{itemize}
-	\Subhead{Nested patterns}
-	\begin{itemize}
+		\item nested (optical elements ?)
 		\item generated by swelling
-		\item kinetic wavelength
+		\item kinetic wavelength selection
 	\end{itemize}
+	\Subhead{A new wrinkling mechanism}
+	\begin{itemize}
+		\item porous flow resist bending
+		\item Darcy can beat Poiseuille
+		\item may extend to other porous sheets 
+		\begin{itemize}
+			\item wet paper
+			\item biological membranes
+		\end{itemize}
+	\end{itemize}
+	\Subhead{Viscosity influences}
+	\begin{itemize}
+		\item porous dissipation, thus wrinkling
+		\item gel formation, thus wrinkling
+	\end{itemize}
+	
 
 \end{textblock}%Conclusion
 
