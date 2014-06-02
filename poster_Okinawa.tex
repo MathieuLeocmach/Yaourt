@@ -269,9 +269,15 @@ For confocal microscopy we label 10\% of the casein.
 	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{1}*100}]{relative_volume_excess_area_cloques.txt};
 	%\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*100}]{volume_rel_half_cas8_toi.txt};
 	
-	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=2, ytick={0,0.5,1,1.5}, xlabel={time (min)}, every axis y label/.append style={xshift=-1em}]
-	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{2}*100}]{relative_volume_excess_area_cloques.txt};
-	%\addplot+[only marks,Accent2, mark=+] table{excess_area_pc_half_cas8_toi.txt};
+	\nextgroupplot[
+		ylabel={Excess area (\%)}, ymin=0, ymax=4, ytick={0,1,2,3},
+		xlabel={time (min)}, 
+		every axis y label/.append style={xshift=-1em},
+%		legend style={legend pos=north west} 
+		]
+	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{2}*100}]{relative_volume_excess_area_cloques.txt} node[pos=1, below left] {all};
+	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{3}*100}]{relative_volume_excess_area_cloques.txt} node[pos=1, left] {single blister};
+	%\legend{all, single blister};
 	\end{groupplot}
 	\end{tikzpicture}
 	
