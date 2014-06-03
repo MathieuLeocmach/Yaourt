@@ -155,19 +155,50 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \end{block}
 \end{frame}
 
+\section{Our system: Yoghurt}
+
+\begin{frame}{Acid-set protein gel}
+\begin{block}{Recipe}
+\begin{itemize}
+\item Water (\SI{30}{\celsius})
+\item Sodium caseinate (milk protein) 4\%
+\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.1\normalbaselineskip}\right\}$ stable solution}
+\item Glucono-$\delta$-lactone (GDL) 1\% $\Rightarrow$ slow acidification
+\end{itemize}
+\end{block}
+
+\end{frame}
+
 \section{Creep and yielding}
 
 \begin{frame}{Merciless yoghurt breakers}
-
 \begin{tabu}{X[c]X[c]c}
 \includegraphics[height=0.3\textheight]{Chris}&
 \includegraphics[height=0.3\textheight]{Thibaut}&
 \includegraphics[height=0.3\textheight]{Seb}\\
 Christophe Perge & Thibaut Divoux & Sebastien Manneville\\
 PhD student & CNRS researcher & Professor\\
-E.N.S Lyon &  CRPP Bordeaux & E.N.S Lyon\\
+E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 \end{tabu}
+\end{frame}
 
+\begin{frame}{The yoghurt creep experiment}
+\begin{tikzpicture}
+\node[anchor=south west] (webcam){\includegraphics[width=0.2\textwidth]{webcam}};
+\node[anchor=south] at (0.4\textwidth,0) (spoon) {\includegraphics[width=0.3\textwidth]{spoon}};
+\node[anchor=south east] at (\textwidth,0) (ultrasound) {\includegraphics[width=0.4\textwidth]{ultrasound}};
+
+\node[anchor=south west] at ($(ultrasound.north west)+(0,2em)$) (rheometer) {\includegraphics[height=0.4\textheight]{rheometer}};
+
+\begin{scope}[draw]
+	\node[below=0of spoon.south] (couette) {A Taylor-Couette cell where the yogurt is made \emph{in situ}};
+	\draw[->] (couette) -- ($(spoon.south)+(0,2em)$);
+	\node[above=0of ultrasound] {ultrasonic imaging};
+	\node[above=0of webcam, text width=0.2\textwidth, align=center] {optical imaging};
+	\draw[->] (spoon.north east) +(235:2em) -- (rheometer);
+	\node[right=0of rheometer, text width=0.2\textwidth, align=center] {A rheometer imposes a constant stress $\sigma$ and records the strain $\gamma(t)$};
+\end{scope}
+\end{tikzpicture}
 \end{frame}
 
 
