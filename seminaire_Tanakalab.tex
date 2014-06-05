@@ -167,6 +167,53 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \end{itemize}
 \end{block}
 
+\begin{columns}
+\column{0.5\textwidth}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 2,
+			xticklabels at=edge bottom,
+			vertical sep=0,
+			},
+		xmode=log,
+		xmin=1e2,xmax=3e5,
+		scale only axis,
+		width=\textwidth-4em,
+		height=0.3\textwidth,
+		extra tick style={grid=major},%
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-0.5em}
+		]
+	\nextgroupplot[
+		ymin=0, ymax=7, ylabel={pH},
+		%extra y ticks={4.6}, extra y tick labels={},%
+		]
+	\addplot+[no marks,Accent2] table{Y190_cas4_gdl1.pH};
+	\draw[help lines] (axis cs:1e2,4.6) -- (axis cs:1.3979e4,4.6) node[pos=0, below right, font=\scriptsize, text width=0.4\textwidth] {isoelectric point $pH\approx 4.6$}  -- (axis cs:1.3979e4,0);
+	
+
+	\nextgroupplot[
+		xlabel={time (s)},
+		ymin=0, ylabel={$\textcolor{Accent2}{G^\prime}, \textcolor{Main}{G^{\prime\prime}}$ (\si{\pascal})},
+		extra x ticks={1e5}, extra x tick labels={},
+		]
+	\addplot+[no marks,Accent2] table{cas4_GDL1_Y22.prise};
+	\addplot+[no marks,Main] table[y index=2]{cas4_GDL1_Y22.prise};
+	\begin{scope}[font=\scriptsize]
+		\node[above right] at (rel axis cs:0,0) {casein ``micelles''};
+		\draw[<-] (axis cs:1.3979e4,654) -- +(-1em,0) node[left] {gelation};
+	\end{scope}
+	\end{groupplot}
+\end{tikzpicture}
+
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
+
+\begin{scriptsize}
+\textit{Kaláb (1983),\linebreak Roefs \& van Vliet (1990),\linebreak Lucey \& Singh (1998)}
+\end{scriptsize}
+
+\end{columns}
 \end{frame}
 
 \section{Creep and yielding}
