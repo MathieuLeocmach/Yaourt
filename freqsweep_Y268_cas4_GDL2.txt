@@ -1,5 +1,4 @@
-Angular Frequency	Storage Modulus	Loss Modulus
-[1/s]	[Pa]	[Pa]
+AngularFrequency	StorageModulus	LossModulus
 62.83	2.153E+2	2.817E+1
 53.89	2.135E+2	2.749E+1
 46.22	2.116E+2	2.685E+1

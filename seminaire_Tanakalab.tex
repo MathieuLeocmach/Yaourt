@@ -102,6 +102,16 @@
 \tikzset{every mark/.append style={scale=0.8}}
 \pgfplotsset{compat=1.3, every axis/.append style={footnotesize}}
 
+\pgfplotscreateplotcyclelist{earthy}{%
+red!40!black,
+red!60!black,
+red!80!black,
+red,
+red!80!yellow,
+red!60!yellow,
+red!40!yellow,
+}
+
 \AtBeginSection[]{
 	\addtocounter{framenumber}{-1}
 	\begin{frame}[plain]
@@ -212,8 +222,61 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \begin{scriptsize}
 \textit{Kaláb (1983),\linebreak Roefs \& van Vliet (1990),\linebreak Lucey \& Singh (1998)}
 \end{scriptsize}
-
 \end{columns}
+\end{frame}
+
+\begin{frame}{Over-acidification: Faster but weaker}
+\begin{tikzpicture}
+\begin{axis}[
+	height=0.8\textheight,
+	width=\textwidth,
+	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
+	cycle list name=earthy,
+	no marks,
+	xmin=0, xmax=20,ymin=0,
+	]
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y265.prise} node[anchor=base west] {1\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.25_Y277.prise} node[anchor=base west] {1.25\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.5_Y275.prise} node[anchor=base west] {1.5\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL2_Y268.prise} node[anchor=base west] {2\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL3_Y270.prise} node[anchor=base west] {3\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise} node[anchor=base west, yshift=-0.2em] {4\%};
+\end{axis}
+\end{tikzpicture}
+
+Caseins regain some solubility at low pH.
+\end{frame}
+
+\begin{frame}{Linear rheology: Power law (visco)elastic solid}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	height=0.8\textheight,
+	width=\textwidth,
+	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
+	cycle list name=earthy,
+	domain={6e-2:70},
+	]
+	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
+	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
+	\addplot{590*x^0.14};
+	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
+	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
+	\addplot{350*x^0.12};
+	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
+	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
+	\addplot{246*x^0.1};
+	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
+	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
+	\addplot{163*x^0.067};
+	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
+	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
+	\addplot{109*x^0.044};
+	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
+	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
+	\addplot{76*x^0.035};
+	
+\end{loglogaxis}
+\end{tikzpicture}
 \end{frame}
 
 \section{Creep and yielding}
