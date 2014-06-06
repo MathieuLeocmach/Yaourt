@@ -1,0 +1,92 @@
+\documentclass[xcolor=table]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+%\usetheme{Boadilla}
+%\usecolortheme{rose}
+%\usecolortheme{crane}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{navigation symbols}{}
+
+\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
+\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
+\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
+
+\usecolortheme{rose}
+%\useinnertheme[shadow]{circles}
+\usecolortheme{whale}
+%\useoutertheme{infolines}
+
+\usecolortheme[named=Accent1]{structure}
+
+\setbeamercolor{alerted text}{fg=Accent2}
+%\setbeamercolor{palette primary}{fg=white}
+%\setbeamercolor{palette secondary}{bg=Accent1}
+%\setbeamercolor{palette tertiary}{bg=Accent2,fg=white}
+
+
+\setbeamerfont{page number in head/foot}{size=\large}
+\setbeamercolor{page number in head/foot}{fg=Main}
+% page/total
+%\setbeamertemplate{footline}[frame number]
+% pas de total
+\setbeamertemplate{footline}{%
+    	\hfill%
+	\usebeamercolor[fg]{page number in head/foot}%
+	\usebeamerfont{page number in head/foot}%
+	\insertframenumber\kern1em\vskip2pt%
+}
+
+\setbeamersize{text margin left=1em}
+\setbeamersize{text margin right=1em}
+
+%font
+\usepackage[T1]{fontenc}
+\usepackage[oldstylenums]{kpfonts}
+
+
+%proper math and math symbols
+%\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{datenumber,fp}
+
+\usepackage{siunitx}
+
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap}
+%\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{groupplots}
+
+
+%link or play movies
+\usepackage{multimedia}
+
+
+\begin{document}
+\tikzset{every mark/.append style={scale=0.8}}
+\pgfplotsset{every axis/.append style={footnotesize}}
+
+\pgfplotscreateplotcyclelist{earthy}{%
+red!40!black,
+red!60!black,
+red!80!black,
+red,
+red!80!yellow,
+red!60!yellow,
+red!40!yellow,
+}
+
+\begin{frame}{Frame}
+<>
+\end{frame}
+
+\end{document}
