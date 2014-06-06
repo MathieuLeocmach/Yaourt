@@ -63,9 +63,13 @@
 %\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
 
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{external}
-
+\tikzexternalize
+\tikzsetexternalprefix{fig_presentation/}
+%\tikzset{external/optimize=false}
+%\tikzset{external/force remake}
 
 
 %beamer related package
@@ -100,7 +104,7 @@
 
 \begin{document}
 \tikzset{every mark/.append style={scale=0.8}}
-\pgfplotsset{compat=1.3, every axis/.append style={footnotesize}}
+\pgfplotsset{every axis/.append style={footnotesize}}
 
 \pgfplotscreateplotcyclelist{earthy}{%
 red!40!black,
@@ -186,7 +190,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 			xticklabels at=edge bottom,
 			vertical sep=0,
 			},
-		xmode=log,
+		%xmode=log,
 		xmin=1e2,xmax=3e5,
 		scale only axis,
 		width=\textwidth-4em,
@@ -225,6 +229,40 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \end{columns}
 \end{frame}
 
+\begin{frame}{Linear rheology: Power law (visco)elastic solid}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	height=0.8\textheight,
+	width=\textwidth,
+	xlabel={Frequency (\si{\hertz})}, ylabel={\textcolor{Accent1}{Storage} and \textcolor{Accent2}{Loss} moduli (\si{\pascal})},
+	domain={6e-2:70},
+	]
+	\addplot[Accent1, only marks, mark=*] table{freqsweep_Y265_cas4_GDL1.txt};
+	\addplot[Accent2, only marks, mark=o] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt};
+	\addplot[Main, no marks]{300*x^0.15}  node[midway, below right] {$G^\prime,G^{\prime\prime}\sim f^{0.15}$};
+%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
+%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
+%	\addplot{590*x^0.14};
+%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
+%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
+%	\addplot{350*x^0.12};
+%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
+%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
+%	\addplot{246*x^0.1};
+%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
+%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
+%	\addplot{163*x^0.067};
+%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
+%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
+%	\addplot{109*x^0.044};
+%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
+%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
+%	\addplot{76*x^0.035};
+	
+\end{loglogaxis}
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}{Over-acidification: Faster but weaker}
 \begin{tikzpicture}
 \begin{axis}[
@@ -247,37 +285,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 Caseins regain some solubility at low pH.
 \end{frame}
 
-\begin{frame}{Linear rheology: Power law (visco)elastic solid}
-\begin{tikzpicture}
-\begin{loglogaxis}[
-	height=0.8\textheight,
-	width=\textwidth,
-	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
-	cycle list name=earthy,
-	domain={6e-2:70},
-	]
-	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
-	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
-	\addplot{590*x^0.14};
-	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
-	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
-	\addplot{350*x^0.12};
-	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
-	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
-	\addplot{246*x^0.1};
-	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
-	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
-	\addplot{163*x^0.067};
-	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
-	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
-	\addplot{109*x^0.044};
-	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
-	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
-	\addplot{76*x^0.035};
-	
-\end{loglogaxis}
-\end{tikzpicture}
-\end{frame}
+
 
 \section{Creep and yielding}
 
@@ -308,6 +316,28 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 	\draw[->] (spoon.north east) +(235:2em) -- (rheometer);
 	\node[right=0of rheometer, text width=0.2\textwidth, align=center] {A rheometer imposes a constant stress $\sigma$ and records the strain $\gamma(t)$};
 \end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\tikzset{external/force remake}
+\begin{frame}{The yoghurt creep experiment}
+\begin{tikzpicture}
+\node[inner sep=0] (a) {\includegraphics[height=16\baselineskip]{/home/mathieu/Documents/tex/svn/Yaourt/creep_experiment.jpg}};
+\begin{scope}[shift={(a.north west)}, shift={(7.2\baselineskip,-1.1\baselineskip)}, ultra thick]
+	\draw[Accent1] ellipse[x radius=2.9\baselineskip, y radius=0.7\baselineskip] ++(2.9\baselineskip,0)  -- ++(0,-6.6\baselineskip)  ++(-2.9\baselineskip,0) ellipse[x radius=2.9\baselineskip, y radius=0.7\baselineskip] ++(-2.9\baselineskip,0)  -- ++(0,6.6\baselineskip);
+	\shadedraw[Accent2,ball color=Accent2] ellipse[x radius=2\baselineskip, y radius=0.4\baselineskip] ++(2\baselineskip,0)  -- ++(0,-6.6\baselineskip)  ++(-2\baselineskip,0) ellipse[x radius=2\baselineskip, y radius=0.4\baselineskip] ++(-2\baselineskip,0)  -- ++(0,6.6\baselineskip);
+	\fill[Accent2, left color=black,right color=black, middle color=Accent2, ] (-0.3\baselineskip,0) rectangle +(0.6\baselineskip, \baselineskip);
+	\begin{scope}[Main]
+		\node[draw, minimum height=3.5\baselineskip, minimum width=1.2\baselineskip] at (2.4\baselineskip,-3.35\baselineskip) (window){};
+		\node[draw, minimum height=7.5\baselineskip, minimum width=4\baselineskip] at (7.5\baselineskip,-4\baselineskip) (USV){};
+		\draw(window.north east) -- (USV.north west) (window.south east) -- (USV.south west);
+		\node[right, text width=4\baselineskip] at (USV.east) {ultrasound region of interest};
+	\end{scope}
+\end{scope}
+\draw[->] (window.north west) ++(-1em, 0.2em) -- +(1em,0) node[midway,above,inner sep=1pt] {$r$};
+\draw[->] (window.north west) ++(-1em, 0.2em) -- +(0,-1em)  node[midway,left] {$z$};
+\node[text width=4\baselineskip] at (-3\baselineskip,-2.5\baselineskip) {shear rate response};
+\node at (5\baselineskip,-2.5\baselineskip) {strain response};
 \end{tikzpicture}
 \end{frame}
 
