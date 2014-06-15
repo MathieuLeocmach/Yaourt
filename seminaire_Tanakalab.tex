@@ -105,7 +105,12 @@
 \title[Yoghurt under stress]{Yoghurt under stress}
 \author[M. Leocmach]{Mathieu Leocmach}
 \date{1st June 2014}
-
+\titlegraphic{
+	\includegraphics[height=2\baselineskip,clip=true, trim=6mm 14mm 6mm 0]{NEW-Logo-ERC-OUTLINE}\quad
+	\includegraphics[height=2\baselineskip]{logo_ums_grand}\quad
+	\includegraphics[height=2\baselineskip]{CNRSfilaire-Q}\quad
+	\includegraphics[height=2\baselineskip]{logo_ens-lyon}
+	}
 
 \begin{document}
 \tikzset{every mark/.append style={scale=0.8}}
@@ -166,6 +171,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \item Fractures \textit{\scriptsize Bonn et al. Science 1998, Baumberger et al. Nature Material 2006}
 \item Mechanical instabilities and morphogenesis \textit{\scriptsize Shyer et al. Science 2013}
 \end{itemize}
+\includegraphics[height=3\baselineskip]{Villi_sq}
 \begin{block}{Our questions}
 \begin{itemize}
 \item What is the behaviour of a biogel under shear deep into the nonlinear regime?
@@ -174,9 +180,11 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \end{block}
 \end{frame}
 
-\section{Our system: Yoghurt}
+%\section{Our system: Yoghurt}
 
-\begin{frame}{Acid-set protein gel}
+
+\tikzset{external/force remake}
+\begin{frame}{Acid-set protein gel (Yoghurt)}
 \begin{block}{Recipe}
 \begin{itemize}
 \item Water (\SI{30}{\celsius})
@@ -196,7 +204,8 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 			vertical sep=0,
 			},
 		%xmode=log,
-		xmin=1e2,xmax=3e5,
+		%xmin=1e2,xmax=3e5,
+		xmin=0, xmax=20,
 		scale only axis,
 		width=\textwidth-4em,
 		height=0.3\textwidth,
@@ -205,24 +214,26 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 		]
 	\nextgroupplot[
 		ymin=0, ymax=7, ylabel={pH},
-		%extra y ticks={4.6}, extra y tick labels={},%
+		extra y ticks={4.6}, extra y tick labels={},%
 		]
-	\addplot+[no marks,Accent2] table{Y190_cas4_gdl1.pH};
-	\draw[help lines] (axis cs:1e2,4.6) -- (axis cs:1.3979e4,4.6) node[pos=0, below right, font=\scriptsize, text width=0.4\textwidth] {isoelectric point $pH\approx 4.6$}  -- (axis cs:1.3979e4,0);
+	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600}]{Y190_cas4_gdl1.pH};
+	\draw[help lines] (axis cs:0,4.6) -- (axis cs:3.88,4.6) node[pos=1, above right, font=\scriptsize] {isoelectric point $pH\approx 4.6$}  -- (axis cs:3.88,0);
 	
 
 	\nextgroupplot[
-		xlabel={time (s)},
+		xlabel={time (\si{\hour})},
 		ymin=0, ylabel={$\textcolor{Accent2}{G^\prime}, \textcolor{Main}{G^{\prime\prime}}$ (\si{\pascal})},
-		extra x ticks={1e5}, extra x tick labels={},
+		extra x ticks={17}, extra x tick labels={},
 		]
-	\addplot+[no marks,Accent2] table{cas4_GDL1_Y22.prise};
-	\addplot+[no marks,Main] table[y index=2]{cas4_GDL1_Y22.prise};
+	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y22.prise};
+	\addplot+[no marks,Main] table[x expr={\thisrowno{0}/3600}, y index=2]{cas4_GDL1_Y22.prise};
 	\begin{scope}[font=\scriptsize]
-		\node[above right] at (rel axis cs:0,0) {casein ``micelles''};
-		\draw[<-] (axis cs:1.3979e4,654) -- +(-1em,0) node[left] {gelation};
+		%\node[above right] at (rel axis cs:0,0) {casein ``micelles''};
+		%\draw[<-] (axis cs:3.88,654) -- +(1em,0) node[right] {gelation};
+		\node[anchor=base,rotate=80] at (axis cs:2.5,400) {gelation};
 	\end{scope}
 	\end{groupplot}
+	\draw[<-] (g c1r2.south west) ++(0.5em,0) -- +(0,-1em) node[below,font=\footnotesize] {casein ``micelles''};
 \end{tikzpicture}
 
 \column{0.5\textwidth}
@@ -233,6 +244,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \end{scriptsize}
 \end{columns}
 \end{frame}
+\tikzset{external/force remake=false}
 
 \begin{frame}{Linear rheology: Power law (visco)elastic solid}
 \[\text{stress}\rightarrow \sigma = G \gamma\leftarrow\text{strain}\]
@@ -270,27 +282,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Over-acidification: Faster but weaker}
-\begin{tikzpicture}
-\begin{axis}[
-	height=0.8\textheight,
-	width=\textwidth,
-	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
-	cycle list name=earthy,
-	no marks,
-	xmin=0, xmax=20,ymin=0,
-	]
-	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y265.prise} node[anchor=base west] {1\%};
-	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.25_Y277.prise} node[anchor=base west] {1.25\%};
-	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.5_Y275.prise} node[anchor=base west] {1.5\%};
-	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL2_Y268.prise} node[anchor=base west] {2\%};
-	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL3_Y270.prise} node[anchor=base west] {3\%};
-	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise} node[anchor=base west, yshift=-0.2em] {4\%};
-\end{axis}
-\end{tikzpicture}
 
-Caseins regain some solubility at low pH.
-\end{frame}
 
 
 
@@ -350,7 +342,7 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 }{/home/mathieu/Dropbox/Yaourt/films/Yaourt141_enhanced.avi}
 \end{frame}
 
-\tikzset{external/force remake}
+
 \begin{frame}{Creep rheology: Three regimes}
 \begin{tikzpicture}
 \begin{loglogaxis}[
@@ -393,6 +385,29 @@ Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 \end{frame}
 
 \section{Wrinkling}
+
+%\tikzset{external/force remake}
+\begin{frame}{Over-acidification: Faster but weaker}
+\begin{tikzpicture}
+\begin{axis}[
+	height=0.8\textheight,
+	width=\textwidth,
+	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
+	cycle list name=earthy,
+	no marks,
+	xmin=0, xmax=20,ymin=0,
+	]
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y265.prise} node[anchor=base west] {1\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.25_Y277.prise} node[anchor=base west] {1.25\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.5_Y275.prise} node[anchor=base west] {1.5\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL2_Y268.prise} node[anchor=base west] {2\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL3_Y270.prise} node[anchor=base west] {3\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise} node[anchor=base west, yshift=-0.2em] {4\%};
+\end{axis}
+\end{tikzpicture}
+
+Caseins regain some solubility at low pH.
+\end{frame}
 
 \end{document}
 
