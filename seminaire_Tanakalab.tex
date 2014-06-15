@@ -325,10 +325,20 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 \end{tikzpicture}
 \end{frame}
 
-%\tikzset{external/force remake}
+\tikzset{external/force remake}
 \begin{frame}{The yoghurt creep experiment}
 \movie[externalviewer]{\begin{tikzpicture}
 \node[inner sep=0] (a) {\includegraphics[height=16\baselineskip]{creep_experiment.jpg}};
+\node[below right=\baselineskip of a.north east, inner sep=0] (vmap) {\includegraphics[width=4\baselineskip]{jet_cmap}};
+
+\begin{scope}[font=\footnotesize]
+	\node[above=0 of vmap] {velocity map};
+	\node[below=0 of vmap.south west] {-50};
+	\node[below=0 of vmap.south] (v0) {0};
+	\node[below=0 of vmap.south east] {50};
+	\node[below=0 of v0, inner sep=0]{\si{\micro\metre\per\second}};
+\end{scope}
+
 \begin{scope}[shift={(a.north west)}, shift={(5.8\baselineskip,-1.1\baselineskip)}, ultra thick]
 	\draw[Accent1, x radius=3.1\baselineskip, y radius=0.3\baselineskip] ellipse ++(3.1\baselineskip,0)  -- ++(0,-7.4\baselineskip)  ++(-3.1\baselineskip,0) ellipse[] ++(-3.1\baselineskip,0)  -- ++(0,7.4\baselineskip);
 	\shadedraw[Accent2,ball color=Accent2, x radius=2\baselineskip, y radius=0.1\baselineskip] ellipse ++(2\baselineskip,0)  -- ++(0,-7.4\baselineskip)  ++(-2\baselineskip,0) ellipse[] ++(-2\baselineskip,0)  -- ++(0,7.4\baselineskip);
