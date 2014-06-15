@@ -325,7 +325,7 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 \end{tikzpicture}
 \end{frame}
 
-\tikzset{external/force remake}
+%\tikzset{external/force remake}
 \begin{frame}{The yoghurt creep experiment}
 \movie[externalviewer]{\begin{tikzpicture}
 \node[inner sep=0] (a) {\includegraphics[height=16\baselineskip]{creep_experiment.jpg}};
@@ -400,6 +400,64 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 
 Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 \end{frame}
+
+\tikzset{external/force remake}
+\begin{frame}{Failure time}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xlabel={$\sigma$ (\si{\pascal})},
+	ylabel={$\tau_f$ (\si{\second})},
+	xmin=100, ymin=10, ymax=1e6,
+	xtick={100, 200,..., 1000}, xticklabels={100, 200,,, 500,,,,, 1000},
+	]
+	\addplot[only marks, Accent1] table[y index=3]{creep_cas4_gdl1_MCR.txt};
+	\addplot[no marks, black, domain={100:1000}] {4.2e17*x^(-5.45)} node [midway, above right] {$\tau_f\sim \sigma^{-5.5}$};
+\end{loglogaxis}
+\end{tikzpicture}
+
+\begin{block}{Basquin law}
+\begin{itemize}
+\item fatigue
+\item heterogeneous solids
+\item no yield stress
+\end{itemize}
+\end{block}
+
+\column{0.45\textwidth}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+		group name=g, group size=1 by 2,
+		},
+	width=\textwidth,
+	height=0.7\textwidth,
+	ymode=log,
+	ylabel={$\tau_f$ (\si{\second})},
+	ymin=10, ymax=1e6,
+	]
+	\nextgroupplot[
+		xlabel={$\sigma$ (\si{\pascal})},
+		xtick={200,600,1000},
+		]
+		\addplot[only marks, Accent1] table[y index=3]{creep_cas4_gdl1_MCR.txt};
+		\addplot[no marks, black, domain={100:1000}] {6.5e5*exp(-x/84)} node [pos=0.25, above right] {$\tau_f\nsim e^{-\frac{\sigma}{\sigma_0}}$};
+		
+	\nextgroupplot[
+		xlabel={$1/\sigma$ (\si{\per\pascal})},
+		]
+		\addplot[only marks, Accent1] table[x expr=1/\thisrowno{0}, y index=3]{creep_cas4_gdl1_MCR.txt};
+		\addplot[no marks, black, domain={1e-3:7e-3}] {20.3*exp(1720*x)} node [pos=0.25, below right] {$\tau_f\nsim e^\frac{\sigma_0}{\sigma}$};
+\end{groupplot}
+\end{tikzpicture}
+
+Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
 
 \section*{Wrinkling}
 
