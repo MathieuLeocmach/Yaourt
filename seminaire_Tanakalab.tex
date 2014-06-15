@@ -183,7 +183,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 %\section{Our system: Yoghurt}
 
 
-\tikzset{external/force remake}
+%\tikzset{external/force remake}
 \begin{frame}{Acid-set protein gel (Yoghurt)}
 \begin{block}{Recipe}
 \begin{itemize}
@@ -286,7 +286,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 
 
 
-\section{Creep and yielding}
+\section*{Creep and yielding}
 
 \begin{frame}{Merciless yoghurt breakers}
 \begin{tabu}{X[c]X[c]c}
@@ -319,29 +319,30 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 \end{tikzpicture}
 \end{frame}
 
-%\tikzset{external/force remake}
+\tikzset{external/force remake}
 \begin{frame}{The yoghurt creep experiment}
 \movie[externalviewer]{\begin{tikzpicture}
 \node[inner sep=0] (a) {\includegraphics[height=16\baselineskip]{creep_experiment.jpg}};
-\begin{scope}[shift={(a.north west)}, shift={(7.2\baselineskip,-1.1\baselineskip)}, ultra thick]
-	\draw[Accent1] ellipse[x radius=2.9\baselineskip, y radius=0.7\baselineskip] ++(2.9\baselineskip,0)  -- ++(0,-6.6\baselineskip)  ++(-2.9\baselineskip,0) ellipse[x radius=2.9\baselineskip, y radius=0.7\baselineskip] ++(-2.9\baselineskip,0)  -- ++(0,6.6\baselineskip);
-	\shadedraw[Accent2,ball color=Accent2] ellipse[x radius=2\baselineskip, y radius=0.4\baselineskip] ++(2\baselineskip,0)  -- ++(0,-6.6\baselineskip)  ++(-2\baselineskip,0) ellipse[x radius=2\baselineskip, y radius=0.4\baselineskip] ++(-2\baselineskip,0)  -- ++(0,6.6\baselineskip);
+\begin{scope}[shift={(a.north west)}, shift={(5.8\baselineskip,-1.1\baselineskip)}, ultra thick]
+	\draw[Accent1, x radius=3.1\baselineskip, y radius=0.3\baselineskip] ellipse ++(3.1\baselineskip,0)  -- ++(0,-7.4\baselineskip)  ++(-3.1\baselineskip,0) ellipse[] ++(-3.1\baselineskip,0)  -- ++(0,7.4\baselineskip);
+	\shadedraw[Accent2,ball color=Accent2, x radius=2\baselineskip, y radius=0.1\baselineskip] ellipse ++(2\baselineskip,0)  -- ++(0,-7.4\baselineskip)  ++(-2\baselineskip,0) ellipse[] ++(-2\baselineskip,0)  -- ++(0,7.4\baselineskip);
 	\fill[Accent2, left color=black,right color=black, middle color=Accent2, ] (-0.3\baselineskip,0) rectangle +(0.6\baselineskip, \baselineskip);
 	\begin{scope}[Main]
-		\node[draw, minimum height=3.5\baselineskip, minimum width=1.2\baselineskip] at (2.4\baselineskip,-3.35\baselineskip) (window){};
-		\node[draw, minimum height=7.5\baselineskip, minimum width=4\baselineskip] at (7.5\baselineskip,-4\baselineskip) (USV){};
+		\node[draw, minimum height=4.2\baselineskip, minimum width=1.5\baselineskip] at (2.5\baselineskip,-4\baselineskip) (window){};
+		\node[draw, minimum height=7.2\baselineskip, minimum width=4\baselineskip] at (8.9\baselineskip,-4.2\baselineskip) (USV){};
 		\draw(window.north east) -- (USV.north west) (window.south east) -- (USV.south west);
 		\node[right, text width=4\baselineskip] at (USV.east) {ultrasound region of interest};
 	\end{scope}
 \end{scope}
 \draw[->] (window.north west) ++(-1em, 0.2em) -- +(1em,0) node[midway,above,inner sep=1pt] {$r$};
 \draw[->] (window.north west) ++(-1em, 0.2em) -- +(0,-1em)  node[midway,left] {$z$};
+\draw[<->] ++(-2\baselineskip,-\baselineskip) -- +(-1.1\baselineskip,0) node[midway,above] {\SI{2}{\milli\metre}};
 \node[text width=4\baselineskip] at (-3\baselineskip,-2.5\baselineskip) {shear rate response};
 \node at (5\baselineskip,-2.5\baselineskip) {strain response};
 \end{tikzpicture}%
 }{/home/mathieu/Dropbox/Yaourt/films/Yaourt141_enhanced.avi}
 \end{frame}
-
+\tikzset{external/force remake=false}
 
 \begin{frame}{Creep rheology: Three regimes}
 \begin{tikzpicture}
