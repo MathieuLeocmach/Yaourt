@@ -459,7 +459,7 @@ Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
 \end{frame}
 \tikzset{external/force remake=false}
 
-\tikzset{external/force remake}
+%\tikzset{external/force remake}
 \begin{frame}{Primary creep}
 \begin{columns}
 \column{0.55\textwidth}
@@ -498,6 +498,39 @@ Classically explained by disinclination dynamics in crystals
 \node[above left=1em of a.south east, Accent2] {$\gamma-\gamma_0 \sim t^{1/3}$};
 \end{tikzpicture}
 \end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+\tikzset{external/force remake}
+\begin{frame}{Primary creep}
+\begin{block}{Local insight from \movie[externalviewer]{ultrasounds}{Yaourt110_primary.avi}}
+\begin{itemize}
+	\item homogeneous \movie[externalviewer]{strain field}{Yaourt110_profils.avi} (no wall slip, no shear band)
+	\item if present, plastic events are below our resolution (a few \si{\micro\metre})
+\end{itemize}
+\end{block}
+
+\begin{block}{Partial creep and recovery}
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=8\baselineskip,
+	xlabel={time (\si{\second})},
+	ylabel={strain $\gamma$},
+	xmin=-1e3, xmax=2.8e4,
+	]
+	\addplot[black, no marks] table {Y261_oscil_creep_recovery_100Pa_decimated.txt};
+	\begin{scope}[<-,Main, inner sep=0]
+	\draw (axis cs:0,0) -- +(1em,0) node[anchor=west]{$\sigma\leftarrow \SI{100}{\pascal}$};
+	\draw (axis cs:600,0.2727007) -- +(1em,0) node[anchor=west]{$\sigma\leftarrow 0$};
+	\draw (axis cs:8600,0.0159) -- +(0,1em) node[anchor=base east]{$\gamma\leftarrow 0$};
+	\end{scope}
+\end{axis}
+\end{tikzpicture}
+\end{block}
+
+$\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structure damage, but viscous dissipation)
+
 \end{frame}
 \tikzset{external/force remake=false}
 
