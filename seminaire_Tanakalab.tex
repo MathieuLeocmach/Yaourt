@@ -401,7 +401,7 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 \end{frame}
 
-\tikzset{external/force remake}
+%\tikzset{external/force remake}
 \begin{frame}{Failure time}
 \begin{columns}
 \column{0.55\textwidth}
@@ -421,7 +421,7 @@ Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 
 \begin{block}{Basquin law}
 \begin{itemize}
-\item fatigue
+\item fatigue (oscillatory stress)
 \item heterogeneous solids
 \item no yield stress
 \end{itemize}
@@ -455,6 +455,48 @@ Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 \end{tikzpicture}
 
 Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+\tikzset{external/force remake}
+\begin{frame}{Primary creep}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=2e-2, xmax=4e5, xlabel={time (\si{\second})},
+	ylabel={Strain rate $\dot{\gamma}$ (\si{\per\second})},
+	cycle list name=earthy,
+	no marks,
+	]
+	\addplot table[y index=2]{Y27_200Pa_gdot_decimated.txt} node (s200){};
+	\addplot table[y index=2]{Y38_300Pa_gdot_decimated.txt} node (s300){};
+	\addplot table[y index=2]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
+	\addplot table[y index=2]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
+	\addplot table[y index=2]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
+	\addplot[Accent2, ultra thick, domain={0.1:1e3}] {0.01*x^(-0.85)} node[pos=0.75, below left] {$\dot{\gamma}(t)\sim t^{-0.85}$};
+\end{loglogaxis}
+\end{tikzpicture}
+
+\begin{block}{Primary creep $\Rightarrow$ ``Andrade'' creep}
+Power-law creep known in \alert{solids} for over a century
+
+Classically explained by disinclination dynamics in crystals
+\end{block}
+
+\column{0.45\textwidth}
+\includegraphics[width=\textwidth]{Andrade_1910}
+
+\bigskip
+\includegraphics[height=7\baselineskip]{Andrade_1910_fig1}
+\begin{tikzpicture}
+\node[inner sep=0] (a){\includegraphics[height=7\baselineskip]{Andrade_1910_fig2}};
+\node[below right=0 and 1em of a.north west, font=\footnotesize,fill=white] {lead \& copper};
+\node[above left=1em of a.south east, Accent2] {$\gamma-\gamma_0 \sim t^{1/3}$};
+\end{tikzpicture}
 \end{columns}
 \end{frame}
 \tikzset{external/force remake=false}
