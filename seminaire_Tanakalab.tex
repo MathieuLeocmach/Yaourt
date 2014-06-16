@@ -472,11 +472,11 @@ Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
 	cycle list name=earthy,
 	no marks,
 	]
-	\addplot table[y index=2]{Y27_200Pa_gdot_decimated.txt} node (s200){};
-	\addplot table[y index=2]{Y38_300Pa_gdot_decimated.txt} node (s300){};
-	\addplot table[y index=2]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
-	\addplot table[y index=2]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
-	\addplot table[y index=2]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
+	\addplot table[y index=2]{Y27_200Pa_gdot_decimated.txt} node[left] (s200){200};
+	\addplot table[y index=2]{Y38_300Pa_gdot_decimated.txt} node (s300){300};
+	\addplot table[y index=2]{Y25_400Pa_gdot_decimated.txt}  node (s400){400};
+	\addplot table[y index=2]{Y32_550Pa_gdot_decimated.txt}  node (s550){550};
+	\addplot table[y index=2]{Y39_1000Pa_gdot_decimated.txt} node (s1000){1000};
 	\addplot[Accent2, ultra thick, domain={0.1:1e3}] {0.01*x^(-0.85)} node[pos=0.75, below left] {$\dot{\gamma}(t)\sim t^{-0.85}$};
 \end{loglogaxis}
 \end{tikzpicture}
@@ -537,7 +537,7 @@ $\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structu
 
 
 
-\tikzset{external/force remake}
+%\tikzset{external/force remake}
 \begin{frame}{Dimensionless creep response}
 \begin{columns}
 \column{0.55\textwidth}
@@ -555,7 +555,7 @@ $\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structu
 	\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
 	\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
 	\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
-	\addplot[Accent2, ultra thick, domain={1e-4:0.1}] {0.2*x^(-0.85)} node[pos=0.75, below left] {$\frac{\dot{\gamma}}{\dot{\gamma}_\text{min}}\sim \left(\frac{t}{\tau_f}\right)^{-0.85}$};
+	\addplot[Accent2, ultra thick, domain={1e-4:0.1}] {0.2*x^(-0.85)} node[pos=0.75, below left] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{t}{\tau_f}\right)^{-0.85}$};
 \end{loglogaxis}
 \end{tikzpicture}
 
@@ -585,6 +585,66 @@ Linear viscoelasticity accounts for the Andrade exponent
 \end{columns}
 \end{frame}
 \tikzset{external/force remake=false}
+
+\tikzset{external/force remake}
+\begin{frame}{Tertiary creep}
+\begin{columns}
+\column{0.55\textwidth}
+Time to failure
+
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
+	x dir=reverse,
+	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	cycle list name=earthy,
+	no marks,
+	]
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt} node (s200){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt} node (s300){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
+	\addplot[Accent2, ultra thick, domain={1e-4:0.1}] {0.05/x} node[pos=0.6, below right, inner sep=0] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{\tau_f}{\tau_f-t}\right)$};
+\end{loglogaxis}
+\end{tikzpicture}
+
+Close to failure: 
+\begin{itemize}
+\item finite time singularity
+\item logarithmic divergence
+\end{itemize}
+$\Rightarrow$ dominated by fracture growth
+
+\column{0.45\textwidth}
+\begin{block}{Fracture growth}
+\includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-15-00.jpg}\hfill
+\includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-20-00.jpg}\hfill
+\includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-21-15.jpg}
+
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=1e-3, xmax=1, xlabel={$(\tau_f-t)/\tau_f$},
+	xmode=log, x dir=reverse,
+	ylabel={$\ell/H$},
+	ymin=0, ymax=0.4,
+	axis background/.style={fill=white},
+	]
+	\addplot[only marks, Accent1, error bars/.cd, y dir=both, y explicit] table[y error index=2]{Y110_fracturelength.txt};
+	\addplot[Accent2, ultra thick, no marks, domain={1e-3:1}] {8.9e-3 - 0.06 * ln(x)};
+\end{axis}
+\end{tikzpicture}
+\end{block}
+
+
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
 
 \section*{Wrinkling}
 
