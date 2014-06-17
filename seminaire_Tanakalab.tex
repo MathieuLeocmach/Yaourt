@@ -303,6 +303,10 @@ Christophe Perge & Thibaut Divoux & Sebastien Manneville\\
 PhD student & CNRS researcher & Professor\\
 E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 \end{tabu}
+
+\bigskip
+Just accepted in PRL, \textit{ArXiv 1401.8234}
+
 \end{frame}
 
 %\tikzset{external/force remake}
@@ -349,10 +353,12 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 		\draw(window.north east) -- (USV.north west) (window.south east) -- (USV.south west);
 		\node[right, text width=4\baselineskip] at (USV.east) {ultrasound region of interest};
 	\end{scope}
+
+\draw[<->,thin] ++(-2\baselineskip,-\baselineskip) -- +(-1.1\baselineskip,0) node[midway,above] {\SI{2}{\milli\metre}};
 \end{scope}
 \draw[->] (window.north west) ++(-1em, 0.2em) -- +(1em,0) node[midway,above,inner sep=1pt] {$r$};
 \draw[->] (window.north west) ++(-1em, 0.2em) -- +(0,-1em)  node[midway,left] {$z$};
-\draw[<->] ++(-2\baselineskip,-\baselineskip) -- +(-1.1\baselineskip,0) node[midway,above] {\SI{2}{\milli\metre}};
+
 \node[text width=4\baselineskip] at (-3\baselineskip,-2.5\baselineskip) {shear rate response};
 \node at (5\baselineskip,-2.5\baselineskip) {strain response};
 \end{tikzpicture}%
@@ -631,11 +637,11 @@ $\Rightarrow$ dominated by fracture growth
 	xmin=1e-3, xmax=1, xlabel={$(\tau_f-t)/\tau_f$},
 	xmode=log, x dir=reverse,
 	ylabel={$\ell/H$},
-	ymin=0, ymax=0.4,
+	ymin=0, ymax=0.5,
 	axis background/.style={fill=white},
 	]
 	\addplot[only marks, Accent1, error bars/.cd, y dir=both, y explicit] table[y error index=2]{Y110_fracturelength.txt};
-	\addplot[Accent2, ultra thick, no marks, domain={1e-3:1}] {8.9e-3 - 0.06 * ln(x)};
+	\addplot[Accent2, ultra thick, no marks, domain={1e-3:1}] {- 0.06 * ln(x)} node [pos=0.25,left=1em] {$\frac{\ell}{H}\sim \ln\frac{\tau_f-t}{\tau_f}$};
 \end{axis}
 \end{tikzpicture}
 \end{block}
