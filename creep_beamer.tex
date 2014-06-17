@@ -1,0 +1,547 @@
+\begin{frame}{Creep and yielding}
+Just accepted in PRL, \textit{ArXiv 1401.8234}
+
+\bigskip
+\structure{Merciless yoghurt breakers}
+
+\bigskip
+\begin{tabu}{X[c]X[c]c}
+\includegraphics[height=0.3\textheight]{Chris}&
+\includegraphics[height=0.3\textheight]{Thibaut}&
+\includegraphics[height=0.3\textheight]{Seb}\\
+Christophe Perge & Thibaut Divoux & Sebastien Manneville\\
+PhD student & CNRS researcher & Professor\\
+E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
+\end{tabu}
+
+
+\bigskip
+\begin{description}[Special thanks]
+\item[Special thanks] to Alan Parker (Firmenich) for prompting this study and providing casein \& GDL
+\end{description} 
+
+\end{frame}
+
+%\tikzset{external/force remake}
+\begin{frame}{The yoghurt creep experiment}
+\begin{tikzpicture}
+\node[anchor=south west] (webcam){\includegraphics[width=0.2\textwidth]{webcam}};
+\node[anchor=south] at (0.4\textwidth,0) (spoon) {\includegraphics[width=0.3\textwidth]{spoon}};
+\node[anchor=south east] at (\textwidth,0) (ultrasound) {\includegraphics[width=0.4\textwidth]{ultrasound}};
+
+\node[anchor=south west] at ($(ultrasound.north west)+(0,2em)$) (rheometer) {\includegraphics[height=0.4\textheight]{rheometer}};
+
+\begin{scope}[draw]
+	\node[below=0of spoon.south] (couette) {A Taylor-Couette cell where the yogurt is made \emph{in situ}};
+	\draw[->] (couette) -- ($(spoon.south)+(0,2em)$);
+	\node[above=0of ultrasound] {ultrasonic imaging};
+	\node[above=0of webcam, text width=0.2\textwidth, align=center] {optical imaging};
+	\draw[->] (spoon.north east) +(235:2em) -- (rheometer);
+	\node[right=0of rheometer, text width=0.2\textwidth, align=center] {A rheometer imposes a constant stress $\sigma$ and records the strain $\gamma(t)$};
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+%\tikzset{external/force remake}
+\begin{frame}{The yoghurt creep experiment}
+\movie[externalviewer]{\begin{tikzpicture}
+\node[inner sep=0] (a) {\includegraphics[height=16\baselineskip]{creep_experiment.jpg}};
+\node[below right=\baselineskip of a.north east, inner sep=0] (vmap) {\includegraphics[width=4\baselineskip]{jet_cmap}};
+
+\begin{scope}[font=\footnotesize]
+	\node[above=0 of vmap] {velocity map};
+	\node[below=0 of vmap.south west] {-50};
+	\node[below=0 of vmap.south] (v0) {0};
+	\node[below=0 of vmap.south east] {50};
+	\node[below=0 of v0, inner sep=0]{\si{\micro\metre\per\second}};
+\end{scope}
+
+\begin{scope}[shift={(a.north west)}, shift={(5.8\baselineskip,-1.1\baselineskip)}, ultra thick]
+	\draw[Accent1, x radius=3.1\baselineskip, y radius=0.3\baselineskip] ellipse ++(3.1\baselineskip,0)  -- ++(0,-7.4\baselineskip)  ++(-3.1\baselineskip,0) ellipse[] ++(-3.1\baselineskip,0)  -- ++(0,7.4\baselineskip);
+	\shadedraw[Accent2,ball color=Accent2, x radius=2\baselineskip, y radius=0.1\baselineskip] ellipse ++(2\baselineskip,0)  -- ++(0,-7.4\baselineskip)  ++(-2\baselineskip,0) ellipse[] ++(-2\baselineskip,0)  -- ++(0,7.4\baselineskip);
+	\fill[Accent2, left color=black,right color=black, middle color=Accent2, ] (-0.3\baselineskip,0) rectangle +(0.6\baselineskip, \baselineskip);
+	\begin{scope}[Main]
+		\node[draw, minimum height=4.2\baselineskip, minimum width=1.5\baselineskip] at (2.5\baselineskip,-4\baselineskip) (window){};
+		\node[draw, minimum height=7.2\baselineskip, minimum width=4\baselineskip] at (8.9\baselineskip,-4.2\baselineskip) (USV){};
+		\draw(window.north east) -- (USV.north west) (window.south east) -- (USV.south west);
+		\node[right, text width=4\baselineskip] at (USV.east) {ultrasound region of interest};
+	\end{scope}
+
+\draw[<->,thin] ++(-2\baselineskip,-\baselineskip) -- +(-1.1\baselineskip,0) node[midway,above] {\SI{2}{\milli\metre}};
+\end{scope}
+\draw[->] (window.north west) ++(-1em, 0.2em) -- +(1em,0) node[midway,above,inner sep=1pt] {$r$};
+\draw[->] (window.north west) ++(-1em, 0.2em) -- +(0,-1em)  node[midway,left] {$z$};
+
+\node[text width=4\baselineskip] at (-3\baselineskip,-2.5\baselineskip) {shear rate response};
+\node at (5\baselineskip,-2.5\baselineskip) {strain response};
+\end{tikzpicture}%
+}{/home/mathieu/Dropbox/Yaourt/films/Yaourt141_enhanced.avi}
+\end{frame}
+\tikzset{external/force remake=false}
+
+\begin{frame}{Creep rheology: Three regimes}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+   name=g,
+	width=\textwidth,
+	height=0.8\textheight,
+	xmin=2e-2, xmax=4e5, xlabel={time (\si{\second})},
+	ymin=0.2,ymax=2,
+	ytick={0.2, 0.4,0.8,1.6}, yticklabels={0.2, 0.4,0.8,1.6},
+	ylabel={strain $\gamma$},
+	extra tick style={grid=major},%
+	extra y ticks={1}, extra y tick labels={1.0},
+	cycle list name=earthy,
+	axis on top,
+	]
+	\fill[Accent1!20]
+		(axis cs:10,0.4) ellipse[rotate=-30, x radius=0.2\textwidth, y radius=0.12\textwidth]
+		(axis cs:2e2,1.6) ellipse[x radius=0.3\textwidth, y radius=0.05\textwidth]
+		(axis cs:3e3,0.85) ellipse[rotate=-7.5, x radius=0.3\textwidth, y radius=0.07\textwidth]
+		;
+	\node[above right] at (axis cs:1e1,0.2) {primary};
+	\node[below left] at (axis cs:4e5,0.7) {secondary};
+	\node[left] at (axis cs:5,1.6) {tertiary};
+	\addplot table{Y27_200Pa_gamma_decimated.txt} node (s200){};
+	\addplot table{Y38_300Pa_gamma_decimated.txt} node (s300){};
+	\addplot table{Y25_400Pa_gamma_decimated.txt}  node (s400){};
+	\addplot table{Y32_550Pa_gamma_decimated.txt}  node (s550){};
+	\addplot table{Y39_1000Pa_gamma_decimated.txt} node (s1000){};
+\end{loglogaxis}
+\begin{scope}[anchor=base, every node/.style={yshift=0.2em}]
+	\node[red!40!black] at (s200 |- g.outer north) {\SI{200}{\pascal}};
+	\node[red!60!black] at (s300 |- g.outer north) {300};
+	\node[red!80!black] at (s400 |- g.outer north) {400};
+	\node[red] at (s550 |- g.outer north) {550};
+	\node[red!80!yellow] at (s1000 |- g.outer north) {1000};
+\end{scope}
+\end{tikzpicture}
+
+Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
+\end{frame}
+
+%\tikzset{external/force remake}
+\begin{frame}{Failure time}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xlabel={$\sigma$ (\si{\pascal})},
+	ylabel={$\tau_f$ (\si{\second})},
+	xmin=100, ymin=10, ymax=1e6,
+	xtick={100, 200,..., 1000}, xticklabels={100, 200,,, 500,,,,, 1000},
+	]
+	\addplot[only marks, Accent1] table[y index=3]{creep_cas4_gdl1_MCR.txt};
+	\addplot[no marks, black, domain={100:1000}] {4.2e17*x^(-5.45)} node [midway, above right] {$\tau_f\sim \sigma^{-5.5}$};
+\end{loglogaxis}
+\end{tikzpicture}
+
+\begin{block}{Basquin law}
+\begin{itemize}
+\item fatigue (oscillatory stress)
+\item heterogeneous solids
+\item no yield stress
+\end{itemize}
+\end{block}
+
+\column{0.45\textwidth}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+		group name=g, group size=1 by 2,
+		},
+	width=\textwidth,
+	height=0.7\textwidth,
+	ymode=log,
+	ylabel={$\tau_f$ (\si{\second})},
+	ymin=10, ymax=1e6,
+	]
+	\nextgroupplot[
+		xlabel={$\sigma$ (\si{\pascal})},
+		xtick={200,600,1000},
+		]
+		\addplot[only marks, Accent1] table[y index=3]{creep_cas4_gdl1_MCR.txt};
+		\addplot[no marks, black, domain={100:1000}] {6.5e5*exp(-x/84)} node [pos=0.25, above right] {$\tau_f\nsim e^{-\frac{\sigma}{\sigma_0}}$};
+		
+	\nextgroupplot[
+		xlabel={$1/\sigma$ (\si{\per\pascal})},
+		]
+		\addplot[only marks, Accent1] table[x expr=1/\thisrowno{0}, y index=3]{creep_cas4_gdl1_MCR.txt};
+		\addplot[no marks, black, domain={1e-3:7e-3}] {20.3*exp(1720*x)} node [pos=0.25, below right] {$\tau_f\nsim e^\frac{\sigma_0}{\sigma}$};
+\end{groupplot}
+\end{tikzpicture}
+
+Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+%\tikzset{external/force remake}
+\begin{frame}{Primary creep}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=2e-2, xmax=4e5, xlabel={time (\si{\second})},
+	ylabel={Strain rate $\dot{\gamma}$ (\si{\per\second})},
+	cycle list name=earthy,
+	no marks,
+	]
+	\addplot table[y index=2]{Y27_200Pa_gdot_decimated.txt} node[left] (s200){200};
+	\addplot table[y index=2]{Y38_300Pa_gdot_decimated.txt} node (s300){300};
+	\addplot table[y index=2]{Y25_400Pa_gdot_decimated.txt}  node (s400){400};
+	\addplot table[y index=2]{Y32_550Pa_gdot_decimated.txt}  node (s550){550};
+	\addplot table[y index=2]{Y39_1000Pa_gdot_decimated.txt} node (s1000){1000};
+	\addplot[Accent2, ultra thick, domain={0.1:1e3}] {0.01*x^(-0.85)} node[pos=0.75, below left] {$\dot{\gamma}(t)\sim t^{-0.85}$};
+\end{loglogaxis}
+\end{tikzpicture}
+
+\begin{block}{Primary creep $\Rightarrow$ ``Andrade'' creep}
+Power-law creep known in \alert{solids} for over a century
+
+Classically explained by disinclination dynamics in crystals
+\end{block}
+
+\column{0.45\textwidth}
+\includegraphics[width=\textwidth]{Andrade_1910}
+
+\bigskip
+\includegraphics[height=7\baselineskip]{Andrade_1910_fig1}
+\begin{tikzpicture}
+\node[inner sep=0] (a){\includegraphics[height=7\baselineskip]{Andrade_1910_fig2}};
+\node[below right=0 and 1em of a.north west, font=\footnotesize,fill=white] {lead \& copper};
+\node[above left=1em of a.south east, Accent2] {$\gamma-\gamma_0 \sim t^{1/3}$};
+\end{tikzpicture}
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+%\tikzset{external/force remake}
+\begin{frame}{Primary creep}
+\begin{block}{Local insight from \movie[externalviewer]{ultrasounds}{Yaourt110_primary.avi}}
+\begin{itemize}
+	\item homogeneous \movie[externalviewer]{strain field}{Yaourt110_profils.avi} (no wall slip, no shear band)
+	\item if present, plastic events are below our resolution (a few \si{\micro\metre})
+\end{itemize}
+\end{block}
+
+\begin{block}{Partial creep and recovery}
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=8\baselineskip,
+	xlabel={time (\si{\second})},
+	ylabel={strain $\gamma$},
+	xmin=-1e3, xmax=2.8e4,
+	axis background/.style={fill=white},
+	]
+	\addplot[black, no marks] table {Y261_oscil_creep_recovery_100Pa_decimated.txt};
+	\begin{scope}[<-,Main, inner sep=0]
+	\draw (axis cs:0,0) -- +(1em,0) node[anchor=west]{$\sigma\leftarrow \SI{100}{\pascal}$};
+	\draw (axis cs:600,0.2727007) -- +(1em,0) node[anchor=west]{$\sigma\leftarrow 0$};
+	\draw (axis cs:8600,0.0159) -- +(0,1em) node[anchor=base east]{$\gamma\leftarrow 0$};
+	\end{scope}
+\end{axis}
+\end{tikzpicture}
+\end{block}
+
+$\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structure damage, but viscous dissipation)
+\end{frame}
+\tikzset{external/force remake=false}
+
+
+
+
+%\tikzset{external/force remake}
+\begin{frame}{Dimensionless creep response}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
+	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	cycle list name=earthy,
+	clip mode=individual,
+	]
+	\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt} node (s200){};
+	\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt} node (s300){};
+	\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
+	\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
+	\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
+	\addplot[yellow, ultra thick, domain={1e-4:0.1}] {0.378*x^(-0.85)} node[Accent2,pos=0.75, below left] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{t}{\tau_f}\right)^{-0.85}$};
+\end{loglogaxis}
+\end{tikzpicture}
+
+Linear viscoelasticity accounts for the Andrade exponent
+
+\column{0.45\textwidth}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	height=0.8\textwidth,
+	width=\textwidth,
+	xlabel={Frequency (\si{\hertz})}, ylabel={\textcolor{Accent1}{$G^\prime$}, \textcolor{Accent2}{$G^{\prime\prime}$}(\si{\pascal})},
+	domain={6e-2:70},
+	ymin=10,
+	]
+	\addplot[Accent1, only marks, mark=*] table{freqsweep_Y265_cas4_GDL1.txt};
+	\addplot[Accent2, only marks, mark=o] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt};
+	\addplot[Main, no marks]{100*x^0.15}  node[midway, below=1em] {$G^\prime\sim G^{\prime\prime}\sim f^{0.15}$};
+	
+\end{loglogaxis}
+\end{tikzpicture}
+\textcolor{Main}{
+\begin{align*}
+\Rightarrow & J(t) \equiv& \frac{\gamma(t)}{\sigma}\sim& t^{0.15}\\
+\Rightarrow & \dot{\gamma}(t)\sim& t^{0.15-1} =& t^{-0.85}
+\end{align*}
+}
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+%\tikzset{external/force remake}
+\begin{frame}{Tertiary creep}
+\begin{columns}
+\column{0.55\textwidth}
+Time to failure
+
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
+	x dir=reverse,
+	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	cycle list name=earthy,
+	clip mode=individual,
+	]
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt} node (s200){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt} node (s300){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
+	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
+	\addplot[yellow, ultra thick, domain={1e-4:0.1}] {0.187/x} node[Accent2, pos=0.6, below right, inner sep=0] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{\tau_f}{\tau_f-t}\right)$};
+\end{loglogaxis}
+\end{tikzpicture}
+
+Close to failure: 
+\begin{itemize}
+\item finite time singularity
+\item logarithmic divergence
+\end{itemize}
+$\Rightarrow$ dominated by fracture growth
+
+\column{0.45\textwidth}
+\begin{block}{Fracture growth}
+\includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-15-00.jpg}\hfill
+\includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-20-00.jpg}\hfill
+\includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-21-15.jpg}
+
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=1e-3, xmax=1, xlabel={$(\tau_f-t)/\tau_f$},
+	xmode=log, x dir=reverse,
+	ylabel={$\ell/H$},
+	ymin=0, ymax=0.5,
+	clip mode=individual,
+	axis background/.style={fill=white},
+	]
+	\addplot[only marks, Accent1, error bars/.cd, y dir=both, y explicit] table[y error index=2]{Y110_fracturelength.txt};
+	\addplot[Accent2, ultra thick, no marks, domain={1e-3:1}] {- 0.06 * ln(x)} node [pos=0.25,left=1em] {$\frac{\ell}{H}\sim \ln\frac{\tau_f-t}{\tau_f}$};
+\end{axis}
+\end{tikzpicture}
+\end{block}
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+%\tikzset{external/force remake}
+\begin{frame}{Secondary creep: a crossover}
+\begin{columns}
+\column{0.55\textwidth}
+Creep responses in linear scales
+
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=0, xmax=1, xlabel={$t/\tau_f$},
+	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	ymin=0.5, ymax=4,
+	cycle list name=earthy,
+	restrict y to domain=0.5:10,
+	clip mode=individual,
+	]
+	\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt} node (s200){};
+	\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt} node (s300){};
+	\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
+	\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
+	\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
+	\addplot[yellow, ultra thick, domain={0.01:0.99}] {0.378*x^(-0.85) + 0.187/(1-x)};
+	\draw[<-] (axis cs:0.56,1) -- +(0,1em) node[above] {$\tau_\text{min}$};
+\end{axis}
+\end{tikzpicture}
+\begin{block}{Master curve}
+\[\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}} = \underbrace{\lambda \left(\frac{t}{\tau_f}\right)^{-0.85}}_\text{Andrade} + \underbrace{\frac{\mu}{1 - t/\tau_f}}_\text{fractures}\]
+\end{block}
+
+
+\column{0.45\textwidth}
+\structure{Monkman-Grant relation}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xlabel={$\tau_f$ (\si{\second})},
+	ylabel={$\tau_\text{min}$ (\si{\second})},
+	xmin=10, xmax=1e6, ymin=10, ymax=1e6,
+	]
+	\addplot[only marks, Accent1] table[x index=3, y index=4]{creep_cas4_gdl1_MCR.txt};
+	\addplot[no marks, black, domain={10:1e6}] {0.56*x)};
+\end{loglogaxis}
+\end{tikzpicture}
+\[\tau_\text{min} \approx 0.6 \tau_f\]
+``Early time'' response allows to predict failure time
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+\begin{frame}{What about theories and models?}
+\begin{columns}
+\column{0.35\textwidth}
+\begin{block}{Discrete dislocation dynamics (dense)}
+\textit{\footnotesize Miguel et al., PRL 2002}
+
+\hspace{1em}\includegraphics[width=\textwidth-2em]{Miguel_2002_img}
+
+\medskip
+\hspace{1em}\includegraphics[width=\textwidth-2em]{Miguel_2002_graph}
+
+predicts Andrade creep \alert{but} no fracture
+\end{block}
+\column{0.65\textwidth}
+\begin{columns}
+\column{0.5\textwidth+1em}
+\structure{Fibre bundle model~\#1}
+
+\textit{\footnotesize Jagla et al., PRE 2011}
+\begin{itemize}
+\item elastic fibres
+\item local yield strain
+\item local coupling
+\end{itemize}
+
+\hspace{1em}\includegraphics[width=\textwidth-1em]{Jagla_2011_gamma}
+\[\tau_f\sim\left(\sigma-\alert{\sigma_c}\right)^{-1.25}\]
+
+\column{0.5\textwidth-1em}
+\includegraphics[width=\textwidth]{Jagla_2011_3regimes}
+\end{columns}
+predicts Andrade creep and failure \alert{but} critical stress
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{What about theories and models?}
+\structure{Fibre bundle model~\#2}
+
+elastic fibres + local yield strain + damage accumulation
+\begin{block}{\textit{\footnotesize Kun et al. J. Stat Mech 2006, PRL 2008}}
+\begin{columns}
+\column{0.7\textwidth}
+\begin{tikzpicture}[inner sep=0]
+\node(a){\includegraphics[height=5\baselineskip]{Kun_2006_basquin.png}};
+\node[fill=white,yshift=-0.5em] at (a) {$\tau_f \sim \sigma^{-\beta}$};
+\end{tikzpicture}\,
+\includegraphics[height=5\baselineskip]{Kun_2008_Basquin}\,
+\includegraphics[height=5\baselineskip]{asphalt}
+\column{0.3\textwidth}
+$\beta$ exponent of damage accumulation
+\[\dot{\gamma}\sim \left(\tau_f-t\right)^{-1/(1+\beta)}\]
+\end{columns}
+\end{block}
+
+\begin{columns}
+\column{0.65\textwidth}
+\begin{block}{\textit{\footnotesize Halász et al., PRE 2012}}
+\begin{tikzpicture}[inner sep=0, ultra thick, font=\footnotesize]
+\node (g) {\includegraphics[height=7\baselineskip]{Halasz_2012_Basquin}};
+\node[draw=green!50!black, below right=0 and \baselineskip of g.north east] (c) {\includegraphics[height=4\baselineskip]{Halasz_2012_crack}};
+\node[draw=red, above right=0 and 6\baselineskip of g.south east] (d) {\includegraphics[height=4\baselineskip]{Halasz_2012_disordered}};
+\draw[->,green!50!black] (c.west) -- ++(-2\baselineskip,0) node[above] {$\beta=5$} node[below right=0 of c.north east, text width=5\baselineskip]{single crack propagation};
+\draw[->, red] (d.south west) -- +(-5\baselineskip,0) --($(g.south east) +(0, \baselineskip)$) node[below=1em] {$\beta=1$} node[above left=0 of d.south west] {diffusive damage};
+\end{tikzpicture}
+\end{block}
+\column{0.35\textwidth}
+Predicts Basquin law \& fractures \alert{but} no Andrade creep \& too slow divergence
+\end{columns}
+\end{frame}
+
+\begin{frame}{Creep and yielding summary}
+\begin{itemize}
+\item failure involves a single time scale $\tau_f \sim \sigma^{-5.5}$ Basquin law
+\item reversible, homogeneous creep $\rightarrow$ irreversible fracture growth
+\item a single expression captures all the global rheological response
+\end{itemize}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=3 by 1,
+			horizontal sep=3em,
+			},
+		width=0.35\textwidth,
+		cycle list name=earthy,
+		clip mode=individual,
+		]
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
+		ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+		xmode=log,ymode=log,
+		xtick={1e-4, 1e-2, 1},
+		]
+		\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*x^(-0.85) + 0.187/(1-x)};
+		
+	\nextgroupplot[
+		xmin=0, xmax=1, xlabel={$t/\tau_f$},
+		ymin=0.5, ymax=4,
+		restrict y to domain=0.5:10,
+		]
+		\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, domain={0.01:0.99}] {0.378*x^(-0.85) + 0.187/(1-x)};
+		
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
+		x dir=reverse,
+		xmode=log,ymode=log,
+		xtick={1e-4, 1e-2, 1},
+	]
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*(1-x)^(-0.85) + 0.187/x};
+	\end{groupplot}
+\end{tikzpicture}
+\begin{itemize}
+\item a model soft solid well captured by fibre-bundle models
+\end{itemize}
+\end{frame}
+
