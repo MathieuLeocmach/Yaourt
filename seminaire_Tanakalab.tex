@@ -117,11 +117,11 @@
 \pgfplotsset{every axis/.append style={footnotesize}}
 
 \pgfplotscreateplotcyclelist{earthy}{%
-red!40!black,
-red!60!black,
-red!80!black,
-red,
-red!80!yellow,
+{red!40!black,mark=o},
+{red!60!black,mark=triangle, every mark/.append style={rotate=180}},
+{red!80!black,mark=square},
+{red,mark=triangle},
+{red!80!yellow, mark=diamond},
 red!60!yellow,
 red!40!yellow,
 }
@@ -554,14 +554,14 @@ $\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structu
 	xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
 	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
 	cycle list name=earthy,
-	no marks,
+	clip mode=individual,
 	]
 	\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt} node (s200){};
 	\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt} node (s300){};
 	\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
 	\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
 	\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
-	\addplot[Accent2, ultra thick, domain={1e-4:0.1}] {0.2*x^(-0.85)} node[pos=0.75, below left] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{t}{\tau_f}\right)^{-0.85}$};
+	\addplot[yellow, ultra thick, domain={1e-4:0.1}] {0.378*x^(-0.85)} node[Accent2,pos=0.75, below left] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{t}{\tau_f}\right)^{-0.85}$};
 \end{loglogaxis}
 \end{tikzpicture}
 
@@ -592,7 +592,7 @@ Linear viscoelasticity accounts for the Andrade exponent
 \end{frame}
 \tikzset{external/force remake=false}
 
-\tikzset{external/force remake}
+%\tikzset{external/force remake}
 \begin{frame}{Tertiary creep}
 \begin{columns}
 \column{0.55\textwidth}
@@ -606,14 +606,14 @@ Time to failure
 	x dir=reverse,
 	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
 	cycle list name=earthy,
-	no marks,
+	clip mode=individual,
 	]
 	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt} node (s200){};
 	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt} node (s300){};
 	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
 	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
 	\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
-	\addplot[Accent2, ultra thick, domain={1e-4:0.1}] {0.05/x} node[pos=0.6, below right, inner sep=0] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{\tau_f}{\tau_f-t}\right)$};
+	\addplot[yellow, ultra thick, domain={1e-4:0.1}] {0.187/x} node[Accent2, pos=0.6, below right, inner sep=0] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{\tau_f}{\tau_f-t}\right)$};
 \end{loglogaxis}
 \end{tikzpicture}
 
@@ -638,6 +638,7 @@ $\Rightarrow$ dominated by fracture growth
 	xmode=log, x dir=reverse,
 	ylabel={$\ell/H$},
 	ymin=0, ymax=0.5,
+	clip mode=individual,
 	axis background/.style={fill=white},
 	]
 	\addplot[only marks, Accent1, error bars/.cd, y dir=both, y explicit] table[y error index=2]{Y110_fracturelength.txt};
@@ -645,11 +646,117 @@ $\Rightarrow$ dominated by fracture growth
 \end{axis}
 \end{tikzpicture}
 \end{block}
-
-
 \end{columns}
 \end{frame}
 \tikzset{external/force remake=false}
+
+%\tikzset{external/force remake}
+\begin{frame}{Secondary creep: a crossover}
+\begin{columns}
+\column{0.55\textwidth}
+Creep responses in linear scales
+
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xmin=0, xmax=1, xlabel={$t/\tau_f$},
+	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	ymin=0.5, ymax=4,
+	cycle list name=earthy,
+	restrict y to domain=0.5:10,
+	clip mode=individual,
+	]
+	\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt} node (s200){};
+	\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt} node (s300){};
+	\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
+	\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
+	\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
+	\addplot[yellow, ultra thick, domain={0.01:0.99}] {0.378*x^(-0.85) + 0.187/(1-x)};
+	\draw[<-] (axis cs:0.56,1) -- +(0,1em) node[above] {$\tau_\text{min}$};
+\end{axis}
+\end{tikzpicture}
+\begin{block}{Master curve}
+\[\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}} = \underbrace{\lambda \left(\frac{t}{\tau_f}\right)^{-0.85}}_\text{Andrade} + \underbrace{\frac{\mu}{1 - t/\tau_f}}_\text{fractures}\]
+\end{block}
+
+
+\column{0.45\textwidth}
+\structure{Monkman-Grant relation}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	width=\textwidth,
+	height=0.8\textwidth,
+	xlabel={$\tau_f$ (\si{\second})},
+	ylabel={$\tau_\text{min}$ (\si{\second})},
+	xmin=10, xmax=1e6, ymin=10, ymax=1e6,
+	]
+	\addplot[only marks, Accent1] table[x index=3, y index=4]{creep_cas4_gdl1_MCR.txt};
+	\addplot[no marks, black, domain={10:1e6}] {0.56*x)};
+\end{loglogaxis}
+\end{tikzpicture}
+\[\tau_\text{min} \approx 0.6 \tau_f\]
+``Early time'' response allows to predict failure time
+\end{columns}
+\end{frame}
+\tikzset{external/force remake=false}
+
+\begin{frame}{Creep and yielding summary}
+\begin{itemize}
+\item failure involves a single time scale $\tau_f \sim \sigma^{-5.5}$ Basquin law
+\item reversible, homogeneous creep $\rightarrow$ irreversible fracture growth
+\item a single expression captures all the global rheological response
+\end{itemize}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=3 by 1,
+			horizontal sep=3em,
+			},
+		width=0.35\textwidth,
+		cycle list name=earthy,
+		clip mode=individual,
+		]
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
+		ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+		xmode=log,ymode=log,
+		ytick={1e-4, 1e-2, 1},
+		]
+		\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*x^(-0.85) + 0.187/(1-x)};
+		
+	\nextgroupplot[
+		xmin=0, xmax=1, xlabel={$t/\tau_f$},
+		ymin=0.5, ymax=4,
+		restrict y to domain=0.5:10,
+		]
+		\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, domain={0.01:0.99}] {0.378*x^(-0.85) + 0.187/(1-x)};
+		
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
+		x dir=reverse,
+		xmode=log,ymode=log,
+		ytick={1e-4, 1e-2, 1},
+	]
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*(1-x)^(-0.85) + 0.187/x};
+	\end{groupplot}
+\end{tikzpicture}
+\end{frame}
 
 
 \section*{Wrinkling}
