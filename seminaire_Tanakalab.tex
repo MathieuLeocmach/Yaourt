@@ -112,6 +112,10 @@
 	\includegraphics[height=2\baselineskip]{logo_ens-lyon}
 	}
 
+
+
+\newlength{\mylength}
+
 \includeonly{}
 
 \begin{document}
@@ -312,6 +316,9 @@ Mathieu Nespoulous & Thomas Gibaud & Sebastien Manneville\\
 Associate Professor & CNRS researcher & Professor\\
 Aix-Marseille Université & E.N.S. Lyon & E.N.S. Lyon\\
 \end{tabu}
+
+\bigskip
+\structure{Imaging plateform} BioSciences Gerland - Lyon Sud (UMS~3444)
 \end{frame}
 
 %\tikzset{external/force remake}
@@ -335,6 +342,70 @@ Aix-Marseille Université & E.N.S. Lyon & E.N.S. Lyon\\
 \end{tikzpicture}
 
 Caseins regain some solubility at low pH.
+\end{frame}
+
+
+\begin{frame}{Sealed cell, spontaneous pattern}
+	
+	\structure{Side view of the cell}\\
+	\tikzsetnextfilename{cell_brushes}
+	\tikzset{external/force remake}
+	\begin{tikzpicture}[font=\footnotesize]
+		\fill[pattern=north east lines,pattern color=Accent2] (0,0) rectangle (\textwidth,1.5em) node[midway,fill=white,inner sep=1pt] {glass};
+		\fill[pattern=north east lines,pattern color=Accent2] (0,-2.5em) rectangle (\textwidth,-4em) node[midway,fill=white,inner sep=1pt] {glass};
+		\draw[line width=2pt,Accent1] (0.05\textwidth,-2.5em) -- (0.95\textwidth,-2.5em) (0.05\textwidth,-1pt) -- (0.95\textwidth,-1pt) node[below,pos=0.30, text width=0.5\textwidth] {acrylamide brush ($10\sim 100$ nm)\linebreak $\Rightarrow$ No adhesion};
+		\fill[gray] (0,0) rectangle (0.05\textwidth,-2.5em) (\textwidth,0) rectangle (0.95\textwidth,-2.5em) node[pos=1, above left] {spacer};
+		\draw[<->] (0.75\textwidth,-2pt) -- (0.75\textwidth,-2.5em) node[midway,left] {$e\sim 100\,\mu m$};
+		\draw[<->] (0.05\textwidth,2.25em) -- (0.95\textwidth,2.25em) node[midway,above] (L){$L\sim 2.5\,cm$};
+		%\node[anchor=north west, inner sep=0] at ($(L.north) - (0.5\textwidth,0)$) {\structure{Side view of the cell}};
+	\end{tikzpicture}
+	
+	\bigskip
+	\structure{Top view of the final pattern}\\
+	\begin{tikzpicture}[inner sep=0, very thick]
+	\setlength{\mylength}{\columnwidth}
+	\node[anchor=north west] (a) {\includegraphics[width=0.28\mylength]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2_crop}};
+		\node[anchor=north] at (0.44\mylength,0) (b) {\includegraphics[width=0.28\mylength]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom6_crop}};
+		\node[anchor=north east] at (\mylength,0) (c) {\includegraphics[width=0.4\mylength]{cas3p2_fluo0p8_GDL4_50um_coating_2_transmission}};
+		%zooms
+		\node[minimum width = 0.137\mylength, minimum height=0.137\mylength, anchor=north west, draw=Accent2] at ($(a.north west) +(0.111\mylength,-0.072\mylength)$) (bz){};
+		\draw[Accent2] (bz.north east) -- (b.north west) (bz.south east) -- (b.south west);
+		\node[minimum width = 0.128\mylength, minimum height=0.081\mylength, anchor=north west, draw=Main] at ($(b.north west) +(0.097\mylength,-0.143\mylength)$) (cz){};
+		\draw[Main] (cz.north east) -- (c.north west) (cz.south east) -- (c.south west);
+		\node[minimum width = 0.156\mylength, minimum height=0.156\mylength, anchor=north west, draw=Accent1] at ($(c.north west) + (0.125\mylength,0)$) (dz) {};
+		%scale bars
+		\draw[ultra thick] (a.south east) ++(0,-0.25em) -- ++(-0.178\mylength,0) node[pos=0.5, below=0.25em, font=\small] (M) {\SI{1}{\centi\metre}};
+		\draw[ultra thick] (b.south east) ++(0,-0.25em) -- ++(-0.176\mylength,0) node[pos=0.5, below=0.25em, font=\small] {\SI{5}{\milli\metre}};
+		\draw[ultra thick] (c.south east) ++(0,-0.25em) -- ++(-0.132\mylength,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Dynamics (transmission macroscope)}
+\movie[externalviewer]{\begin{tikzpicture}
+\node[inner sep=0] (a) {\includegraphics[width=\textwidth]{prise_0799_resized.jpg}};
+\draw[line width=0.2em] ++(a.north west) -- ++(0.177\textwidth,0) node[pos=0, above right, inner xsep=0] {\SI{1}{\milli\metre}};
+\end{tikzpicture}
+}{cas4_GDL_4_100um_coat_macroscope_2.avi}
+\end{frame}
+
+\begin{frame}{Dynamics (transmission macroscope)}
+\begin{tikzpicture}
+	\matrix[matrix of nodes, inner sep=0, column sep=0.015\textwidth, row sep=0.5em, ampersand replacement=\&] (m){
+	33 min \& 38 min \& 43 min \\
+	\includegraphics[width=0.32\textwidth]{prise_0100_color.jpg}\&
+	\includegraphics[width=0.32\textwidth]{prise_0130_color.jpg}\&
+	\includegraphics[width=0.32\textwidth]{prise_0160_color.jpg}\\
+	48 min \& 1h \& 1h15 \\
+	\includegraphics[width=0.32\textwidth]{prise_0190_color.jpg}\&
+	\includegraphics[width=0.32\textwidth]{prise_0250_color.jpg}\&
+	\includegraphics[width=0.32\textwidth]{prise_0360_color.jpg}\\
+	};
+	\draw[line width=0.2em] ++(m-4-1.south west) -- ++(0.056\textwidth,0) node[pos=0, below right, inner xsep=0] {\SI{1}{\milli\metre}};
+\end{tikzpicture}
+
+\begin{itemize}
+\item nesting patterns
+\end{itemize}
 \end{frame}
 
 \end{document}
