@@ -59,7 +59,7 @@
 % Allow the usage of graphics (.jpg, .png, etc.) in the document
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap}
+\usetikzlibrary{arrows,arrows.meta,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap}
 %\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
 
 \usepackage{pgfplots}
@@ -460,6 +460,7 @@ Caseins regain some solubility at low pH.
 		ymin=0,
 		]
 	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}/60}]{cas4_GDL4_Y271.prise};
+	\node[below left] at (rel axis cs:1,1) {rheometer (stick)};
 	
 	\nextgroupplot[
 		ylabel={Volume (\%)}, ymin=20, ymax=100, 
@@ -530,6 +531,180 @@ Caseins regain some solubility at low pH.
 \end{center}
 \end{frame}
 
+
+\begin{frame}<1-2>[label=carpet]{Wavelength: resisting stress needed}
+\structure{Simple case} Initial flat contact with the substrate: carpet
+\begin{columns}
+\column{0.5\textwidth}
+\temporal<2>{
+	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t000.png}\\
+	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t011.png}\\
+	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t110.png}\\
+	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t116.png}\\
+	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t117.png}\\
+
+	\includegraphics[width=\textwidth]{volume_cloque_t116}\\
+	\begin{tikzpicture}
+	\draw[ultra thick] (0,) -- +(0.786\textwidth,0) node[midway, below] {\SI{1}{\milli\metre}};
+	\end{tikzpicture}
+	
+	\structure{In our case}
+	\begin{itemize}
+	\item Vertical cells show the same wavelength
+	\item $\sigma \neq \rho g h$
+	\end{itemize}
+}{
+
+\bigskip
+\begin{itemize}
+\item solvent must flow through gel
+\begin{description}[$\ell_p$]
+\item[$v$] gel velocity = -volumic flux $\simeq \SI{0.2}{\micro\metre\per\second}$
+\item[$\ell_p$] pore size $ \approx \SI{4}{\micro\metre}$
+\end{description}
+\item $\sigma$ is a Darcy pressure
+\[\sigma = \Delta P \sim \eta h v/\ell_p^2\]
+\item poroelastic length
+\[ \lambda^* \sim \left(\frac{B \ell_p^2}{\eta v h}\right)^\frac{1}{3} \simeq \SI{2}{\milli\metre}\]
+\end{itemize}
+}{
+\begin{tikzpicture}
+\begin{axis}[
+	width=\textwidth,
+	height=0.6\textwidth,
+	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={position (\si{\micro\metre})},
+	ymin=0, ymax=50, ylabel={altitude (\si{\micro\metre})},
+	cycle list name=earthy,
+	no marks,
+	]
+	\draw[ultra thick, Accent2] (axis cs:580,0) -- (axis cs:580,50);
+	\foreach \x in {2,3,..., 8}
+		\addplot table[y index=\x]{alts_bottom_cloque.txt};
+\end{axis}
+\end{tikzpicture}
+\begin{itemize}
+\item $\lambda$ frozen at ceiling touch 
+\item $A=H\equiv e-h$
+\item $\lambda \sim \epsilon^{-3/7} H \sim e$
+	%\[ \epsilon \sim \left(\frac{\lambda}{e}\frac{e}{H}\right)^{-7/3} \simeq 0.6\% \]
+\end{itemize}
+}
+
+\column{0.5\textwidth}
+\begin{block}{Ruck in a rug}
+\begin{tikzpicture}[ultra thick]
+\begin{axis}[
+	name=a,
+	width=\textwidth, height=3\baselineskip, scale only axis,
+	domain=-180:180, no markers, ymin=0, ymax=3,xmin=-180,xmax=180,
+	axis lines=none, xtick=\empty,
+	axis background/.style={fill=white},
+	]
+	\addplot+[Accent1]{cos(x)+1};
+	\addplot+[Accent1]{cos(x)+1.5};
+	\draw[->, Accent2, ultra thick] (axis cs:90,1.25) -- (axis cs:90,2.25) node[pos=1, right] {$v$};
+	\draw[Main, ultra thick, {Circle}->] (axis cs:-90,1.5) -- (axis cs:-90,0.25) node[right] {$\sigma$};
+	%\node[above] at (axis cs:-90,1.5) {$P_2$};
+	%\node[below right] at (axis cs:-90,1.25) {$P_1$};
+	\draw[<->, ultra thick] (axis cs:0,0) -- (axis cs:0,2) node[midway, right] {$A$};
+	\draw[<->] (axis cs:0,2) -- (axis cs:0,2.5) node[midway, right] {$h$};
+\end{axis}
+\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle ($(a.south east)+(0,-1em)$);
+\draw[<->] ($(a.south west)+(0,-1.1em)$) -- ($(a.south east)+(0,-1.1em)$) node[midway, below] {$\lambda$};
+\end{tikzpicture}
+
+\textit{\footnotesize Kolinski et al., Vella et al. PRL 2009}\\
+\begin{description}[$B$]
+\item[$\epsilon$] excess area \hfill$\Rightarrow$ buckling 
+\item[$B$] bending modulus \hfill$\Rightarrow \lambda\nearrow$
+\item[$\sigma$] vertical stress \hfill$\Rightarrow \lambda\searrow$
+\end{description}
+\[ \lambda^* \equiv \left(\frac{B}{\sigma}\right)^{1/3}\text{, eg. }\sigma =\rho g h \]
+$\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Poroelasticity}
+\begin{columns}\column{0.15\textwidth}
+\includegraphics[width=\textwidth]{Henry_Darcy}
+\column{0.85\textwidth}
+\begin{block}{Henry Darcy (1803-1858)}
+\begin{description}[1803]
+\item[1846] granted lifelong free water
+\item[1856] \textit{Les fontaines publiques de la ville de Dijon}
+\end{description}
+\end{block}
+\end{columns}
+
+\begin{columns}
+\column{0.15\textwidth}
+\includegraphics[width=\textwidth]{Maurice_Anthony_Biot}
+\column{0.58\textwidth}
+\begin{block}{Maurice Anthony Biot (1905-1985)}
+\begin{description}[1803]
+%\item[1932] Ph.D. under von Kármán (Cal Tech)
+\item[1932-1942] earthquake engineering
+\item[1935-1962] theory of poroelasticity
+\end{description}
+\end{block}
+\column{0.27\textwidth}
+\includegraphics[width=\textwidth]{Biot_1964_Buckling_Porous}
+\end{columns}
+
+\medskip
+\begin{footnotesize}
+\textit{Biot, J. Appl. Mech. 1964}: Buckling of a porous slab embedded in an impervious infinite viscous or viscoelastic medium
+\end{footnotesize}
+\begin{itemize}
+\item $B$ transiently higher due to pore pressure
+\item $\sigma$ comes only from the surrounding medium $\rightarrow 0$
+\item effect of flow through the porous slab not considered
+\end{itemize}
+\end{frame}
+
+\begin{frame}{No initial contact with a substrate}
+\structure{Poiseuille vs Darcy on a flying carpet}
+\begin{tikzpicture}
+\begin{axis}[
+	name=a,
+	width=\textwidth, height=0.25\textwidth, scale only axis,
+	domain=0:360, no markers, ymin=-4, ymax=4,xmin=0,xmax=360,
+	axis lines=none, xtick=\empty,
+	]
+	\fill[gray!20] (axis cs:85,4) rectangle (axis cs:95,-4) (axis cs:265,4) rectangle (axis cs:275,-4);
+	\addplot+[Accent1]{sin(x)+0.5};
+	\addplot+[Accent1]{sin(x)-0.5};
+	\addplot+[dashed, black]{0.5};
+	\addplot+[dashed, black]{-0.5};
+	\draw[<->, help lines] (axis cs:180,0.5) -- (axis cs:180,4) node[midway, left] {$H$}; 
+	\draw[<->, help lines] (axis cs:30,-0.5) -- (axis cs:30,-4) node[midway, left] {$H$};
+	\node[below] at (axis cs:90,-1.5) (pb1) {$P_1$};
+	\node[above] at (axis cs:90,1.5) (ph2) {$P_2$};
+	\node[above] at (axis cs:270,1.5) (ph1) {$P_1$};
+	\node[below] at (axis cs:270,-1.5) (pb2) {$P_2$};
+	\draw[line width=0.1em, ->] (ph2) -- (axis cs:90,0.5) node[midway, left] {Darcy} node[midway, right] {$v$};
+	\draw[line width=0.1em, ->] (pb2) -- (pb1) node[midway, above] {Poiseuille} node[midway, below] {$u \sim \frac{\lambda}{H} v$};
+\end{axis}
+\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\textwidth,-1em) (a.north west) rectangle +(\textwidth,1em);
+\end{tikzpicture}
+
+\begin{columns}
+\column{0.83\textwidth}
+\begin{itemize}
+\item The same $\Delta P$ can be relaxed by a Poiseuille flow
+\[\Delta P \sim 12\eta\frac{\lambda}{H^2} u \sim 12\eta\frac{\lambda^2}{H^3} v\]
+\item For the same wavelength
+\hfill$\displaystyle \frac{v_\text{Darcy}}{v_\text{Poiseuille}} \sim \frac{\ell_p^2\lambda^2}{hH^3} \approx 30$
+\item Flow through the pores dominates
+\end{itemize}
+\column{0.17\textwidth}
+\includegraphics[width=\textwidth]{Jean-Leonard-Marie_Poiseuille.jpg}\\
+\hfill\structure{1797-1869}
+\end{columns}
+\end{frame}
+
+\againframe<3>{carpet}
 
 \end{document}
 
