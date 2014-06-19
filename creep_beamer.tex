@@ -75,7 +75,7 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 \node[text width=4\baselineskip] at (-3\baselineskip,-2.5\baselineskip) {shear rate response};
 \node at (5\baselineskip,-2.5\baselineskip) {strain response};
 \end{tikzpicture}%
-}{/home/mathieu/Dropbox/Yaourt/films/Yaourt141_enhanced.avi}
+}{Yaourt141_enhanced.avi}
 \end{frame}
 \tikzset{external/force remake=false}
 
@@ -184,6 +184,7 @@ Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
 \column{0.55\textwidth}
 \begin{tikzpicture}
 \begin{loglogaxis}[
+	name=g,
 	width=\textwidth,
 	height=0.8\textwidth,
 	xmin=2e-2, xmax=4e5, xlabel={time (\si{\second})},
@@ -191,13 +192,20 @@ Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
 	cycle list name=earthy,
 	no marks,
 	]
-	\addplot table[y index=2]{Y27_200Pa_gdot_decimated.txt} node[left] (s200){200};
-	\addplot table[y index=2]{Y38_300Pa_gdot_decimated.txt} node (s300){300};
-	\addplot table[y index=2]{Y25_400Pa_gdot_decimated.txt}  node (s400){400};
-	\addplot table[y index=2]{Y32_550Pa_gdot_decimated.txt}  node (s550){550};
-	\addplot table[y index=2]{Y39_1000Pa_gdot_decimated.txt} node (s1000){1000};
+	\addplot table[y index=2]{Y27_200Pa_gdot_decimated.txt} node (s200){};
+	\addplot table[y index=2]{Y38_300Pa_gdot_decimated.txt} node (s300){};
+	\addplot table[y index=2]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
+	\addplot table[y index=2]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
+	\addplot table[y index=2]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
 	\addplot[Accent2, ultra thick, domain={0.1:1e3}] {0.01*x^(-0.85)} node[pos=0.75, below left] {$\dot{\gamma}(t)\sim t^{-0.85}$};
 \end{loglogaxis}
+\begin{scope}[anchor=base east, every node/.style={ rotate=90}]
+	\node[red!40!black] at (s200 |- g.outer north) {\SI{200}{\pascal}};
+	\node[red!60!black] at (s300 |- g.outer north) {300};
+	\node[red!80!black] at (s400 |- g.outer north) {400};
+	\node[red] at (s550 |- g.outer north) {550};
+	\node[red!80!yellow] at (s1000 |- g.outer north) {1000};
+\end{scope}
 \end{tikzpicture}
 
 \begin{block}{Primary creep $\Rightarrow$ ``Andrade'' creep}
