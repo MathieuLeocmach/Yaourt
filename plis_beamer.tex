@@ -190,7 +190,7 @@ Caseins regain some solubility at low pH.
 	\node[minimum width = 0.156\textwidth, minimum height=0.156\textwidth, anchor=north west, draw=Accent1] at ($(c.north west) + (0.125\textwidth,0)$) (dz) {};
 	\draw[ultra thick] (c.south east) ++(0,-0.25em) -- ++(-0.132\textwidth,0) node[pos=0.5, below=0.25em, font=\small] {\SI{1}{\milli\metre}};
 \end{tikzpicture}
-}{volume_plis.avi}
+}{volume_plis_comp.avi}
 \end{frame}
 
 \begin{frame}{Dynamics (confocal microscope)}
@@ -238,7 +238,7 @@ Caseins regain some solubility at low pH.
 	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t116.png}\\
 	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t117.png}\\
 
-	\includegraphics[width=\textwidth]{volume_cloque_t116}\\
+	\movie[externalviewer]{\includegraphics[width=\textwidth]{volume_cloque_t116}{volume_cloques_comp.avi}\\
 	\begin{tikzpicture}
 	\draw[ultra thick] (0,) -- +(0.786\textwidth,0) node[midway, below] {\SI{1}{\milli\metre}};
 	\end{tikzpicture}
@@ -489,27 +489,31 @@ glycerol 60\%, $\eta=\SI{10}{\milli\pascal\second}$\\
 \includegraphics[width=0.45\textwidth]{XYslice_gly60.jpg}
 \end{tabu}
 \tikz\draw[line width=0.2em] (0,0) -- ++(0.045\textwidth,0) node[midway, below] {\SI{10}{\micro\metre}};
+
+\structure{To do:} Measure everything to plot $\lambda_\text{theory}$ vs $\lambda_\text{experiment}$
 \end{frame}
 
-\begin{frame}{Conclusion}
-Spontaneous wrinkling of over-acidified casein gels in non-adhesive confinement
-	
-	\structure{Original patterns}
-	\begin{itemize}
-		\item nested (optical elements ?)
-		\item kinetic wavelength selection
-	\end{itemize}
-	\structure{A new wrinkling mechanism}
-	\begin{itemize}
-		\item porous flow resist bending
-		\item Darcy can beat Poiseuille
-		\item may extend to other porous sheets (wet paper, biological membranes\ldots)
-	\end{itemize}
-	\structure{Viscosity influences}
-	\begin{itemize}
-		\item porous dissipation
-		\item gel formation (theory?)
-		\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.1\normalbaselineskip}\right\}$ thus wrinkling}
-	\end{itemize}
-	\structure{To do:} Measure everything to plot $\lambda_\text{theory}$ vs $\lambda_\text{experiment}$
+\begin{frame}{Solvent is important in biogel mechanics}
+
+\structure{Gel formation}
+\begin{itemize}
+	\item non adhesive boundary conditions $\Rightarrow$ synæresis
+	\item gel properties depend on solvent viscosity
+\end{itemize}
+
+\bigskip
+\structure{Non monotonic $p$H dependence}
+\begin{itemize}
+	\item spontaneous re-swelling $\Rightarrow$ biaxial compression
+	\item lateral confinement $\Rightarrow$ cascade buckling, nested structures.
+\end{itemize}
+
+\bigskip
+\structure{Gel poroelasticity}
+\begin{itemize}
+	\item porous flow resist bending
+	\item Darcy can beat Poiseuille
+\end{itemize}
+
+
 \end{frame}
