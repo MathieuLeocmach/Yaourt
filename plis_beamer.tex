@@ -10,7 +10,7 @@
 \includegraphics[height=0.3\textheight]{Seb}\\
 Mathieu Nespoulous & Thomas Gibaud & Sebastien Manneville\\
 Associate Professor & CNRS researcher & Professor\\
-Aix-Marseille Université & E.N.S. Lyon & E.N.S. Lyon\\
+Aix-Marseille Universit\'{e} & E.N.S. Lyon & E.N.S. Lyon\\
 \end{tabu}
 
 \bigskip
@@ -19,6 +19,7 @@ Aix-Marseille Université & E.N.S. Lyon & E.N.S. Lyon\\
 
 %\tikzset{external/force remake}
 \begin{frame}{Over-acidification: Faster but weaker}
+\tikzsetnextfilename{gelation_GDL}
 \begin{tikzpicture}
 \begin{axis}[
 	height=0.8\textheight,
@@ -57,6 +58,7 @@ Caseins regain some solubility at low pH.
 	
 	\bigskip
 	\structure{Top view of the final pattern}\\
+	\tikzsetnextfilename{patterns_zooms}
 	\begin{tikzpicture}[inner sep=0, very thick]
 	\setlength{\mylength}{\columnwidth}
 	\node[anchor=north west] (a) {\includegraphics[width=0.28\mylength]{cas3p2_fluo0p8_GDL4_50um_coating_2_zoom2_crop}};
@@ -76,7 +78,7 @@ Caseins regain some solubility at low pH.
 \end{frame}
 
 \begin{frame}{Dynamics (transmission macroscope)}
-\movie[externalviewer]{\begin{tikzpicture}
+\movie[externalviewer]{\tikzsetnextfilename{dynamics_still}\begin{tikzpicture}
 \node[inner sep=0] (a) {\includegraphics[width=\textwidth]{prise_0799_resized.jpg}};
 \draw[line width=0.2em] ++(a.north west) -- ++(0.177\textwidth,0) node[pos=0, above right, inner xsep=0] {\SI{1}{\milli\metre}};
 \end{tikzpicture}
@@ -84,6 +86,7 @@ Caseins regain some solubility at low pH.
 \end{frame}
 
 \begin{frame}{Dynamics (transmission macroscope)}
+\tikzsetnextfilename{snapshots_macroscope}
 \begin{tikzpicture}
 	\matrix[matrix of nodes, inner sep=0, column sep=0.015\textwidth, row sep=0.5em, ampersand replacement=\&] (m){
 	33 min \& 38 min \& 43 min \\
@@ -113,6 +116,7 @@ Caseins regain some solubility at low pH.
 \item[$\Rightarrow$] 3D concentration field
 \end{itemize}
 
+\tikzsetnextfilename{scalebar_fluo}
 \begin{tikzpicture}
 \draw[ultra thick] (0,) -- +(0.786\textwidth,0) node[midway, above] {\SI{1}{\milli\metre}};
 \end{tikzpicture}
@@ -135,6 +139,7 @@ Caseins regain some solubility at low pH.
 \column{0.1\textwidth}
 
 \column{0.5\textwidth}
+\tikzsetnextfilename{volume_area}
 \begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
@@ -181,6 +186,7 @@ Caseins regain some solubility at low pH.
 \end{frame}
 
 \begin{frame}{Dynamics (confocal microscope)}
+\tikzsetnextfilename{dynamics_confocal_still}
 \movie[externalviewer]{\begin{tikzpicture}
 	\node[inner sep=0] (a) {\includegraphics[width=\textwidth]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}};
 	\draw[line width=0.2em] ++(a.south west) -- ++(0.75\textwidth,0) node[pos=0, below right, inner xsep=0] {\SI{1}{\milli\metre}};
@@ -194,6 +200,7 @@ Caseins regain some solubility at low pH.
 \end{frame}
 
 \begin{frame}{Dynamics (confocal microscope)}
+\tikzsetnextfilename{snapshots_confocal}
 \begin{tikzpicture}
 	\matrix[matrix of nodes, inner sep=0, column sep=0.015\textwidth, row sep=0.5em, ampersand replacement=\&] (m){
 	33 min \& 38 min \& 43 min \\
@@ -238,10 +245,11 @@ Caseins regain some solubility at low pH.
 	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t116.png}\\
 	\includegraphics[width=\columnwidth, height=0.061\columnwidth]{coupe_cloque_t117.png}\\
 
-	\movie[externalviewer]{\includegraphics[width=\textwidth]{volume_cloque_t116}{volume_cloques_comp.avi}\\
+	\movie[externalviewer]{\includegraphics[width=\textwidth]{volume_cloque_t116}}{volume_cloques_comp.avi}\\
+	\only<1>{\tikzsetnextfilename{cloques_still}
 	\begin{tikzpicture}
 	\draw[ultra thick] (0,) -- +(0.786\textwidth,0) node[midway, below] {\SI{1}{\milli\metre}};
-	\end{tikzpicture}
+	\end{tikzpicture}}
 	
 	\structure{In our case}
 	\begin{itemize}
@@ -263,6 +271,7 @@ Caseins regain some solubility at low pH.
 \[ \lambda^* \sim \left(\frac{B \ell_p^2}{\eta v h}\right)^\frac{1}{3} \simeq \SI{2}{\milli\metre}\]
 \end{itemize}
 }{
+\tikzsetnextfilename{alts_bottom_cloque}
 \begin{tikzpicture}
 \begin{axis}[
 	width=\textwidth,
@@ -299,7 +308,7 @@ Caseins regain some solubility at low pH.
 	\addplot+[Accent1]{cos(x)+1};
 	\addplot+[Accent1]{cos(x)+1.5};
 	\draw[->, Accent2, ultra thick] (axis cs:90,1.25) -- (axis cs:90,2.25) node[pos=1, right] {$v$};
-	\draw[Main, ultra thick, {Circle}->] (axis cs:-90,1.5) -- (axis cs:-90,0.25) node[right] {$\sigma$};
+	\draw[Main, ultra thick,->] (axis cs:-90,1.5) -- (axis cs:-90,0.25) node[right] {$\sigma$};
 	%\node[above] at (axis cs:-90,1.5) {$P_2$};
 	%\node[below right] at (axis cs:-90,1.25) {$P_1$};
 	\draw[<->, ultra thick] (axis cs:0,0) -- (axis cs:0,2) node[midway, right] {$A$};
@@ -361,6 +370,7 @@ $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
 
 \begin{frame}{No initial contact with a substrate}
 \structure{Poiseuille vs Darcy on a flying carpet}
+\tikzsetnextfilename{flying_carpet}%
 \begin{tikzpicture}
 \begin{axis}[
 	name=a,
@@ -404,6 +414,7 @@ $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
 
 %\tikzset{external/force remake}
 \begin{frame}{Cell thickness}
+\tikzsetnextfilename{thickness}
 \begin{tikzpicture}[mark size={0.3em}]
 	\matrix[matrix of nodes, inner sep=0, column sep=0.01\columnwidth, row sep=0.01\columnwidth, ampersand replacement=\&] (m) {
 		\includegraphics[width=0.245\columnwidth]{pattern_50um.jpg}\&
@@ -446,11 +457,12 @@ $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
 \end{frame}
 %\tikzset{external/force remake=false}
 
-\tikzset{external/force remake}
+%\tikzset{external/force remake}
 \begin{frame}{Surprising viscosity influence}
 \begin{columns}
 \column{0.5\textwidth}
 \[ \lambda^* \sim \left(\frac{B \ell_p^2}{\eta v h}\right)^\frac{1}{3}\]
+\tikzsetnextfilename{viscosity_dependence}
 \begin{tikzpicture}
 	\begin{loglogaxis}[%
 		width=\textwidth,

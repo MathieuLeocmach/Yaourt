@@ -66,6 +66,25 @@
 \pgfplotsset{compat=1.9}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{external}
+\makeatletter
+\newcommand*{\overlaynumber}{\number\beamer@slideinframe}
+\tikzset{
+  beamer externalizing/.style={%
+    execute at end picture={%
+      \tikzifexternalizing{%
+        \ifbeamer@anotherslide
+        \pgfexternalstorecommand{\string\global\string\beamer@anotherslidetrue}%
+        \fi
+      }{}%
+    }%
+  },
+  external/optimize=false
+}
+\let\orig@tikzsetnextfilename=\tikzsetnextfilename
+\renewcommand\tikzsetnextfilename[1]{\orig@tikzsetnextfilename{#1-\overlaynumber}}
+\makeatother
+
+\tikzset{every picture/.style={beamer externalizing}}
 \tikzexternalize
 \tikzsetexternalprefix{fig_presentation/}
 %\tikzset{external/optimize=false}
@@ -206,6 +225,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 
 \begin{columns}
 \column{0.5\textwidth}
+\tikzsetnextfilename{gelation}
 \begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
@@ -259,6 +279,7 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \begin{frame}{Linear rheology: Power law (visco)elastic solid}
 \[\text{stress}\rightarrow \sigma = G \gamma\leftarrow\text{strain}\]
 \[\textcolor{Accent1}{\text{storage}\rightarrow} G^\prime + \imath G^{\prime\prime} \textcolor{Accent2}{\leftarrow\text{loss}}\]
+\tikzsetnextfilename{power_law_rheology}
 \begin{tikzpicture}
 \begin{loglogaxis}[
 	height=0.8\textheight,
@@ -268,37 +289,10 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 	]
 	\addplot[Accent1, only marks, mark=*] table{freqsweep_Y265_cas4_GDL1.txt};
 	\addplot[Accent2, only marks, mark=o] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt};
-	\addplot[Main, no marks]{300*x^0.15}  node[midway, below right] {$G^\prime\sim G^{\prime\prime}\sim f^{0.15}$};
-%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
-%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt} node[anchor=base east] {1\%};
-%	\addplot{590*x^0.14};
-%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
-%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y277_cas4_GDL1.25.txt} node[anchor=base east] {1.25\%};
-%	\addplot{350*x^0.12};
-%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
-%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y275_cas4_GDL1.5.txt} node[anchor=base east] {1.5\%};
-%	\addplot{246*x^0.1};
-%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
-%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y268_cas4_GDL2.txt} node[anchor=base east] {2\%};
-%	\addplot{163*x^0.067};
-%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
-%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y270_cas4_GDL3.txt} node[anchor=base east] {3\%};
-%	\addplot{109*x^0.044};
-%	\addplot+[only marks, mark=*, forget plot] table{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
-%	\addplot+[only marks, mark=o, forget plot] table[y=LossModulus]{freqsweep_Y271_cas4_GDL4.txt} node[anchor=base east] {4\%};
-%	\addplot{76*x^0.035};
-	
+	\addplot[Main, no marks]{300*x^0.15}  node[midway, below right] {$G^\prime\sim G^{\prime\prime}\sim f^{0.15}$};	
 \end{loglogaxis}
 \end{tikzpicture}
 \end{frame}
-
-
-
-
-
-\section*{Creep and yielding}
-
-\include{creep_beamer}
 
 
 \section*{Wrinkling}
