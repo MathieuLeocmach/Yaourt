@@ -303,6 +303,30 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 
 \section*{Wrinkling}
 
+%\tikzset{external/force remake}
+\begin{frame}{Over-acidification: Faster but weaker}
+\tikzsetnextfilename{gelation_GDL}
+\begin{tikzpicture}
+\begin{axis}[
+	height=0.8\textheight,
+	width=\textwidth,
+	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
+	cycle list name=earthy,
+	no marks,
+	xmin=0, xmax=20,ymin=0,
+	]
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y265.prise} node[anchor=base west] {1\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.25_Y277.prise} node[anchor=base west] {1.25\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.5_Y275.prise} node[anchor=base west] {1.5\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL2_Y268.prise} node[anchor=base west] {2\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL3_Y270.prise} node[anchor=base west] {3\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise} node[anchor=base west, yshift=-0.2em] {4\%};
+\end{axis}
+\end{tikzpicture}
+
+Caseins regain some solubility at low pH.
+\end{frame}
+
 \include{plis_beamer}
 
 \end{document}
