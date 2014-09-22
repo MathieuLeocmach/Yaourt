@@ -239,12 +239,12 @@ Aix-Marseille Universit\'{e} & E.N.S. Lyon & E.N.S. Lyon\\
 \item solvent must flow through gel
 \begin{description}[$\ell_p$]
 \item[$v$] gel velocity = -volumic flux $\simeq \SI{0.2}{\micro\metre\per\second}$
-\item[$\ell_p$] pore size $ \approx \SI{4}{\micro\metre}$
+\item[$\alpha$] permeability $ \approx \SI{6e-14}{\square\metre}$
 \end{description}
 \item $\sigma$ is a Darcy pressure
-\[\sigma = \Delta P \sim \eta h v/\ell_p^2\]
+\[\sigma = \Delta P \sim \eta h v/\alpha\]
 \item poroelastic length
-\[ \lambda^* \sim \left(\frac{B \ell_p^2}{\eta v h}\right)^\frac{1}{3} \simeq \SI{2}{\milli\metre}\]
+\[ \lambda^* \sim \left(\frac{B \alpha}{\eta v h}\right)^\frac{1}{3} \simeq \SI{0.5}{\milli\metre}\]
 \end{itemize}
 }{
 \tikzsetnextfilename{alts_bottom_cloque}
@@ -264,8 +264,9 @@ Aix-Marseille Universit\'{e} & E.N.S. Lyon & E.N.S. Lyon\\
 \end{tikzpicture}
 \begin{itemize}
 \item $\lambda$ frozen at ceiling touch 
-\item $A=H\equiv e-h$
-\item $\lambda \sim \epsilon^{-3/7} H \sim e$
+\item Amplitude $A=e-h$
+\item $\epsilon = \left(\frac{e-h}{\lambda^*}\right)^\frac{7}{4}$
+\item $\lambda \sim \left(e-h\right)^\frac{1}{4} \left(\lambda^*\right)^\frac{3}{4}$
 	%\[ \epsilon \sim \left(\frac{\lambda}{e}\frac{e}{H}\right)^{-7/3} \simeq 0.6\% \]
 \end{itemize}
 }
@@ -372,102 +373,56 @@ $\lambda \sim \epsilon^{1/7} \lambda^*$ and $A \sim \epsilon^{4/7} \lambda^*$
 \end{tikzpicture}
 
 \begin{columns}
-\column{0.83\textwidth}
-\begin{itemize}
-\item The same $\Delta P$ can be relaxed by a Poiseuille flow
-\[\Delta P \sim 12\eta\frac{\lambda}{H^2} u \sim 12\eta\frac{\lambda^2}{H^3} v\]
-\item For the same wavelength
-\hfill$\displaystyle \frac{v_\text{Darcy}}{v_\text{Poiseuille}} \sim \frac{\ell_p^2\lambda^2}{hH^3} \approx 30$
-\item Flow through the pores dominates
-\end{itemize}
 \column{0.17\textwidth}
 \includegraphics[width=\textwidth]{Jean-Leonard-Marie_Poiseuille.jpg}\\
 \hfill\structure{1797-1869}
+
+\column{0.80\textwidth}
+The same $\Delta P$ can be relaxed by a Poiseuille flow
+\begin{align*}
+\Delta P &\sim 12\eta\frac{\lambda}{H^2} u \sim 12\eta\frac{\lambda^2}{H^3} v\\
+\lambda^* &= \left(\frac{B H^2}{12\eta\lambda}\right)^{1/3}
+\end{align*}
+\textit{\footnotesize Huang \& Suo, J. Appl. Phys. (2002)}
+%\item For the same wavelength
+%\hfill$\displaystyle \frac{v_\text{Darcy}}{v_\text{Poiseuille}} \sim \frac{\ell_p^2\lambda^2}{hH^3} \approx 30$
+%\item Flow through the pores dominates
+
 \end{columns}
 \end{frame}
 
 \againframe<3>{carpet}
 
-%\tikzset{external/force remake}
-\begin{frame}{Cell thickness}
-\tikzsetnextfilename{thickness}
-\begin{tikzpicture}[mark size={0.3em}]
-	\matrix[matrix of nodes, inner sep=0, column sep=0.01\columnwidth, row sep=0.01\columnwidth, ampersand replacement=\&] (m) {
-		\includegraphics[width=0.245\columnwidth]{pattern_50um.jpg}\&
-		\includegraphics[width=0.245\columnwidth]{pattern_100um.jpg}\&
-		\includegraphics[width=0.245\columnwidth]{pattern_250um.jpg}\&
-		\includegraphics[width=0.245\columnwidth]{pattern_450um.jpg}\\
-	};
-	\node[inner sep=0, below left=0.01\columnwidth and 0 of m.south east] (x800) {\includegraphics[width=0.49\columnwidth]{pattern_800um_x1.jpg}};
-	\draw[ultra thick, Accent2, <->] (x800.south west) ++(0.196\columnwidth, 0.05\columnwidth) -- ++(0.145\columnwidth,0) node[midway,above]{$\lambda$};
-	\draw[line width=0.2em,Main](x800.north east) -- ++(-0.217\columnwidth,0) node[midway,below] {\SI{5}{\milli\metre}};
-	
-	\begin{axis}[%
-		name=g,
-		anchor=left of north west,
-		at={($(m.south west)+(0,-0.01\columnwidth)$)},
-		scale only axis,
-		width=0.5\textwidth-3em,
-		height=0.25\columnwidth-2em,
-		xmin=0,xmax=1,xlabel={$e$ (\si{\milli\metre})},
-		xtick={0,0.4,...,0.9},
-		ymin=0,ylabel={$\lambda$ (\si{\milli\metre})},
-		]
-		\addplot[no marks, domain=0:3] {4.23*x};
-		\begin{scope}[inner sep=0, minimum size=0.8em]
-			\node[circle, fill=Accent1] at (axis cs:0.05,0.261){};
-			\node[circle, fill=white, draw=Accent1] at (axis cs:0.1,0.458) {};
-			\node[regular polygon, regular polygon sides=3, fill=Accent1] at (axis cs:0.250,0.916){};
-			\node[regular polygon, regular polygon sides=3, fill=white, draw=Accent1] at (axis cs:0.450,2.075){};
-			\node[fill=Accent1] at (axis cs:0.800,3.333){};
-		\end{scope}
-	\end{axis}
-	\begin{scope}[inner sep=0, minimum size=0.8em, transform canvas={xshift=0.5em, yshift=-0.5em}]
-		\node[circle, fill=Accent1] at (m-1-1.north west) {};
-		\node[circle, fill=white, draw=Accent1] at (m-1-2.north west){};
-		\node[regular polygon, regular polygon sides=3, fill=Accent1] at (m-1-3.north west){};
-		\node[regular polygon, regular polygon sides=3, fill=white, draw=Accent1] at (m-1-4.north west) {};
-		\node[fill=Accent1] at (x800.north west) {};
-	\end{scope}
-\end{tikzpicture}
-\end{frame}
-%\tikzset{external/force remake=false}
-
-%\tikzset{external/force remake}
-\begin{frame}{Surprising viscosity influence}
+\begin{frame}{Poiseuille vs Darcy}
 \begin{columns}
 \column{0.5\textwidth}
-\[ \lambda^* \sim \left(\frac{B \ell_p^2}{\eta v h}\right)^\frac{1}{3}\]
-\tikzsetnextfilename{viscosity_dependence}
-\begin{tikzpicture}
-	\begin{loglogaxis}[%
-		width=\textwidth,
-		height=0.8\textwidth,
-		xmin=0.6,xmax=11,xlabel={viscosity (\si{\milli\pascal\second})},
-		xtick={0.7, 1, 2, 5, 10}, xticklabels={$0.7$, $1$, $2$, $5$, $10$},
-		ytick={1,2,3,4}, yticklabels={$1$,$2$,$3$,$4$},
-		ymin=1, ymax=5, ylabel={$\lambda$ (\si{\milli\metre})},
-		mark size={0.3em},
-		legend style={legend pos=south east},
-		]
-		\addplot+[no marks, domain=0.7:10, black, forget plot] {1.7*x^0.4} node[midway, below] {$\eta^{0.4}$};
-		\addplot+[only marks,Accent1, mark=o] table{eta_lambda_eau_pure.txt};
-		\addplot+[only marks,Accent2, mark=square] table{eta_lambda_eau_glycerol.txt};
-		\legend{water, water-glycerol};
-	\end{loglogaxis}
-\end{tikzpicture}
-
+\begin{block}{Observable wavelengths}
+Same magnitude (typical sample)
+\begin{align*}
+\lambda_D &\sim \Upsilon^\frac{1}{4} h^\frac{1}{2} \alpha^\frac{1}{4}\simeq \SI{0.23}{\milli\metre}\\
+\lambda_P &\sim \Upsilon^\frac{1}{6} h^\frac{1}{2} H^\frac{1}{2}\simeq \SI{0.25}{\milli\metre}
+\end{align*}
+\end{block}
+with $\Upsilon = \frac{E(e-h)}{\eta v}\simeq 10^{6-8}$
 \column{0.5\textwidth}
+Limiting case:
 \begin{itemize}
-\item $\lambda$ increases with $\eta$
-\item Can be explained only by a hidden dependence of the viscosity on $B$, $\ell_p$, \ldots 
-\item[$\Rightarrow$] Viscosity influences gel formation.
+\item Same growth speed
+\item Same wavelength
+\item[$\Rightarrow$] $H^* = \Upsilon^\frac{1}{6} \alpha^\frac{1}{2}\simeq \SI{6}{\micro\metre}$
 \end{itemize}
-%If $\ell_p \sim \eta^{-\alpha}$ and $B\sim \mathrm{k_B}T \left(\frac{h}{\ell}\right)^3$, then
-%\[ \lambda^* \sim \eta^\frac{\alpha-1}{3} \]
-%\[\alpha\simeq 2.2\]
+Darcy can be faster than Poiseuille when $H<H^*$.
 \end{columns}
+\begin{block}{What can we change experimentally?}
+$H$ and $v$ are measured a posteriori but cannot be controlled.
+\begin{description}[leftmargin=8em]
+\item[Geometry] $e$, $h$
+\item[Composition] $E$, $\alpha$
+\item[Solvent] $\eta$ \alert{but also $E$ and $\alpha$}
+\end{description}
+\end{block}
 \end{frame}
+
 
 \begin{frame}{Viscosity of the solvent during gel formation}
 \begin{tabu}{X[c]X[c]}
@@ -478,7 +433,12 @@ glycerol 60\%, $\eta=\SI{10}{\milli\pascal\second}$\\
 \end{tabu}
 \tikz\draw[line width=0.2em] (0,0) -- ++(0.045\textwidth,0) node[midway, below] {\SI{10}{\micro\metre}};
 
-\structure{To do:} Measure everything to plot $\lambda_\text{theory}$ vs $\lambda_\text{experiment}$
+May be explained by ``viscoelastic phase separation'' arguments
+\end{frame}
+
+\begin{frame}{Darcy never beats Poiseuille}
+
+
 \end{frame}
 
 \begin{frame}{Solvent is important in biogel mechanics}
