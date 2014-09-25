@@ -437,7 +437,14 @@ May be explained by ``viscoelastic phase separation'' arguments
 \end{frame}
 
 \begin{frame}{Darcy never beats Poiseuille}
+\tikzsetnextfilename{Darcy_vs_Poiseuille}%
+\input{Darcy_vs_Poiseuille.tikz}
 
+\begin{center}
+Because desynchronisation
+
+\movie[externalviewer]{\includegraphics[width=0.5\textwidth]{volume_cloque_t116}}{volume_cloques_comp.avi}
+\end{center}
 
 \end{frame}
 
@@ -460,7 +467,8 @@ May be explained by ``viscoelastic phase separation'' arguments
 \structure{Gel poroelasticity}
 \begin{itemize}
 	\item porous flow resist bending
-	\item Darcy can beat Poiseuille
+	\item Darcy may beat Poiseuille
+	\item Asynchronous Poiseuille is preferred over Darcy
 \end{itemize}
 
 

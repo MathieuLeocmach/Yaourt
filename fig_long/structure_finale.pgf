@@ -1,0 +1,12 @@
+\begin{figure}
+\begin{tikzpicture}[every node/.style={inner sep=0}]
+\matrix[matrix of nodes, row sep=3pt, column sep=0] (m){
+\includegraphics[width=\columnwidth]{ech17_x63_time699_crop.jpg}\\
+\includegraphics[width=\columnwidth]{ESEM_cas4_GDL1-17_crop.jpg}\\
+\includegraphics[width=\columnwidth]{SEM_cas4_gdl1_22_crop.jpg}\\
+};
+\foreach \i in {1,2,3}
+\draw[ultra thick, white] (m-\i-1.south east) ++(-1em,1em) -- +(-0.25\columnwidth,0);
+\end{tikzpicture}
+\caption{Final structure of caseinate 4\%, GDL 4\% gels, observed by fluorescent confocal micoscopy, environmental SEM and cryo SEM.}
+\end{figure}

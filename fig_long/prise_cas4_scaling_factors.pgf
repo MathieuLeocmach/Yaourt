@@ -1,0 +1,21 @@
+\begin{figure}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+			group name=g, group size=1 by 2,
+		},
+	width=\columnwidth,
+	height=0.5\columnwidth,
+	xlabel={GDL (\%)},
+	xmin=0, xmax=4.5,
+	]
+\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}, ymin=0,]
+	\addplot[red!40!black,, mark=*] table{scaling_factors_prise.txt} node[above] {$G^\prime_m$};
+	\addplot[red!80!yellow,, mark=o] table[y index=2]{scaling_factors_prise.txt}  node[above] {$G^\prime_\infty$};
+\nextgroupplot[ylabel={$t_m-t_i$ (\si{\second})},ymode=log,ymin=5e2,ymax=5e4]
+	\addplot[red, mark=star] table[y expr=\thisrowno{3}-\thisrowno{4}]{scaling_factors_prise.txt};
+	\addplot[red!40!black, mark=*] table[y index=3]{scaling_factors_prise.txt } node[right] {$t_m$};
+	\addplot[red!40!yellow, mark=o] table[y index=4]{scaling_factors_prise.txt} node[right] {$t_i$};
+\end{groupplot}
+\end{tikzpicture}
+\end{figure}

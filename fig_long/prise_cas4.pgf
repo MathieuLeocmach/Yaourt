@@ -1,0 +1,67 @@
+\begin{figure}
+\begin{tikzpicture}
+\begin{axis}[
+	name=unscaled,
+	height=0.5\columnwidth,
+	width=\columnwidth-1em,
+	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
+	cycle list name=earthy,
+	no marks,
+	xmin=0, xmax=20,ymin=0,
+	]
+	\begin{scope}[every node/.style={anchor=base west, inner xsep=0,font=\footnotesize}]
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y265.prise} node {1\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.25_Y277.prise} node {1.25\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.5_Y275.prise} node {1.5\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL2_Y268.prise} node[yshift=0.1em] {2\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL3_Y270.prise} node[yshift=-0.1em] {3\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise} node[yshift=-0.6em] {4\%};
+	\end{scope}
+\end{axis}
+\begin{loglogaxis}[
+	name=scaled,
+	anchor=north west, 
+	at=(unscaled.below south west), 
+	width=0.5\columnwidth-0.5em,
+	height=0.375\columnwidth,
+	cycle list name=earthy,
+	no marks,
+	xmin=1e-3, xmax=1e2, ymin=1e-3, ymax=2,
+	xlabel=$(t-t_i)/(t_m-t_i)$, 
+	ylabel=$G^\prime/G^\prime_m$ ,
+]
+	\addplot table[x expr={(\thisrowno{0}-7758)/(28840-7758)}, y expr={\thisrowno{1}/883}]{cas4_GDL1_Y265.prise};
+	\addplot table[x expr={(\thisrowno{0}-5179)/(14240-5179)}, y expr={\thisrowno{1}/788}]{cas4_GDL1.25_Y277.prise};
+	\addplot table[x expr={(\thisrowno{0}-3839)/(9640-3839)}, y expr={\thisrowno{1}/726}]{cas4_GDL1.5_Y275.prise};
+	\addplot table[x expr={(\thisrowno{0}-2519)/(5720-2519)}, y expr={\thisrowno{1}/665}]{cas4_GDL2_Y268.prise};
+	\addplot table[x expr={(\thisrowno{0}-1369)/(3120-1369)}, y expr={\thisrowno{1}/589}]{cas4_GDL3_Y270.prise};
+	\addplot table[x expr={(\thisrowno{0}-758)/(1890-758)}, y expr={\thisrowno{1}/500}]{cas4_GDL4_Y271.prise};
+\end{loglogaxis}
+\begin{axis}[
+	anchor=north east, 
+	name=desc,
+	at={(unscaled.below south east)}, 
+	width=0.5\columnwidth-0.5em,
+	height=0.375\columnwidth,
+	cycle list name=earthy,
+	no marks,
+	xmode=log, xmin=1e-1, xmax=1e2,
+	ymin=0, ymax=1.1,
+	xlabel=$(t-t_m)/(t_m-t_i)$, 
+	ylabel=$\displaystyle\frac{G^\prime-G^\prime_\infty}{G^\prime_m-G^\prime_\infty}$ ,
+	%ylabel=$(G^\prime-G^\prime_\infty)/(G^\prime_m-G^\prime_\infty)$ ,
+	]
+	\addplot table[x expr={(\thisrowno{0}-28840)/(28840-7758)}, y expr={(\thisrowno{1}-616)/(883-616}]{cas4_GDL1_Y265.prise};
+	\addplot table[x expr={(\thisrowno{0}-14240)/(14240-5179)}, y expr={(\thisrowno{1}-325)/(788-325}]{cas4_GDL1.25_Y277.prise};
+	\addplot table[x expr={(\thisrowno{0}-9640)/(9640-3839)}, y expr={(\thisrowno{1}-200)/(726-200}]{cas4_GDL1.5_Y275.prise};
+	\addplot table[x expr={(\thisrowno{0}-5720)/(5720-2519)}, y expr={(\thisrowno{1}-145)/(665-145}]{cas4_GDL2_Y268.prise};
+	\addplot table[x expr={(\thisrowno{0}-3120)/(3120-1369)}, y expr={(\thisrowno{1}-103)/(589-103}]{cas4_GDL3_Y270.prise};
+	\addplot table[x expr={(\thisrowno{0}-1890)/(1890-758)}, y expr={(\thisrowno{1}-75)/(500-75}]{cas4_GDL4_Y271.prise};
+\end{axis}
+\begin{scope}[every node/.style={anchor=south east, text height=0.8em, text depth=0.2em, font=\Large\bfseries}]
+\node at (unscaled.south east) {a};
+\node at (scaled.south east) {b};
+\node at (desc.south east) {c};
+\end{scope}
+\end{tikzpicture}
+\end{figure}
