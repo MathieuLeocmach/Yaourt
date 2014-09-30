@@ -1,0 +1,89 @@
+\begin{figure}
+\begin{tikzpicture}
+\pgfplotstableread{freqsweep_Y265_cas4_GDL1.txt}\GDLa
+\pgfplotstableread{freqsweep_Y277_cas4_GDL1.25.txt}\GDLb
+\pgfplotstableread{freqsweep_Y275_cas4_GDL1.5.txt}\GDLc
+\pgfplotstableread{freqsweep_Y268_cas4_GDL2.txt}\GDLd
+\pgfplotstableread{freqsweep_Y270_cas4_GDL3.txt}\GDLe
+\pgfplotstableread{freqsweep_Y271_cas4_GDL4.txt}\GDLf
+
+\begin{groupplot}[
+	group style={
+			group name=g, group size=1 by 2,
+			vertical sep=0.5em,
+			xticklabels at=edge bottom,
+		},
+	scale only axis,
+	width=0.6\columnwidth-4em,
+	height=0.3\columnwidth-2em,
+	domain={6e-2:70},
+	cycle list name=earthy,
+	xmode=log, ymode=log,
+	xmin=5e-2, xmax=1e3,
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}
+	]
+\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}]
+\begin{scope}[
+	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
+	every node/.style={anchor=west, ,font=\scriptsize, pos=0}
+]
+	\addplot table{\GDLa} node{1\%};
+	\addplot table{\GDLb} node{1.25\%};
+	\addplot table{\GDLc} node{1.5\%};
+	\addplot table{\GDLd} node{2\%};
+	\addplot table{\GDLe} node{3\%};
+	\addplot table{\GDLf} node{4\%};
+\end{scope}
+\pgfplotsset{cycle list shift=-6}
+\addplot {590.277*x^0.139256};
+\addplot {349.762*x^0.121815};
+\addplot {246.573*x^0.102707};
+\addplot {162.851*x^0.0676911};
+\addplot {109.351*x^0.0437222};
+\addplot {76.7364*x^0.035779};
+
+
+
+\nextgroupplot[ylabel={$G^{\prime\prime}$ (\si{\pascal})}, xlabel={$f$ (\si{\hertz})},]
+\begin{scope}[
+	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
+	every node/.style={anchor=west,font=\scriptsize, pos=0}
+]
+	\addplot table[y index=2]{\GDLa} node{1\%};
+	\addplot table[y index=2]{\GDLb} node{1.25\%};
+	\addplot table[y index=2]{\GDLc} node{1.5\%};
+	\addplot table[y index=2]{\GDLd} node{2\%};
+	\addplot table[y index=2]{\GDLe} node{3\%};
+	\addplot table[y index=2]{\GDLf} node{4\%};
+\end{scope}
+\pgfplotsset{cycle list shift=-6}
+\addplot {140.022*x^0.139256};
+\addplot {72.4462*x^0.121815};
+\addplot {43.0813*x^0.102707};
+\addplot {18.9117*x^0.0676911};
+\addplot {8.39838*x^0.0437222};
+\addplot {4.99978*x^0.035779};
+\end{groupplot}
+\begin{axis}[
+	name=alpha,
+	anchor={left of south west},
+	at={(g c1r2.right of south east)},
+	scale only axis,
+	width=0.4\columnwidth-4em-5pt,
+	height=0.6\columnwidth-3.5em,
+	xlabel={GDL (\%)},
+	xmin=0, xmax=4.5,
+	ylabel=$\alpha$, ymin=0,ymax=0.15,
+	ytick={0,0.05,0.1}, yticklabels={0,0.05,0.10},
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}
+]
+\addplot[mark=*] file{sweep_exponents.txt};
+\end{axis}
+
+\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\node at (g c1r1.north west) {(a)};
+\node at (g c1r2.north west) {(b)};
+\node[anchor=north east] at (alpha.north east) {(c)};
+\end{scope}
+\end{tikzpicture}
+\end{figure}

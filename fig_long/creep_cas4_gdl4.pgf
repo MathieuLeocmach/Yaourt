@@ -1,0 +1,50 @@
+\begin{figure*}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+			group name=g, group size=4 by 1,
+			%vertical sep=0.5em,
+			xticklabels at=edge bottom,
+		},
+	width=0.5\columnwidth,
+%	height=0.3\columnwidth-2em,
+	cycle list name=earthy,
+	xmode=log, ymode=log,
+	%xmin=5e-2, xmax=1e3,
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em},
+	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	]
+\nextgroupplot[xlabel={$t$ (\si{\second})}, ylabel={$\gamma$}, ymax=3, ymin=2e-1]
+\addplot table {Y242_20Pa_gamma_decimated.txt};
+\addplot table {Y239_40Pa_gamma_decimated.txt};
+\addplot table {Y238_50Pa_gamma_decimated.txt};
+%\addplot table {Y246_60Pa_gamma_decimated.txt};
+\addplot table {Y236_100Pa_gamma_decimated.txt};
+%\addplot table {Y249_120Pa_gamma_decimated.txt};
+
+\nextgroupplot[xlabel={$t/\tau_f$}]
+\addplot table {Y242_20Pa_gdot_decimated.txt};
+\addplot table {Y239_40Pa_gdot_decimated.txt};
+\addplot table {Y238_50Pa_gdot_decimated.txt};
+%\addplot table {Y246_60Pa_gdot_decimated.txt};
+\addplot table {Y236_100Pa_gdot_decimated.txt};
+%\addplot table {Y249_120Pa_gdot_decimated.txt};
+
+\nextgroupplot[xlabel={$t/\tau_f$}, xmode=linear, ymode=linear,ymax=4, restrict y to domain=0:4]
+\addplot table {Y242_20Pa_gdot_decimated.txt};
+\addplot table {Y239_40Pa_gdot_decimated.txt};
+\addplot table {Y238_50Pa_gdot_decimated.txt};
+%\addplot table {Y246_60Pa_gdot_decimated.txt};
+\addplot table {Y236_100Pa_gdot_decimated.txt};
+%\addplot table {Y249_120Pa_gdot_decimated.txt};
+
+\nextgroupplot[xlabel={$1-t/\tau_f$}]
+\addplot table[x expr={1-\thisrowno{0}}] {Y242_20Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y239_40Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y238_50Pa_gdot_decimated.txt};
+%\addplot table[x expr={1-\thisrowno{0}}] {Y246_60Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y236_100Pa_gdot_decimated.txt};
+%\addplot table[x expr={1-\thisrowno{0}}] {Y249_120Pa_gdot_decimated.txt};
+\end{groupplot}
+\end{tikzpicture}
+\end{figure*}

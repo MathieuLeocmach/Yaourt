@@ -1,0 +1,66 @@
+\begin{figure*}
+\begin{tikzpicture}
+\matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em] (m) {
+\includegraphics[height=5\baselineskip]{ech19_t001.jpg}&
+\includegraphics[height=5\baselineskip]{ech19_t043.jpg}\\
+\includegraphics[height=5\baselineskip]{ech19_t085.jpg}&
+\includegraphics[height=5\baselineskip]{ech19_t132.jpg}\\
+};
+\begin{scope}[anchor=north west, text=white]
+\node at (m-1-1.north west) {\SI{5}{\minute}};
+\node at (m-1-2.north west) {\SI{27}{\minute}};
+\node at (m-2-1.north west) {\SI{49}{\minute}};
+\node at (m-2-2.north west) {\SI{8}{\hour}};
+\end{scope}
+\begin{loglogaxis}[
+	width=0.4\textwidth,
+	height=12.4\baselineskip,
+	anchor=left of north west,
+	at={(m-1-2.north east)},
+	cycle list name=earthy,
+	xlabel={$q$ (\si{\per\micro\metre})},
+	ylabel={$S(q)$ (a.u.)},
+	domain=0.1:6.1,
+	xmin=0.04, xmax=3e3,
+	ymin=1e5,
+	clip mode=individual,
+	]
+\begin{scope}[
+	every axis plot post/.append style={only marks, mark options={scale=0.3}},
+]
+\addplot table{ech19_t016.Sq};
+\addplot table{ech19_t018.Sq};
+\addplot table{ech19_t020.Sq};
+\addplot table{ech19_t022.Sq};
+\addplot table{ech19_t024.Sq};
+\addplot table{ech19_t026.Sq};
+\addplot table{ech19_t028.Sq};
+
+\pgfplotsset{cycle list shift=-7}
+\addplot table[x expr={100*\thisrowno{0}}]{ech19_t049.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech19_t091.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech19_t095.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech19_t110.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech19_t132.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech19_t183.Sq};
+\end{scope}
+
+\addplot[black,domain=0.1:2.3,] {1.41162e+06/(1+(0.863106*x)^(2.48957)} coordinate[pos=0] (t0);
+% \addplot {3.08321e+06/(1+(0.675481*x)^(3.21053)};
+% \addplot {7.21904e+06/(1+(0.682678*x)^(3.35995)};
+% \addplot {1.2921e+07/(1+(0.682867*x)^(3.43546)};
+% \addplot {2.00283e+07/(1+(0.679492*x)^(3.55078)};
+% \addplot {2.65481e+07/(1+(0.672847*x)^(3.65046)};
+\addplot[black] {3.10648e+07/(1+(0.674804*x)^(3.69175)} coordinate[pos=0] (t1);
+
+\addplot[black,domain=10:610] {3.81303e+07/(1+(0.00643513*x)^(3.91326)} coordinate[pos=0] (t2);
+% \addplot {2.28285e+07/(1+(0.00584224*x)^(3.83587)};
+% \addplot {1.43395e+07/(1+(0.00654421*x)^(3.73896)};
+% \addplot {9.58685e+06/(1+(0.00865948*x)^(2.84983)};
+% \addplot {6.8931e+06/(1+(0.00946977*x)^(2.56298)};
+\addplot[black,domain=10:373] {5.5388e+06/(1+(0.00950251*x)^(2.52804)} coordinate[pos=0] (t3);
+\draw[->, ultra thick] (t0) -- (t1) node[midway,rotate=90, above, font=\footnotesize] {time};
+\draw[->, ultra thick] (t2) -- (t3) node[midway,rotate=90, above, font=\footnotesize] {time};
+\end{loglogaxis}
+\end{tikzpicture}
+\end{figure*}

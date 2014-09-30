@@ -1,0 +1,39 @@
+\begin{figure}
+\begin{tikzpicture}
+\begin{axis}[
+	name=main,
+	scale only axis,
+	width=\columnwidth-5em,
+	cycle list name=earthy,
+	xlabel={time (\si{\hour})},
+	ylabel={$G^\prime$ (\si{\pascal})},
+	xmin=0, xmax=20, ymin=0,
+]
+\begin{scope}[
+	every node/.style={anchor=south east ,font=\scriptsize}
+]
+\addplot table[x expr=\thisrowno{0}/3600]{yaourt_2pc_0p5_T10.prise} node{\SI{10}{\degreeCelsius}};
+\addplot table[x expr=\thisrowno{0}/3600]{yaourt_2pc_0p5_T15.prise} node{\SI{15}{\degreeCelsius}};
+\addplot table[x expr=\thisrowno{0}/3600]{yaourt_2pc_0p5_T20.prise} node{\SI{20}{\degreeCelsius}};
+\addplot table[x expr=\thisrowno{0}/3600]{yaourt_2pc_0p5_T25.prise} node{\SI{25}{\degreeCelsius}};
+\addplot table[x expr=\thisrowno{0}/3600]{yaourt_2pc_0p5_T30.prise} node{\SI{30}{\degreeCelsius}};
+\end{scope}
+\end{axis}
+\begin{axis}[
+	anchor=below south east,
+	at={($(main.south east)+(-0.5em,0)$)},
+	small,
+	scale only axis,
+	width=0.4\columnwidth-4em,
+	height=0.5\columnwidth-2em,
+	xlabel={$300/T$ (\si{\per\kelvin})},
+	ylabel={$G^\prime_\infty$ (\si{\pascal})},
+	axis background/.style={fill=white}, 
+	xtick={1,1.05},
+	%xmode=log,
+	%ymode=log,
+]
+\addplot[black, mark=*, only marks] table[x expr={300/(\thisrowno{0}}]{yaourt_2pc_0p5.Ginf};
+\end{axis}
+\end{tikzpicture}
+\end{figure}
