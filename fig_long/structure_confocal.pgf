@@ -1,27 +1,58 @@
 \begin{figure*}
-\begin{tikzpicture}
-\matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em] (m) {
-\includegraphics[height=5\baselineskip]{ech19_t001.jpg}&
-\includegraphics[height=5\baselineskip]{ech19_t043.jpg}\\
-\includegraphics[height=5\baselineskip]{ech19_t085.jpg}&
-\includegraphics[height=5\baselineskip]{ech19_t132.jpg}\\
-};
-\begin{scope}[anchor=north west, text=white]
-\node at (m-1-1.north west) {\SI{5}{\minute}};
-\node at (m-1-2.north west) {\SI{27}{\minute}};
-\node at (m-2-1.north west) {\SI{49}{\minute}};
-\node at (m-2-2.north west) {\SI{8}{\hour}};
+\begin{tikzpicture}[every axis/.style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}}]
+\begin{groupplot}[
+	group style={
+			group name=g, group size=1 by 3,
+			vertical sep=0.5em,
+			xticklabels at=edge bottom,
+		},
+	height=7.5\baselineskip,
+	width=0.3\textwidth,
+	xmin=0, xmax=17, ymin=0,
+	cycle list name=linestyles,
+	no marks,
+	]
+\nextgroupplot[ylabel={$\xi$ (\si{\micro\metre})}]
+\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}]{ech17_pore_size.txt};
+\addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}]{ech19_pore_size.txt};
+\nextgroupplot[ylabel={$\chi$ (a.u.)}]
+\begin{scope}[every node/.style={anchor=base west, font=\scriptsize}]
+\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e7}]{ech17_pore_size.txt} node (l1) {1\%};
+\addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e7}]{ech19_pore_size.txt} node at ($(l1.base west)-(axis cs:0,1.8)$) {4\%};
 \end{scope}
+\nextgroupplot[xlabel={time (\si{\hour})}, ylabel={$\gamma$}]
+\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y index=3]{ech17_pore_size.txt};
+\addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}, y index=3]{ech19_pore_size.txt};
+\end{groupplot}
+
+
+\matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] 
+at ($(g c1r1.right of north east)+(-\textwidth,0)$)
+(m) {
+\SI{5}{\minute} & \SI{27}{\minute} & \SI{49}{\minute} & \SI{8}{\hour}\\
+\includegraphics[width=5\baselineskip]{ech19_t001.jpg}&
+\includegraphics[width=5\baselineskip]{ech19_t043.jpg}&
+\includegraphics[width=5\baselineskip]{ech19_t085.jpg}&
+\includegraphics[width=5\baselineskip]{ech19_t132.jpg}\\
+};
+\draw[ultra thick, white] (m-2-1.south east) ++(-0.5\baselineskip,1em) -- +(-4\baselineskip,0);
+
+\newdimen\mydima
+\newdimen\mydimb
+\pgfextracty{\mydima}{\pgfpointanchor{g c1r1}{north}}
+\pgfextracty{\mydimb}{\pgfpointanchor{g c1r3}{south}}
 \begin{loglogaxis}[
-	width=0.4\textwidth,
-	height=12.4\baselineskip,
+	name=Sq,
+	scale only axis,
+	width=0.24\textwidth,
+	height=\mydima-\mydimb,
 	anchor=left of north west,
-	at={(m-1-2.north east)},
+	at={(m.north east)},
 	cycle list name=earthy,
 	xlabel={$q$ (\si{\per\micro\metre})},
 	ylabel={$S(q)$ (a.u.)},
 	domain=0.1:6.1,
-	xmin=0.04, xmax=3e3,
+	xmin=0.03, xmax=1e3,
 	ymin=1e5,
 	clip mode=individual,
 	]
@@ -42,6 +73,7 @@
 \addplot table[x expr={100*\thisrowno{0}}]{ech19_t095.Sq};
 \addplot table[x expr={100*\thisrowno{0}}]{ech19_t110.Sq};
 \addplot table[x expr={100*\thisrowno{0}}]{ech19_t132.Sq};
+%\pgfplotsset{cycle list shift=2}
 \addplot table[x expr={100*\thisrowno{0}}]{ech19_t183.Sq};
 \end{scope}
 
@@ -62,5 +94,12 @@
 \draw[->, ultra thick] (t0) -- (t1) node[midway,rotate=90, above, font=\footnotesize] {time};
 \draw[->, ultra thick] (t2) -- (t3) node[midway,rotate=90, above, font=\footnotesize] {time};
 \end{loglogaxis}
+\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\node[white] at (m-2-1.north west) {(a)};
+\node at (Sq.north west) {(b)};
+\node[anchor=east] at (g c1r1.east) {(c)};
+\node[anchor=east] at (g c1r2.east) {(d)};
+\node[anchor=south east] at (g c1r3.south east) {(e)};
+\end{scope}
 \end{tikzpicture}
 \end{figure*}
