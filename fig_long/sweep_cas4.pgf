@@ -78,21 +78,21 @@
 
 \nextgroupplot[
 	width=0.4\columnwidth-4em-5pt, 
-	ylabel={$G^{\prime\prime}/(G^{\prime\prime}_{\SI{1}{\hertz}}f^\alpha)$}, 
-	ymode=linear, ymin=0.9,
-	xmin=1,xmax=100, xtick={0.1,1,10},
+	ylabel={$G^{\prime\prime}/G^{\prime\prime}_{\SI{1}{\hertz}}$}, 
+	ymode=linear, ymin=0.5,
+	xmin=0.05,xmax=100, xtick={0.1,1,10},
 	%xmin=0, xmax=60,
 ]
 \begin{scope}[
 	%every axis plot post/.append style={mark=*, mark options={scale=0.1}},
 	every node/.style={anchor=west,font=\scriptsize, pos=0}
 ]
-	\addplot table[y expr={\thisrowno{2}/(140.022*\thisrowno{0}^0.139256)}]{\GDLa} node[pos=0.25,left]{1\%};
-	\addplot table[y expr={\thisrowno{2}/(72.4462*\thisrowno{0}^0.121815)}]{\GDLb};
-	\addplot table[y expr={\thisrowno{2}/(43.0813*\thisrowno{0}^0.102707)}]{\GDLc};
-	\addplot table[y expr={\thisrowno{2}/(18.9117*\thisrowno{0}^0.0676911)}]{\GDLd};
-	\addplot table[y expr={\thisrowno{2}/(8.39838*\thisrowno{0}^0.0437222)}]{\GDLe};
-	\addplot table[y expr={\thisrowno{2}/(4.99978*\thisrowno{0}^0.035779)}]{\GDLf}node[pos=0.25,right]{4\%};
+	\addplot table[y expr={\thisrowno{2}/140.022}]{\GDLa} node[pos=0.25,left]{1\%};
+	\addplot table[y expr={\thisrowno{2}/72.4462}]{\GDLb};
+	\addplot table[y expr={\thisrowno{2}/43.0813}]{\GDLc};
+	\addplot table[y expr={\thisrowno{2}/18.9117}]{\GDLd};
+	\addplot table[y expr={\thisrowno{2}/8.39838}]{\GDLe};
+	\addplot table[y expr={\thisrowno{2}/4.99978}]{\GDLf}node[pos=0.25,right]{4\%};
 \end{scope}
 \end{groupplot}
 
