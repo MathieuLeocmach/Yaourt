@@ -9,9 +9,10 @@
 
 \begin{groupplot}[
 	group style={
-			group name=g, group size=1 by 2,
-			vertical sep=0.5em,
-			xticklabels at=edge bottom,
+			group name=g, group size=2 by 2,
+			vertical sep=3em,
+			horizontal sep=4em,
+			%xticklabels at=edge bottom,
 		},
 	scale only axis,
 	width=0.6\columnwidth-4em,
@@ -20,19 +21,20 @@
 	cycle list name=earthy,
 	xmode=log, ymode=log,
 	xmin=5e-2, xmax=1e3,
-	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}
+	xlabel={$f$ (\si{\hertz})},
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-0.5em}
 	]
-\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}]
+\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}, ymin=18, ymax=3e3]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
 	every node/.style={anchor=west, ,font=\scriptsize, pos=0}
 ]
-	\addplot table{\GDLa} node{1\%};
-	\addplot table{\GDLb} node{1.25\%};
-	\addplot table{\GDLc} node{1.5\%};
-	\addplot table{\GDLd} node{2\%};
+	\addplot table{\GDLa} node[anchor=base west]{1\%};
+	\addplot table{\GDLb} node[anchor=base west]{1.25\%};
+	\addplot table{\GDLc} node[yshift=0.1em]{1.5\%};
+	\addplot table{\GDLd} node[yshift=0.1em]{2\%};
 	\addplot table{\GDLe} node{3\%};
-	\addplot table{\GDLf} node{4\%};
+	\addplot table{\GDLf} node[yshift=-0.2em]{4\%};
 \end{scope}
 \pgfplotsset{cycle list shift=-6}
 \addplot {590.277*x^0.139256};
@@ -42,9 +44,19 @@
 \addplot {109.351*x^0.0437222};
 \addplot {76.7364*x^0.035779};
 
+\nextgroupplot[
+	width=0.4\columnwidth-4em-5pt,
+	xlabel={GDL (\%)},
+	xmode=linear,
+	ymode=linear,
+	xmin=0, xmax=4.5,
+	ylabel=$\alpha$, ymin=0,ymax=0.15,
+	ytick={0,0.05,0.1}, yticklabels={0,0.05,0.10}
+]
+\addplot[mark=*] file{sweep_exponents.txt};
 
 
-\nextgroupplot[ylabel={$G^{\prime\prime}$ (\si{\pascal})}, xlabel={$f$ (\si{\hertz})},]
+\nextgroupplot[ylabel={$G^{\prime\prime}$ (\si{\pascal})}, ymin=3, ymax=5e2]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
 	every node/.style={anchor=west,font=\scriptsize, pos=0}
@@ -63,27 +75,34 @@
 \addplot {18.9117*x^0.0676911};
 \addplot {8.39838*x^0.0437222};
 \addplot {4.99978*x^0.035779};
-\end{groupplot}
-\begin{axis}[
-	name=alpha,
-	anchor={left of south west},
-	at={(g c1r2.right of south east)},
-	scale only axis,
-	width=0.4\columnwidth-4em-5pt,
-	height=0.6\columnwidth-3.5em,
-	xlabel={GDL (\%)},
-	xmin=0, xmax=4.5,
-	ylabel=$\alpha$, ymin=0,ymax=0.15,
-	ytick={0,0.05,0.1}, yticklabels={0,0.05,0.10},
-	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}
+
+\nextgroupplot[
+	width=0.4\columnwidth-4em-5pt, 
+	ylabel={$G^{\prime\prime}/(G^{\prime\prime}_{\SI{1}{\hertz}}f^\alpha)$}, 
+	ymode=linear, ymin=0.9,
+	xmin=1,xmax=100, xtick={0.1,1,10},
+	%xmin=0, xmax=60,
 ]
-\addplot[mark=*] file{sweep_exponents.txt};
-\end{axis}
+\begin{scope}[
+	%every axis plot post/.append style={mark=*, mark options={scale=0.1}},
+	every node/.style={anchor=west,font=\scriptsize, pos=0}
+]
+	\addplot table[y expr={\thisrowno{2}/(140.022*\thisrowno{0}^0.139256)}]{\GDLa} node[pos=0.25,left]{1\%};
+	\addplot table[y expr={\thisrowno{2}/(72.4462*\thisrowno{0}^0.121815)}]{\GDLb};
+	\addplot table[y expr={\thisrowno{2}/(43.0813*\thisrowno{0}^0.102707)}]{\GDLc};
+	\addplot table[y expr={\thisrowno{2}/(18.9117*\thisrowno{0}^0.0676911)}]{\GDLd};
+	\addplot table[y expr={\thisrowno{2}/(8.39838*\thisrowno{0}^0.0437222)}]{\GDLe};
+	\addplot table[y expr={\thisrowno{2}/(4.99978*\thisrowno{0}^0.035779)}]{\GDLf}node[pos=0.25,right]{4\%};
+\end{scope}
+\end{groupplot}
 
 \begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
 \node at (g c1r1.north west) {(a)};
 \node at (g c1r2.north west) {(b)};
-\node[anchor=north east] at (alpha.north east) {(c)};
+\node at (g c2r1.north west) {(c)};
+\node at (g c2r2.north west) {(d)};
+% \node[anchor=north east] at (g c2r1.north east) {(c)};
+% \node[anchor=north east] at (g c2r2.north east) {(d)};
 \end{scope}
 \end{tikzpicture}
 \end{figure}
