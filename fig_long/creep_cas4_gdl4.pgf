@@ -3,7 +3,7 @@
 \begin{groupplot}[
 	group style={
 			group name=g, group size=4 by 1,
-			%vertical sep=0.5em,
+			horizontal sep=4em,
 			xticklabels at=edge bottom,
 		},
 	width=0.5\columnwidth,
@@ -13,38 +13,48 @@
 	%xmin=5e-2, xmax=1e3,
 	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em},
 	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	extra tick style={grid=major},%
 	]
-\nextgroupplot[xlabel={$t$ (\si{\second})}, ylabel={$\gamma$}, ymax=3, ymin=2e-1]
-\addplot table {Y242_20Pa_gamma_decimated.txt};
-\addplot table {Y239_40Pa_gamma_decimated.txt};
-\addplot table {Y238_50Pa_gamma_decimated.txt};
-%\addplot table {Y246_60Pa_gamma_decimated.txt};
-\addplot table {Y236_100Pa_gamma_decimated.txt};
-%\addplot table {Y249_120Pa_gamma_decimated.txt};
+\nextgroupplot[
+	xlabel={$t$ (\si{\second})}, ylabel={$\gamma$}, 
+	ymax=3, ymin=2e-1,xmin=0.3,xmax=1e6,
+	ytick={0.1,0.2,0.4,0.8,1.6}, yticklabels={0.1,0.2,0.4,0.8,1.6},
+	extra y ticks={1}, extra y tick labels={},]
+%\begin{scope}[every node/.style={font=\scriptsize, anchor=north west, inner xsep=0}]
+\addplot table {Y242_20Pa_gamma_decimated.txt};% node[pos=0.5, rotate=35] {\SI{20}{\pascal}};
+\addplot table {Y239_40Pa_gamma_decimated.txt};% node[pos=0.4, rotate=35] {\SI{40}{\pascal}};
+\addplot table {Y238_50Pa_gamma_decimated.txt};% node[anchor=south east, rotate=90] at (rel axis cs:0.78,1) {\SI{50}{\pascal}};
+\addplot table {Y246_60Pa_gamma_decimated.txt};% node[anchor=south east, rotate=90] at (rel axis cs:0.6,1) {\SI{60}{\pascal}};
+\addplot table {Y236_100Pa_gamma_decimated.txt};% node[pos=0.1, rotate=15] {\SI{100}{\pascal}};
+\addplot+[restrict x to domain=0.05:100] table {Y249_120Pa_gamma_decimated.txt};% node[anchor=north east, rotate=80] at (rel axis cs:0.15,1) {\SI{120}{\pascal}};
+%\end{scope}
 
-\nextgroupplot[xlabel={$t/\tau_f$}]
+\nextgroupplot[xlabel={$t/\tau_f$},xmin=1e-5, xmax=2, ymin=0.5, ymax=5e4]
 \addplot table {Y242_20Pa_gdot_decimated.txt};
 \addplot table {Y239_40Pa_gdot_decimated.txt};
 \addplot table {Y238_50Pa_gdot_decimated.txt};
-%\addplot table {Y246_60Pa_gdot_decimated.txt};
+\addplot table {Y246_60Pa_gdot_decimated.txt};
 \addplot table {Y236_100Pa_gdot_decimated.txt};
-%\addplot table {Y249_120Pa_gdot_decimated.txt};
+\addplot+[restrict x to domain=-2.75:1] table {Y249_120Pa_gdot_decimated.txt};
 
-\nextgroupplot[xlabel={$t/\tau_f$}, xmode=linear, ymode=linear,ymax=4, restrict y to domain=0:4]
+\nextgroupplot[
+	xlabel={$t/\tau_f$}, xmode=linear, ymode=linear, 
+	xmin=0, xmax=1,ymin=0.5,ymax=10, restrict y to domain=0:11,
+	ytick={2,4,6,8}]
 \addplot table {Y242_20Pa_gdot_decimated.txt};
 \addplot table {Y239_40Pa_gdot_decimated.txt};
 \addplot table {Y238_50Pa_gdot_decimated.txt};
-%\addplot table {Y246_60Pa_gdot_decimated.txt};
+\addplot table {Y246_60Pa_gdot_decimated.txt};
 \addplot table {Y236_100Pa_gdot_decimated.txt};
-%\addplot table {Y249_120Pa_gdot_decimated.txt};
+\addplot table {Y249_120Pa_gdot_decimated.txt};
 
-\nextgroupplot[xlabel={$1-t/\tau_f$}]
+\nextgroupplot[xlabel={$1-t/\tau_f$},xmin=1e-5, xmax=2, x dir=reverse, ymin=0.5, ymax=5e4]
 \addplot table[x expr={1-\thisrowno{0}}] {Y242_20Pa_gdot_decimated.txt};
 \addplot table[x expr={1-\thisrowno{0}}] {Y239_40Pa_gdot_decimated.txt};
 \addplot table[x expr={1-\thisrowno{0}}] {Y238_50Pa_gdot_decimated.txt};
-%\addplot table[x expr={1-\thisrowno{0}}] {Y246_60Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y246_60Pa_gdot_decimated.txt};
 \addplot table[x expr={1-\thisrowno{0}}] {Y236_100Pa_gdot_decimated.txt};
-%\addplot table[x expr={1-\thisrowno{0}}] {Y249_120Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y249_120Pa_gdot_decimated.txt};
 \end{groupplot}
 \end{tikzpicture}
 \end{figure*}
