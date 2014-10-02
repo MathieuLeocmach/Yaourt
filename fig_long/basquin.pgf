@@ -1,0 +1,37 @@
+\begin{figure}
+\begin{tikzpicture}[every axis/.style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}}]
+\begin{groupplot}[
+	group style={
+			group name=g, group size=2 by 2,
+		    horizontal sep=0.5em,
+			vertical sep=3.5em,
+%			xticklabels at=edge bottom,
+			y descriptions at=edge left,
+		},
+	scale only axis,
+	width=0.5\columnwidth-3em,
+	xmode=log, ymode =log,
+	xlabel=$\sigma/G^\prime$,
+	ylabel={$\tau_f$ (\si{\second})},
+%	xmin=0, xmax=17, ymin=0,
+%	cycle list name=linestyles,
+%	no marks,
+	]
+\nextgroupplot[xlabel={$\sigma$ (\si{\pascal})}]
+
+\nextgroupplot
+
+\nextgroupplot
+
+\nextgroupplot[xlabel=$e^3\sigma/G^\prime$]
+
+
+\end{groupplot}
+\begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
+\node at (g c1r1.north east) {(a)};
+\node at (g c2r1.north east) {(b)};
+\node at (g c1r2.north east) {(c)};
+\node at (g c2r2.north east) {(d)};
+\end{scope}
+\end{tikzpicture}
+\end{figure}
