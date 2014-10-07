@@ -25,43 +25,42 @@
 
 %composition
 \nextgroupplot[xlabel={$\sigma$ (\si{\pascal})}, xmin=10, xmax=2e3, ymin=2e-2, ytickten={-1,1,3,5}]
-\pgfplotsset{cycle list shift=3}
+%\pgfplotsset{cycle list shift=3}
 \addplot+[only marks, mark=square*] table[y index=5]{MCR_cas4_GDL1_gap10.txt};
 \addplot+[only marks, mark=square, black] table[y index=5]{MCR_cas4_GDL4_gap10.txt};
 %fits
-\addplot[black, domain=150:1000] {1.3e17*x^(-5.33)};
-\addplot[black, domain=20:300] {4.46e13*x^(-6.07)};
+\addplot[gray, domain=150:1000] {3.7e17*x^(-5.5)};
+\addplot[gray, domain=20:350] {3.7e12*x^(-5.5)};
 
 %composition rescaled
 \nextgroupplot[xmax=4, ymin=2e-2, xtick={0.25, 0.5, 1, 2,4}, xticklabels={0.25, 0.5, 1, 2,4}, ytickten={-1,1,3,5}]
-\pgfplotsset{cycle list shift=3}
 \addplot+[only marks, mark=square*] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL1_gap10.txt};
 \addplot+[only marks, mark=square, black] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL4_gap10.txt};
 %fit
-\addplot[black, domain=0.2:3] {38*x^(-5.6)};
+\addplot[gray, domain=0.18:3.5] {40.6*x^(-5.5)};
 
 %gap
 \nextgroupplot[xtick={0.25, 0.5, 1}, xticklabels={0.25, 0.5, 1}, ymin=8]
-\addplot+[only marks] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL1_gap05.txt};
-\pgfplotsset{cycle list shift=2}
+%\addplot+[only marks] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL1_gap05.txt};
+%\pgfplotsset{cycle list shift=2}
 \addplot+[only marks, mark=square*] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL1_gap10.txt};
 \pgfplotsset{cycle list shift=3}
 \addplot+[only marks, mark=diamond*] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL1_gap15.txt};
-\addplot+[only marks, mark=star] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL1_gap30.txt};
+\addplot+[only marks, mark=*] table[x expr={\thisrowno{0}/\thisrowno{2}}, y index=5]{MCR_cas4_GDL1_gap30.txt};
 %fit
-\addplot[black, domain=0.2:1.3] {38*x^(-5.6)};
-\addplot[black, domain=0.17:0.5] {0.16*x^(-6.6)};
+\addplot[gray, domain=0.2:1.3] {40.6*x^(-5.5)};
+\addplot[gray, domain=0.17:0.5] {0.77*x^(-5.5)};
 
 %gap rescaled
 \nextgroupplot[ylabel={$\tau_m e^3$ (\si{\cubic\milli\metre\second})},xtick={0.25, 0.5, 1}, xticklabels={0.25, 0.5, 1}, ymin=8]
-\addplot+[only marks] table[x expr={\thisrowno{0}/\thisrowno{2}}, y expr={\thisrowno{5}*0.5^3}]{MCR_cas4_GDL1_gap05.txt};
-\pgfplotsset{cycle list shift=2}
+%\addplot+[only marks] table[x expr={\thisrowno{0}/\thisrowno{2}}, y expr={\thisrowno{5}*0.5^3}]{MCR_cas4_GDL1_gap05.txt};
+%\pgfplotsset{cycle list shift=2}
 \addplot+[only marks, mark=square*] table[x expr={\thisrowno{0}/\thisrowno{2}}, y expr={\thisrowno{5}*1^3}]{MCR_cas4_GDL1_gap10.txt};
 \pgfplotsset{cycle list shift=3}
 \addplot+[only marks, mark=diamond*] table[x expr={\thisrowno{0}/\thisrowno{2}}, y expr={\thisrowno{5}*1.5^3}]{MCR_cas4_GDL1_gap15.txt};
-\addplot+[only marks, mark=star] table[x expr={\thisrowno{0}/\thisrowno{2}}, y expr={\thisrowno{5}*3^3}]{MCR_cas4_GDL1_gap30.txt};
+\addplot+[only marks, mark=*] table[x expr={\thisrowno{0}/\thisrowno{2}}, y expr={\thisrowno{5}*3^3}]{MCR_cas4_GDL1_gap30.txt};
 %fit
-\addplot[black, domain=0.15:1.3] {48*x^(-5.1)};
+\addplot[gray, domain=0.15:1.3] {34.9*x^(-5.5)};
 
 
 \end{groupplot}
