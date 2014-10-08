@@ -1,0 +1,68 @@
+\begin{tikzpicture}
+\pgfplotsset{every axis/.append style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-2em}, ylabel absolute, every axis y label/.append style={anchor=base, yshift=2em}}}
+\begin{groupplot}[
+	group style={
+			group name=g, group size=4 by 1,
+			horizontal sep=\TPHorizModule,
+			%xticklabels at=edge bottom,
+		},
+	scale only axis,
+	width=1.75\TPHorizModule,
+	height=1.5\TPVertModule,
+%	height=0.3\columnwidth-2em,
+	cycle list name=earthy,
+	xmode=log, ymode=log,
+	%xmin=5e-2, xmax=1e3,
+	ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+	extra tick style={grid=major},%
+	]
+\nextgroupplot[
+	xlabel={$t$ (\si{\second})}, ylabel={$\gamma$}, 
+	ymax=3, ymin=2e-1,xmin=0.3,xmax=1e6,
+	xtick={1, 1e2, 1e4, 1e6},
+	ytick={0.1,0.2,0.4,0.8,1.6}, yticklabels={0.1,0.2,0.4,0.8,1.6},
+	extra y ticks={1}, extra y tick labels={},]
+\begin{scope}[every node/.style={, anchor=north west, inner xsep=0}]
+\addplot table {Y242_20Pa_gamma_decimated.txt} node[pos=0.5, rotate=35] {\SI{20}{\pascal}};
+\addplot table {Y239_40Pa_gamma_decimated.txt} node[pos=0.4, rotate=35] {\SI{40}{\pascal}};
+\addplot table {Y238_50Pa_gamma_decimated.txt} node[anchor=south east, rotate=90] at (rel axis cs:0.78,1) {\SI{50}{\pascal}};
+\addplot table {Y246_60Pa_gamma_decimated.txt} node[anchor=south east, rotate=90] at (rel axis cs:0.6,1) {\SI{60}{\pascal}};
+\addplot table {Y236_100Pa_gamma_decimated.txt} node[pos=0.1, rotate=15] {\SI{100}{\pascal}};
+\addplot+[restrict x to domain=0.05:100] table {Y249_120Pa_gamma_decimated.txt} node[anchor=north east, rotate=80] at (rel axis cs:0.15,1) {\SI{120}{\pascal}};
+\end{scope}
+
+\nextgroupplot[
+	xlabel={$t/\tau_f$},xmin=1e-5, xmax=2, xtick={1e-4, 1e-2, 1},
+	ymin=0.5, ymax=5e4]
+\addplot table {Y242_20Pa_gdot_decimated.txt};
+\addplot table {Y239_40Pa_gdot_decimated.txt};
+\addplot table {Y238_50Pa_gdot_decimated.txt};
+\addplot table {Y246_60Pa_gdot_decimated.txt};
+\addplot table {Y236_100Pa_gdot_decimated.txt};
+\addplot+[restrict x to domain=-2.75:1] table {Y249_120Pa_gdot_decimated.txt};
+\node[below right] at (rel axis cs:0,1){Andrade creep};
+
+\nextgroupplot[
+	xlabel={$t/\tau_f$}, xmode=linear, ymode=linear, 
+	xmin=0, xmax=1,ymin=0.5,ymax=10, restrict y to domain=0:11,
+	xtick={0, 0.2, ..., 1}, ytick={2,4,6,8}]
+\addplot table {Y242_20Pa_gdot_decimated.txt};
+\addplot table {Y239_40Pa_gdot_decimated.txt};
+\addplot table {Y238_50Pa_gdot_decimated.txt};
+\addplot table {Y246_60Pa_gdot_decimated.txt};
+\addplot table {Y236_100Pa_gdot_decimated.txt};
+\addplot table {Y249_120Pa_gdot_decimated.txt};
+
+\nextgroupplot[
+	xlabel={$1-t/\tau_f$},xmin=1e-5, xmax=2, x dir=reverse, xtick={1e-4, 1e-2, 1},
+	ymin=0.5, ymax=5e4]
+\addplot table[x expr={1-\thisrowno{0}}] {Y242_20Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y239_40Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y238_50Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y246_60Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y236_100Pa_gdot_decimated.txt};
+\addplot table[x expr={1-\thisrowno{0}}] {Y249_120Pa_gdot_decimated.txt};
+\node[below right] at (rel axis cs:0,1){Finite time divergence};
+\end{groupplot}
+\node[inner sep=0] at ($(g c4r1.east)-(11\TPHorizModule,0)$) {};
+\end{tikzpicture}

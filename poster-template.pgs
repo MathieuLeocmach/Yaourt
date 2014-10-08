@@ -1,0 +1,207 @@
+% We switch to portrait mode. This works as advertised.
+\documentclass[a0,portrait]{a0poster}
+% You might find the 'draft' option to a0 poster useful if you have
+% lots of graphics, because they can take some time to process and
+% display. (\documentclass[a0,draft]{a0poster})
+
+%\usepackage[utf8]{inputenc}
+
+% Switch off page numbers on a poster, obviously, and section numbers too.
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+
+%fonts
+\usepackage[T1]{fontenc}
+\usepackage{kpfonts}
+%\usepackage{roboto}
+\usepackage{fontspec}
+%\usepackage[oldstylenums, largesmallcaps]{kpfonts}
+%\setmainfont[Numbers=OldStyle]{Tex Gyre Pagella}
+\setmainfont{Tex Gyre Pagella}
+%\setsansfont[BoldFont=Lovelo-LineBold]{Lovelo-LineBold}
+\setsansfont{Choplin-Medium-DEMO}
+%\setsansfont{RobotoSlab-Bold}
+%\setsansfont[StylisticSet=4]{MEgalopolisExtra}
+%\renewcommand*\sfdefault{ugq}
+
+\usepackage{hyperref}
+\hypersetup{%
+	pdftitle={Wrinkling and nested buckling in a confined protein gel},%the title
+	pdfauthor={Mathieu Leocmach},%your name
+	hidelinks=true,
+}
+
+%proper math and math symbols
+%\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{siunitx}
+
+\usepackage{multirow}
+
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, positioning, intersections, decorations.markings, decorations.shapes, mindmap, shapes.geometric, matrix, patterns}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage{pgfplotstable}
+%\usepgfplotslibrary{units}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{every axis/.append style={xlabel near ticks,ylabel near ticks,mark size={0.2em}}}
+\pgfplotsset{every axis plot post/.append style={very thick}}
+
+\usepackage{ragged2e}
+\RaggedRight
+
+\definecolor{Main}{rgb}{1, 0.57, 0}
+\definecolor{Accent1}{rgb}{1,0.28,0}
+\definecolor{Accent2}{rgb}{1,0.74,0}
+
+% see documentation for a0poster class for the size options here
+\let\Textsize\normalsize
+\def\Norulehead#1{\noindent\hbox to \hsize{\hfil\LARGE\textcolor{Main}{\textsf{#1}}}\bigskip}
+\def\Head#1{\Norulehead{\dotfill #1}}
+\def\LHead#1{{\LARGE #1}\smallskip}
+\def\Subhead#1{\noindent{\large\color{Accent1}\textsc{#1}}}
+\def\Title#1{\noindent{\VeryHuge\color{Accent2}\raggedright\textsf{\uppercase{#1}}}}
+
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\textcolor{Accent2}{\textsc{#1}}}
+
+% The textpos package is necessary to position textblocks at arbitary 
+% places on the page.
+\usepackage[absolute,overlay,showboxes
+]{textpos}
+% Set up the grid
+%
+% Note that [40mm,40mm] is the margin round the edge of the page --
+% it is _not_ the grid size. That is always defined as 
+% PAGE_WIDTH/HGRID and PAGE_HEIGHT/VGRID. In this case we use
+% 15 x 25. This gives us a wide central column for text (7 grid
+% spacings) and two narrow columns (3 each) at each side for 
+% pictures, separated by 1 grid spacing.
+%
+% Note however that texblocks can be positioned fractionally as well,
+% so really any convenient grid size can be used.
+%
+\TPGrid[40mm,40mm]{15}{25}  % 3 - 1 - 7 - 1 - 3 Columns
+
+% Mess with these as you like
+\parindent=0pt
+%\parindent=1cm
+\parskip=0.5\baselineskip
+
+\usepackage{paralist}
+
+%bibliography
+\usepackage{natbib}
+\usepackage{bibentry}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+
+
+
+\newlength{\mylength}
+
+%\includeonly{}
+\usepackage[active,pdftex,tightpage]{preview}
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+\begin{document}
+\pgfplotscreateplotcyclelist{earthy}{%
+red!40!black,
+red!60!black,
+red!80!black,
+red,
+red!80!yellow,
+red!60!yellow,
+red!40!yellow,
+}
+
+\bibliographystyle{notitle}
+%\nobibliography{sift}
+
+% Understanding textblocks is the key to being able to do a poster in
+% LaTeX. In
+%
+%    \begin{textblock}{wid}(x,y)
+%    ...
+%    \end{textblock}
+%
+% the first argument gives the block width in units of the grid
+% cells specified above in \TPGrid; the second gives the (x,y)
+% position on the grid, with the y axis pointing down.
+
+% You will have to do a lot of previewing to get everything in the 
+% right place.
+
+% This gives good title positioning for a portrait poster.
+% Watch out for hyphenation in titles - LaTeX will do it
+% but it looks awful.
+\begin{textblock}{15}(0,0)
+\begin{center}
+\Title{
+Role of the microstructure in the failure of a protein gel under stress
+}
+\end{center}
+
+\smallskip
+\LHead{Mathieu Leocmach, Christophe Perge, Thomas Gibaud, Sébastien Manneville
+}\hfill\texttt{\color{Accent1}mathieu.leocmach@ens-lyon.fr}
+
+\LHead{\textsc{Laboratoire de Physique, Ecole Normale Supérieure de Lyon}}
+
+\LHead{Thibaut Divoux\qquad
+\textsc{Centre de Recherche Paul Pascal}
+\hfill\raisebox{0pt}[0pt]{
+	\includegraphics[height=2\baselineskip,clip=true, trim=6mm 14mm 6mm 0]{NEW-Logo-ERC-OUTLINE}\;
+	\includegraphics[height=2\baselineskip]{logo_ums_grand}\;
+	\includegraphics[height=2\baselineskip]{CNRSfilaire-Q}\;
+	\includegraphics[height=2\baselineskip]{CRPP}\;
+	\includegraphics[height=2\baselineskip]{logo_ens-lyon}
+}}\\
+
+
+
+\end{textblock}
+
+<>
+
+
+
+
+\begin{textblock}{15}(0,24.75)
+\small{\texttt{The research leading to these results has received funding from the European Research Council under the European Union's Seventh Framework Programme (FP7/2007-2013) / ERC grant agreement n°~258803.}}
+\end{textblock}
+
+
+\textblockcolour{lightgray!50!white}
+\TPMargin*{ 0.125\TPHorizModule }
+\begin{textblock}{2.875}(12,3.125)%real width of 3
+	\Norulehead{Take home}
+	Spontaneous wrinkling of over-acidified casein gels in non-adhesive confinement
+	
+	\Subhead{Original patterns}
+	\begin{itemize}
+		\item nested (optical elements ?)
+		\item kinetic wavelength selection
+	\end{itemize}
+	\Subhead{A new wrinkling mechanism}
+	\begin{itemize}
+		\item porous flow resist bending
+		\item Darcy can beat Poiseuille
+		\item may extend to other porous sheets\linebreak  (wet paper, biological membranes\ldots)
+	\end{itemize}
+	\Subhead{Viscosity influences}
+	\begin{itemize}
+		\item porous dissipation
+		\item gel formation\hfill
+		\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.1\normalbaselineskip}\right\}$ thus wrinkling}
+	\end{itemize}
+	
+
+\end{textblock}%Conclusion
+
+
+
+\end{document}

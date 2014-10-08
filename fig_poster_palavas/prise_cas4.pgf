@@ -1,0 +1,107 @@
+\begin{tikzpicture}
+\pgfplotsset{every axis/.append style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-2em}, ylabel absolute, every axis y label/.append style={anchor=base, yshift=2em}}}
+\pgfplotstableread{cas4_GDL1_Y265.prise}\GDLa
+\pgfplotstableread{cas4_GDL1.25_Y277.prise}\GDLb
+\pgfplotstableread{cas4_GDL1.5_Y275.prise}\GDLc
+\pgfplotstableread{cas4_GDL2_Y268.prise}\GDLd
+\pgfplotstableread{cas4_GDL3_Y270.prise}\GDLe
+\pgfplotstableread{cas4_GDL4_Y271.prise}\GDLf
+
+\begin{groupplot}[
+	group style={
+			group name=g, group size=3 by 2,
+			horizontal sep=\TPHorizModule,
+			vertical sep=3.25\baselineskip,
+		},
+	scale only axis,
+	width=2\TPHorizModule,
+	height=1.5\TPVertModule,
+	xlabel={GDL (\%)},
+	xmin=0, xmax=4.5,
+	extra tick style={grid=major},%
+	]
+
+ %%%% pH %%%%
+\nextgroupplot[
+	height=1\TPVertModule,
+	width=4\TPHorizModule,
+	xlabel={time (h)}, 
+	ymin=0, ymax=7, ylabel={pH},
+	extra y ticks={4.6}, extra y tick labels={},%
+	cycle list name=earthy,
+	no marks,
+	xmin=0, xmax=20,xtick={0,2,...,20},
+	]
+	\begin{scope}[every node/.style={anchor=base west, inner xsep=0}]
+	\addplot table[x expr={\thisrowno{0}/3600.+0.05}]{Y190_cas4_gdl1.pH}  (axis cs:20,4) node[below left] {1\%};
+	\pgfplotsset{cycle list shift=4};
+	\addplot table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH}  node {4\%};;
+	\end{scope}
+	\node[base left=0] at (axis cs:17,4.6) {isoelectric};
+
+
+%%%% G' max et G' infini %%%%
+\nextgroupplot[height=1\TPVertModule,ylabel={$G^\prime$ (\si{\pascal})}, ymin=0,ymax=950,xtick={0,1,...,4},black]
+	\addplot[mark=*] table{scaling_factors_prise.txt} node[anchor=north] at (rel axis cs:0.5,1) {$G^\prime_m$};
+	\addplot[mark=o] table[y index=2]{scaling_factors_prise.txt}  node at (rel axis cs:0.5,0.3) {$G^\prime_\infty$};
+
+%%%% temps initial, temps max %%%%
+\nextgroupplot[height=1\TPVertModule,ylabel={time (\si{\second})},ymode=log,ymin=5e2,xtick={0,1,...,4},ymax=5e4, black]
+	\addplot[mark=star] table[y expr=\thisrowno{3}-\thisrowno{4}]{scaling_factors_prise.txt};
+	\addplot[mark=*] table[y index=3]{scaling_factors_prise.txt} node at (rel axis cs:0.5,0.75) {$t_m$};
+	\addplot[mark=o] table[y index=4]{scaling_factors_prise.txt} node at (rel axis cs:0.5,0.2)  {$t_i$};
+
+
+ %%%% prise unscaled %%%%
+\nextgroupplot[
+	%height=0.5\columnwidth,
+	width=4\TPHorizModule,
+	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
+	cycle list name=earthy,
+	no marks,
+	xmin=0, xmax=20,ymin=0,ymax=950,xtick={0,2,...,20},
+	]
+	\begin{scope}[every node/.style={anchor=base west, inner xsep=0}]
+	\addplot table[x expr={\thisrowno{0}/3600}]{\GDLa} node {1\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{\GDLb} node {1.25\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{\GDLc} node {1.5\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{\GDLd} node[yshift=0.1em] {2\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{\GDLe} node[yshift=-0.1em] {3\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{\GDLf} node[yshift=-0.6em] {4\%};
+	\end{scope}
+
+%%%% prise rescaled %%%%
+\nextgroupplot[
+	xmode=log, ymode=log, 
+	cycle list name=earthy,
+	no marks,
+	xmin=1e-3, xmax=1e2, ymin=1e-3, ymax=5,
+	xlabel=$(t-t_i)/(t_m-t_i)$, 
+	ylabel=$G^\prime/G^\prime_m$]
+ 	\addplot table[x expr={(\thisrowno{0}-7758)/(28840-7758)}, y expr={\thisrowno{1}/883}]{\GDLa};
+ 	\addplot table[x expr={(\thisrowno{0}-5179)/(14240-5179)}, y expr={\thisrowno{1}/788}]{\GDLb};
+ 	\addplot table[x expr={(\thisrowno{0}-3839)/(9640-3839)}, y expr={\thisrowno{1}/726}]{\GDLc};
+ 	\addplot table[x expr={(\thisrowno{0}-2519)/(5720-2519)}, y expr={\thisrowno{1}/665}]{\GDLd};
+ 	\addplot table[x expr={(\thisrowno{0}-1369)/(3120-1369)}, y expr={\thisrowno{1}/589}]{\GDLe};
+ 	\addplot table[x expr={(\thisrowno{0}-758)/(1890-758)}, y expr={\thisrowno{1}/500}]{\GDLf};
+
+%%%% redescente rescale %%%%
+\nextgroupplot[
+	cycle list name=earthy,
+	no marks,
+	xmode=log, xmin=1e-1, xmax=1e2,
+	ymin=0, ymax=1.1,
+	xlabel=$(t-t_m)/(t_m-t_i)$, 
+	ylabel=$\displaystyle\frac{G^\prime-G^\prime_\infty}{G^\prime_m-G^\prime_\infty}$ ,
+	]
+	\addplot table[x expr={(\thisrowno{0}-28840)/(28840-7758)}, y expr={(\thisrowno{1}-616)/(883-616}]{\GDLa};
+	\addplot table[x expr={(\thisrowno{0}-14240)/(14240-5179)}, y expr={(\thisrowno{1}-325)/(788-325}]{\GDLb};
+	\addplot table[x expr={(\thisrowno{0}-9640)/(9640-3839)}, y expr={(\thisrowno{1}-200)/(726-200}]{\GDLc};
+	\addplot table[x expr={(\thisrowno{0}-5720)/(5720-2519)}, y expr={(\thisrowno{1}-145)/(665-145}]{\GDLd};
+	\addplot table[x expr={(\thisrowno{0}-3120)/(3120-1369)}, y expr={(\thisrowno{1}-103)/(589-103}]{\GDLe};
+	\addplot table[x expr={(\thisrowno{0}-1890)/(1890-758)}, y expr={(\thisrowno{1}-75)/(500-75}]{\GDLf};
+
+\end{groupplot}
+\node[inner sep=0] at ($(g c3r1.east)-(11\TPHorizModule,0)$) {};
+
+\end{tikzpicture}

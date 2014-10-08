@@ -1,0 +1,12 @@
+\begin{tikzpicture}[every node/.style={inner sep=0}]
+\matrix[matrix of nodes, row sep=0.2em, column sep=0, cells={anchor=west}] (m){
+\Subhead{Fluorescent confocal}\\
+	\includegraphics[width=3\TPHorizModule]{ech17_x63_time699_crop.jpg}\\
+	\Subhead{Environmental SEM}\\
+	\includegraphics[width=3\TPHorizModule]{ESEM_cas4_GDL1-17_crop.jpg}\\
+	\Subhead{Cryo SEM}\\
+	\includegraphics[width=3\TPHorizModule]{SEM_cas4_gdl1_22_crop.jpg}\\
+};
+\foreach \i in {2,4,6}
+\draw[line width=0.2em, Accent2] (m-\i-1.south east) ++(-1em,1em) -- +(-0.75\TPHorizModule,0) node[midway, above] {\SI{10}{\micro\metre}};
+\end{tikzpicture}
