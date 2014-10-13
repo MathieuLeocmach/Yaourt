@@ -1,0 +1,247 @@
+\documentclass[xcolor=table]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+%\usetheme{Boadilla}
+%\usecolortheme{rose}
+%\usecolortheme{crane}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{navigation symbols}{}
+
+\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
+\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
+\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
+
+\usecolortheme{rose}
+%\useinnertheme[shadow]{circles}
+\usecolortheme{whale}
+%\useoutertheme{infolines}
+
+\usecolortheme[named=Accent1]{structure}
+
+\setbeamercolor{alerted text}{fg=Accent2}
+%\setbeamercolor{palette primary}{fg=white}
+%\setbeamercolor{palette secondary}{bg=Accent1}
+%\setbeamercolor{palette tertiary}{bg=Accent2,fg=white}
+
+
+\setbeamerfont{page number in head/foot}{size=\large}
+\setbeamercolor{page number in head/foot}{fg=Main}
+% page/total
+%\setbeamertemplate{footline}[frame number]
+% pas de total
+\setbeamertemplate{footline}{%
+    	\hfill%
+	\usebeamercolor[fg]{page number in head/foot}%
+	\usebeamerfont{page number in head/foot}%
+	\insertframenumber\kern1em\vskip2pt%
+}
+
+\setbeamersize{text margin left=1em}
+\setbeamersize{text margin right=1em}
+
+%font
+\usepackage[T1]{fontenc}
+\usepackage[oldstylenums]{kpfonts}
+
+
+%proper math and math symbols
+%\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{datenumber,fp}
+
+\usepackage{siunitx}
+
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap}
+%\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{external}
+\tikzexternalize
+\tikzsetexternalprefix{fig_soundbite_palavas/}
+%\tikzset{external/optimize=false}
+%\tikzset{external/force remake}
+
+
+%link or play movies
+\usepackage{multimedia}
+
+
+
+%beamer related package
+
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
+
+
+%bibliography
+\usepackage[style=authoryear-comp, language=british,eprint=false, url=false, doi=false, sortcites=true, sorting=none, isbn=false, firstinits=true,maxcitenames=6]{biblatex}
+%minimal citations
+\AtEveryCitekey{%
+	\clearfield{title}
+	\clearfield{pages}
+	\clearfield{volume}
+	\clearfield{number}
+	\clearfield{month}}
+\newcommand{\myfullcite}[1]{{\scriptsize\fullcite{#1}}}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+%\bibliography{biblio}
+
+
+\newcolumntype{P}[1]{>{\raggedright}p{#1}}
+
+\institute[E.N.S. Lyon]{Laboratoire de physique, Ecole Normale Sup\'{e}rieure de Lyon}
+\title{Role of the microstructure in the failure of a protein gel under stress}
+\author[M. Leocmach]{Mathieu Leocmach}
+\date{}
+\titlegraphic{
+	\begin{tabu}{X[c]X[c]X[c]X[c]}
+		\includegraphics[height=3\baselineskip]{Chris}&
+		\includegraphics[height=3\baselineskip]{Thomas}&
+		\includegraphics[height=3\baselineskip]{Thibaut}&
+		\includegraphics[height=3\baselineskip]{Seb}\\
+		Christophe Perge & Thomas\linebreak Gibaud & Thibaut\linebreak Divoux & Sebastien Manneville\\
+	\end{tabu}
+	
+	\vfill
+	\includegraphics[height=2\baselineskip,clip=true, trim=6mm 14mm 6mm 0]{NEW-Logo-ERC-OUTLINE}\quad
+	\includegraphics[height=2\baselineskip]{logo_ums_grand}\quad
+	\includegraphics[height=2\baselineskip]{CNRSfilaire-Q}\quad
+	\includegraphics[height=2\baselineskip]{CRPP}\quad
+	\includegraphics[height=2\baselineskip]{logo_ens-lyon}
+	}
+
+
+
+\newlength{\mylength}
+
+%\includeonly{creep_beamer}
+
+\begin{document}
+\tikzset{every mark/.append style={scale=0.8}}
+\pgfplotsset{every axis/.append style={footnotesize}}
+
+\pgfplotscreateplotcyclelist{earthy}{%
+red!40!black,
+red!60!black,
+red!80!black,
+red,
+red!80!yellow,
+red!60!yellow,
+red!40!yellow,
+}
+
+\AtBeginSection[]{
+	\addtocounter{framenumber}{-1}
+	\begin{frame}[plain]
+		\tableofcontents[currentsection, hideothersubsections]
+	\end{frame}
+}
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\setcounter{framenumber}{0}
+
+\begin{frame}{Over-acidified protein gels: beyond isoelectric pH}
+	
+	Milk protein solution (4\%w sodium caseinate) acidified by the slow hydrolysis of glucono-$\delta$-lactone (\textsc{gdl})\\ %\textit{Bremer et al., Colloids Surf. (1990); van Vliet \& Walstra, Faraday Discuss. (1995); Lucey \& Singh, Food Res. Int. (1997); Leocmach et al. PRL (2014)}
+	
+	\smallskip
+	\tikzsetnextfilename{prise_cas4}
+	\input{fig_soundbite_palavas/prise_cas4.pgf}
+	\begin{itemize}
+	\item Caseins regain charges, solubility below isoelectric $\Rightarrow$ $G^\prime\searrow$
+	\item The sample is still solid
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Linear rheology, from power-law to soft glassy}
+	\tikzsetnextfilename{sweep_cas4}
+	\input{fig_soundbite_palavas/sweep_cas4.pgf}
+	\begin{itemize}
+	\item Near isoelectric, power law rheology $G^\prime, G^{\prime\prime}$ typical of gels 
+	\item Over-acidification lowers exponent and creates a minimum in $G^{\prime\prime}$
+	\item Transition to soft-glassy behaviour \\\textit{\footnotesize Sollich, PRE (1998); Mason, Curr. Opin. Colloid Interface Sci. (1999)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Questions}
+\begin{description}
+\item[What] is the change in microstructure?
+\item[How] does it affects the failure mechanism?
+\end{description}
+\end{frame}
+
+\begin{frame}{Microscructure: retain network, swell aggregates}
+	\tikzsetnextfilename{structure_confocal}
+	\input{fig_soundbite_palavas/structure_confocal.pgf}
+	\begin{itemize}
+	\item Maximum $G^\prime$ corresponds to maximum contrast between phases
+	\item Characteristic size $\xi$ increases during over-acidification
+	\item Casein aggregates swell $\sim$ over compressed gel $\Rightarrow$ soft glassy
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Three creep regimes + softness}
+\vfill
+	\tikzsetnextfilename{creep_cas4_gdl4}
+	\input{fig_soundbite_palavas/creep_cas4_gdl4.pgf}
+%	\begin{description}
+%		\item[$\tau_f$] divergence of the strain
+%		\item[$\tau_\text{min}$] minimum of shear rate $\dot{\gamma}$
+%	\end{description}
+%	\begin{itemize}
+%		\item Erratic position of $\tau_\text{min}$
+%		\item Possible to reform bonds? Glassy?
+%	\end{itemize}
+\begin{itemize}
+%\item Failure scenario almost conserved: ``fibre bundle'' network
+%\item Other dissipation due to softness: overcompressed gel
+\item Prediction of failure from when fractures nucleate more difficult
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+\begin{frame}{Basquin law rescaling}
+	\tikzsetnextfilename{basquin}
+	\input{fig_soundbite_palavas/basquin.pgf}
+\end{frame}
+
+\begin{frame}{Monkman-Grant: Predict failure from nucleation}
+	\tikzsetnextfilename{MonkmanGrant}
+	\input{fig_soundbite_palavas/MonkmanGrant.pgf}
+\end{frame}
+
+\begin{frame}{Wavelength}
+	\tikzsetnextfilename{lambda}
+	\input{fig_soundbite_palavas/lambda.pgf}
+	\textcolor{Accent1}{$\blacktriangleright$} $\lambda\propto e$ compatible with nucleation rate
+
+\end{frame}
+
+
+\end{document}
+

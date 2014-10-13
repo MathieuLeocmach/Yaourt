@@ -1,0 +1,52 @@
+\begin{tikzpicture}
+\pgfplotsset{every axis/.append style={
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-0.5em}, 
+	ylabel absolute, every axis y label/.append style={anchor=base, yshift=-0.5em},
+	%scale only axis,
+	width=0.5\textwidth,
+	height=10\baselineskip,
+	xmode=log, xmin=1, xmax=1e6,
+	domain=1:1e6,
+}}
+\begin{axis}[
+	name=a,
+	ylabel={$\tau_\text{min}$ (\si{\second})}, ymode=log, ymin=1,
+	legend pos=outer north east,
+	legend style={font=\normalsize, fill=none, draw=none},
+	xticklabels={}
+]
+\addplot[only marks, mark=*] table[x index=4, y index=5]{MCR_cas4_GDL1_gap10.txt};
+\addlegendentry{1\%, $e=\SI{1}{\milli\metre},\, H=\SI{28}{\milli\metre}$};
+\addplot[only marks, mark=square*] table[x index=4, y index=5]{MCR_cas4_GDL1_gap30.txt};
+\addlegendentry{1\%, $\textcolor{Accent2}{e=\SI{3}{\milli\metre}},\, H=\SI{28}{\milli\metre}$};
+\addplot[gray, only marks, mark=o] table[x index=4, y index=5]{ARG2_cas4_GDL1_gap20.txt};
+\addlegendentry{1\%, $e=\SI{1}{\milli\metre},\, \textcolor{Accent2}{H=\SI{60}{\milli\metre}}$};
+\addplot[red, only marks, mark=star] table[x index=4, y index=5]{MCR_cas4_GDL4_gap10.txt};
+\addlegendentry{\textcolor{Accent2}{4\%}, $e=\SI{1}{\milli\metre},\, H=\SI{28}{\milli\metre}$};
+\addplot[no marks]{0.6*x};
+\addplot[no marks, dashed]{0.4*x};
+\end{axis}
+
+\begin{axis}[
+	anchor=north west,
+	at={(0,-0.5em)},
+	xlabel={$\tau_f$ (\si{\second})},
+	ylabel=$\tau_\text{min}/\tau_f$, ymin=0, 
+]
+\addplot[only marks, mark=*] table[x index=4, y expr={\thisrowno{5}/\thisrowno{4}}]{MCR_cas4_GDL1_gap10.txt};
+\addplot[only marks, mark=square*] table[x index=4, y expr={\thisrowno{5}/\thisrowno{4}}]{MCR_cas4_GDL1_gap30.txt};
+\addplot[gray, only marks, mark=o] table[x index=4, y expr={\thisrowno{5}/\thisrowno{4}}]{ARG2_cas4_GDL1_gap20.txt};
+\addplot[red, only marks, mark=star] table[x index=4, y expr={\thisrowno{5}/\thisrowno{4}}]{MCR_cas4_GDL4_gap10.txt};
+\addplot[no marks]{0.6};
+\addplot[no marks, dashed]{0.4};
+\end{axis}
+
+\node[anchor=north east, text width=0.5\textwidth] at ($(a.left of south west)+(\textwidth,-0.5em)$) {
+\begin{itemize}
+\item 	Height-dependent near isoelectric
+\item Upper bound for over-acidified
+\end{itemize}};
+
+%\node[inner sep=0] at ($(a.east)-(3\TPHorizModule,0)$) {};
+%\draw (a.outer east) ++ (-3\TPHorizModule,0) -- +(0,-2\TPVertModule);
+\end{tikzpicture}

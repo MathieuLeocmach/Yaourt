@@ -1,0 +1,100 @@
+\begin{figure}
+\begin{tikzpicture}
+\pgfplotstableread{freqsweep_Y265_cas4_GDL1.txt}\GDLa
+\pgfplotstableread{freqsweep_Y277_cas4_GDL1.25.txt}\GDLb
+\pgfplotstableread{freqsweep_Y275_cas4_GDL1.5.txt}\GDLc
+\pgfplotstableread{freqsweep_Y268_cas4_GDL2.txt}\GDLd
+\pgfplotstableread{freqsweep_Y270_cas4_GDL3.txt}\GDLe
+\pgfplotstableread{freqsweep_Y271_cas4_GDL4.txt}\GDLf
+
+\begin{groupplot}[
+	group style={
+			group name=g, group size=2 by 2,
+			vertical sep=2.5em,
+			horizontal sep=4em,
+			%xticklabels at=edge bottom,
+		},
+	scale only axis,
+	width=0.6\columnwidth-4em,
+	height=4\baselineskip,
+	domain={6e-2:70},
+	cycle list name=earthy,
+	xmode=log, ymode=log,
+	xmin=5e-2, xmax=1e3,
+	xlabel={$f$ (\si{\hertz})},
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-0.5em}
+	]
+\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}, ymin=18, ymax=3e3]
+\begin{scope}[
+	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
+	every node/.style={anchor=west, ,font=\scriptsize, pos=0}
+]
+	\addplot table{\GDLa} node[anchor=base west]{1\%};
+	\addplot table{\GDLb} node[anchor=base west]{1.25\%};
+	\addplot table{\GDLc} node[yshift=0.1em]{1.5\%};
+	\addplot table{\GDLd} node[yshift=0.1em]{2\%};
+	\addplot table{\GDLe} node{3\%};
+	\addplot table{\GDLf} node[yshift=-0.2em]{4\%};
+\end{scope}
+\pgfplotsset{cycle list shift=-6}
+\addplot {590.277*x^0.139256};
+\addplot {349.762*x^0.121815};
+\addplot {246.573*x^0.102707};
+\addplot {162.851*x^0.0676911};
+\addplot {109.351*x^0.0437222};
+\addplot {76.7364*x^0.035779};
+
+\nextgroupplot[
+	width=0.4\columnwidth-4em-5pt,
+	xlabel={GDL (\%)},
+	xmode=linear,
+	ymode=linear,
+	xmin=0, xmax=4.5,
+	ylabel={exponent}, ymin=0,ymax=0.15,
+	ytick={0,0.05,0.1}, yticklabels={0,0.05,0.10}
+]
+\addplot[mark=*] file{sweep_exponents.txt};
+
+
+\nextgroupplot[ylabel={$G^{\prime\prime}$ (\si{\pascal})}, ymin=3, ymax=5e2]
+\begin{scope}[
+	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
+	every node/.style={anchor=west,font=\scriptsize, pos=0}
+]
+	\addplot table[y index=2]{\GDLa} node{1\%};
+	\addplot table[y index=2]{\GDLb} node{1.25\%};
+	\addplot table[y index=2]{\GDLc} node[yshift=-0.1em]{1.5\%};
+	\addplot table[y index=2]{\GDLd} node{2\%};
+	\addplot table[y index=2]{\GDLe} node{3\%};
+	\addplot table[y index=2]{\GDLf} node[yshift=-0.2em]{4\%};
+\end{scope}
+\pgfplotsset{cycle list shift=-6}
+\addplot {140.022*x^0.139256};
+\addplot {72.4462*x^0.121815};
+\addplot {43.0813*x^0.102707};
+\addplot {18.9117*x^0.0676911};
+\addplot {8.39838*x^0.0437222};
+\addplot {4.99978*x^0.035779};
+
+\nextgroupplot[
+	width=0.4\columnwidth-4em-5pt, 
+	ylabel={$G^{\prime\prime}/G^{\prime\prime}_{\SI{1}{\hertz}}$}, 
+	ymode=linear, ymin=0.5,
+	xmin=0.05,xmax=100, xtick={0.1,1,10},
+	%xmin=0, xmax=60,
+]
+\begin{scope}[
+	%every axis plot post/.append style={mark=*, mark options={scale=0.1}},
+	every node/.style={anchor=west,font=\scriptsize, pos=0}
+]
+	\addplot table[y expr={\thisrowno{2}/140.022}]{\GDLa} node[pos=0.25,left]{1\%};
+	\addplot table[y expr={\thisrowno{2}/72.4462}]{\GDLb};
+	\addplot table[y expr={\thisrowno{2}/43.0813}]{\GDLc};
+	\addplot table[y expr={\thisrowno{2}/18.9117}]{\GDLd};
+	\addplot table[y expr={\thisrowno{2}/8.39838}]{\GDLe};
+	\addplot table[y expr={\thisrowno{2}/4.99978}]{\GDLf}node[pos=0.25,right]{4\%};
+\end{scope}
+\end{groupplot}
+
+\end{tikzpicture}
+\end{figure}

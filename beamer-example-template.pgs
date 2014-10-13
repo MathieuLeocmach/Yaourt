@@ -65,6 +65,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.9}
 \usepgfplotslibrary{groupplots}
+\usepackage{pgfplotstable}
 
 
 %link or play movies
