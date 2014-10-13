@@ -1,18 +1,18 @@
 \begin{tikzpicture}
 \pgfplotsset{every axis/.append style={
 	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-2em}, 
-	ylabel absolute, every axis y label/.append style={anchor=base, yshift=2em},
-	scale only axis,
-	width=2\TPHorizModule,
-	height=1.5\TPVertModule,
+	ylabel absolute, every axis y label/.append style={anchor=base, yshift=1em},
+	%scale only axis,
+	width=2.65\TPHorizModule,
+	height=2\TPVertModule,
 	xmode=log, xmin=1, xmax=1e6,
 	domain=1:1e6,
 }}
 \begin{axis}[
 	name=a,
-	ylabel={$\tau_m$ (\si{\second})}, ymode=log, ymin=1,
+	ylabel={$\tau_\text{min}$ (\si{\second})}, ymode=log, ymin=1,
 	legend pos=north west,
-	legend style={font=\scriptsize, fill=none, draw=none},
+	legend style={font=\footnotesize, fill=none, draw=none},
 	xticklabels={}
 ]
 \addplot[only marks, mark=*] table[x index=4, y index=5]{MCR_cas4_GDL1_gap10.txt};
@@ -30,9 +30,9 @@
 \begin{axis}[
 	anchor=north west,
 	at={(0,-0.5em)},
-	height=1\TPVertModule,
+	height=2\TPVertModule,
 	xlabel={$\tau_f$ (\si{\second})},
-	ylabel=$\tau_m/\tau_f$, ymin=0, 
+	ylabel=$\tau_\text{min}/\tau_f$, ymin=0, 
 ]
 \addplot[only marks, mark=*] table[x index=4, y expr={\thisrowno{5}/\thisrowno{4}}]{MCR_cas4_GDL1_gap10.txt};
 \addplot[only marks, mark=square*] table[x index=4, y expr={\thisrowno{5}/\thisrowno{4}}]{MCR_cas4_GDL1_gap30.txt};
@@ -43,4 +43,5 @@
 \end{axis}
 
 %\node[inner sep=0] at ($(a.east)-(3\TPHorizModule,0)$) {};
+%\draw (a.outer east) ++ (-3\TPHorizModule,0) -- +(0,-2\TPVertModule);
 \end{tikzpicture}

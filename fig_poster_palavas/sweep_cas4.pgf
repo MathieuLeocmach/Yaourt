@@ -48,7 +48,7 @@
 	xmode=linear,
 	ymode=linear,
 	xmin=0, xmax=4.5,
-	ylabel=$\alpha$, ymin=0,ymax=0.15,
+	ylabel={exponent}, ymin=0,ymax=0.15,
 	ytick={0,0.05,0.1}, yticklabels={0,0.05,0.10}
 ]
 \addplot[mark=*] file{sweep_exponents.txt};

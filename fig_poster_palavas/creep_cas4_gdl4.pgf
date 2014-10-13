@@ -31,6 +31,7 @@
 \addplot+[restrict x to domain=0.05:100] table {Y249_120Pa_gamma_decimated.txt} node[anchor=north east, rotate=80] at (rel axis cs:0.15,1) {\SI{120}{\pascal}};
 \end{scope}
 
+%%%Regime 1%%%
 \nextgroupplot[
 	xlabel={$t/\tau_f$},xmin=1e-5, xmax=2, xtick={1e-4, 1e-2, 1},
 	ymin=0.5, ymax=5e4]
@@ -40,8 +41,11 @@
 \addplot table {Y246_60Pa_gdot_decimated.txt};
 \addplot table {Y236_100Pa_gdot_decimated.txt};
 \addplot+[restrict x to domain=-2.75:1] table {Y249_120Pa_gdot_decimated.txt};
+\addplot[domain=1e-3:1e-1] {x^(-0.96)} node[pos=0, right] {-0.96};
 \node[below right] at (rel axis cs:0,1){Andrade creep};
 
+
+%%%Regime2 %%%
 \nextgroupplot[
 	xlabel={$t/\tau_f$}, xmode=linear, ymode=linear, 
 	xmin=0, xmax=1,ymin=0.5,ymax=10, restrict y to domain=0:11,
@@ -53,6 +57,8 @@
 \addplot table {Y236_100Pa_gdot_decimated.txt};
 \addplot table {Y249_120Pa_gdot_decimated.txt};
 
+
+%%%Regime 3%%%
 \nextgroupplot[
 	xlabel={$1-t/\tau_f$},xmin=1e-5, xmax=2, x dir=reverse, xtick={1e-4, 1e-2, 1},
 	ymin=0.5, ymax=5e4]
@@ -62,6 +68,7 @@
 \addplot table[x expr={1-\thisrowno{0}}] {Y246_60Pa_gdot_decimated.txt};
 \addplot table[x expr={1-\thisrowno{0}}] {Y236_100Pa_gdot_decimated.txt};
 \addplot table[x expr={1-\thisrowno{0}}] {Y249_120Pa_gdot_decimated.txt};
+\addplot[domain=1e-4:1e-2] {0.1*x^(-1)} node[midway, below] {-1};
 \node[below right] at (rel axis cs:0,1){Finite time divergence};
 \end{groupplot}
 \node[inner sep=0] at ($(g c4r1.east)-(11\TPHorizModule,0)$) {};

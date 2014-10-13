@@ -23,7 +23,6 @@
 
  %%%% pH %%%%
 \nextgroupplot[
-	height=1\TPVertModule,
 	width=4\TPHorizModule,
 	xlabel={time (h)}, 
 	ymin=0, ymax=7, ylabel={pH},
@@ -41,12 +40,12 @@
 
 
 %%%% G' max et G' infini %%%%
-\nextgroupplot[height=1\TPVertModule,ylabel={$G^\prime$ (\si{\pascal})}, ymin=0,ymax=950,xtick={0,1,...,4},black]
+\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}, ymin=0,ymax=950,xtick={0,1,...,4},black]
 	\addplot[mark=*] table{scaling_factors_prise.txt} node[anchor=north] at (rel axis cs:0.5,1) {$G^\prime_m$};
 	\addplot[mark=o] table[y index=2]{scaling_factors_prise.txt}  node at (rel axis cs:0.5,0.3) {$G^\prime_\infty$};
 
 %%%% temps initial, temps max %%%%
-\nextgroupplot[height=1\TPVertModule,ylabel={time (\si{\second})},ymode=log,ymin=5e2,xtick={0,1,...,4},ymax=5e4, black]
+\nextgroupplot[ylabel={time (\si{\second})},ymode=log,ymin=5e2,xtick={0,1,...,4},ymax=5e4, black]
 	\addplot[mark=star] table[y expr=\thisrowno{3}-\thisrowno{4}]{scaling_factors_prise.txt};
 	\addplot[mark=*] table[y index=3]{scaling_factors_prise.txt} node at (rel axis cs:0.5,0.75) {$t_m$};
 	\addplot[mark=o] table[y index=4]{scaling_factors_prise.txt} node at (rel axis cs:0.5,0.2)  {$t_i$};
