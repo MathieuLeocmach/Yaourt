@@ -4,6 +4,8 @@
 % lots of graphics, because they can take some time to process and
 % display. (\documentclass[a0,draft]{a0poster})
 
+\usepackage[margin=40mm]{geometry}
+
 %\usepackage[utf8]{inputenc}
 
 % Switch off page numbers on a poster, obviously, and section numbers too.
@@ -62,6 +64,9 @@
 \usepackage{ragged2e}
 \RaggedRight
 
+\usepackage{framed}
+\colorlet{shadecolor}{lightgray!50!white}
+
 \definecolor{Main}{rgb}{1, 0.57, 0}
 \definecolor{Accent1}{rgb}{1,0.28,0}
 \definecolor{Accent2}{rgb}{1,0.74,0}
@@ -72,7 +77,7 @@
 \def\Head#1{\Norulehead{\dotfill #1}}
 \def\LHead#1{{\LARGE #1}\smallskip}
 \def\Subhead#1{\noindent{\large\color{Accent1}\textsc{#1}}}
-\def\Title#1{\noindent{\VeryHuge\color{Accent2}\raggedright\textsf{\uppercase{#1}}}}
+\def\Title#1{\noindent{\VeryHuge\color{Accent2}\raggedright\textsf{\fontspec[BoldFont=Lovelo-LineBold]{Lovelo-LineBold}{#1}}}}
 
 \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\textcolor{Accent2}{\textsc{#1}}}
 
@@ -143,14 +148,15 @@ red!40!yellow,
 % This gives good title positioning for a portrait poster.
 % Watch out for hyphenation in titles - LaTeX will do it
 % but it looks awful.
-%\begin{textblock}{15}(0,0)
+
+
 \begin{center}
 \Title{
 Role of the microstructure in the failure of a protein gel under stress
 }
 \end{center}
 
-\smallskip
+\vfill
 \LHead{Mathieu Leocmach, Christophe Perge, Thomas Gibaud, Sébastien Manneville
 }\hfill\texttt{\color{Accent1}mathieu.leocmach@ens-lyon.fr}
 
@@ -168,113 +174,126 @@ Role of the microstructure in the failure of a protein gel under stress
 
 
 
-%\end{textblock}
-
-\begin{textblock}{11}(0,3)
+\vfill
+\begin{minipage}[b][21.5\TPVertModule]{11\TPHorizModule}
 	\Head{Over-acidified protein gels: beyond isoelectric pH}
 	
-	Milk protein solution (4\%w sodium caseinate) acidified by the slow hydrolysis of glucono-$\delta$-lactone (\textsc{gdl})
+	Milk protein solution (4\%w sodium caseinate) acidified by the slow hydrolysis of glucono-$\delta$-lactone (\textsc{gdl})\\ \textit{Bremer et al., Colloids Surf. (1990); van Vliet \& Walstra, Faraday Discuss. (1995); Lucey \& Singh, Food Res. Int. (1997); Leocmach et al. PRL (2014)}
 	
+	\smallskip
 	\tikzsetnextfilename{prise_cas4}
 	\input{fig_poster_palavas/prise_cas4.pgf}
+	\begin{tabu}{X[5]XX[5]}
+	Caseins regain solubility below isoelectric $\Rightarrow$ overshoot in $G^\prime$&&
+	Single time scale $(t_m-t_i)$ governs gelation and softening.\\
+	How does it translate in term of microstructure?&&Diverge when $pH_\infty\rightarrow pI$
+	\end{tabu}
 	
-
-\end{textblock}
-
-
-
-\begin{textblock}{11}(0,8.5)
-	\Head{Linear rheology, from power-law to glassy}
+	\vfill
+	\Head{Linear rheology, from power-law to soft glassy}
 	\tikzsetnextfilename{sweep_cas4}
 	\input{fig_poster_palavas/sweep_cas4.pgf}
+	\begin{tabu}{X[4]X[2]X[5]}
+	Near isoeletric, power law rheology typical of gels.&&
+	Minimum in loss modulus appear with over-acidification.\\
+	Flatter with over-acidification.&%&
+	\multicolumn{2}{l}{\textcolor{Accent1}{$\blacktriangleright$} Over-acidified behaviour typical of soft glassy materials}\\
+	&\textit{Sollich, PRE (1998)}&\textit{Mason, Curr. Opin. Colloid Interface Sci. (1999)}\\
+	\end{tabu}
 	
-\end{textblock}
+	\vfill
+	\Head{Evolution of the microscructure: preserved network, swelling aggregates}
+	\tikzsetnextfilename{structure_confocal}
+	\input{fig_poster_palavas/structure_confocal.pgf}
+	\begin{tabu}{X[5]XX[5]}
+	Maximum $G^\prime$ corresponds to maximum contrast between phases $\chi$&&
+	\textcolor{Accent1}{$\blacktriangleright$} Strongest gel when attraction is strongest\\
+	Characteristic size $\xi$ increases during over-acidification&&
+	\textcolor{Accent1}{$\blacktriangleright$} Casein aggregates swell $\sim$ over compressed gel $\Rightarrow$ soft glassy\\
+	\end{tabu}
+	
+	\vfill
+	\Head{Three creep regimes: much more erratic when over-acidified}
+	\tikzsetnextfilename{creep_cas4_gdl4}
+	\input{fig_poster_palavas/creep_cas4_gdl4.pgf}
+	\begin{tabu}{X[4]X[3]X[3]}
+	$\tau_f$: divergence of the strain $\gamma$, failure time&
+	\multicolumn{2}{l}{Robust Andrade creep, compatible with power-law rheology \hfill\textit{Leocmach et. al, PRL (2014)}}\\
+	$\tau_\text{min}$: minimum of shear rate $\dot{\gamma}$, fracture nucleation&
+	Robust finite time divergence&
+	\textcolor{Accent1}{$\blacktriangleright$}Possible to reform bonds? Glassy?
+	\end{tabu}
+	
+	
+	\vfill
+	\Head{Predict fracture nucleation time: Basquin law rescaling}
+	\begin{tabu}{XX}
+	\hspace{\TPHorizModule}\Subhead{Composition} rescaled by elastic modulus&
+	\hspace{\TPHorizModule}\Subhead{Geometry} rescaled as a fracture nucleation rate
+	\end{tabu}	
+	
+	\tikzsetnextfilename{basquin}
+	\input{fig_poster_palavas/basquin.pgf}
+	\begin{tabu}{X[5]XX[5]}
+	Robust Basquin law despite glassy behaviour&&\textcolor{Accent1}{$\blacktriangleright$} Failure determined by network breaking \& fracture nucleation
+	\end{tabu}
+	
+\end{minipage}
+\hfill
+\begin{minipage}[b][21.5\TPVertModule]{3\TPHorizModule}
+\begin{shaded*}
+	\Norulehead{Take home}
+	\Subhead{Over acidification}
+	\begin{itemize}
+		\item protein aggregates swell
+		\item power-law rheology, decreasing exponent
+		\item dissipation becomes glassy
+	\end{itemize}
+	\Subhead{Creep response}
+	\begin{itemize}
+		\item Andrade creep
+		\item finite time singularity
+		\item erratic transition
+	\end{itemize}
+	\Subhead{Fracture time prediction}
+	\begin{itemize}
+		\item composition influence limited to $G^\prime$
+		\item geometry factors as a nucleation rate
+	\end{itemize}
+\end{shaded*}
 
 
-
-
-\begin{textblock}{3}(12,8.5)
+	\vfill
 	\Head{Microscopy}
-	Final state without over-acidification
+	Final state without over-acidification\\
 	
 	\tikzsetnextfilename{structure_finale}
 	\input{fig_poster_palavas/structure_finale.pgf}
 	
-\end{textblock}
-
-\begin{textblock}{11}(0,11.5)
-	\Head{Evolution of the microscructure: preserved network, swelling aggregates}
-	\tikzsetnextfilename{structure_confocal}
-	\input{fig_poster_palavas/structure_confocal.pgf}
-	
-\end{textblock}
-
-\begin{textblock}{11}(0,15.5)
-	\Head{Three creep regimes: much more chaotic when over-acidified}
-	\tikzsetnextfilename{creep_cas4_gdl4}
-	\input{fig_poster_palavas/creep_cas4_gdl4.pgf}
-	
-\end{textblock}
-
-\begin{textblock}{3}(12,15.5)
+	\vfill
 	\Head{Monkman-Grant}
 	Predict failure from the minimum
 	
 	\tikzsetnextfilename{MonkmanGrant}
 	\input{fig_poster_palavas/MonkmanGrant.pgf}
+	Height-dependent near isoelectric\\
+	Upper bound for over-acidified
 	
-\end{textblock}
-
-\begin{textblock}{11}(0,18.5)
-	\Head{Basquin law rescaling}
-	\begin{tabu}{XX}
-	\Subhead{Composition} rescaled by elastic modulus&
-	\Subhead{Geometry} rescaled as a fracture nucleation rate
-	\end{tabu}	
 	
-	\tikzsetnextfilename{basquin}
-	\input{fig_poster_palavas/basquin.pgf}
-	
-\end{textblock}
-
-\begin{textblock}{3}(12,20)
+	\vfill
 	\Head{Wavelength}
 	\tikzsetnextfilename{lambda}
 	\input{fig_poster_palavas/lambda.pgf}
+	Compatible with nucleation rate
 	
-\end{textblock}
+\end{minipage}
 
-\begin{textblock}{15}(0,24.75)
+\vfill
 \small{\texttt{The research leading to these results has received funding from the European Research Council under the European Union's Seventh Framework Programme (FP7/2007-2013) / ERC grant agreement n°~258803.}}
-\end{textblock}
 
 
-\textblockcolour{lightgray!50!white}
-\TPMargin*{ 0.125\TPHorizModule }
-\begin{textblock}{2.875}(12,3.125)%real width of 3
-	\Norulehead{Take home}
-	Spontaneous wrinkling of over-acidified casein gels in non-adhesive confinement
-	
-	\Subhead{Original patterns}
-	\begin{itemize}
-		\item nested (optical elements ?)
-		\item kinetic wavelength selection
-	\end{itemize}
-	\Subhead{A new wrinkling mechanism}
-	\begin{itemize}
-		\item porous flow resist bending
-		\item Darcy can beat Poiseuille
-		\item may extend to other porous sheets\linebreak  (wet paper, biological membranes\ldots)
-	\end{itemize}
-	\Subhead{Viscosity influences}
-	\begin{itemize}
-		\item porous dissipation
-		\item gel formation\hfill
-		\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.1\normalbaselineskip}\right\}$ thus wrinkling}
-	\end{itemize}
-	
 
-\end{textblock}%Conclusion
+
 
 
 
