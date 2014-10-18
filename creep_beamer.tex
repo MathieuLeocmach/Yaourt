@@ -24,6 +24,7 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 
 %\tikzset{external/force remake}
 \begin{frame}{The yoghurt creep experiment}
+\tikzsetnextfilename{creep_spoon}
 \begin{tikzpicture}
 \node[anchor=south west] (webcam){\includegraphics[width=0.2\textwidth]{webcam}};
 \node[anchor=south] at (0.4\textwidth,0) (spoon) {\includegraphics[width=0.3\textwidth]{spoon}};
@@ -44,7 +45,7 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 
 %\tikzset{external/force remake}
 \begin{frame}{The yoghurt creep experiment}
-\movie[externalviewer]{\begin{tikzpicture}
+\movie[externalviewer]{\tikzsetnextfilename{creep_xp}\begin{tikzpicture}
 \node[inner sep=0] (a) {\includegraphics[height=16\baselineskip]{creep_experiment.jpg}};
 \node[below right=\baselineskip of a.north east, inner sep=0] (vmap) {\includegraphics[width=4\baselineskip]{jet_cmap}};
 
@@ -80,6 +81,7 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 %\tikzset{external/force remake=false}
 
 \begin{frame}{Creep rheology: Three regimes}
+\tikzsetnextfilename{three_regimes}
 \begin{tikzpicture}
 \begin{loglogaxis}[
    name=g,
@@ -124,6 +126,7 @@ Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 \begin{frame}{Failure time}
 \begin{columns}
 \column{0.55\textwidth}
+\tikzsetnextfilename{basquin}
 \begin{tikzpicture}
 \begin{loglogaxis}[
 	width=\textwidth,
@@ -147,6 +150,7 @@ Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 \end{block}
 
 \column{0.45\textwidth}
+\tikzsetnextfilename{basqun_otherfits}
 \begin{tikzpicture}
 \begin{groupplot}[
 	group style={
@@ -176,12 +180,12 @@ Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
 Activated processes unlikely (Eyring, Griffith, Taylor, \ldots)
 \end{columns}
 \end{frame}
-\tikzset{external/force remake=false}
 
 %\tikzset{external/force remake}
 \begin{frame}{Primary creep}
 \begin{columns}
 \column{0.55\textwidth}
+\tikzsetnextfilename{primary_creep}
 \begin{tikzpicture}
 \begin{loglogaxis}[
 	name=g,
@@ -218,7 +222,8 @@ Classically explained by disinclination dynamics in crystals
 \includegraphics[width=\textwidth]{Andrade_1910}
 
 \bigskip
-\includegraphics[height=7\baselineskip]{Andrade_1910_fig1}
+\includegraphics[height=7\baselineskip]{Andrade_1910_fig1}%
+\tikzsetnextfilename{Andrade_historical}%
 \begin{tikzpicture}
 \node[inner sep=0] (a){\includegraphics[height=7\baselineskip]{Andrade_1910_fig2}};
 \node[below right=0 and 1em of a.north west, font=\footnotesize,fill=white] {lead \& copper};
@@ -226,7 +231,7 @@ Classically explained by disinclination dynamics in crystals
 \end{tikzpicture}
 \end{columns}
 \end{frame}
-\tikzset{external/force remake=false}
+
 
 %\tikzset{external/force remake}
 \begin{frame}{Primary creep}
@@ -238,20 +243,21 @@ Classically explained by disinclination dynamics in crystals
 \end{block}
 
 \begin{block}{Partial creep and recovery}
+\tikzsetnextfilename{recovery}
 \begin{tikzpicture}
 \begin{axis}[
 	width=\textwidth,
 	height=8\baselineskip,
-	xlabel={time (\si{\second})},
+	xlabel={time (\si{\hour})},
 	ylabel={strain $\gamma$},
-	xmin=-1e3, xmax=2.8e4,
+	xmin=-0.15, xmax=7.5, xtick={0, 1, ..., 7},
 	axis background/.style={fill=white},
 	]
-	\addplot[black, no marks] table {Y261_oscil_creep_recovery_100Pa_decimated.txt};
+	\addplot[black, no marks] table[x expr={\thisrowno{0}/3600}] {Y261_oscil_creep_recovery_100Pa_decimated.txt};
 	\begin{scope}[<-,Main, inner sep=0]
 	\draw (axis cs:0,0) -- +(1em,0) node[anchor=west]{$\sigma\leftarrow \SI{100}{\pascal}$};
-	\draw (axis cs:600,0.2727007) -- +(1em,0) node[anchor=west]{$\sigma\leftarrow 0$};
-	\draw (axis cs:8600,0.0159) -- +(0,1em) node[anchor=base east]{$\gamma\leftarrow 0$};
+	\draw (axis cs:1/6,0.2727007) -- +(1em,0) node[anchor=west]{$\sigma\leftarrow 0$};
+	\draw (axis cs:2.388,0.0159) -- +(0,1em) node[anchor=base east]{$\gamma\leftarrow 0$};
 	\end{scope}
 \end{axis}
 \end{tikzpicture}
@@ -259,7 +265,6 @@ Classically explained by disinclination dynamics in crystals
 
 $\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structure damage, but viscous dissipation)
 \end{frame}
-\tikzset{external/force remake=false}
 
 
 
@@ -268,6 +273,7 @@ $\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structu
 \begin{frame}{Dimensionless creep response}
 \begin{columns}
 \column{0.55\textwidth}
+\tikzsetnextfilename{primary_rescaled}
 \begin{tikzpicture}
 \begin{loglogaxis}[
 	width=\textwidth,
@@ -289,6 +295,7 @@ $\Rightarrow$ Primary creep is ``kinetically'' reversible (no detectable structu
 Linear viscoelasticity accounts for the Andrade exponent
 
 \column{0.45\textwidth}
+\tikzsetnextfilename{linear_rheology}
 \begin{tikzpicture}
 \begin{loglogaxis}[
 	height=0.8\textwidth,
@@ -311,7 +318,6 @@ Linear viscoelasticity accounts for the Andrade exponent
 }
 \end{columns}
 \end{frame}
-\tikzset{external/force remake=false}
 
 %\tikzset{external/force remake}
 \begin{frame}{Tertiary creep}
@@ -319,6 +325,7 @@ Linear viscoelasticity accounts for the Andrade exponent
 \column{0.55\textwidth}
 Time to failure
 
+\tikzsetnextfilename{tertiary_rescaled}
 \begin{tikzpicture}
 \begin{loglogaxis}[
 	width=\textwidth,
@@ -351,6 +358,7 @@ $\Rightarrow$ dominated by fracture growth
 \includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-20-00.jpg}\hfill
 \includegraphics[width=0.33\textwidth]{Y110_2013-03-01_03-21-15.jpg}
 
+\tikzsetnextfilename{fracture_length}
 \begin{tikzpicture}
 \begin{axis}[
 	width=\textwidth,
@@ -369,7 +377,6 @@ $\Rightarrow$ dominated by fracture growth
 \end{block}
 \end{columns}
 \end{frame}
-\tikzset{external/force remake=false}
 
 %\tikzset{external/force remake}
 \begin{frame}{Secondary creep: a crossover}
@@ -377,6 +384,7 @@ $\Rightarrow$ dominated by fracture growth
 \column{0.55\textwidth}
 Creep responses in linear scales
 
+\tikzsetnextfilename{secondary_rescaled}
 \begin{tikzpicture}
 \begin{axis}[
 	width=\textwidth,
@@ -404,6 +412,7 @@ Creep responses in linear scales
 
 \column{0.45\textwidth}
 \structure{Monkman-Grant relation}
+\tikzsetnextfilename{Monkman-Grant}
 \begin{tikzpicture}
 \begin{loglogaxis}[
 	width=\textwidth,
@@ -420,7 +429,6 @@ Creep responses in linear scales
 ``Early time'' response allows to predict failure time
 \end{columns}
 \end{frame}
-\tikzset{external/force remake=false}
 
 \begin{frame}{What about theories and models?}
 \begin{columns}
@@ -465,6 +473,7 @@ elastic fibres + local yield strain + damage accumulation
 \begin{block}{\textit{\footnotesize Kun et al. J. Stat Mech 2006, PRL 2008}}
 \begin{columns}
 \column{0.7\textwidth}
+\tikzsetnextfilename{Kun_2006_basquin}
 \begin{tikzpicture}[inner sep=0]
 \node(a){\includegraphics[height=5\baselineskip]{Kun_2006_basquin.png}};
 \node[fill=white,yshift=-0.5em] at (a) {$\tau_f \sim \sigma^{-\beta}$};
@@ -500,6 +509,7 @@ Predicts Basquin law \& fractures \alert{but} no Andrade creep \& too slow diver
 \item reversible, homogeneous creep $\rightarrow$ irreversible fracture growth
 \item a single expression captures all the global rheological response
 \end{itemize}
+\tikzsetnextfilename{creep_summary}
 \begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
