@@ -24,9 +24,9 @@
 	xmin=0, xmax=20,xtick={0,2,...,20},
 	]
 	\begin{scope}[every node/.style={anchor=base west, inner xsep=0, font=\small}]
-	\addplot table[x expr={\thisrowno{0}/3600.+0.05}]{Y190_cas4_gdl1.pH}  (axis cs:20,4) node[below left] {1\%};
+	\addplot table[x expr={\thisrowno{0}/3600.+0.05}]{Y190_cas4_gdl1.pH}  (axis cs:20,4) node[below left] {\textsc{gdl} 1\%};
 	\pgfplotsset{cycle list shift=4};
-	\addplot table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH}  node {4\%};;
+	\addplot table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH}  node {\textsc{gdl} 4\%};
 	\end{scope}
 	\node[base left=0] at (axis cs:17,4.6) {isoelectric};
 
@@ -48,6 +48,7 @@
 	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL3_Y270.prise} node[yshift=-0.1em] {3\%};
 	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise} node[yshift=-0.5em] {4\%};
 	\end{scope}
+	\draw[->, thick] (axis cs: 14,850) -- (axis cs:12,60) node[pos=0.25, right]{\textsc{gdl}$\searrow$};
 
 \end{groupplot}
 

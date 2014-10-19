@@ -24,6 +24,8 @@
 	xlabel={$f$ (\si{\hertz})},
 	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-0.5em}
 	]
+
+%%%%Elastic%%%%
 \nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}, ymin=18, ymax=3e3]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
@@ -43,7 +45,9 @@
 \addplot {162.851*x^0.0676911};
 \addplot {109.351*x^0.0437222};
 \addplot {76.7364*x^0.035779};
+\draw[->, thick] (axis cs: 7,850) -- (axis cs:12,60) node[pos=0, anchor=south east]{\textsc{gdl}$\searrow$};
 
+%%%Exponent%%%
 \nextgroupplot[
 	width=0.4\columnwidth-4em-5pt,
 	xlabel={GDL (\%)},
@@ -56,6 +60,7 @@
 \addplot[mark=*] file{sweep_exponents.txt};
 
 
+%%%Loss%%%
 \nextgroupplot[ylabel={$G^{\prime\prime}$ (\si{\pascal})}, ymin=3, ymax=5e2]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
@@ -75,6 +80,7 @@
 \addplot {18.9117*x^0.0676911};
 \addplot {8.39838*x^0.0437222};
 \addplot {4.99978*x^0.035779};
+\draw[->, thick] (axis cs: 7,200) -- (axis cs:12,4) node[pos=0, above left=-0.5em and 0]{\textsc{gdl}$\searrow$};
 
 \nextgroupplot[
 	width=0.4\columnwidth-4em-5pt, 
@@ -94,6 +100,7 @@
 	\addplot table[y expr={\thisrowno{2}/8.39838}]{\GDLe};
 	\addplot table[y expr={\thisrowno{2}/4.99978}]{\GDLf}node[pos=0.25,right]{4\%};
 \end{scope}
+\draw[->, thick] (axis cs: 20,1.8) -- (axis cs:60,1.2) node[pos=0, above left=-0.5em and 0]{\textsc{gdl}$\searrow$};
 \end{groupplot}
 
 \end{tikzpicture}
