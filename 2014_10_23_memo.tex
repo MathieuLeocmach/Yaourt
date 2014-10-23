@@ -9,6 +9,7 @@
 \usepackage{kpfonts}
 
 \usepackage{siunitx}
+\usepackage{hyperref}
 
 
 \begin{document}
@@ -18,11 +19,11 @@
 
 Mechanical equilibrium of a plate of thickness $h$, young modulus $E$ and Poisson ratio $\nu$ submitted to a compression load $\sigma_0$ along $x$ and a lateral load $q$ along $z$:
 \begin{equation}
-\frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial w^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = q,
+\frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial x^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = q,
 \end{equation}
 where $w(x,t)$ is the deflection of the plate along $z$. It can be generalised as
 \begin{equation}
-B\frac{h^3}{12}\frac{\partial^4 w}{\partial w^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = -B_s \frac{\partial w}{\partial x},
+B\frac{h^3}{12}\frac{\partial^4 w}{\partial x^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = -B_s \frac{\partial w}{\partial x},
 \label{eq:mecheq}
 \end{equation}
 where $B=\frac{E}{1-\nu^2}$ and $B_s$ are the respective moduli (in \si{\pascal}) of the plate and the (effective) substrate. In general $B$ and $B_s$ are operators.
@@ -167,13 +168,13 @@ H_1^3 \frac{\partial p_1}{\partial x} + H_2^3 \frac{\partial p_2}{\partial x} = 
 \end{equation}
 and thus
 \begin{equation}
-H_1^3 p_1 + H^2 p_2 = 0.
+H_1^3 p_1 + H_2^3 p_2 = 0.
 \label{eq:pressures}
 \end{equation}
 
 We now write the mass conservation in the lower viscous layer
 \begin{equation}
-\frac{\partial Q}{\partial x} + \frac{\partial w}{\partial t} + v = 0,
+\frac{\partial Q_1}{\partial x} + \frac{\partial w}{\partial t} + v = 0,
 \label{eq:conservationDarcy}
 \end{equation}
 which is the same as Eq.~(\ref{eq:conservation}) with an added leak $v$ due to the porosity. $v$ can be expressed by the Darcy law
@@ -194,7 +195,7 @@ q = p_1-p_2 = \left(\frac{H_1}{H}\right)^3 p_1 = - \frac{\eta}{\tau} \frac{w}{\f
 \end{equation}
 which allows to identify 
 \begin{equation}
-B_s = \frac{\eta}{\tau}\frac{1}{\frac{H^3 k^2}{12} + \frac{\alpha}{h}}.
+B_s = \frac{\eta}{\tau}\frac{1}{\frac{H^3 k^3}{12} + \frac{\alpha k}{h}}.
 \end{equation}
 
 Note that we recover a pure Poiseuille substrate when $\alpha \rightarrow 0$ and a pure Darcy substrate when $H \rightarrow 0$. Analytic minimisation of $\sigma_0$ knowing $B_s$ is possible but heavy. Instead we rewrite Eq.~(\ref{eq:sigma0}) in terms of previously calculated $\lambda_P$ and $\lambda_D$:
