@@ -1,0 +1,185 @@
+\begin{frame}{Mechanical equilibrium of a plate}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{equation*}
+\frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial x^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = q
+\end{equation*}
+\column{0.45\textwidth}
+\begin{description}
+\item[$\sigma_0$] compression load
+\item[$q$] lateral load
+\item[$w$] deflection
+\end{description}
+\end{columns}
+
+\begin{columns}
+\column{0.55\textwidth}
+\begin{equation*}
+B\frac{h^3}{12}\frac{\partial^4 w}{\partial x^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = -B_s \frac{\partial w}{\partial x}
+\label{eq:mecheq}
+\end{equation*}
+\column{0.45\textwidth}
+\begin{description}
+\item[$B$] plate modulus
+\item[$B_s$] substrate modulus
+\end{description}
+\end{columns}
+
+\bigskip
+\begin{columns}
+\column{0.7\textwidth}
+Sinusoidal deflection with a time exponential amplitude $w(x,t) = A_0 e^{t/\tau} \sin kx$
+\column{0.3\textwidth}
+\begin{equation*}
+\sigma_0 = B \frac{h^2}{12} k^2 + \frac{B_s}{hk}
+\label{eq:sigma0}
+\end{equation*}
+\end{columns}
+
+\bigskip
+The dominant wavelength (wavevector $k$) is the one minimizing the compression load.
+
+\end{frame}
+
+\begin{frame}{Elastic film in an infinite elastic medium}
+
+$B$ and $B_s$ are constants, not $k$-dependant operators. We minimise $\sigma_0$:
+\begin{equation*}
+0 = \frac{\partial \sigma_0}{\partial (kh)} = \frac{B}{6} hk -  \frac{B_s}{(hk)^2}
+\end{equation*}
+which yields $hk = \left(\frac{6B_s}{B}\right)^{1/3}$ and thus the dominant wavelength is
+\begin{equation*}
+\lambda_d = 2\pi h \left(\frac{B}{6B_s}\right)^{1/3}.
+\label{eq:lambdaElEl}
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}{Elastic film in an infinite viscous medium}
+
+Biot (1957) gives the modulus of the infinite viscous medium of viscosity $\eta$ as the operator
+\begin{equation*}
+B_s = 4\eta\frac{\partial}{\partial t} = 4\frac{\eta}{\tau},
+\end{equation*}
+if we look for an time dependent amplitude $A(t)= A_0 e^{t/\tau}$.
+
+Still neither $B$ nor $B_s$ are $k$-dependant operators
+\begin{equation}
+\lambda_d = \pi h \left(\frac{B\tau}{3\eta}\right)^{1/3}.
+\end{equation}
+
+Since the mechanical equilibrium equation is linear, the case of an elastic film on an semi-infinite viscous medium is dealt with by simply taking half of $B_s$.
+
+\end{frame}
+
+\begin{frame}{Elastic film on a viscous layer (Poiseuille)}
+\begin{columns}
+\column{0.65\textwidth}
+\begin{itemize}
+\item Lubrication approximation
+\item Negligible $x$-displacement of the plate
+\end{itemize}
+\column{0.35\textwidth}
+\begin{equation}
+Q = -\frac{H^3}{12\eta}\frac{\partial p}{\partial x}
+\label{eq:PoiseuilleFlux}
+\end{equation}
+\end{columns}
+
+\begin{block}{Mass conservation}
+\begin{equation*}
+\frac{\partial Q}{\partial x} + \frac{\partial w}{\partial t} = 0 \textcolor{Accent1}{\qquad\Rightarrow\qquad} 
+12\eta\frac{\partial w}{\partial t} \approx H^3\frac{\partial^2 p}{\partial x^2}
+\textcolor{Accent1}{\qquad\Rightarrow\qquad}
+B_s = \frac{12\eta}{\tau H^3k^3}
+\label{eq:conservationLin}
+\end{equation*}
+\end{block}
+
+\begin{align*}
+0 = \frac{\partial\sigma_0}{\partial k}
+ = \frac{Bh^2 k}{6} - \frac{48}{hH^3}\frac{\eta}{\tau}\frac{1}{k^5}
+ \textcolor{Accent1}{\qquad\Rightarrow\qquad} &
+k_P^6 = 2\times 12^2 \frac{1}{h^3H^3\Upsilon}\\
+&\lambda_P = \pi\sqrt{hH}\left(\frac{2}{9}\Upsilon\right)^{1/6}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Elastic film between two viscous layers}
+We use once again the linearity of Eq.~(\ref{eq:mecheq}) to find the modulus of the effective substrate as 
+\begin{equation}
+B_s = \frac{12\eta}{\tau k^3} \left(\frac{1}{H_1^3}+\frac{1}{H_2^3}\right) = \frac{12\eta}{\tau H^3k^3}.
+\end{equation}
+
+We can use the results of the previous section using an effective $H$ so that
+\begin{equation}
+\frac{1}{H^3} = \frac{1}{H_1^3}+\frac{1}{H_2^3}.
+\end{equation}
+
+Note that $H$ goes to zero if any of the $H_1,H_2$ goes to zero.
+
+\end{frame}
+
+\begin{frame}{Porous elastic film with no possible flow (Darcy)}
+\begin{block}{Darcy law$\Rightarrow$ lateral load}
+\begin{equation}
+-q = p_2-p_1 = \frac{h\eta}{\alpha}\frac{\partial w}{\partial t} = \frac{\eta}{\tau}\frac{h}{\alpha k} \frac{\partial w}{\partial x} 
+\textcolor{Accent1}{\qquad\Rightarrow\qquad} 
+B_s = \frac{\eta}{\tau}\frac{h}{\alpha k}
+\end{equation}
+\end{block}
+
+\begin{align*}
+0 = \frac{\partial\sigma_0}{\partial k}
+ = \frac{Bh^2 k}{6} - \frac{2}{\alpha}\frac{\eta}{\tau}\frac{1}{k^3} \textcolor{Accent1}{\qquad\Rightarrow\qquad} &
+k_D^4 = \frac{12}{h^2\alpha\Upsilon}\\
+& \lambda_D = 2\pi h^{1/2}\alpha^{1/4}\left(\frac{\Upsilon}{12}\right)^{1/4}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Porous elastic film between two viscous layers}
+\begin{block}{Mass conservation over the whole height of the cell}
+\begin{equation*}
+\frac{\partial Q_1}{\partial x} + \frac{\partial Q_2}{\partial x} = 0  \textcolor{Accent1}{\qquad\Rightarrow\qquad} 
+\begin{array}{cc}
+Q_1 + Q_2 = 0\\
+H_1^3 p_1 + H_2^3 p_2 = 0
+\end{array}
+\end{equation*}
+\end{block}
+
+\begin{block}{Mass conservation in the lower viscous layer + Darcy}
+\begin{equation*}
+\frac{\partial Q_1}{\partial x} + \frac{\partial w}{\partial t} + v = 0
+\qquad\text{with}
+\qquad v = \frac{\alpha}{\eta} \frac{p_1-p_2}{h}
+\label{eq:conservationDarcy}
+\end{equation*}
+\end{block}
+
+\begin{equation*}
+\text{\structure{lateral load}}\qquad q = p_1-p_2 = - \frac{\eta}{\tau} \frac{w}{\frac{H^3 k^2}{12} + \frac{\alpha}{h}}
+\textcolor{Accent1}{\quad\Rightarrow\quad}
+B_s = \frac{\eta}{\tau}\frac{1}{\frac{H^3 k^3}{12} + \frac{\alpha k}{h}}
+\end{equation*}
+
+
+\begin{description}
+\item[$\alpha \rightarrow 0$] Poiseuille
+\item[$H \rightarrow 0$] Darcy
+\end{description}
+
+\end{frame}
+\begin{frame}{Poiseuille and Darcy}
+Analytic minimisation of $\sigma_0$ knowing $B_s$ is possible but heavy.
+
+Instead we express $\sigma_0$ in terms of previously calculated $\lambda_P$ and $\lambda_D$
+\begin{equation*}
+\frac{12\sigma_0}{k_D^2 h^2 B} 
+= \left(\frac{\lambda_D}{\lambda}\right)^2 + \frac{1}{2\frac{\lambda_P^6}{\lambda_D^2\lambda^4}  + \left(\frac{\lambda_D}{\lambda}\right)^2}
+\end{equation*}
+and we minimise this expression numerically.
+
+\end{frame}

@@ -437,15 +437,21 @@ glycerol 60\%, $\eta=\SI{10}{\milli\pascal\second}$\\
 May be explained by ``viscoelastic phase separation'' arguments
 \end{frame}
 
-\begin{frame}{Darcy never beats Poiseuille}
+\begin{frame}{Darcy vs Poiseuille}
 \tikzsetnextfilename{Darcy_vs_Poiseuille}%
 \input{fig_presentation/Darcy_vs_Poiseuille.pgf}
 
-\begin{center}
-Because desynchronisation
+\begin{itemize}
+\item Poiseuille describes most of the data
+\item Underestimates small wavelengths ($H\lesssim H^*$)
+\item Fixed by a model taking both Darcy and Poiseuille into account
+\end{itemize}
 
-\movie[externalviewer]{\includegraphics[width=0.5\textwidth]{volume_cloque_t116}}{volume_cloques_comp.avi}
-\end{center}
+%\begin{center}
+%Because desynchronisation
+%
+%\movie[externalviewer]{\includegraphics[width=0.5\textwidth]{volume_cloque_t116}}{volume_cloques_comp.avi}
+%\end{center}
 
 \end{frame}
 

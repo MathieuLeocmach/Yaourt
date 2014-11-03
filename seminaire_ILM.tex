@@ -1,0 +1,315 @@
+\documentclass[xcolor=table]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+%\usetheme{Boadilla}
+%\usecolortheme{rose}
+%\usecolortheme{crane}
+\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{navigation symbols}{}
+
+\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
+\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
+\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
+
+\usecolortheme{rose}
+%\useinnertheme[shadow]{circles}
+\usecolortheme{whale}
+%\useoutertheme{infolines}
+
+\usecolortheme[named=Accent1]{structure}
+
+\setbeamercolor{alerted text}{fg=Accent2}
+%\setbeamercolor{palette primary}{fg=white}
+%\setbeamercolor{palette secondary}{bg=Accent1}
+%\setbeamercolor{palette tertiary}{bg=Accent2,fg=white}
+
+
+\setbeamerfont{page number in head/foot}{size=\large}
+\setbeamercolor{page number in head/foot}{fg=Main}
+% page/total
+%\setbeamertemplate{footline}[frame number]
+% pas de total
+\setbeamertemplate{footline}{%
+    	\hfill%
+	\usebeamercolor[fg]{page number in head/foot}%
+	\usebeamerfont{page number in head/foot}%
+	\insertframenumber\kern1em\vskip2pt%
+}
+
+\setbeamersize{text margin left=1em}
+\setbeamersize{text margin right=1em}
+
+%font
+\usepackage[T1]{fontenc}
+\usepackage[oldstylenums]{kpfonts}
+
+
+%proper math and math symbols
+%\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{datenumber,fp}
+
+\usepackage{siunitx}
+
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap}
+%\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{external}
+\makeatletter
+\newcommand*{\overlaynumber}{\number\beamer@slideinframe}
+\tikzset{
+  beamer externalizing/.style={%
+    execute at end picture={%
+      \tikzifexternalizing{%
+        \ifbeamer@anotherslide
+        \pgfexternalstorecommand{\string\global\string\beamer@anotherslidetrue}%
+        \fi
+      }{}%
+    }%
+  },
+  external/optimize=false
+}
+\let\orig@tikzsetnextfilename=\tikzsetnextfilename
+\renewcommand\tikzsetnextfilename[1]{\orig@tikzsetnextfilename{#1-\overlaynumber}}
+\makeatother
+
+\tikzset{every picture/.style={beamer externalizing}}
+\tikzexternalize
+\tikzsetexternalprefix{fig_presentation/}
+%\tikzset{external/optimize=false}
+%\tikzset{external/force remake}
+
+
+%link or play movies
+\usepackage{multimedia}
+
+
+
+%beamer related package
+
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
+
+
+%bibliography
+\usepackage[style=authoryear-comp, language=british,eprint=false, url=false, doi=false, sortcites=true, sorting=none, isbn=false, firstinits=true,maxcitenames=6]{biblatex}
+%minimal citations
+\AtEveryCitekey{%
+	\clearfield{title}
+	\clearfield{pages}
+	\clearfield{volume}
+	\clearfield{number}
+	\clearfield{month}}
+\newcommand{\myfullcite}[1]{{\scriptsize\fullcite{#1}}}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+%\bibliography{biblio}
+
+
+\newcolumntype{P}[1]{>{\raggedright}p{#1}}
+
+\institute[E.N.S. Lyon]{Laboratoire de physique, Ecole Normale Sup\'{e}rieure de Lyon}
+\title[Yoghurt wrinkling]{Wrinkling of a confined porous layer}
+\author[M. Leocmach]{Mathieu Leocmach}
+\date{4\textsuperscript{th} November 2014}
+\titlegraphic{
+	\includegraphics[height=2\baselineskip,clip=true, trim=6mm 14mm 6mm 0]{NEW-Logo-ERC-OUTLINE}\quad
+	\includegraphics[height=2\baselineskip]{logo_ums_grand}\quad
+	\includegraphics[height=2\baselineskip]{CNRSfilaire-Q}\quad
+	\includegraphics[height=2\baselineskip]{logo_ens-lyon}
+	}
+
+
+
+\newlength{\mylength}
+
+%\includeonly{creep_beamer}
+
+\begin{document}
+\tikzset{every mark/.append style={scale=0.8}}
+\pgfplotsset{every axis/.append style={footnotesize}}
+
+\pgfplotscreateplotcyclelist{earthy}{%
+{red!40!black,mark=o},
+{red!60!black,mark=triangle, every mark/.append style={rotate=180}},
+{red!80!black,mark=square},
+{red,mark=triangle},
+{red!80!yellow, mark=diamond},
+red!60!yellow,
+red!40!yellow,
+}
+
+\AtBeginSection[]{
+	\addtocounter{framenumber}{-1}
+	\begin{frame}[plain]
+		\tableofcontents[currentsection, hideothersubsections]
+	\end{frame}
+}
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\setcounter{framenumber}{0}
+
+
+\begin{frame}{Application of biogels \textup{\normalsize(physical gels
+$E_{bond}\gg k_B T$)}}
+\begin{tabu}{cX[c]c}
+\includegraphics[height=0.3\textheight]{cell_mech} &
+\includegraphics[height=0.3\textheight]{electrophoresis} &
+\includegraphics[height=0.3\textheight]{cosmetics} \\
+Cell mechanics & Electrophoresis & Cosmetics\\
+\end{tabu}
+\begin{tabu}{X[c]X[c]}
+\includegraphics[height=0.3\textheight]{bacterial_culture} &
+\includegraphics[height=0.3\textheight]{food} \\
+Bacterial culture & Food\\
+\end{tabu}
+
+\begin{footnotesize}
+\begin{block}{Sources}
+\begin{tabu}{lXl}
+Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
+\end{tabu}
+\end{block}
+\end{footnotesize}
+\end{frame}
+
+
+
+\begin{frame}{Fundamental issues in biogels}
+\begin{itemize}
+\item Gel stability and solvent expulsion (syn\ae{}resis) \textit{\scriptsize Bartlett et al. PRE 2012}
+\item Mechanical instabilities and morphogenesis \textit{\scriptsize Shyer et al. Science 2013}
+\end{itemize}
+\begin{tabu}{X[c]X[c]}
+\includegraphics[height=8\baselineskip]{faisselle} &
+\includegraphics[height=8\baselineskip]{Villi_sq}
+\end{tabu}
+\begin{block}{Our questions}
+\begin{itemize}
+\item What is the role of boundary conditions?
+\item What is the role of the solvent in mechanical instabilities?
+\end{itemize}
+\end{block}
+\end{frame}
+
+%\section{Our system: Yoghurt}
+
+
+%\tikzset{external/force remake}
+\begin{frame}{Acid-set protein gel (Yoghurt)}
+\begin{block}{Recipe: take your time}
+\begin{itemize}
+\item Water (\SI{30}{\celsius})
+\item Sodium caseinate (milk protein) 4\%
+\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.1\normalbaselineskip}\right\}$ stable solution}
+\item Glucono-$\delta$-lactone (GDL) 1\% $\Rightarrow$ slow homogeneous acidification
+\end{itemize}
+\end{block}
+
+\begin{columns}
+\column{0.5\textwidth}
+\tikzsetnextfilename{gelation}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 2,
+			xticklabels at=edge bottom,
+			vertical sep=0,
+			},
+		%xmode=log,
+		%xmin=1e2,xmax=3e5,
+		xmin=0, xmax=4,
+		scale only axis,
+		width=\textwidth-4em,
+		height=0.3\textwidth,
+		extra tick style={grid=major},%
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-0.5em}
+		]
+	\nextgroupplot[
+		ymin=0, ymax=7, ylabel={pH},
+		extra y ticks={4.6}, extra y tick labels={},%
+		]
+	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600}]{Y189_cas4_gdl4.pH};
+	\draw[help lines] (axis cs:0,4.6) -- (axis cs:0.26,4.6) node[pos=1, above right, font=\scriptsize] {isoelectric point $pH\approx 4.6$}  -- (axis cs:0.26,0);
+	
+
+	\nextgroupplot[
+		xlabel={time (\si{\hour})},
+		ymin=0, ylabel={$\textcolor{Accent2}{G^\prime}, \textcolor{Main}{G^{\prime\prime}}$ (\si{\pascal})},
+		extra x ticks={17}, extra x tick labels={},
+		]
+	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise};
+	\addplot+[no marks,Main] table[x expr={\thisrowno{0}/3600}, y index=2]{cas4_GDL4_Y271.prise};
+	\begin{scope}[font=\scriptsize]
+		%\node[above right] at (rel axis cs:0,0) {casein ``micelles''};
+		%\draw[<-] (axis cs:3.88,654) -- +(1em,0) node[right] {gelation};
+		\node[anchor=base,rotate=80] at (axis cs:0.2,300) {gelation};
+	\end{scope}
+	\end{groupplot}
+	%\draw[<-] (g c1r2.south west) ++(0.5em,0) -- +(0,-1em) node[below,font=\footnotesize] {casein ``micelles''};
+\end{tikzpicture}
+
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
+
+\begin{scriptsize}
+\textit{Kaláb (1983),\linebreak Roefs \& van Vliet (1990),\linebreak Lucey \& Singh (1998)}
+\end{scriptsize}
+\end{columns}
+\end{frame}
+%\tikzset{external/force remake=false}
+
+
+%\tikzset{external/force remake}
+\begin{frame}{Over-acidification: Faster but weaker}
+\tikzsetnextfilename{gelation_GDL}
+\begin{tikzpicture}
+\begin{axis}[
+	height=0.8\textheight,
+	width=\textwidth,
+	xlabel={time (h)}, ylabel={$G^\prime$ (\si{\pascal})},
+	cycle list name=earthy,
+	no marks,
+	xmin=0, xmax=20,ymin=0,
+	]
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y265.prise} node[anchor=base west] {1\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.25_Y277.prise} node[anchor=base west] {1.25\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL1.5_Y275.prise} node[anchor=base west] {1.5\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL2_Y268.prise} node[anchor=base west] {2\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL3_Y270.prise} node[anchor=base west] {3\%};
+	\addplot table[x expr={\thisrowno{0}/3600}]{cas4_GDL4_Y271.prise} node[anchor=base west, yshift=-0.2em] {4\%};
+\end{axis}
+\end{tikzpicture}
+
+Caseins regain some solubility at low pH.
+\end{frame}
+
+
+\section*{Wrinkling}
+
+\include{plis_beamer}
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\appendix
+\include{model_mixte}
+
+\end{document}
+
