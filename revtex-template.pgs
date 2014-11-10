@@ -9,6 +9,10 @@
 \usepgfplotslibrary{groupplots}
 \usepackage{pgfplotstable}
 
+\definecolor{Main}{rgb}{1, 0.57, 0}
+\definecolor{Accent1}{rgb}{1,0.28,0}
+\definecolor{Accent2}{rgb}{1,0.74,0}
+
 \usepackage[active,pdftex,tightpage]{preview}
 \PreviewEnvironment[]{tikzpicture}
 \PreviewEnvironment[]{pgfpicture}
