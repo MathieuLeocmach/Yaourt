@@ -1,0 +1,82 @@
+\begin{figure}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 2,
+			x descriptions at=edge bottom,
+			vertical sep=0.5em,
+			},
+		xmin=0, xmax=180, xtick={0,30,...,150},
+		extra tick style={grid=major},%
+		extra x tick labels={},%
+		scale only axis,
+		width=\columnwidth-4em,
+		height=6\baselineskip,
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em, xshift=0.5em}
+		]
+	
+	\nextgroupplot[ylabel={Volume (\%)}, ymin=20, ymax=100, ytick={40,60,80,100}]
+	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{1}*100}]{relative_volume_excess_area_plis.txt};
+	%\addplot+[only marks,Accent2, mark=+] table[y expr={\thisrowno{1}*100}]{volume_rel_half_cas8_toi.txt};
+	
+	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=6, ytick={0,2,4,6}, 
+	xlabel={time (min)}, every axis y label/.append style={xshift=-1em}]
+	\addplot+[no marks,Accent1] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{2}*100}]{relative_volume_excess_area_plis.txt};
+	%\addplot+[only marks,Accent2, mark=+] table{excess_area_pc_half_cas8_toi.txt};
+	\end{groupplot}
+
+	\matrix[matrix of nodes, matrix anchor=south east, inner sep=0, row sep=0.2em, nodes={anchor=west}, column sep=0.1em]  (m) at ($(g c1r1.north east) +(0,1em)$) {
+	\SI{10}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.061\columnwidth]{coupe_cloque_t000.png}\\
+	\SI{23}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
+	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png} & \SI{32}{\minute}\\
+	\SI{35}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t038.png} \\
+	\SI{36}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t040.png} \\
+	\SI{38}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t043.png} & \\
+	\SI{44}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t055.png}\\
+	\SI{53}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t070.png} \\
+	\SI{1}{\hour}~21 & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t123.png} \\
+	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png} & \SI{3}{\hour}~15\\
+	};
+\newdimen\mydima
+\newdimen\mydimb
+\pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{west}}
+\pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
+	\draw[line width=0.3em, white] ($(m-1-2.south east)+(0,0.75em)$) -- +(0.0786\mydima-0.0786\mydimb,0);
+
+	\begin{axis}[
+	name=a,
+	anchor=south east,
+	at={($(m.north east)+(0,2em)$)},
+	width=\columnwidth, height=0.25\columnwidth, scale only axis,
+	domain=0:360, no markers, ymin=-2, ymax=3,xmin=0,xmax=360,
+	axis lines=none, xtick=\empty,
+	]
+	%\fill[gray!20] (axis cs:85,5) rectangle (axis cs:95,-4) (axis cs:265,5) rectangle (axis cs:275,-4);
+	\addplot+[Accent1] ({x-0.75*cos(x)/sqrt(1+(cos(x))^2)}, {-1+sin(x)+0.75/sqrt(1+(cos(x))^2)}) coordinate[pos=0.25] (M1);
+	\addplot+[Accent1]({x+0.75*cos(x)/sqrt(cos(x)^2+1)}, {1+sin(x)-0.75/sqrt(cos(x)^2+1)}) coordinate[pos=0.2475] (M2);
+	%\addplot+[Accent1] {sin(x)-0.75};
+	%\addplot+[Accent1] {sin(x)+0.75};
+	%\addplot+[Accent1, line width=2em] {sin(x)};
+	\addplot+[dashed, black]{0.75};
+	\addplot+[dashed, black]{-0.75};
+	\draw[<->, help lines] (axis cs:180,0.75) -- (axis cs:180,3) node[midway, left] {$H_2$}; 
+	\draw[<->, help lines] (axis cs:180,-0.75) -- (axis cs:180,-2) node[midway, left] {$H_1$};
+	\draw[<->, help lines] (axis cs:90,-0.75) -- (M1) node[midway, left] {$w$};
+	\draw[<->, help lines] (M1) -- (M2) node[midway, left] {$h$};
+	\draw[<->, help lines] (axis cs:172.4, -0.53) -- (axis cs:187.6,0.53) node[midway, anchor=south east, inner sep=0] {$h$};
+	
+	%\node[below] at (axis cs:90,-1.75) (pb1) {$P_1$};
+	%\node[above] at (axis cs:90,1.75) (ph2) {$P_2$};
+	%\node[above] at (axis cs:270,1.75) (ph1) {$P_1$};
+	%\node[below] at (axis cs:270,-1.75) (pb2) {$P_2$};
+	%\draw[line width=0.1em, ->] (ph2) -- (axis cs:90,0.25) node[midway, left] {Darcy} node[midway, right] {$v$};
+	%\draw[line width=0.1em, ->] (pb2) -- (pb1) node[midway, above] {Poiseuille} node[midway, below] {$u \sim \frac{\lambda}{H} v$};
+\end{axis}
+\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\columnwidth,-1em) (a.north west) rectangle +(\columnwidth,1em);
+
+%\draw (g c1r2.outer south east) rectangle +(-\columnwidth,\textheight);
+
+
+\end{tikzpicture}
+	
+\end{figure}

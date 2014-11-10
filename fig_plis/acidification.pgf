@@ -1,0 +1,43 @@
+\begin{figure}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 3,
+			x descriptions at=edge bottom,
+			vertical sep=0.5em,
+			},
+		xlabel={time (\si{\hour})},
+		xmin=0,xmax=4, ymin=0,
+		scale only axis,
+		width=\columnwidth-4em,
+		height=0.3\columnwidth,
+		extra tick style={grid=major},%
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em}
+		]
+	\nextgroupplot[
+		ymax=7, ylabel=pH,
+		extra y ticks={4.6}, extra y tick labels={},%
+		]
+	\addplot+[no marks,black] table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH};
+	\node[base left=0] at (axis cs:8,4.6) {isoelectric};
+
+	\nextgroupplot[
+		ylabel={$G^\prime$ (\si{\pascal})}
+		]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.05}]{Y235_28800s.prise};
+
+	\nextgroupplot[
+		ylabel={$\xi$ (\si{\micro\metre})}, restrict y to domain=0:10,
+		]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}]{ech14_pore_size.txt};
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.3}]{ech12_pore_size.txt};
+	\end{groupplot}
+\begin{scope}[every node/.style={anchor=south east, text height=0.8em, text depth=0.2em}]
+\node at (g c1r1.south east) {(a)};
+\node at (g c1r2.south east) {(b)};
+\node at (g c1r3.south east) {(c)};
+% \node[anchor=north east] at (g c2r1.north east) {(c)};
+% \node[anchor=north east] at (g c2r2.north east) {(d)};
+\end{scope}
+	\end{tikzpicture}
+\end{figure}
