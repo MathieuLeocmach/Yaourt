@@ -1,4 +1,4 @@
-\begin{figure}
+%\begin{figure}
 \begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
@@ -70,6 +70,9 @@
  	\path[name path=Z] (axis cs:pi-1,-100/pi^2) -- (axis cs:pi+1,100/pi^2);
  	\path[name path=D, name intersections={of=top and Z, by=Z2}] (Z2) -- +(0,-6\baselineskip);
  	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}] (Z2) --(D1) (axis cs:0.5*pi,0.25) -- (axis cs:0.5*pi,1.75);
+
+	\node[white] at (axis cs:1.5*pi,-1){gel};
+	\node[Accent1] at (axis cs:1.5*pi,0.25){water};
 	
 	%\addplot+[dashed, black]{0};
 	\addplot+[dashed, help lines]{0.75};
@@ -87,7 +90,7 @@
 	\draw[->, ultra thick] (axis cs:0.75*pi,-1.5) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_1(x+dx,t)$};
 	\node at (axis cs:0.675*pi,2.25) {$P_2$};
 	\node at (axis cs:0.675*pi,-1.5) {$P_1$};
-	\draw[->, lightgray, ultra thick] (axis cs:0.675*pi,0.25) -- (axis cs:0.675*pi, 1.5) node[pos=0, right] {$v_{Darcy}$};
+	\draw[->, lightgray, ultra thick] (axis cs:0.675*pi,0.25) -- (axis cs:0.675*pi, 1.5) node[pos=0, right,white] {$v_{Darcy}$};
 
 	\draw[->] (axis cs:1.8*pi,-1.75) -- +(1.5em,0) node[right]{$x$};
 	\draw[->] (axis cs:1.8*pi,-1.75) -- +(0,1.5em) node[right]{$z$};
@@ -111,4 +114,4 @@
 \end{scope}
 \end{tikzpicture}
 	
-\end{figure}
+%\end{figure}

@@ -1,4 +1,4 @@
-\begin{figure}
+%\begin{figure}
 \begin{tikzpicture}
 \begin{groupplot}[group style={
 			group name=g, 
@@ -40,5 +40,12 @@
 \end{groupplot}
 %\draw (g c1r1.outer north west) rectangle +(\textwidth, -\textheight);
 
+\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\node at (g c1r1.north west) {(a)};
+\node at (g c2r1.north west) {(b)};
+\node at (g c3r1.north west) {(c)};
+\end{scope}
+
 \end{tikzpicture}
-\end{figure}
+%\caption{Comparing model predictions with measured wavelengths. Continuous line is the perfect match ($\lambda_{th}=\lambda_{xp}$), dashed line is the best linear fit through the origin (prefactor is 0.81 in a, 0.75 in b), dotted line is the best affine fit ($\lambda_{xp}=0.56*\lambda_{th}+\SI{0.28}{\milli\metre}$).}
+%\end{figure}

@@ -1,4 +1,4 @@
-\begin{figure}
+%\begin{figure}
 \begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
@@ -37,5 +37,5 @@
 \node at (g c1r2.south east) {(b)};
 \node at (g c1r3.south east) {(c)};
 \end{scope}
-	\end{tikzpicture}
-\end{figure}
+\end{tikzpicture}
+%\end{figure}
