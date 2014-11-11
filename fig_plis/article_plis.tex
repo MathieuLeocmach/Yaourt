@@ -1,0 +1,63 @@
+\documentclass[twocolumn,superscriptaddress,showpacs,preprintnumbers,amsmath,amssymb,prl]{revtex4-1}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{siunitx}
+
+
+\definecolor{Main}{rgb}{1, 0.57, 0}
+\definecolor{Accent1}{rgb}{1,0.28,0}
+\definecolor{Accent2}{rgb}{1,0.74,0}
+
+\begin{document}
+\title{Wrinkling of a porous layer}
+\author{Mathieu Leocmach}
+\email{mathieu.leocmach@ens-lyon.fr}
+\affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
+\author{Mathieu Nespoulous}
+\affiliation{Aix-Marseille Université, CNRS, MADIREL UMR 7246, Marseille, France}
+\author{Sébastien Manneville}
+\affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
+\author{Thomas Gibaud}
+\affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
+
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+
+\begin{acknowledgments}
+The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay and L. Mahadevan for theoretical insights at various sage of the research. Precious experimental ideas came from Denis Bartolo, Elisabeth Bouchaud and Maxime Lefranc. Special thanks to Madame Biot who made M.A. Biot work accessible through poronet website. ML thank the Region Rhône Alpes and the Programme d'avenir Lyon- Saint Etienne (PALSE NoGELPo) for postoctoral grant. TG and MN acknowledge funding from ANR XXXX. ML and SM acknowledge funding from the European Research Council under the European Union's Seventh Framework Program (FP7/2007-2013) / ERC grant agreement No. 258803.
+\end{acknowledgments}
+
+\bibliographystyle{naturemag3}
+
+\begin{figure}
+	\includegraphics{dynamics}
+	\caption{Dynamics of pattern formation. Left: light transmission microscopy. Part of the initial pattern is highlighted in yellow to show that it is not evolving. Right: 3D reconstruction from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
+	\label{fig:dynamics}
+\end{figure}
+
+\begin{figure}
+	\includegraphics{acidification}
+	\caption{Acid-induced protein gels properties behave non-monotonously with pH. (a) pH decrease in 4\%w sodium caseinate solution acidified by 4\%w GDL. Horizontal line indicates isoelectric pH of casen (b) Evolution of storage modulus measured in a rheometer (full adhesion to rotor and stator). (c) Evolution of pore size measured by confocal microscopy in a half coated microscopy cell (no adhesion to cell ceiling, syn\ae{}resis and swelling allowed).}
+	\label{fig:acidification}
+\end{figure}
+
+\begin{figure}
+	\includegraphics{sideview}
+	\caption{Modelisation  and measurements. (a) Schematic side view of the cell. The constant thickness gel sheet (orange) is surrounded by water. Yellow lines show the path of transmitted light through the gel phase. A region of interest is highlighted in gray. (b) Confocal XZ cuts showing syn\ae{}resis, swelling and (cascade) wrinkling. Scale bar is \SI{100}{\micro\metre} (real size ratio). Evolution of (c) volume of the gel phase relative to cell volume and (d) excess area measured by confocal microscopy.}
+	\label{fig:sideview}
+\end{figure}
+
+\begin{figure*}
+	\includegraphics{Darcy_vs_Poiseuille}
+	\caption{Comparing model predictions with measured wavelengths. Continuous line is the perfect match ($\lambda_{th}=\lambda_{xp}$), dashed line is the best linear fit through the origin (prefactor is 0.81 in a, 0.75 in b), dotted line is the best affine fit ($\lambda_{xp}=0.56\lambda_{th}+\SI{0.28}{\milli\metre}$).}
+	\label{fig:DarcyPoiseuille}
+\end{figure*}
+
+
+\end{document}
