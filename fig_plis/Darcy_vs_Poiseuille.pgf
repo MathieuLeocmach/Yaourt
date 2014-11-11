@@ -1,0 +1,44 @@
+\begin{figure}
+\begin{tikzpicture}
+\begin{groupplot}[group style={
+			group name=g, 
+	group size=3 by 1,
+	horizontal sep=1em,
+	y descriptions at=edge left,
+			},
+	scale only axis,
+	width=0.333\textwidth-1.66em,
+	xmin=0, xmax=3,ymin=0,ymax=3,
+	ylabel={$\lambda$ measured (\si{\milli\metre})},
+	cycle list name=black white,
+	no marks]
+\nextgroupplot[xlabel={$\lambda$ Darcy (\si{\milli\metre})},]
+%\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=B, y error=pmB]{plis.txt};
+\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=I, y error=pmI]{plis.txt};
+\addplot+[black] {1*x};
+
+
+\nextgroupplot[xlabel={$\lambda$ Poiseuille (\si{\milli\metre})},]
+%\fill[gray] (axis cs:0.08,0.36) circle (5pt) (axis cs:0.36,0.46) circle (5pt);
+%\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=B, y error=pmB]{plis.txt};
+%\addplot+[forget plot] {3.5*x};
+\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=I, y error=pmI]{plis.txt};
+\addplot+[black] {1*x};
+\addplot+[black, dashed] {0.81*x};
+\addplot+[black, dotted] {0.56*x+0.28};
+%\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] coordinates{(0.41, 0.36) +-(0.05,0.04)};
+%\node[anchor=north west, red, font=\footnotesize] (I) at (rel axis cs:0,1) {Inter blister};
+%\node[anchor=north west, blue, font=\footnotesize] (B) at (I.south west) {Blister size};
+
+\nextgroupplot[xlabel={$\lambda$ mixte (\si{\milli\metre})},]
+%\fill[gray] (axis cs:0.08,0.36) circle (5pt) (axis cs:0.36,0.46) circle (5pt);
+%\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=B, y error=pmB]{plis.txt};
+%\addplot+[forget plot] {3.5*x};
+\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=M, x error=pmM, y=I, y error=pmI]{plis.txt};
+\addplot+[black] {1*x};
+\addplot+[black, dashed] {0.75*x};
+\end{groupplot}
+%\draw (g c1r1.outer north west) rectangle +(\textwidth, -\textheight);
+
+\end{tikzpicture}
+\end{figure}
