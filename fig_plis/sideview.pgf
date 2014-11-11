@@ -26,44 +26,60 @@
 	\end{groupplot}
 
 	\matrix[matrix of nodes, matrix anchor=south east, inner sep=0, row sep=0.2em, nodes={anchor=west}, column sep=0.1em]  (m) at ($(g c1r1.north east) +(0,1em)$) {
-	\SI{10}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.061\columnwidth]{coupe_cloque_t000.png}\\
+	\SI{10}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.054\columnwidth]{coupe_cloque_t000.png}\\
 	\SI{23}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
 	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png} & \SI{32}{\minute}\\
-	\SI{35}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t038.png} \\
-	\SI{36}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t040.png} \\
-	\SI{38}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t043.png} & \\
-	\SI{44}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t055.png}\\
-	\SI{53}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t070.png} \\
-	\SI{1}{\hour}~21 & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t123.png} \\
+	\SI{35}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t038.png} \\
+	\SI{36}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t040.png} \\
+	\SI{38}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t043.png} & \\
+	\SI{44}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t055.png}\\
+	\SI{53}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t070.png} \\
+	\SI{1}{\hour}~21 & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t123.png} \\
 	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png} & \SI{3}{\hour}~15\\
 	};
 \newdimen\mydima
 \newdimen\mydimb
 \pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{west}}
 \pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
-	\draw[line width=0.3em, white] ($(m-1-2.south east)+(0,0.75em)$) -- +(0.0786\mydima-0.0786\mydimb,0);
+	\draw[line width=0.3em, white] ($(m-1-2.south west)+(0.75em,0.75em)$) -- +(0.0786\mydimb-0.0786\mydima,0);
 
 	\begin{axis}[
 	name=a,
 	anchor=south east,
 	at={($(m.north east)+(0,2em)$)},
 	width=\columnwidth, height=0.25\columnwidth, scale only axis,
-	domain=0:360, no markers, ymin=-2, ymax=3,xmin=0,xmax=360,
+	domain=-0.25*pi:2.25*pi, no markers, ymin=-2, ymax=3,xmin=0,xmax=2*pi,
 	axis lines=none, xtick=\empty,
 	]
 	%\fill[gray!20] (axis cs:85,5) rectangle (axis cs:95,-4) (axis cs:265,5) rectangle (axis cs:275,-4);
-	\addplot+[Accent1] ({x-0.75*cos(x)/sqrt(1+(cos(x))^2)}, {-1+sin(x)+0.75/sqrt(1+(cos(x))^2)}) coordinate[pos=0.25] (M1);
-	\addplot+[Accent1]({x+0.75*cos(x)/sqrt(cos(x)^2+1)}, {1+sin(x)-0.75/sqrt(cos(x)^2+1)}) coordinate[pos=0.2475] (M2);
-	%\addplot+[Accent1] {sin(x)-0.75};
+	%\addplot+[Accent1] {sin(deg(x))};
+%  	\addplot+[Accent1,variable=\t, name path=top] (
+% 		{t-0.75*cos(deg(t))/sqrt(100/pi^2+cos(deg(t))^2)}, 
+% 		{sin(deg(t))+0.75/sqrt(1+(pi/10*cos(deg(t)))^2)});
+%  	\addplot+[Accent1,variable=\t, name path=bot] (
+% 		{t+0.75*cos(deg(t))/sqrt(100/pi^2+cos(deg(t))^2)}, 
+% 		{sin(deg(t))-0.75/sqrt(1+(pi/10*cos(deg(t)))^2)});
+	%\addplot+[Accent1] ({rad(x)-0.75*cos(x)/sqrt(1+cos(x)^2)}, {sin(x)+0.75/sqrt(1+cos(x)^2)}) coordinate[pos=0.25] (M1);
+	%\addplot+[Accent1] ({rad(x)+0.75*cos(x)/sqrt(1+cos(x)^2)}, {sin(x)-0.75/sqrt(1+cos(x)^2)}) coordinate[pos=0.25] (M1);
+	%\addplot+[Accent1]({x+0.75*cos(x)/sqrt(cos(x)^2+1)}, {1+sin(x)-0.75/sqrt(cos(x)^2+1)}) coordinate[pos=0.2475] (M2);
+	\addplot+[Accent1, line width=2em] {sin(deg(x))};
+	\addplot+[draw=none,name path=top] {sin(deg(x))+0.75};
+	\addplot+[draw=none,name path=bot] {sin(deg(x))-0.75};
 	%\addplot+[Accent1] {sin(x)+0.75};
-	%\addplot+[Accent1, line width=2em] {sin(x)};
-	\addplot+[dashed, black]{0.75};
-	\addplot+[dashed, black]{-0.75};
-	\draw[<->, help lines] (axis cs:180,0.75) -- (axis cs:180,3) node[midway, left] {$H_2$}; 
-	\draw[<->, help lines] (axis cs:180,-0.75) -- (axis cs:180,-2) node[midway, left] {$H_1$};
-	\draw[<->, help lines] (axis cs:90,-0.75) -- (M1) node[midway, left] {$w$};
-	\draw[<->, help lines] (M1) -- (M2) node[midway, left] {$h$};
-	\draw[<->, help lines] (axis cs:172.4, -0.53) -- (axis cs:187.6,0.53) node[midway, anchor=south east, inner sep=0] {$h$};
+ 	\path[name path=Z] (axis cs:pi-1,-100/pi^2) -- (axis cs:pi+1,100/pi^2);
+ 	\path[name path=D, name intersections={of=top and Z, by=Z2}] (Z2) -- +(0,-6\baselineskip);
+ 	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}] (Z2) --(D1) (axis cs:0.5*pi,0.25) -- (axis cs:0.5*pi,1.75);
+	
+	%\addplot+[dashed, black]{0};
+	\addplot+[dashed, help lines]{0.75};
+	\addplot+[dashed, help lines]{-0.75};
+	\draw[<->] (axis cs:1.5*pi,0.75) -- (axis cs:1.5*pi,3) node[midway, left] {$H_2$}; 
+	\draw[<->] (axis cs:0.5*pi,-0.75) -- (axis cs:0.5*pi,-2) node[midway, left] {$H_1$};
+ 	%\draw[<->, help lines] (axis cs:0.5*pi,0) -- (axis cs:0.5*pi,1) node[midway, left] {$w$};
+	\draw[<->] (axis cs:0.5*pi,-0.75) -- (axis cs:0.5*pi,0.25) node[midway, left] {$w(x,t)$};
+ 	\draw[<->] (axis cs:0.5*pi,0.25) -- (axis cs:0.5*pi,1.75) node[midway, left] {$h$};
+  	\draw[<->, name intersections={of=bot and Z, by=Z1}, name intersections={of=top and Z, by=Z2}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
+	
 	
 	%\node[below] at (axis cs:90,-1.75) (pb1) {$P_1$};
 	%\node[above] at (axis cs:90,1.75) (ph2) {$P_2$};
@@ -76,7 +92,12 @@
 
 %\draw (g c1r2.outer south east) rectangle +(-\columnwidth,\textheight);
 
-
+\begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
+\node at (a.north east) {(a)};
+\node[white] at (m-1-2.north east) {(b)};
+\node at (g c1r1.north east) {(c)};
+\node at (g c1r2.north east) {(d)};
+\end{scope}
 \end{tikzpicture}
 	
 \end{figure}
