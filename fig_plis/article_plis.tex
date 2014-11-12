@@ -5,6 +5,8 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{siunitx}
+%\usepackage{multirow}
+
 
 
 \definecolor{Main}{rgb}{1, 0.57, 0}
@@ -12,15 +14,15 @@
 \definecolor{Accent2}{rgb}{1,0.74,0}
 
 \begin{document}
-\title{Wrinkling of a porous layer}
+\title{Wrinkling of a confined porous layer}
 \author{Mathieu Leocmach}
-\email{mathieu.leocmach@ens-lyon.fr}
 \affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
 \author{Mathieu Nespoulous}
 \affiliation{Aix-Marseille Université, CNRS, MADIREL UMR 7246, Marseille, France}
 \author{Sébastien Manneville}
 \affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
 \author{Thomas Gibaud}
+\email{thomas.gibaud@ens-lyon.fr}
 \affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
 
 \begin{abstract}
@@ -29,15 +31,38 @@
 
 \maketitle
 
-\begin{acknowledgments}
-The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay and L. Mahadevan for theoretical insights at various sage of the research. Precious experimental ideas came from Denis Bartolo, Elisabeth Bouchaud and Maxime Lefranc. Special thanks to Madame Biot who made M.A. Biot work accessible through poronet website. ML thank the Region Rhône Alpes and the Programme d'avenir Lyon- Saint Etienne (PALSE NoGELPo) for postoctoral grant. TG and MN acknowledge funding from ANR XXXX. ML and SM acknowledge funding from the European Research Council under the European Union's Seventh Framework Program (FP7/2007-2013) / ERC grant agreement No. 258803.
-\end{acknowledgments}
+\section*{Methods summary}
+To prevent adsorption of caseins to surfaces, microscope slides and cover-slips were cleaned and subsequently coated with a silane agent (3-(trimethoxysilyl) propyl methacrylate, Sigma Aldrich) to which a polyacrylamide brush was polymerized from methacrylate groups.
+Sodium caseinate (Firmenich) was labelled with Dylight~550 NHS ESTER (Thermo Scientific) and then purified by centrifugation. Unlabelled sodium caseinate powder was dissolved in deionised water (or water+glycerol mixture). To induce gelation glucono-$\delta$-lactone (GDL) in powder (Firmenich) was added to the solution. \SI{45}{\micro\litre} of this solution was immediately mixed with \SI{5}{\micro\litre} of labelled caseinate solution and injected in the microscopy cell, immediately sealed using ultraviolet-cured glue (Norland Optical) and placed under the microscope before gelation could take place. 
+3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either 10x (air) lens to observe wrinkling or 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures were obtained either by stitching fluorescent microscope data or by transmitted/reflected light macroscope (Nikkon SMZ745T/Leica DMS1000).
+Data shown in Fig.~\ref{fig:acidification} a-b were obtained with a SevenCompact pH-meter (Mettler Toledo) and an MCR 301 rheometer (Anton Paar).
 
 \bibliographystyle{naturemag3}
 
+\paragraph*{Acknowledgements}
+Confocal experiments were conducted at SFR BioSciences Gerland - Lyon Sud (US8 / UMS3444).
+The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay and L. Mahadevan for theoretical insights at various sage of the research and Alan Parker at Firmenich for providing the casein and GDL. 
+Precious experimental ideas came from Denis Bartolo, Elisabeth Bouchaud and Maxime Lefranc.
+Catherine Barentin provided the (late) glass Couette cell of SM XXXX.
+Special thanks to Madame Biot who made M.A. Biot work accessible through \href{http://www.olemiss.edu/sciencenet/poronet/}{poronet} website. 
+ML thank the Region Rhône Alpes and the Programme d'avenir Lyon - Saint Etienne (PALSE NoGELPo) for postoctoral grant. 
+TG and MN acknowledge funding from ANR XXXX. 
+ML and SM acknowledge funding from the European Research Council under the European Union's Seventh Framework Program (FP7/2007-2013) / ERC grant agreement No. 258803.
+
+
+\paragraph*{Author Contributions}
+ML and MN conducted preliminary experiments. ML, SM and TG designed the experiments and interpreted the results. ML and TG performed quantitative experiments. ML performed data analysis and modelling. ML, SM and TG wrote the manuscript.
+
+
+\paragraph*{Author Information} 
+The authors declare that they have no competing financial interests. 
+Correspondence and requests for materials should be addressed to TG (\href{mailto:thomas.gibaud@ens-lyon.fr}{thomas.gibaud@ens-lyon.fr}).
+
+
+
 \begin{figure}
 	\includegraphics{dynamics}
-	\caption{Dynamics of pattern formation. Left: light transmission microscopy. Part of the initial pattern is highlighted in yellow to show that it is not evolving. Right: 3D reconstruction from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
+	\caption{Dynamics of pattern formation. Left: light transmission microscopy. The same area is highlighted in yellow on all panels to show that the initial pattern is not evolving. Right: 3D reconstruction from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
 	\label{fig:dynamics}
 \end{figure}
 
@@ -55,7 +80,7 @@ The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay and L. Mahadevan for
 
 \begin{figure*}
 	\includegraphics{Darcy_vs_Poiseuille}
-	\caption{Comparing model predictions with measured wavelengths. Continuous line is the perfect match ($\lambda_{th}=\lambda_{xp}$), dashed line is the best linear fit through the origin (prefactor is 0.81 in a, 0.75 in b), dotted line is the best affine fit ($\lambda_{xp}=0.56\lambda_{th}+\SI{0.28}{\milli\metre}$).}
+	\caption{Comparing model predictions with measured wavelengths. Dashed line is the best linear fit through the origin (prefactor is 0.81 in a, 0.65 in b), continuous line is the best affine fit ($\lambda_{xp}=0.56\lambda_{th}+\SI{0.28}{\milli\metre}$).}
 	\label{fig:DarcyPoiseuille}
 \end{figure*}
 
