@@ -33,7 +33,7 @@
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=B, y error=pmB]{plis.txt};
 %\addplot+[forget plot] {3.5*x};
 \addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=M, x error=pmM, y=I, y error=pmI]{plis.txt};
-\addplot+[black, dashed] {0.75*x};
+\addplot+[black, dashed] {0.65*x};
 \end{groupplot}
 %\draw (g c1r1.outer north west) rectangle +(\textwidth, -\textheight);
 
