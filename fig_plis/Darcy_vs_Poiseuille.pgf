@@ -15,7 +15,6 @@
 \nextgroupplot[xlabel={$\lambda$ Darcy (\si{\milli\metre})},]
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=B, y error=pmB]{plis.txt};
 \addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=I, y error=pmI]{plis.txt};
-\addplot+[black] {1*x};
 
 
 \nextgroupplot[xlabel={$\lambda$ Poiseuille (\si{\milli\metre})},]
@@ -23,9 +22,8 @@
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=B, y error=pmB]{plis.txt};
 %\addplot+[forget plot] {3.5*x};
 \addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=I, y error=pmI]{plis.txt};
-\addplot+[black] {1*x};
 \addplot+[black, dashed] {0.81*x};
-\addplot+[black, dotted] {0.56*x+0.28};
+\addplot+[black] {0.56*x+0.28};
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] coordinates{(0.41, 0.36) +-(0.05,0.04)};
 %\node[anchor=north west, red, font=\footnotesize] (I) at (rel axis cs:0,1) {Inter blister};
 %\node[anchor=north west, blue, font=\footnotesize] (B) at (I.south west) {Blister size};
@@ -35,7 +33,6 @@
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=B, y error=pmB]{plis.txt};
 %\addplot+[forget plot] {3.5*x};
 \addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=M, x error=pmM, y=I, y error=pmI]{plis.txt};
-\addplot+[black] {1*x};
 \addplot+[black, dashed] {0.75*x};
 \end{groupplot}
 %\draw (g c1r1.outer north west) rectangle +(\textwidth, -\textheight);
