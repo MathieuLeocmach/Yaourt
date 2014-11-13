@@ -1,0 +1,54 @@
+\begin{figure}
+\begin{tikzpicture}
+
+\begin{axis}[
+	name=a,
+	width=0.5\columnwidth,
+	height=0.5\columnwidth,
+	xlabel={$t$ (\si{\minute})},
+	ylabel={$z-z_\infty$ (\si{\centi\metre})},
+	xmin=0, ymax=0
+	]
+	\addplot+[only marks, mark options={scale=0.3, Accent1}] table[x expr={\thisrowno{0}/60}, y expr={-\thisrowno{1}*100}]{montee_cas4_GDL4.txt};
+	\addplot+[no marks, black, domain=5:30] {-5*exp(-x/56.6)};
+\end{axis}
+
+
+\node[minimum height=0.25\columnwidth, minimum width=0.5\columnwidth, fill=Accent2, anchor=south west] (whey) at ($(a.outer south east)+(-\columnwidth,0)$) {};
+\begin{scope}[every node/.style={minimum width=0.05\columnwidth}]
+%where the tubes will be
+\node[minimum height=0.4\columnwidth, anchor=west] (tubel) at ($(whey.north)+(-0.1\columnwidth,0)$) {};
+\node[minimum height=0.4\columnwidth, anchor=east] (tuber) at ($(whey.north)+(0.1\columnwidth,0)$) {};
+%Jurin in tubel
+\node[minimum height=6em, anchor=west, fill=Accent2] (wheyinfty) at (tubel.west)  {};
+%lack of liquid at t2
+\node[minimum height=2em, anchor=north east, fill=white] (wheyt2) at (tuber.east) {};
+%lack of liquid at t1
+\node[minimum height=\baselineskip, anchor=north] (wheyt1) at (wheyt2.south) {};
+\end{scope}
+%gel
+\fill[gray] (wheyt1.south west) +(0,-0.5em) rectangle (tuber.south east);
+%draw tubes
+\draw[very thick] (tubel.south west) -- (tubel.north west) (tubel.south east) -- (tubel.north east)
+(tuber.south west) -- (tuber.north west) (tuber.south east) -- (tuber.north east);
+
+%labels
+\draw[<-] (wheyinfty.north west) -- +(-1em,0) node[left]{$z(\infty)$};
+\draw[<-] (wheyt2.south east) -- +(1em,0) node[right]{$z(t)$};
+%\draw[<-] (wheyt1.south east) -- +(1em,0) node[right]{$z(t_1)$};
+\draw  (wheyt1.south east) ++(0,-0.5em) -- +(1em,0) coordinate[pos=0.9] (Ht) (tuber.south east) -- +(1em,0) coordinate[pos=0.9] (Hb);
+\draw[<->] (Ht) -- (Hb) node[midway, right] (H) {$H$};
+\draw[<-] (H -| tuber) -- +(-0.05\columnwidth,0) node[left]{gel};
+\node[anchor=north west] at (whey.north west) {buffer};
+\node[anchor=north] at (tubel.north) (l1){$1$};
+\node[anchor=north] at (tuber.north) {$2$};
+%\draw[->] (whey.south west) ++(45:0.075\columnwidth) -- +(0,0.1\columnwidth) node[above] {$x$};
+\draw (l1.north-|whey.west) rectangle +(\columnwidth,-\textheight);
+
+
+
+
+\end{tikzpicture}
+\caption{Schematic representation of permeability measurement.}
+\label{fig:tubexp}
+\end{figure}
