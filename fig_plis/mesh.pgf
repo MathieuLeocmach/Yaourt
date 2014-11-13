@@ -1,0 +1,53 @@
+%\begin{figure}
+\begin{tikzpicture}
+\begin{groupplot}[group style={
+			group name=g, group size=1 by 2,
+			x descriptions at=edge bottom,
+			vertical sep=0.5em,
+			},
+		scale only axis,
+		width=0.5\columnwidth,
+		xlabel={q (\si{\per\micro\metre})},
+		ylabel={S(q) (a.u.)},
+		domain=0.1:8,
+		xmode=log,
+		ymode=log,
+		xmin=0.03, xmax=1e2,
+		ymin=1e5, ymax=5e7,
+		clip mode=individual,
+	]
+	\nextgroupplot
+	\addplot+[only marks, mark options={scale=0.3, Accent1}] table{ech14_t008.Sq};
+	\addplot+[black, no marks] {2.12455e+07/(1+(0.78346*x)^(2.39167)};
+	\nextgroupplot%[ymin=6e5, ymax=1.5e7,]
+	\addplot+[only marks, mark options={scale=0.3, Accent1}] table{ech6.Sq};
+	\addplot+[black, no marks, domain=0.5:6.5] {4.92707951e+06/(1+(0.233*x)^(2.53)};
+\end{groupplot}
+\coordinate (topright) at  (g c1r1.outer north east -| g c1r2.outer south east);
+\newdimen\mydima
+\newdimen\mydimb
+\pgfextracty{\mydima}{\pgfpointanchor{g c1r1}{north}}
+\pgfextracty{\mydimb}{\pgfpointanchor{g c1r1}{south}}
+\pgfmathsetlength{\mydima}{\mydima-\mydimb}
+\node[inner sep=0, anchor=north west] at ($(topright|-g c1r1.north)+(-\columnwidth,0)$) (im1) {\includegraphics[height=\mydima]{ech14_t008.jpg}};
+%scale bar 10 um
+\draw[line width=0.3em] (im1.south west) ++(1em,1em) -- +(0.197\mydima,0);
+\node[inner sep=0, anchor=north west] at ($(topright|-g c1r2.north)+(-\columnwidth,0)$) (im2) {\includegraphics[height=\mydima]{ech6_x64_4.jpg}};
+%scale bar 10 um
+\draw[line width=0.3em] (im2.south west) ++(1em,1em) -- +(0.197\mydima,0);
+
+\node[inner sep=0, above right= 0.1\mydima of g c1r1.south west] (sp1) {\includegraphics[width=0.5\mydima] {ech14_fft_t008.jpg}};
+\draw[line width=0.3em] (sp1.south west) ++(1em,1em) --+(0.157\mydima,0); %10um-1
+\node[inner sep=0, above right= 0.1\mydima of g c1r2.south west] (sp2) {\includegraphics[width=0.5\mydima] {ech6_fft.jpg}};
+\draw[line width=0.3em] (sp2.south west) ++(1em,1em) --+(0.157\mydima,0);%10um-1
+
+\begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
+\node[anchor=north west] at (im1.north east) {(a)};
+\node at (g c1r1.north east) {(b)};
+\node[anchor=north west] at (im2.north east) {(c)};
+\node at (g c1r2.north east) {(d)};
+\end{scope}
+
+%\draw (topright) rectangle +(-\columnwidth,-\textheight);
+\end{tikzpicture}
+%\end{figure}
