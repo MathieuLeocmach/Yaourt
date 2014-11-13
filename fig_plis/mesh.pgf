@@ -42,9 +42,9 @@
 \draw[line width=0.3em] (sp2.south west) ++(1em,1em) --+(0.157\mydima,0);%10um-1
 
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
-\node[anchor=north west] at (im1.north east) {(a)};
+\node[fill=white, draw=white] at (im1.north east) {(a)};
 \node at (g c1r1.north east) {(b)};
-\node[anchor=north west] at (im2.north east) {(c)};
+\node[fill=white, draw=white] at (im2.north east) {(c)};
 \node at (g c1r2.north east) {(d)};
 \end{scope}
 
