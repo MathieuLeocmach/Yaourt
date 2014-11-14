@@ -140,4 +140,16 @@ where $\Delta P$ is the the hydrostatic pressure relative to $z_\infty$. We can 
 
 By fitting $z_\infty-z(t)$ by an exponential (see Fig.~\ref{fig:permeability} b-c), we obtain $\tau$ and thus $\alpha$. Note that even with $H$ of the order of a few millimetres high glycerol contents yield $\tau\approx \SI{100}{\hour}$ due both to high viscosities and low permeability. Obtaining $z_\infty$ without tube 2 would be time prohibitive.
 
+\subsection*{Characteristic time measurement}
+\begin{figure}
+	\includegraphics{growth}
+	\caption{Growth of the instability. (a) Evolution of the gel velocity $v$, integrated over the whole surface. Inset: Evolution of the amplitude (peak to peak measurement) in semi logarithmic scale. Black line is the best exponential fit with $\tau=\SI{90}{\second}$. (b) Evolution of the bottom profile of the gel from the onset of instability (yellow) to the contact to both walls (brown). Note that the lateral size of the blister evolve in this regime. Thick black curve is the profile at much longer time. Note that blister foot (highlighted by the orange vertical line) has not moved since contact.}
+	\label{fig:growth}
+\end{figure}
+
+In most of our samples, it was possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both highest and lowest point of the surface. Even when valid, such local measurement is noisy and we prefer the measure of the vertical displacement of the gel $v$ that can be integrated over the whole field of view.
+
+We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls. We thus used consistently this approximation of $\tau$ for all our samples. This is coherent with the fact that the blister size $\approx\lambda/2$ does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is decided when $A(t) = A_\text{max}$.
+
+
 \end{document}

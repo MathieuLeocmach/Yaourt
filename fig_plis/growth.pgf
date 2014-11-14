@@ -1,0 +1,65 @@
+%\begin{figure}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+			group name=g, group size=1 by 2,
+			%y descriptions at=edge left,
+			vertical sep=4em,
+			},
+	width=\columnwidth,
+	ylabel absolute, every axis y label/.append style={anchor=base, yshift=-0.3em},
+	]
+	\nextgroupplot[
+		xlabel={time (\si{\hour})},
+		ylabel={$v$ (\si{\micro\metre\per\second})},
+		xmin=0,xmax=3, ymin=0, ymax=0.15,
+		y tick label style={
+                /pgf/number format/fixed,
+                /pgf/number format/fixed zerofill,
+                /pgf/number format/precision=2},
+		]
+	\addplot+[Accent1, mark options={fill=Accent1}] table[x expr={\thisrowno{0}/3600.+0.05}]{cas3p2_fluo0p8_GDL4.vel};
+	
+	
+	\nextgroupplot[
+	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={position (\si{\micro\metre})},
+	ymin=0, ymax=50, ylabel={altitude (\si{\micro\metre})},
+	cycle list={
+		{Accent2}, 
+		{black!15!Accent2},
+		{black!30!Accent2},
+		{black!45!Accent2},
+		{black!60!Accent2},
+		{black!75!Accent2},
+		{black, thick}
+	},
+	no marks,
+	]
+	\foreach \x in {2,3,..., 8}
+		\addplot table[y index=\x]{alts_bottom_cloque.txt};
+		
+	\draw[ultra thick, Accent1] (axis cs:580,0) -- (axis cs:580,50);
+	
+\end{groupplot}
+\begin{axis}[
+	anchor=north east,
+	at={($(g c1r1.north east)-(1em,1em)$)},
+	width=0.6\columnwidth,
+	xlabel={time (\si{\minute})},
+	ylabel={amplitude (\si{\micro\metre})},
+	ymode=log, ymin=5,
+	restrict x to domain=0:30,
+	ytick={5,10, 20, 50}, yticklabels={5,10,20,50},
+	clip mode=individual,
+	]
+	\addplot+[Accent1, only marks,mark options={fill=Accent1}] table[x expr={\thisrowno{0}/60.+3}]{cas3p2_fluo0p8_GDL4.ampl};
+	%\addplot[black, no marks, domain=22:25] {exp((x-100)/120.*60)};
+	\addplot[black, no marks, domain=23:25.5] {exp((x-19.2)/1.5)};
+\end{axis}
+\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\node at (g c1r1.north west) {(a)};
+\node at (g c1r2.north west) {(b)};
+\end{scope}
+%\draw (g c1r1.outer north west) rectangle +(\columnwidth,-\textheight);
+\end{tikzpicture}
+%\end{figure}
