@@ -1,54 +1,69 @@
-\begin{figure}
+% \begin{figure*}
 \begin{tikzpicture}
-
-\begin{axis}[
-	name=a,
-	width=0.5\columnwidth,
+\begin{groupplot}[
+	group style={
+			group name=g, group size=2 by 1,
+			y descriptions at=edge left,
+			horizontal sep=0.5em,
+			},
+	width=0.4\textwidth,
 	height=0.5\columnwidth,
-	xlabel={$t$ (\si{\minute})},
+	xlabel={$t$ (hours)},
 	ylabel={$z-z_\infty$ (\si{\centi\metre})},
-	xmin=0, ymax=0
+	xmin=0, ymax=0, ymin=-5,
+	clip mode=individual,
 	]
-	\addplot+[only marks, mark options={scale=0.3, Accent1}] table[x expr={\thisrowno{0}/60}, y expr={-\thisrowno{1}*100}]{montee_cas4_GDL4.txt};
-	\addplot+[no marks, black, domain=5:30] {-5*exp(-x/56.6)};
-\end{axis}
+	\nextgroupplot[xmax=3]
+	\addplot+[only marks, mark options={scale=0.5, Accent2}] table[x expr={\thisrowno{0}/3600}, y expr={-\thisrowno{1}*100}]{montee_cas4_GDL4.txt};
+	\addplot+[no marks, black, domain=0:3] {-5*exp(-x/56.6*60)};
+	%H=2.3mm
+	\nextgroupplot[xmax=10,xlabel={$t$ (days)},]
+	\addplot+[only marks, mark options={scale=0.5, Accent1}] table[x expr={\thisrowno{0}/3600/24}, y expr={-\thisrowno{1}*100}]{montee_cas4_GDL4_gly50.txt};
+	\addplot+[no marks, black, domain=0:10] {-3.5*exp(-x/100*24)};
+	%H=4mm
+	
+\end{groupplot}
 
 
-\node[minimum height=0.25\columnwidth, minimum width=0.5\columnwidth, fill=Accent2, anchor=south west] (whey) at ($(a.outer south east)+(-\columnwidth,0)$) {};
+\node[minimum height=0.25\columnwidth, minimum width=0.5\columnwidth, fill=gray!50, anchor=south west] (whey) at ($(g c2r1.outer south east)+(-\textwidth,0)$) {};
 \begin{scope}[every node/.style={minimum width=0.05\columnwidth}]
 %where the tubes will be
 \node[minimum height=0.4\columnwidth, anchor=west] (tubel) at ($(whey.north)+(-0.1\columnwidth,0)$) {};
 \node[minimum height=0.4\columnwidth, anchor=east] (tuber) at ($(whey.north)+(0.1\columnwidth,0)$) {};
 %Jurin in tubel
-\node[minimum height=6em, anchor=west, fill=Accent2] (wheyinfty) at (tubel.west)  {};
+\node[minimum height=6em, anchor=west, fill=gray!50] (wheyinfty) at (tuber.west)  {};
 %lack of liquid at t2
-\node[minimum height=2em, anchor=north east, fill=white] (wheyt2) at (tuber.east) {};
+\node[minimum height=2em, anchor=north east, fill=white] (wheyt2) at (tubel.east) {};
 %lack of liquid at t1
 \node[minimum height=\baselineskip, anchor=north] (wheyt1) at (wheyt2.south) {};
 \end{scope}
 %gel
-\fill[gray] (wheyt1.south west) +(0,-0.5em) rectangle (tuber.south east);
+\fill[Accent1] (wheyt1.south west) +(0,-0.5em) rectangle (tubel.south east);
 %draw tubes
 \draw[very thick] (tubel.south west) -- (tubel.north west) (tubel.south east) -- (tubel.north east)
 (tuber.south west) -- (tuber.north west) (tuber.south east) -- (tuber.north east);
 
 %labels
-\draw[<-] (wheyinfty.north west) -- +(-1em,0) node[left]{$z(\infty)$};
-\draw[<-] (wheyt2.south east) -- +(1em,0) node[right]{$z(t)$};
+\draw[<-] (wheyinfty.north east) -- +(1em,0) node[right]{$z(\infty)$};
+\draw[<-] (wheyt2.south west) -- +(-1em,0) node[left]{$z(t)$};
 %\draw[<-] (wheyt1.south east) -- +(1em,0) node[right]{$z(t_1)$};
-\draw  (wheyt1.south east) ++(0,-0.5em) -- +(1em,0) coordinate[pos=0.9] (Ht) (tuber.south east) -- +(1em,0) coordinate[pos=0.9] (Hb);
-\draw[<->] (Ht) -- (Hb) node[midway, right] (H) {$H$};
-\draw[<-] (H -| tuber) -- +(-0.05\columnwidth,0) node[left]{gel};
-\node[anchor=north west] at (whey.north west) {buffer};
+\draw  (wheyt1.south west) ++(0,-0.5em) -- +(-1em,0) coordinate[pos=0.9] (Ht) (tubel.south west) -- +(-1em,0) coordinate[pos=0.9] (Hb);
+\draw[<->] (Ht) -- (Hb) node[midway, left] (H) {$H$};
+\draw[<-] (H -| tubel) -- +(0.05\columnwidth,0) node[right]{gel};
+\node[anchor=north east] at (whey.north east) {buffer};
 \node[anchor=north] at (tubel.north) (l1){$1$};
 \node[anchor=north] at (tuber.north) {$2$};
 %\draw[->] (whey.south west) ++(45:0.075\columnwidth) -- +(0,0.1\columnwidth) node[above] {$x$};
-\draw (l1.north-|whey.west) rectangle +(\columnwidth,-\textheight);
+%\draw (l1.north-|whey.west) rectangle +(\textwidth,-\textheight);
 
-
+\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\node at (l1.north-|whey.west) {(a)};
+\node at (g c1r1.north west) {(b)};
+\node at (g c2r1.north west) {(c)};
+\end{scope}
 
 
 \end{tikzpicture}
-\caption{Schematic representation of permeability measurement.}
-\label{fig:tubexp}
-\end{figure}
+% \caption{Schematic representation of permeability measurement.}
+% \label{fig:tubexp}
+% \end{figure*}
