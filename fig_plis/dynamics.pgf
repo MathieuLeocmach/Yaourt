@@ -46,11 +46,10 @@
 \pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{east}}
 \pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{west}}
  	\draw[line width=0.3em] (m-1-2.south west) ++(0.5em,0.5em)-- ++(0.17\mydima-0.17\mydimb,0);
-\newdimen\mydimc
-\newdimen\mydimd
-\pgfextractx{\mydimc}{\pgfpointanchor{m-1-3}{east}}
-\pgfextractx{\mydimd}{\pgfpointanchor{m-1-3}{west}}
- 	\draw[line width=0.3em] (m-1-3.south west) ++(1em,0) -- +(0.76\mydima-0.76\mydimb,0);
+
+\pgfextractx{\mydima}{\pgfpointanchor{m-1-3}{east}}
+\pgfextractx{\mydimb}{\pgfpointanchor{m-1-3}{west}}
+ 	\draw[line width=0.3em] (m-1-3.south west) ++(1em,0) -- +(\mydima/1.272-\mydimb/1.272,0);
 % 	\draw[ultra thick] ++(m-1-3.south west) -- ++(0.1\textwidth,0);
 
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
