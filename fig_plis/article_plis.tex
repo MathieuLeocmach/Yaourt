@@ -41,7 +41,7 @@ Data shown in Fig.~\ref{fig:acidification} a-b were obtained with a SevenCompact
 
 \paragraph*{Acknowledgements}
 Confocal experiments were conducted at SFR BioSciences Gerland - Lyon Sud (US8 / UMS3444).
-The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay and L. Mahadevan for theoretical insights at various sage of the research. 
+The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay, L. Mahadevan and Olivier Pierre-Louis for theoretical insights at various sage of the research. 
 Precious experimental ideas came from Denis Bartolo, Elisabeth Bouchaud and Maxime Lefranc.
 Alan Parker at Firmenich provided the casein and GDL; Catherine Barentin provided the (late) glass Couette cell of SM XXXX.
 Special thanks to Madame Biot who made M.A. Biot work accessible through \href{http://www.olemiss.edu/sciencenet/poronet/}{poronet} website. 
@@ -114,11 +114,21 @@ Correspondence and requests for materials should be addressed to TG (\href{mailt
 \label{tab:data}
 \end{table*}
 
+\subsection*{Microstructure measurement}
+
 \begin{figure}
 	\includegraphics{mesh}
-	\caption{Gel microstructure. (a) Detail of a confocal micrograph of a 4\%w casein, 4\%w GDL in water, when only the slide is coated (not the cover slip). Time corresponds to the minimum in mesh size. Scale bar is \SI{10}{\micro\metre}. (b) Corresponding radial averaged Fourier transform. Black line is the best fit by Eq.XXX with $\xi=\SI{4.9}{\micro\metre}$ and $d=2.4$. Inset shows the center of the non radial average spectrum (arbitrary logarithmic color scale). Scale bar is \SI{10}{\per\micro\metre}. (c-d) Idem in a 50\%w glycerol solvent, with $\xi=\SI{1.5}{\micro\metre}$ and $d=2.5$.}
+	\caption{Gel microstructure. (a) Detail of a confocal micrograph of a 4\%w casein, 4\%w GDL in water, when only the slide is coated (not the cover slip). Time corresponds to the minimum in mesh size. Scale bar is \SI{10}{\micro\metre}. (b) Corresponding radial averaged Fourier transform. Black line is the best fit by Eq.XXX with $\xi=\SI{4.9}{\micro\metre}$ and $\gamma=2.4$. Inset shows the center of the non radial average spectrum (arbitrary logarithmic color scale). Scale bar is \SI{10}{\per\micro\metre}. (c-d) Idem in a 50\%w glycerol solvent, with $\xi=\SI{1.5}{\micro\metre}$ and $\gamma=2.5$.}
 	\label{fig:mesh}
 \end{figure}
+
+To follow the evolution of the microstructure in a gel undergoing syn\ae{}resis and swelling, we had to keep it in the thin focal plane of the 63x objective lens of the confocal microscope. To do so, we coated only the microscope slide with acrylamide brush to allow syn\ae{}resis on this side. The cover-slip was cleaned but not coated, thus keeping strong adhesion on the side closer to the objective lens. Neither buckling nor wrinkling was detected in such configuration.
+
+We acquired slices of $(\SI{2048}{px})^2$ with pixels of \SI{98}{\nano\metre} (see Fig.~\ref{fig:mesh}a and c). After Hann windowing we performed Fourier transform (see insets of Fig.~\ref{fig:mesh}b and d) and radially averaged the resulting spectrum to obtain $I(q)$ (see Fig.~\ref{fig:mesh}b and d) that we fit by the following fractal form:
+\begin{equation}
+I(q) = \frac{\chi}{1+(\xi q)^\gamma}
+\end{equation}
+were the susceptibility $\chi$ is related to the contrast of fluorescence between the network and the solvent, the cut off length $\xi$ corresponds to the largest pore size and the exponent $\gamma$ is loosely related to the fractal dimension. 
 
 \subsection*{Permeability measurements}
 \begin{figure*}
@@ -157,7 +167,7 @@ From these data, we obtain for each stack the volume and thickness of the gel ph
 
 In most of our samples, it was possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both highest and lowest point of the surface. Even when valid, such local measurement is noisy and we prefer the measure of the vertical displacement of the gel $v$ that can be integrated over the whole field of view.
 
-We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls. We thus used consistently this approximation of $\tau$ for all our samples. This is coherent with the fact that the blister size $\approx\lambda/2$ does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is decided when $A(t) = A_\text{max}$.
+We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls. We thus used consistently this approximation of $\tau$ for all our samples. This is coherent with the fact that the blister size $\propto\lambda$ does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is decided when $A(t) = A_\text{max}$.
 
 
 \end{document}
