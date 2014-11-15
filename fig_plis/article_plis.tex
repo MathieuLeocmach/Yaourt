@@ -34,16 +34,16 @@
 \section*{Methods summary}
 To prevent adsorption of caseins to surfaces, microscope slides and cover-slips were cleaned and subsequently coated with a silane agent (3-(trimethoxysilyl) propyl methacrylate, Sigma Aldrich) to which a polyacrylamide brush was polymerized from methacrylate groups.
 Sodium caseinate (Firmenich) was labelled with Dylight~550 NHS ESTER (Thermo Scientific) and then purified by centrifugation. Unlabelled sodium caseinate powder was dissolved in deionised water (or water+glycerol mixture). To induce gelation glucono-$\delta$-lactone (GDL) in powder (Firmenich) was added to the solution. \SI{45}{\micro\litre} of this solution was immediately mixed with \SI{5}{\micro\litre} of labelled caseinate solution and injected in the microscopy cell, immediately sealed using ultraviolet-cured glue (Norland Optical) and placed under the microscope before gelation could take place. 
-3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either 10x (air) lens to observe wrinkling or 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures were obtained either by stitching fluorescent microscope data or by transmitted/reflected light macroscope (Nikkon SMZ745T/Leica DMS1000).
+3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either 10x (air) lens to measure the geometry of wrinkling (see SM) or 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures were obtained either by stitching fluorescent microscope data or by transmitted/reflected light macroscope (Nikkon SMZ745T/Leica DMS1000).
 Data shown in Fig.~\ref{fig:acidification} a-b were obtained with a SevenCompact pH-meter (Mettler Toledo) and an MCR 301 rheometer (Anton Paar).
 
 \bibliographystyle{naturemag3}
 
 \paragraph*{Acknowledgements}
 Confocal experiments were conducted at SFR BioSciences Gerland - Lyon Sud (US8 / UMS3444).
-The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay and L. Mahadevan for theoretical insights at various sage of the research and Alan Parker at Firmenich for providing the casein and GDL. 
+The authors thank José Bico, Arezeki Boudaoud, Cyprien Gay and L. Mahadevan for theoretical insights at various sage of the research. 
 Precious experimental ideas came from Denis Bartolo, Elisabeth Bouchaud and Maxime Lefranc.
-Catherine Barentin provided the (late) glass Couette cell of SM XXXX.
+Alan Parker at Firmenich provided the casein and GDL; Catherine Barentin provided the (late) glass Couette cell of SM XXXX.
 Special thanks to Madame Biot who made M.A. Biot work accessible through \href{http://www.olemiss.edu/sciencenet/poronet/}{poronet} website. 
 ML thank the Region Rhône Alpes and the Programme d'avenir Lyon - Saint Etienne (PALSE NoGELPo) for postoctoral grant. 
 TG and MN acknowledge funding from ANR XXXX. 
@@ -139,6 +139,14 @@ where $\Delta P$ is the the hydrostatic pressure relative to $z_\infty$. We can 
 \end{equation}
 
 By fitting $z_\infty-z(t)$ by an exponential (see Fig.~\ref{fig:permeability} b-c), we obtain $\tau$ and thus $\alpha$. Note that even with $H$ of the order of a few millimetres high glycerol contents yield $\tau\approx \SI{100}{\hour}$ due both to high viscosities and low permeability. Obtaining $z_\infty$ without tube 2 would be time prohibitive.
+
+\subsection*{Confocal images segmentation}
+
+At 10x magnification, we acquired sacks of (depending on cell thickness) 20 to 50 images spaced by \SI{6.69}{\micro\metre} (Nyquist sampling). Each confocal slice was $(\SI{256}{px})^2$ with pixels of \SI{4.97}{\micro\metre}. At this low resolution details of the gel microstructure are undistinguishable ($\xi<$px for all compositions) and the gel appear as a continuous medium.
+
+We first denoise each plane by a small Gaussian blur ($\sigma=\SI{2}{px}\ll\lambda$). Then, for each $(x,y)$, we focus on the z-dependant intensity profile $I(z)$. We define the position of the top surface of the gel $z_\text{top}$ as where $I(z)$ first crosses half of its maximum value. Since the criterion is local, we do not need to correct for background intensity variation. In this way we obtain $z_\text{top}(x,y)$ with subpixel resolution ($\pm\SI{0.1}{px}=\SI{0.67}{\micro\metre}$), and $z_\text{bottom}(x,y)$ in a symmetrical way.
+
+From these data, we obtain for each stack the volume and thickness of the gel phase, area of the midsurface and peak-to-peak amplitude. Velocity is obtained by time differentiation. Once the instability has saturated on floor and ceiling of the cell, peaks in the histograms of $z_\text{top}$, and $z_\text{bottom}$ yield the measure of the positions of the walls, thus to $e$ and retrospectively to $H_1$ and $H_2$.
 
 \subsection*{Characteristic time measurement}
 \begin{figure}
