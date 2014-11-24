@@ -41,6 +41,7 @@
 	\SI{2}{\hour} 30 & \includegraphics[height=4.5em]{prise_0799_color.jpg}&
 	\includegraphics[height=4.5em]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
 };
+%scale bars
 \newdimen\mydima
 \newdimen\mydimb
 \pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{east}}
@@ -52,13 +53,45 @@
  	\draw[line width=0.3em] (m-1-3.south west) ++(1em,0) -- +(\mydima/1.272-\mydimb/1.272,0);
 % 	\draw[ultra thick] ++(m-1-3.south west) -- ++(0.1\textwidth,0);
 
+\begin{axis}[
+	name=a,
+	anchor=north west,
+	at={($(m-7-2.south west)+(0,-0.5em)$)},
+	width=\columnwidth-4em,
+	enlargelimits=false,axis on top,
+	y dir=reverse,
+	xlabel={$q$ (\si{\per\milli\metre})},
+	ylabel={$t$ (\si{\minute})},
+	ylabel absolute, every axis y label/.append style={anchor=base, yshift=-2em}
+	]
+	\addplot graphics [xmin=0,xmax=113.79,ymin=31,ymax=100]{macroscope_Sqt.png};
+\end{axis}
+\pgfextracty{\mydima}{\pgfpointanchor{a}{north}}
+\pgfextracty{\mydimb}{\pgfpointanchor{a}{south}}
+
+%color bar
+\begin{axis}[
+	anchor=right of north east,
+	at={($(m.south east)+(0,-0.5em)$)},
+	width=1em,
+	height={\mydima-\mydimb},
+	scale only axis,
+	enlargelimits=false,axis on top,
+	ylabel={$\|I(q,t)\|^2$ (a.u.)},
+	axis y line*=right, axis x line*=none, xtick=\empty,
+	]
+	\addplot graphics [xmin=0,xmax=1,ymin=0,ymax=1]{hot_colorbar.png};
+\end{axis}
+
+%labels
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
 \node at (m-1-2.north west) {(a)};
 \node at (m-1-3.north east) {(b)};
+\node[white] at (a.north east) {(c)};
 \end{scope}
 %\draw (m.north west) rectangle +(\columnwidth, -\textheight);
 \end{tikzpicture}
 
 % 	\caption{Dynamics of pattern formation. Left: light transmission microscopy. Right: Reconstructed from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
 %  	\label{fig:dynamics}
- %\end{figure}
+% \end{figure}
