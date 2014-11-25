@@ -1,5 +1,13 @@
 %\begin{figure}
 \begin{tikzpicture}
+\pgfplotscreateplotcyclelist{accents}{%
+	Accent1, only marks,mark=o\\%
+	Accent2, only marks,mark=square\\%
+	Accent1, only marks, every mark/.append style={fill=Accent1},mark=*\\%
+	Accent2, only marks, every mark/.append style={fill=Accent2},mark=square*\\%
+	black, no marks, dashed\\%
+	black, no marks\\%
+}
 \begin{groupplot}[group style={
 			group name=g, 
 	group size=3 by 1,
@@ -11,19 +19,27 @@
 	xmin=0, xmax=3,ymin=0,ymax=3,
 	ylabel={$\lambda$ measured (\si{\milli\metre})},
 	cycle list name=black white,
-	no marks]
+	cycle list name=accents,
+	]
 \nextgroupplot[xlabel={$\lambda$ Darcy (\si{\milli\metre})},]
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=B, y error=pmB]{plis.txt};
-\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=I, y error=pmI]{plis.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=I, y error=pmI, restrict expr to domain={\thisrow{ratio}}{-1:1}]{plis.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Darcy, x error=pmD, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, restrict expr to domain={\thisrow{ratio}}{-1:1}]{plis_secondaires.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=I, y error=pmI, restrict expr to domain={\thisrow{ratio}}{1:10}]{plis.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Darcy, x error=pmD, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, restrict expr to domain={\thisrow{ratio}}{1:10}]{plis_secondaires.txt};
+\addplot {0.63*x};
 
 
 \nextgroupplot[xlabel={$\lambda$ Poiseuille (\si{\milli\metre})},]
 %\fill[gray] (axis cs:0.08,0.36) circle (5pt) (axis cs:0.36,0.46) circle (5pt);
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=B, y error=pmB]{plis.txt};
 %\addplot+[forget plot] {3.5*x};
-\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=I, y error=pmI]{plis.txt};
-\addplot+[black, dashed] {0.81*x};
-\addplot+[black] {0.56*x+0.28};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=I, y error=pmI, restrict expr to domain={\thisrow{ratio}}{-1:1}]{plis.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Poiseuille, x error=pmP, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, restrict expr to domain={\thisrow{ratio}}{-1:1}]{plis_secondaires.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=I, y error=pmI, restrict expr to domain={\thisrow{ratio}}{1:10}]{plis.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Poiseuille, x error=pmP, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, restrict expr to domain={\thisrow{ratio}}{1:10}]{plis_secondaires.txt};
+\addplot {0.69*x};
+\addplot {0.52*x+0.33};
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] coordinates{(0.41, 0.36) +-(0.05,0.04)};
 %\node[anchor=north west, red, font=\footnotesize] (I) at (rel axis cs:0,1) {Inter blister};
 %\node[anchor=north west, blue, font=\footnotesize] (B) at (I.south west) {Blister size};
@@ -32,8 +48,11 @@
 %\fill[gray] (axis cs:0.08,0.36) circle (5pt) (axis cs:0.36,0.46) circle (5pt);
 %\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=B, y error=pmB]{plis.txt};
 %\addplot+[forget plot] {3.5*x};
-\addplot+[only marks, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=M, x error=pmM, y=I, y error=pmI]{plis.txt};
-\addplot+[black, dashed] {0.65*x};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=M, x error=pmM, y=I, y error=pmI, restrict expr to domain={\thisrow{ratio}}{-1:1}]{plis.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Mixte, x error=pmM, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, restrict expr to domain={\thisrow{ratio}}{-1:1}]{plis_secondaires.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=M, x error=pmM, y=I, y error=pmI, restrict expr to domain={\thisrow{ratio}}{1:10}]{plis.txt};
+\addplot+[error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Mixte, x error=pmM, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, restrict expr to domain={\thisrow{ratio}}{1:10}]{plis_secondaires.txt};
+\addplot {0.665*x};
 \end{groupplot}
 %\draw (g c1r1.outer north west) rectangle +(\textwidth, -\textheight);
 
