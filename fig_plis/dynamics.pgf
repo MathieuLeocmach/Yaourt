@@ -41,57 +41,59 @@
 	\SI{2}{\hour} 30 & \includegraphics[height=4.5em]{prise_0799_color.jpg}&
 	\includegraphics[height=4.5em]{cas3p2_fluo0p8_GDL4_2_t260_crop_resized.jpg}\\
 };
+
+
+\begin{axis}[
+	name=a,
+	anchor=north west,
+	at={($(m-7-2.south west)+(1.8em,-0.5em)$)},
+	width=\columnwidth,
+	height=0.75\columnwidth,
+	ymode=log, xmin=0, xmax=55, ymin=3, ymax=7e3,
+	xlabel={$q$ (\si{\per\milli\metre})},
+	ylabel={$\|I(q,t)\|^2$ (a.u.)},
+	extra x ticks={6.13,  12.26,  18.39,  24.52},%
+ 	extra x tick style={
+ 		grid=major, 
+ 		major grid style={%
+ 				dash pattern=on 0.5em off 1.5em on \columnwidth,
+ 				lightgray},
+		%ticklabel pos=right,
+		major tick length=0,
+		tick label style={anchor=base, yshift=1em, lightgray},
+		%yshift=2em,
+ 		},%
+	extra x tick labels={$\frac{2\pi}{\lambda}$,$\frac{2\pi}{\lambda/2}$, $\frac{2\pi}{\lambda/3}$, $\frac{2\pi}{\lambda/4}$},%
+	no marks,
+	]
+	\addplot+[Accent2] table[]{BW.Sqs} node at(axis cs:35,10) {\SI{38}{\minute}};
+	\addplot+[Accent1] table[y index=2]{BW.Sqs} node at(axis cs:35,28) {\SI{1}{\hour}};
+	\addplot+[Accent1!50!black] table[y index=3]{BW.Sqs}  node at(axis cs:35,200) {\SI{2}{\hour}};
+\end{axis}
+%inset
+\node[inner sep=0pt, line width=2pt, draw,Accent1!50!black, below left=1em and 1.8em of a.north east] (inset) {\includegraphics[height=4.5em]{pattern_100um_BW.png}};
+
 %scale bars
 \newdimen\mydima
 \newdimen\mydimb
 \pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{east}}
 \pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{west}}
- 	\draw[line width=0.3em] (m-1-2.south west) ++(0.5em,0.5em)-- ++(0.17\mydima-0.17\mydimb,0);
+ 	\draw[line width=0.3em] (m-1-2.south west) ++(0.5em,0.5em)-- ++(0.17\mydima-0.17\mydimb,0)
+		(inset.south east) ++(-0.5em,-0.5em)-- ++(0.17\mydimb-0.17\mydima,0);
 
 \pgfextractx{\mydima}{\pgfpointanchor{m-1-3}{east}}
 \pgfextractx{\mydimb}{\pgfpointanchor{m-1-3}{west}}
  	\draw[line width=0.3em] (m-1-3.south west) ++(1em,0) -- +(\mydima/1.272-\mydimb/1.272,0);
-% 	\draw[ultra thick] ++(m-1-3.south west) -- ++(0.1\textwidth,0);
-
-\begin{axis}[
-	name=a,
-	anchor=north west,
-	at={($(m-7-2.south west)+(0,-0.5em)$)},
-	width=\columnwidth-4em,
-	enlargelimits=false,axis on top,
-	y dir=reverse,
-	xlabel={$q$ (\si{\per\milli\metre})},
-	ylabel={$t$ (\si{\minute})},
-	ylabel absolute, every axis y label/.append style={anchor=base, yshift=-2em}
-	]
-	\addplot graphics [xmin=0,xmax=113.79,ymin=31,ymax=100]{macroscope_Sqt.png};
-\end{axis}
-\pgfextracty{\mydima}{\pgfpointanchor{a}{north}}
-\pgfextracty{\mydimb}{\pgfpointanchor{a}{south}}
-
-%color bar
-\begin{axis}[
-	anchor=right of north east,
-	at={($(m.south east)+(0,-0.5em)$)},
-	width=1em,
-	height={\mydima-\mydimb},
-	scale only axis,
-	enlargelimits=false,axis on top,
-	ylabel={$\|I(q,t)\|^2$ (a.u.)},
-	axis y line*=right, axis x line*=none, xtick=\empty,
-	]
-	\addplot graphics [xmin=0,xmax=1,ymin=0,ymax=1]{hot_colorbar.png};
-\end{axis}
 
 %labels
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
 \node at (m-1-2.north west) {(a)};
 \node at (m-1-3.north east) {(b)};
-\node[white] at (a.north east) {(c)};
+\node at (a.north east) {(c)};
 \end{scope}
 %\draw (m.north west) rectangle +(\columnwidth, -\textheight);
 \end{tikzpicture}
 
 % 	\caption{Dynamics of pattern formation. Left: light transmission microscopy. Right: Reconstructed from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}
 %  	\label{fig:dynamics}
-% \end{figure}
+ %\end{figure}
