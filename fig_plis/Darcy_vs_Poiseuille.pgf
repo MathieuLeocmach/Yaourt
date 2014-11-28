@@ -19,13 +19,13 @@
 	ylabel={$\lambda_\textrm{exp}$ (\si{\milli\metre})},
 	cycle list name=black white,
 	cycle list name=accents,
-	colormap={accents}{color=(Accent2) color=(Accent1) color=(Accent1!25!black)},
+	colormap={accents}{color=(Accent1!25!black) color=(Accent1) color=(Accent2)},
 	point meta min=-1, point meta max=1,
 	]
 \nextgroupplot[xlabel={$\lambda$ Darcy (\si{\milli\metre})}]
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=I, y error=pmI, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis.txt};
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Darcy, x error=pmD, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis_secondaires.txt};
-\addplot[Accent2] {0.63*x};
+\addplot[Accent1!25!black] {0.63*x};
 
 
 
@@ -42,7 +42,7 @@ colorbar style={
 },]
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=I, y error=pmI, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis.txt};
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Poiseuille, x error=pmP, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis_secondaires.txt};
-\addplot+[Accent1!25!black] {0.69*x};
+\addplot+[Accent2] {0.69*x};
 \addplot {0.52*x+0.33};
 
 \nextgroupplot[xlabel={$\lambda_{D+P}$ (\si{\milli\metre})},]
