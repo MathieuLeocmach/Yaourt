@@ -399,17 +399,19 @@ The same $\Delta P$ can be relaxed by a Poiseuille flow
 \begin{block}{Observable wavelengths}
 Same magnitude (typical sample)
 \begin{align*}
-\lambda_D &\sim \Upsilon^\frac{1}{4} h^\frac{1}{2} \alpha^\frac{1}{4}\simeq \SI{0.23}{\milli\metre}\\
-\lambda_P &\sim \Upsilon^\frac{1}{6} h^\frac{1}{2} H^\frac{1}{2}\simeq \SI{0.25}{\milli\metre}
+\lambda_D &= \pi h^\frac{1}{2} \alpha^\frac{1}{4} \left(\frac{4\Upsilon}{3}\right)^\frac{1}{4} \simeq \SI{1.24}{\milli\metre}\\
+\lambda_P &= \pi h^\frac{1}{2} H^\frac{1}{2} \left(\frac{2\Upsilon}{9}\right)^\frac{1}{6} \simeq \SI{1.85}{\milli\metre}
 \end{align*}
 \end{block}
-with $\Upsilon = \frac{E(e-h)}{\eta v}\simeq 10^{6-8}$
 \column{0.5\textwidth}
+\[\Upsilon = \frac{E(e-h)}{\eta v}\simeq \num{3e8}\]
+
+
 Limiting case:
 \begin{itemize}
 \item Same growth speed
 \item Same wavelength
-\item[$\Rightarrow$] $H^* = \Upsilon^\frac{1}{6} \alpha^\frac{1}{2}\simeq \SI{6}{\micro\metre}$
+\item[$\Rightarrow$] $H^* = \alpha^\frac{1}{2} \left(24\Upsilon\right)^\frac{1}{6} \simeq \SI{12}{\micro\metre}$
 \end{itemize}
 Darcy can be faster than Poiseuille when $H<H^*$.
 \end{columns}
@@ -442,9 +444,9 @@ May be explained by ``viscoelastic phase separation'' arguments
 \input{fig_presentation/Darcy_vs_Poiseuille.pgf}
 
 \begin{itemize}
-\item Poiseuille describes most of the data
-\item Underestimates small wavelengths ($H\lesssim H^*$)
-\item Fixed by a model taking both Darcy and Poiseuille into account
+\item Each model fits half of the data
+\item Poiseuille underestimates small wavelengths ($H < H^*$)
+\item Final model takes both Darcy and Poiseuille into account
 \end{itemize}
 
 %\begin{center}
@@ -475,7 +477,6 @@ May be explained by ``viscoelastic phase separation'' arguments
 \begin{itemize}
 	\item porous flow resist bending
 	\item Darcy may beat Poiseuille
-	\item Asynchronous Poiseuille is preferred over Darcy
 \end{itemize}
 
 
