@@ -34,7 +34,7 @@
 \section*{Methods summary}
 To prevent adsorption of caseins to surfaces, microscope slides and cover-slips were cleaned and subsequently coated with a silane agent (3-(trimethoxysilyl) propyl methacrylate, Sigma Aldrich) to which a polyacrylamide brush was polymerized from methacrylate groups.
 Sodium caseinate (Firmenich) was labelled with Dylight~550 NHS ESTER (Thermo Scientific) and then purified by centrifugation. Unlabelled sodium caseinate powder was dissolved in deionised water (or water+glycerol mixture). To induce gelation glucono-$\delta$-lactone (GDL) in powder (Firmenich) was added to the solution. \SI{45}{\micro\litre} of this solution was immediately mixed with \SI{5}{\micro\litre} of labelled caseinate solution and injected in the microscopy cell, immediately sealed using ultraviolet-cured glue (Norland Optical) and placed under the microscope before gelation could take place. 
-3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either 10x (air) lens to measure the geometry of wrinkling (see SM) or 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures were obtained either by stitching fluorescent microscope data or by transmitted/reflected light macroscope (Nikkon SMZ745T/Leica DMS1000).
+3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either 10x (air) lens to measure the geometry of wrinkling (see SM) or 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures, obtained either by stitching fluorescent microscope data or by transmitted/reflected light macroscope (Nikkon SMZ745T/Leica DMS1000), were used to measure the wavelength of the primary pattern. Secondary pattern wavelength is set to half of the primary wavelength, according to Fig.~\ref{fig:dynamics}c.
 Data shown in Fig.~\ref{fig:acidification} a-b were obtained with a SevenCompact pH-meter (Mettler Toledo) and an MCR 301 rheometer (Anton Paar).
 
 \bibliographystyle{naturemag3}
@@ -74,13 +74,13 @@ Correspondence and requests for materials should be addressed to TG (\href{mailt
 
 \begin{figure}
 	\includegraphics{sideview}
-	\caption{Modelisation  and measurements. (a) Schematic side view of the cell. The constant thickness gel sheet (orange) is surrounded by water. Yellow lines show the path of transmitted light through the gel phase. A region of interest is highlighted in gray. (b) Confocal XZ cuts showing syn\ae{}resis, swelling and (cascade) wrinkling. Scale bar is \SI{100}{\micro\metre} (real size ratio). Evolution of (c) volume of the gel phase relative to cell volume and (d) excess area measured by confocal microscopy.}
+	\caption{Model and measurements. (a) Schematic side view of the cell. The constant thickness gel sheet (orange) is surrounded by water. Yellow lines show the path of transmitted light through the gel phase. A region of interest is highlighted in gray. (b) Confocal XZ cuts showing syn\ae{}resis, swelling and (cascade) wrinkling. Scale bar is \SI{100}{\micro\metre} (real size ratio). Evolution of (c) volume of the gel phase relative to cell volume and (d) excess area measured by confocal microscopy.}
 	\label{fig:sideview}
 \end{figure}
 
 \begin{figure*}
 	\includegraphics{Darcy_vs_Poiseuille}
-	\caption{Comparing model predictions with measured wavelengths. Symbols are empty when $H<H^*$ (Darcy mode) and full when $H>H^*$ (Poiseuille mode). Orange dots come from primary pattern, yellow squares from secondary blisters. Dashed lines are the best linear fit through the origin taking only into account the points that should be (a) in Darcy mode, (b) in Poiseuille mode (c) all points. Prefactors are 0.63, 0.69 and 0.67 respectively. Continuous line is the best affine fit ($\lambda_{xp}=0.52\lambda_{th}+\SI{0.33}{\milli\metre}$) to all the points in (b).}
+	\caption{Comparing model predictions with measured wavelengths. Dots come from primary pattern, squares from secondary blisters. Dashed lines are the best linear fit through the origin taking only into account the points that should be (a) in Darcy mode $H<H^*$, (b) in Poiseuille mode $H>H^*$ (c) all points. Prefactors are 0.63, 0.69 and 0.67 respectively. Continuous line is the best affine fit ($\lambda_{xp}=0.52\lambda_{th}+\SI{0.33}{\milli\metre}$) to all the points in (b).}
 	\label{fig:DarcyPoiseuille}
 \end{figure*}
 
@@ -173,6 +173,138 @@ From these data, we obtain for each stack the volume and thickness of the gel ph
 In most of our samples, it was possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both highest and lowest point of the surface. Even when valid, such local measurement is noisy and we prefer the measure of the vertical displacement of the gel $v$ that can be integrated over the whole field of view.
 
 We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls. We thus used consistently this approximation of $\tau$ for all our samples. This is coherent with the fact that the blister size $\propto\lambda$ does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is decided when $A(t) = A_\text{max}$.
+
+\subsection*{Darcy+Poiseuille model}
+
+Mechanical equilibrium of a plate of thickness $h$, young modulus $E$ and Poisson ratio $\nu$ submitted to a compression load $\sigma_0$ along $x$ and a lateral load $q$ along $z$ writes:
+\begin{equation}
+\frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial x^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = q,
+\label{eq:mecheq}
+\end{equation}
+where $w(x,t)$ is the deflection of the plate along $z$.
+
+We suppose an exponentially growing sinusoidal deflection $w(x,t) =  A_0 e^{t/\tau} \sin kx$ of characteristic time $\tau$ and wavevector $k$. In operator language, Eq.~\ref{eq:mecheq} writes:
+\begin{equation}
+\left(\frac{1}{12} B h^3 k^4 - \sigma_0 h k^2\right)w = q,
+\label{eq:mecheqop}
+\end{equation}
+where $B=E/(1-\nu^2)$ is the modulus of the plate.
+
+\subsubsection*{Elastic film in an infinite elastic medium}
+
+The deformation of the substrate of modulus $B_s$ gives the lateral load as $q = -k B_s w$, and thus the compression load writes
+\begin{equation}
+\sigma_0 = B \frac{h^2}{12} k^2 + \frac{B_s}{hk}.
+\label{eq:sigma0}
+\end{equation}
+
+Minimizing $\sigma_0$ function of $k$ yield the well known~\cite{Biot1957,Cerda2003} result $hk = \left(6B_s/B\right)^{1/3}$ and thus the dominant wavelength is
+\begin{equation}
+\lambda_d = 2\pi h \left(\frac{B}{6B_s}\right)^{1/3}.
+\label{eq:lambdaElEl}
+\end{equation}
+
+\subsubsection*{Elastic film on a viscous layer}
+The layer thickness $H$ is supposed much smaller than $\lambda_d$, we are thus in the lubrication approximation. Since we work at small deflections, we can neglect the displacement of the plate along $x$. The flux along $x$ is thus of the Poiseuille form
+\begin{equation}
+Q = -\frac{H^3}{12\eta}\frac{\partial p}{\partial x}.
+\label{eq:PoiseuilleFlux}
+\end{equation}
+where $p(x)$ is the pressure in the layer of viscosity $\eta$.
+
+Mass conservation writes
+\begin{equation}
+\frac{\partial Q}{\partial x} + \frac{\partial w}{\partial t} = 0.
+\label{eq:conservation}
+\end{equation}
+Keeping only linear order terms, in operator language
+\begin{equation}
+\frac{12\eta}{\tau} \frac{w}{H^3k^2} = -q.
+\label{eq:PoiseuilleLoad}
+\end{equation}
+
+Combining Eqs.~(\ref{eq:mecheqop}) and (\ref{eq:PoiseuilleLoad}), the compression load writes
+\begin{equation}
+\sigma_0 = \frac{1}{12}B h^2 k^2 + 12\frac{\eta}{\tau}\frac{1}{H^3 h k^4}
+\label{eq:sigma0P}
+\end{equation}
+and can be minimised by $k_P$ such that
+\begin{equation}
+k_P^6 = 2\times 12^2 \frac{1}{h^3H^3\Upsilon},
+\label{eq:kP}
+\end{equation}
+with $\Upsilon = B\tau/\eta$ the viscoelastic factor. The dominant wavelength for Poiseuille model is thus
+\begin{equation}
+\lambda_P = \pi\sqrt{hH}\left(\frac{2}{9}\Upsilon\right)^{1/6}
+\end{equation}
+
+The scaling is then identical to the (much more involved) derivation by \citet{Huang2002}. When the elastic film is sandwiched between two viscous layers of respective thickness $H_1$ and $H_2$, the linearity of Eq.~(\ref{eq:mecheq}) allows us to use an effective substrate of thickness 
+\begin{equation}
+\frac{1}{H^3} = \frac{1}{H_1^3}+\frac{1}{H_2^3}.
+\end{equation}
+
+\subsubsection*{Porous elastic film with no possible Poiseuille flow}
+The lateral load derives from the Darcy law through the film of permeability $\alpha$:
+\begin{equation}
+-q = p_2-p_1 = \frac{h\eta}{\alpha}\frac{\partial w}{\partial t}.
+\label{eq:DarcyLoad}
+\end{equation}
+
+Combining Eqs.~(\ref{eq:mecheqop}) and (\ref{eq:DarcyLoad}), the compression load writes
+\begin{equation}
+\sigma_0 = \frac{1}{12}B h^2 k^2 + \frac{\eta}{\tau}\frac{1}{\alpha k^2}
+\label{eq:sigma0D}
+\end{equation}
+and can be minimised by $k_D$ such that
+\begin{equation}
+k_D^4 = \frac{12}{h^2\alpha\Upsilon}.
+\label{eq:kD}
+\end{equation}
+
+The dominant wavelength for Darcy model is thus
+\begin{equation}
+\lambda_D = 2\pi h^{1/2}\alpha^{1/4}\left(\frac{\Upsilon}{12}\right)^{1/4}.
+\end{equation}
+
+
+\subsubsection*{Porous elastic film between two viscous layers}
+The mass conservation over the whole height of the cell yield $Q_1 + Q_2 = 0$ and thus
+\begin{equation}
+H_1^3 p_1 + H_2^3 p_2 = 0.
+\label{eq:pressures}
+\end{equation}
+
+The mass conservation in the lower viscous layer is the same as Eq.~(\ref{eq:conservation}) with an added leak $v$ due to the porosity
+\begin{equation}
+\frac{\partial Q_1}{\partial x} + \frac{\partial w}{\partial t} + v = 0.
+\label{eq:conservationDarcy}
+\end{equation}
+
+$v$ can be expressed by the Darcy law
+\begin{equation}
+v = \frac{\alpha}{\eta} \frac{p_1-p_2}{h}.
+\label{eq:Darcy}
+\end{equation}
+
+Combining Eqs.~(\ref{eq:pressures}, \ref{eq:conservationDarcy}, \ref{eq:Darcy}) we obtain the lateral load
+\begin{equation}
+q = p_1-p_2 = - \frac{\eta}{\tau} \frac{w}{\frac{H^3 k^2}{12} + \frac{\alpha}{h}},
+\label{eq:MixtLoad}
+\end{equation}
+
+Note that we recover Eq~(\ref{eq:PoiseuilleLoad}) when $\alpha \rightarrow 0$ and Eq~(\ref{eq:DarcyLoad}) when $H \rightarrow 0$. We can recast this intuition in term of the dimensionless number $H/H^*$ where $H^*$ is obtained by equating $k_P$ and $k_D$:
+\begin{equation}
+H^* = 2^{2/3} 3^{1/6} \alpha^{1/2} \Upsilon^{1/6}.
+\end{equation}
+
+Analytic minimisation of $\sigma_0$ knowing $q$ is possible but heavy. Instead we rewrite Eq.~(\ref{eq:mecheqop}) in terms of previously calculated $\lambda_P$ and $\lambda_D$:
+\begin{align}
+\frac{12\sigma_0}{k_D^2 h^2 B} &= \left(\frac{k}{k_D}\right)^2 + \frac{1}{2\frac{k_D^2}{k_P^6}k^4  + \left(\frac{k}{k_D}\right)^2}\\
+&= \left(\frac{\lambda_D}{\lambda}\right)^2 + \frac{1}{2\frac{\lambda_P^6}{\lambda_D^2\lambda^4}  + \left(\frac{\lambda_D}{\lambda}\right)^2}
+\end{align}
+and we minimise this expression numerically.
+
+
 
 
 \end{document}
