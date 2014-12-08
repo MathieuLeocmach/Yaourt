@@ -31,6 +31,40 @@
 
 \maketitle
 
+In the present work, we study the swelling-induced wrinkling of a porous gel sheet sandwiched between two viscous layers, with the whole system confined between two glass plates. As shown in Fig.~\ref{fig:dynamics}, the lateral confinement leads to saturation of the amplitude on the floor and ceiling followed by a cascade of secondary, ternary, etc. buckling. Such cascade buckling have been observed by~\cite{Roman1999} in a one dimensional macroscopic system, a sheet of steel forced to buckle. The 2D nature of our experiment creates nested patterns that could prove useful to design optical elements. In addition, one has to note that the primary wavelength is much smaller than the size of the system, implying that we are not in a simple buckling scenario but in a wrinkling instability. Our main result is to identify this selection mechanism.
+
+
+In the following, we will describe the physical chemistry that allows us to form such patterns. Then, we will model the situation and identify two possible selection mechanisms: either Darcy flow or Poiseuille flow. Finally we will compare our experimental data with the two models. Combining both Darcy and Poiseuille mechanisms will allow us to describe our data.
+
+
+The slow acidification of a protein (sodium caseinate) solution up to the isoelectric pH induces gelation. Since caseins adsorb strongly to interfaces, the resulting gel sticks strongly to container walls, allowing rheological measurements. As shown in Fig.~\ref{fig:acidification}, further decrease of the pH beyond the isoeletric point weakens the gel. This non monotonous behaviour of the elastic modulus translates in a non monotonous mesh size in a microscopy cell (slit geometry) coated so that the casein could not adsorb on the top wall (Fig.~\ref{fig:acidification}c), i.e. in syn\ae{}resis (solvent expulsion) followed by swelling.
+
+
+Figure~\ref{fig:sideview}b shows confocal measurements in the case where both top and bottom walls have been coated. Starting from an homogeneous solution (black margins correspond to the glass walls), the gel forms and simultaneously expels solvent on both sides. Since we have two clear interfaces between a protein rich phase and a protein poor (water) phase, we model the resulting situation as a porous elastic sheet of thickness $h$ sandwiched between two viscous layers of respective thicknesses $H_1$ et $H_2$ (see Fig.~\ref{fig:sideview}a). Relative increase in protein concentration during syn\ae{}resis can be deduced from the brighter fluorescence in second panel of Fig.~\ref{fig:sideview}b. Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume (Fig.~\ref{fig:sideview}c) and excess surface area of the sheet of gel (Fig.~\ref{fig:sideview}d). We can thus confirm that the instability is due to swelling.
+
+Note that adhesion to side walls is necessary to prevent total syn\ae{}resis and thus allow subsequent planar stresses while swelling. Also, the only situation were be observed wrinkling is when both top and bottom walls are coated. We confirmed that at any given time the thickness $h$ of the sheet of gel is homogeneous in $(x,y)$. The contrast in transmission microscopy (Fig.~\ref{fig:dynamics}a) is not due to thickness inhomogeneities but to altitude gradients. The length of the optical path (along $z$) through the gel phase is larger where the gel makes a slope compared to a flat situation, as indicated by the yellow vertical lines in Fig.~\ref{fig:sideview}a.
+
+\section*{Scalings}
+
+The characteristic length $\lambda^*$ of a wrinkling pattern is set by the competition between the flexural modulus of the sheet $B=E/(1-\nu^2)$ ($E$ Young modulus, $\nu$ Poisson ratio) and a lateral load $q$~\cite{Vella2009,Kolinski2009}: 
+\begin{equation}
+\lambda^* \sim h \left(\frac{B}{q}\right)^{1/3}.
+\label{eq:lstar}
+\end{equation}
+In small deflection actual wavelength $\lambda$ is related to the amplitude $A$ as $\lambda \sim A^{1/4} \lambda^{*3/4}$.
+
+We identify three possible candidates for the lateral load $q$: the weight or buoyancy of the gel, the porous flow through the gel or the viscous flows in the surrounding water layers. We confirmed that the former was playing no role by successfully repeating our experiment in a cell held vertical, i.e. with the weight acting longitudinally rather than laterally.
+
+In a situation where the sheet of gel would be sitting (not sticking) to the floor of the cell ($H_1\rightarrow0$), creating a 2D blister requires flowing solvent of viscosity $\eta$ through the gel of permeability $\alpha$. Darcy law relates the gradient of pressure (identified to $q/h$) to the volume flux per unit area $v = \frac{\alpha}{\eta}\frac{q}{h} = \frac{dA}{dt}$. Injecting this expression in Eq.~(\ref{eq:lstar}) yields the wavelength of the Darcy mode as
+\begin{equation}
+\lambda_D \sim h^{1/2} \alpha^{1/4} \Upsilon^{1/4}
+\end{equation}
+where $\Upsilon = B\tau/\eta$ is a dimensionless viscoelastic factor quantifying the relative stiffness of the sheet and the solvent at a characteristic time $\tau$. This expression stresses the kinetic nature of the wavelength selection. However we note that the wavelength of the primary pattern does not evolve with time (see Fig.~\ref{fig:dynamics} and Sup. Fig.~\ref{fig:growth}) once the gel is touching both walls, we can deduce the relevant $\tau$ from the growth of the primary pattern (see Supplementary Method for the precise definition).
+
+Conversely, in a situation where the sheet of gel would be impervious ($\alpha\rightarrow 0$), destabilisation over a wavelength $\lambda$ would create a lubrication ($H\ll\lambda$) flow in the viscous layers. The longitudinal flux $Q$ is related to the longitudinal pressure gradient $q/\lambda$ by a Poiseuille flow expression $Q = \frac{H^3}{12\eta} \frac{q}{\lambda}$. Mass conservation relates
+
+
+
 \section*{Methods summary}
 To prevent adsorption of caseins to surfaces, microscope slides and cover-slips were cleaned and subsequently coated with a silane agent (3-(trimethoxysilyl) propyl methacrylate, Sigma Aldrich) to which a polyacrylamide brush was polymerized from methacrylate groups.
 Sodium caseinate (Firmenich) was labelled with Dylight~550 NHS ESTER (Thermo Scientific) and then purified by centrifugation. Unlabelled sodium caseinate powder was dissolved in deionised water (or water+glycerol mixture). To induce gelation glucono-$\delta$-lactone (GDL) in powder (Firmenich) was added to the solution. \SI{45}{\micro\litre} of this solution was immediately mixed with \SI{5}{\micro\litre} of labelled caseinate solution and injected in the microscopy cell, immediately sealed using ultraviolet-cured glue (Norland Optical) and placed under the microscope before gelation could take place. 
