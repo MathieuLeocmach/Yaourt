@@ -1,4 +1,5 @@
-\documentclass[twocolumn,superscriptaddress,showpacs,preprintnumbers,amsmath,amssymb,prl]{revtex4-1}
+\documentclass[twocolumn,superscriptaddress,showpacs,preprintnumbers,
+amsmath,amssymb,prl]{revtex4-1}
 \usepackage[utf8]{inputenc}
 
 \usepackage{graphicx}
@@ -31,7 +32,16 @@
 
 \maketitle
 
+\section*{Introduction}
 
+\clearpage
+\newpage
+
+\begin{figure}
+	\includegraphics{dynamics}
+	\caption{Dynamics of pattern formation. (a) Light transmission microscopy. The same area is highlighted in yellow on all panels to show that the initial pattern is not evolving. (b) 3D reconstruction from fluorescent confocal microscopy. (c) Fourier spectrum of binary altitudes of (a) corresponding to primary, secondary and tertiary patterns. Inset: reconstructed binary altitudes at \SI{2}{\hour}. Scale bars are \SI{1}{\milli\metre}.}
+	\label{fig:dynamics}
+\end{figure}
 
 In the present work, we study the swelling-induced wrinkling of a porous gel sheet sandwiched between two viscous layers, with the whole system confined between two glass plates. As shown in Fig.~\ref{fig:dynamics}, the lateral confinement leads to saturation of the amplitude on the floor and ceiling followed by a cascade of secondary, ternary, etc. buckling. Such cascade buckling have been observed by~\cite{Roman1999} in a one dimensional macroscopic system, a sheet of steel forced to buckle. The 2D nature of our experiment creates nested patterns that could prove useful to design optical elements. In addition, one has to note that the primary wavelength is much smaller than the size of the system, implying that we are not in a simple buckling scenario but in a wrinkling instability. Our main goal is to identify the selection mechanism of the wavelength.
 
@@ -40,12 +50,23 @@ In the following, we will describe the physical chemistry that allows us to form
 
 \section*{Pattern formation}
 
-The slow acidification of a protein (sodium caseinate) solution up to the isoelectric pH induces gelation. Since caseins adsorb strongly to interfaces, the resulting gel sticks to container walls, allowing rheological measurements. As shown in Fig.~\ref{fig:acidification}, further decrease of the pH beyond the isoeletric point weakens the gel. This non monotonous behaviour of the elastic modulus translates in a non monotonous mesh size in a microscopy cell (slit geometry) coated so that the casein could not adsorb on the top wall (Fig.~\ref{fig:acidification}c), i.e. in syn\ae{}resis (solvent expulsion) followed by swelling.
+\begin{figure}[b]
+	\includegraphics{acidification}
+	\caption{Acid-induced protein gels properties behave non-monotonously with pH. (a) pH decrease in 4\%w sodium caseinate solution acidified by 4\%w GDL. Horizontal line indicates isoelectric pH of casen (b) Evolution of storage modulus measured in a rheometer (full adhesion to rotor and stator). (c) Evolution of pore size measured by confocal microscopy in a half coated microscopy cell (no adhesion to cell ceiling, syn\ae{}resis and swelling allowed).}
+	\label{fig:acidification}
+\end{figure}
 
+The slow acidification of a protein (sodium caseinate) solution down to the isoelectric pH induces gelation. Since caseins adsorb strongly to interfaces, the resulting gel sticks to container walls, allowing rheological measurements (see Fig.~\ref{fig:acidification}b). Further decrease of the pH beyond the isoeletric point weakens the gel. This non monotonous behaviour of the elastic modulus translates in a non monotonous mesh size in a microscopy cell (slit geometry) coated so that the casein could not adsorb on the top wall (Fig.~\ref{fig:acidification}c), i.e. in syn\ae{}resis (solvent expulsion) followed by swelling.
 
 Figure~\ref{fig:sideview}b shows confocal measurements in the case where both top and bottom walls have been coated. Starting from an homogeneous solution (black margins correspond to the glass walls), the gel forms and simultaneously expels solvent on both sides. Since we have two clear interfaces between a protein rich phase and a protein poor (water) phase, we model the resulting situation as a porous elastic sheet of thickness $h$ sandwiched between two viscous layers of respective thicknesses $H_1$ et $H_2$ (see Fig.~\ref{fig:sideview}a). Relative increase in protein concentration during syn\ae{}resis can be deduced from the brighter fluorescence in second panel of Fig.~\ref{fig:sideview}b. Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume (Fig.~\ref{fig:sideview}c) and excess surface area of the sheet of gel (Fig.~\ref{fig:sideview}d). We can thus confirm that the instability is due to swelling.
 
 Note that adhesion to side walls is necessary to prevent total syn\ae{}resis and thus allow subsequent planar stresses while swelling. Also, the only situation were be observed wrinkling is when both top and bottom walls are coated. We confirmed that at any given time the thickness $h$ of the sheet of gel is homogeneous in $(x,y)$. The contrast in transmission microscopy (Fig.~\ref{fig:dynamics}a) is not due to thickness inhomogeneities but to altitude gradients. The length of the optical path (along $z$) through the gel phase is larger where the gel makes a slope compared to a flat situation, as indicated by the yellow vertical lines in Fig.~\ref{fig:sideview}a.
+
+\begin{figure}
+	\includegraphics{sideview}
+	\caption{Model and measurements. (a) Schematic side view of the cell. The constant thickness gel sheet (orange) is surrounded by water. Yellow lines show the path of transmitted light through the gel phase. A region of interest is highlighted in gray. (b) Confocal XZ cuts showing syn\ae{}resis, swelling and (cascade) wrinkling. Scale bar is \SI{100}{\micro\metre} (real size ratio). Evolution of (c) volume of the gel phase relative to cell volume and (d) excess area measured by confocal microscopy.}
+	\label{fig:sideview}
+\end{figure}
 
 \section*{Scalings}
 
@@ -57,6 +78,12 @@ The characteristic length $\lambda^*$ of a wrinkling pattern is set by the compe
 In small deflection actual wavelength $\lambda$ is related to the amplitude $A$ as $\lambda \sim A^{1/4} \lambda^{*3/4}$.
 
 We identify three possible candidates for the lateral load $q$: the weight or buoyancy of the gel, the porous flow through the gel or the viscous flows in the surrounding water layers. We confirmed that the former was playing no role by successfully repeating our experiment in a cell held vertical, i.e. with the weight acting longitudinally rather than laterally.
+
+\begin{figure*}
+	\includegraphics{Darcy_vs_Poiseuille}
+	\caption{Comparing model predictions with measured wavelengths. Dots come from primary pattern, squares from secondary blisters. Dashed lines are the best linear fit through the origin taking only into account the points that should be (a) in Darcy mode $H<H^*$, (b) in Poiseuille mode $H>H^*$ (c) all points. Prefactors are 0.63, 0.69 and 0.67 respectively. Continuous line is the best affine fit ($\lambda_{xp}=0.52\lambda_{th}+\SI{0.33}{\milli\metre}$) to all the points in (b).}
+	\label{fig:DarcyPoiseuille}
+\end{figure*}
 
 In a situation where the sheet of gel would be sitting (not sticking) to the floor of the cell ($H_1\rightarrow0$), creating a 2D blister requires flowing solvent of viscosity $\eta$ through the gel of permeability $\alpha$. Darcy law relates the gradient of pressure (identified to $q/h$) to the volume flux per unit area $v = \frac{\alpha}{\eta}\frac{q}{h} = \frac{dA}{dt}$. Injecting this expression in Eq.~(\ref{eq:lstar}) yields the wavelength of the Darcy mode as
 \begin{equation}
@@ -77,6 +104,8 @@ A more complete derivation of the models can be found in the Supplementary Metho
 \end{align}
 where $1/H^3 = 1/H_1^3 + 1/H_2^3$. The limiting case between the two models is for $H = H^* \equiv 2^{2/3} 3^{1/6} \alpha^{1/2} \Upsilon^{1/6}$.
 
+
+
 \section*{Experimental tests}
 
 The above models yield wavelengths of the same order in most of the cases we studied. Thus only systematic measurements of experimental $\lambda$ and all the parameters involved in either model allows to discriminate between them (see Supplementary Method for details on the measurements). As summarized in Supplementary Table~\ref{tab:data}, we changed the thickness of the cell, impacting $h$ and the maximal amplitude. We changed the composition and thus the stiffness of the gel and its permeability. We also changed systematically the viscosity of the solvent by adding glycerol, however this also impacted the gel stiffness, permeability and $\tau$. Finally, the only parameter we had no control on was the initial altitude of the gel before wrinklink ($H$) that to our knowledge varied randomly. However, we were able to obtain more data at small $H/H^*$ ratios by considering not only the primary patterns but also the secondary ones. Since the saturation of the primary pattern flattens the gel on the top and bottom walls, the secondary blisters always appear in a Darcy situation ($H\ll H^*$). Here the size of the blister is fixed as half of the size of the primary pattern as show on Fig.~\ref{fig:dynamics}c and $\tau$ is the variable parameter.
@@ -92,6 +121,7 @@ Sodium caseinate (Firmenich) was labelled with Dylight~550 NHS ESTER (Thermo Sci
 Data shown in Fig.~\ref{fig:acidification} a-b were obtained with a SevenCompact pH-meter (Mettler Toledo) and an MCR 301 rheometer (Anton Paar).
 
 \bibliographystyle{naturemag3}
+\bibliography{Yaourt}
 
 \paragraph*{Acknowledgements}
 Confocal experiments were conducted at SFR BioSciences Gerland - Lyon Sud (US8 / UMS3444).
@@ -114,29 +144,8 @@ Correspondence and requests for materials should be addressed to TG (\href{mailt
 
 
 
-\begin{figure}
-	\includegraphics{dynamics}
-	\caption{Dynamics of pattern formation. (a) Light transmission microscopy. The same area is highlighted in yellow on all panels to show that the initial pattern is not evolving. (b) 3D reconstruction from fluorescent confocal microscopy. (c) Fourier spectrum of binary altitudes of (a) corresponding to primary, secondary and tertiary patterns. Inset: reconstructed binary altitudes at \SI{2}{\hour}. Scale bars are \SI{1}{\milli\metre}.}
-	\label{fig:dynamics}
-\end{figure}
 
-\begin{figure}
-	\includegraphics{acidification}
-	\caption{Acid-induced protein gels properties behave non-monotonously with pH. (a) pH decrease in 4\%w sodium caseinate solution acidified by 4\%w GDL. Horizontal line indicates isoelectric pH of casen (b) Evolution of storage modulus measured in a rheometer (full adhesion to rotor and stator). (c) Evolution of pore size measured by confocal microscopy in a half coated microscopy cell (no adhesion to cell ceiling, syn\ae{}resis and swelling allowed).}
-	\label{fig:acidification}
-\end{figure}
 
-\begin{figure}
-	\includegraphics{sideview}
-	\caption{Model and measurements. (a) Schematic side view of the cell. The constant thickness gel sheet (orange) is surrounded by water. Yellow lines show the path of transmitted light through the gel phase. A region of interest is highlighted in gray. (b) Confocal XZ cuts showing syn\ae{}resis, swelling and (cascade) wrinkling. Scale bar is \SI{100}{\micro\metre} (real size ratio). Evolution of (c) volume of the gel phase relative to cell volume and (d) excess area measured by confocal microscopy.}
-	\label{fig:sideview}
-\end{figure}
-
-\begin{figure*}
-	\includegraphics{Darcy_vs_Poiseuille}
-	\caption{Comparing model predictions with measured wavelengths. Dots come from primary pattern, squares from secondary blisters. Dashed lines are the best linear fit through the origin taking only into account the points that should be (a) in Darcy mode $H<H^*$, (b) in Poiseuille mode $H>H^*$ (c) all points. Prefactors are 0.63, 0.69 and 0.67 respectively. Continuous line is the best affine fit ($\lambda_{xp}=0.52\lambda_{th}+\SI{0.33}{\milli\metre}$) to all the points in (b).}
-	\label{fig:DarcyPoiseuille}
-\end{figure*}
 
 \clearpage
 \newpage
