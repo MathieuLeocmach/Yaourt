@@ -1,0 +1,47 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{kpfonts}
+\author{Mathieu Leocmach}
+\title{Memo fractal dimension}
+\date{16th December 2014}
+\begin{document}
+
+\maketitle
+
+Thanks to Pierre Borgna, things are clearer.
+
+A fractal in a 2D space has the pair correlation function
+\begin{equation}
+g(r) -1 \sim r^{d-2} e^{-\frac{r}{\xi}}
+\end{equation}
+
+To get the structure factor, we Fourier transform in 2D
+\begin{align*}
+S(q) -1 &\sim \iint e^{-\imath \vec{r}\cdot\vec{q}} \left(g(r)-1\right) \mathrm{d}^2\vec{r}\\
+&\sim \int e^\frac{r}{\xi} r^{d-1} \mathrm{d}r
+	\int_0^\pi e^{-\imath rq \cos \theta} \sin\theta \mathrm{d}\theta\\
+&\sim \int e^\frac{r}{\xi} r^{d-1} 2\frac{\sin qr}{qr}\mathrm{d}r
+\qquad\text{by variable change}\qquad X=cos\theta\\
+\end{align*}
+
+Rather than dig in the involved exact calculus, we just look for a power law in the regime where $q\xi \gg 1$, e.g. $r\gg \xi$ and thus $e^\frac{r}{\xi} \approx 1$.
+\begin{align*}
+S(\lambda q) -1 &\sim \int r^{d-1} 2\frac{\sin \lambda qr}{\lambda qr}\mathrm{d}r\\
+&\sim \int \left(\frac{u}{\lambda}\right)^{d-1} 2\frac{\sin qu}{qu}\frac{\mathrm{d}u}{\lambda} \qquad\text{by variable change}\qquad u=\lambda r\\
+&\sim \frac{1}{\lambda^d} \left(S(q) -1\right)
+\end{align*}
+
+The slope of $S_{2D}(q)$ is thus $-d_{2D}$. We can use the phenomenological law
+\begin{equation}
+S(q) = \frac{\chi}{1+(\xi q)^{d_{2D}}}
+\end{equation}
+
+Then we suppose that the fractal is isotropic, thus codimension is invariant $2-d_{2D} = 3-d_{3D}$ leading to $d_{3D} = d_{2D}+1$.
+
+\end{document}
