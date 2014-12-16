@@ -24,13 +24,13 @@ g(r) -1 \sim r^{d-2} e^{-\frac{r}{\xi}}
 To get the structure factor, we Fourier transform in 2D
 \begin{align*}
 S(q) -1 &\sim \iint e^{-\imath \vec{r}\cdot\vec{q}} \left(g(r)-1\right) \mathrm{d}^2\vec{r}\\
-&\sim \int e^\frac{r}{\xi} r^{d-1} \mathrm{d}r
+&\sim \int e^{-\frac{r}{\xi}} r^{d-1} \mathrm{d}r
 	\int_0^\pi e^{-\imath rq \cos \theta} \sin\theta \mathrm{d}\theta\\
-&\sim \int e^\frac{r}{\xi} r^{d-1} 2\frac{\sin qr}{qr}\mathrm{d}r
+&\sim \int e^{-\frac{r}{\xi}} r^{d-1} 2\frac{\sin qr}{qr}\mathrm{d}r
 \qquad\text{by variable change}\qquad X=cos\theta\\
 \end{align*}
 
-Rather than dig in the involved exact calculus, we just look for a power law in the regime where $q\xi \gg 1$, e.g. $r\gg \xi$ and thus $e^\frac{r}{\xi} \approx 1$.
+Rather than dig in the involved exact calculus, we just look for a power law in the regime where $q\xi \gg 1$, thus $e^{-\frac{r}{\xi}} \approx 1$ in the integral.
 \begin{align*}
 S(\lambda q) -1 &\sim \int r^{d-1} 2\frac{\sin \lambda qr}{\lambda qr}\mathrm{d}r\\
 &\sim \int \left(\frac{u}{\lambda}\right)^{d-1} 2\frac{\sin qu}{qu}\frac{\mathrm{d}u}{\lambda} \qquad\text{by variable change}\qquad u=\lambda r\\
