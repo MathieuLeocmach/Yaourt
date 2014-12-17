@@ -8,20 +8,20 @@
 		scale only axis,
 		width=0.5\columnwidth,
 		xlabel={q (\si{\per\micro\metre})},
-		ylabel={S(q) (a.u.)},
+		ylabel={I(q) (a.u.)},
 		domain=0.1:8,
 		xmode=log,
 		ymode=log,
 		xmin=0.03, xmax=1e2,
-		ymin=1e5, ymax=5e7,
+		ymin=0.5, ymax=16, ytick={1, 2, 4,8}, yticklabels={1, 2, 4,8},
 		clip mode=individual,
 	]
 	\nextgroupplot
-	\addplot+[only marks, mark options={scale=0.3, Accent1}] table{ech14_t008.Sq};
-	\addplot+[black, no marks] {2.12455e+07/(1+(0.78346*x)^(2.39167)};
+	\addplot+[only marks, mark options={scale=0.3, Accent1}] table[y expr=\thisrowno{1}/500] {ech14_t008.Sq};
+	\addplot+[black, no marks] {9.47/(1+(0.73*x)^2)^0.63};%xi=2.0um, chi = 5.24, d_2D=1.27
 	\nextgroupplot%[ymin=6e5, ymax=1.5e7,]
-	\addplot+[only marks, mark options={scale=0.3, Accent1}] table{ech6.Sq};
-	\addplot+[black, no marks, domain=0.5:6.5] {4.92707951e+06/(1+(0.233*x)^(2.53)};
+	\addplot+[only marks, mark options={scale=0.3, Accent1}] table[y expr=\thisrowno{1}/500]{ech6.Sq};
+	\addplot+[black, no marks, domain=0.5:6.5] {4.47/(1+(0.15*x)^2)^1};%xi=0.31um, chi = 2.23, d_2D=2
 \end{groupplot}
 \coordinate (topright) at  (g c1r1.outer north east -| g c1r2.outer south east);
 \newdimen\mydima
