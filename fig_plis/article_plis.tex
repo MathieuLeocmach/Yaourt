@@ -70,14 +70,14 @@ Note that adhesion to side walls is necessary to prevent total syn\ae{}resis and
 
 \section*{Scalings}
 
-The characteristic length $\lambda^*$ of a wrinkling pattern is set by the competition between the flexural modulus of the sheet $B=E/(1-\nu^2)$ ($E$ Young modulus, $\nu$ Poisson ratio) and a lateral load $q$~\cite{Vella2009,Kolinski2009}: 
+The characteristic length $\lambda^*$ of a wrinkling pattern is set by the competition between the flexural modulus of the sheet $B=E/(1-\nu^2)$ ($E$ Young modulus, $\nu$ Poisson ratio) and a lateral load $\sigma_\perp$~\cite{Vella2009,Kolinski2009}: 
 \begin{equation}
-\lambda^* \sim h \left(\frac{B}{q}\right)^{1/3}.
+\lambda^* \sim h \left(\frac{B}{\sigma_\perp}\right)^{1/3}.
 \label{eq:lstar}
 \end{equation}
 In small deflection actual wavelength $\lambda$ is related to the amplitude $A$ as $\lambda \sim A^{1/4} \lambda^{*3/4}$.
 
-We identify three possible candidates for the lateral load $q$: the weight or buoyancy of the gel, the porous flow through the gel or the viscous flows in the surrounding water layers. We confirmed that the former was playing no role by successfully repeating our experiment in a cell held vertical, i.e. with the weight acting longitudinally rather than laterally.
+We identify three possible candidates for the lateral load $\sigma_\perp$: the weight or buoyancy of the gel, the porous flow through the gel or the viscous flows in the surrounding water layers. We confirmed that the former was playing no role by successfully repeating our experiment in a cell held vertical, i.e. with the weight acting longitudinally rather than laterally.
 
 \begin{figure*}
 	\includegraphics{Darcy_vs_Poiseuille}
@@ -85,13 +85,13 @@ We identify three possible candidates for the lateral load $q$: the weight or bu
 	\label{fig:DarcyPoiseuille}
 \end{figure*}
 
-In a situation where the sheet of gel would be sitting (not sticking) to the floor of the cell ($H_1\rightarrow0$), creating a 2D blister requires flowing solvent of viscosity $\eta$ through the gel of permeability $\alpha$. Darcy law relates the gradient of pressure (identified to $q/h$) to the volume flux per unit area $v = \frac{\alpha}{\eta}\frac{q}{h} = \frac{dA}{dt}$. Injecting this expression in Eq.~(\ref{eq:lstar}) yields the wavelength of the Darcy mode as
+In a situation where the sheet of gel would be sitting (not sticking) to the floor of the cell ($H_1\rightarrow0$), creating a 2D blister requires flowing solvent of viscosity $\eta$ through the gel of permeability $\alpha$. Darcy law relates the gradient of pressure (identified to $\sigma_\perp/h$) to the volume flux per unit area $v = \frac{\alpha}{\eta}\frac{\sigma_\perp}{h} = \frac{dA}{dt}$. Injecting this expression in Eq.~(\ref{eq:lstar}) yields the wavelength of the Darcy mode as
 \begin{equation}
 \lambda_D \sim h^{1/2} \alpha^{1/4} \Upsilon^{1/4}
 \end{equation}
 where $\Upsilon = B\tau/\eta$ is a dimensionless viscoelastic factor quantifying the relative stiffness of the sheet and the solvent at a characteristic time $\tau$. This expression stresses the kinetic nature of the wavelength selection. However we note that the wavelength of (a generation of) the pattern does not evolve with time (see Fig.~\ref{fig:dynamics} and Sup. Fig.~\ref{fig:growth}) once the gel is touching both walls, we can deduce the relevant $\tau$ from the growth of the  pattern (see Supplementary Method for the precise definition).
 
-The opposite limiting case is when the sheet of gel is in the middle of the cell ($H_1=H_2$) and impervious ($\alpha\rightarrow 0$), destabilisation over a wavelength $\lambda$ creates a lubrication ($H\ll\lambda$) flow in the viscous layers. By symmetry the lateral load across the gel $q$ is also the pressure difference over the wavelength. Using a Poiseuille profile for the flow, $\frac{dA}{dt} \sim q \frac{H^3}{\eta\lambda^2}$. Injecting this expression in Eq.~(\ref{eq:lstar}) yields the wavelength of the Poiseuille mode as
+The opposite limiting case is when the sheet of gel is in the middle of the cell ($H_1=H_2$) and impervious ($\alpha\rightarrow 0$), destabilisation over a wavelength $\lambda$ creates a lubrication ($H\ll\lambda$) flow in the viscous layers. By symmetry the lateral load across the gel $\sigma_\perp$ is also the pressure difference over the wavelength. Using a Poiseuille profile for the flow, $\frac{dA}{dt} \sim \sigma_\perp \frac{H^3}{\eta\lambda^2}$. Injecting this expression in Eq.~(\ref{eq:lstar}) yields the wavelength of the Poiseuille mode as
 \begin{equation}
 \lambda_P \sim (hH)^{1/2} \Upsilon^{1/6}
 \end{equation}
@@ -239,29 +239,29 @@ We note that when both measurements were available (as in Fig.~\ref{fig:growth}a
 
 \subsection*{Darcy+Poiseuille model}
 
-Mechanical equilibrium of a plate of thickness $h$, young modulus $E$ and Poisson ratio $\nu$ submitted to a compression load $\sigma_0$ along $x$ and a lateral load $q$ along $z$ writes:
+Mechanical equilibrium of a plate of thickness $h$, young modulus $E$ and Poisson ratio $\nu$ submitted to a compression load $\sigma_\parallel$ along $x$ and a lateral load $\sigma_\perp$ along $z$ writes:
 \begin{equation}
-\frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial x^4} + \sigma_0 h \frac{\partial^2 w}{\partial x^2} = q,
+\frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial x^4} + \sigma_\parallel h \frac{\partial^2 w}{\partial x^2} = \sigma_\perp,
 \label{eq:mecheq}
 \end{equation}
 where $w(x,t)$ is the deflection of the plate along $z$.
 
 We suppose an exponentially growing sinusoidal deflection $w(x,t) =  A_0 e^{t/\tau} \sin kx$ of characteristic time $\tau$ and wavevector $k$. In operator language, Eq.~\ref{eq:mecheq} writes:
 \begin{equation}
-\left(\frac{1}{12} B h^3 k^4 - \sigma_0 h k^2\right)w = q,
+\left(\frac{1}{12} B h^3 k^4 - \sigma_\parallel h k^2\right)w = \sigma_\perp,
 \label{eq:mecheqop}
 \end{equation}
 where $B=E/(1-\nu^2)$ is the modulus of the plate.
 
 \subsubsection*{Elastic film in an infinite elastic medium}
 
-The deformation of the substrate of modulus $B_s$ gives the lateral load as $q = -k B_s w$, and thus the compression load writes
+The deformation of the substrate of modulus $B_s$ gives the lateral load as $\sigma_\perp = -k B_s w$, and thus the compression load writes
 \begin{equation}
-\sigma_0 = B \frac{h^2}{12} k^2 + \frac{B_s}{hk}.
+\sigma_\parallel = B \frac{h^2}{12} k^2 + \frac{B_s}{hk}.
 \label{eq:sigma0}
 \end{equation}
 
-Minimizing $\sigma_0$ function of $k$ yield the well known~\cite{Biot1957,Cerda2003} result $hk = \left(6B_s/B\right)^{1/3}$ and thus the dominant wavelength is
+Minimizing $\sigma_\parallel$ function of $k$ yield the well known~\cite{Biot1957,Cerda2003} result $hk = \left(6B_s/B\right)^{1/3}$ and thus the dominant wavelength is
 \begin{equation}
 \lambda_d = 2\pi h \left(\frac{B}{6B_s}\right)^{1/3}.
 \label{eq:lambdaElEl}
@@ -282,13 +282,13 @@ Mass conservation writes
 \end{equation}
 Keeping only linear order terms, in operator language
 \begin{equation}
-\frac{12\eta}{\tau} \frac{w}{H^3k^2} = -q.
+\frac{12\eta}{\tau} \frac{w}{H^3k^2} = -\sigma_\perp.
 \label{eq:PoiseuilleLoad}
 \end{equation}
 
 Combining Eqs.~(\ref{eq:mecheqop}) and (\ref{eq:PoiseuilleLoad}), the compression load writes
 \begin{equation}
-\sigma_0 = \frac{1}{12}B h^2 k^2 + 12\frac{\eta}{\tau}\frac{1}{H^3 h k^4}
+\sigma_\parallel = \frac{1}{12}B h^2 k^2 + 12\frac{\eta}{\tau}\frac{1}{H^3 h k^4}
 \label{eq:sigma0P}
 \end{equation}
 and can be minimised by $k_P$ such that
@@ -309,13 +309,13 @@ The scaling is then identical to the (much more involved) derivation by \citet{H
 \subsubsection*{Porous elastic film with no possible Poiseuille flow}
 The lateral load derives from the Darcy law through the film of permeability $\alpha$:
 \begin{equation}
--q = p_2-p_1 = \frac{h\eta}{\alpha}\frac{\partial w}{\partial t}.
+-\sigma_\perp = p_2-p_1 = \frac{h\eta}{\alpha}\frac{\partial w}{\partial t}.
 \label{eq:DarcyLoad}
 \end{equation}
 
 Combining Eqs.~(\ref{eq:mecheqop}) and (\ref{eq:DarcyLoad}), the compression load writes
 \begin{equation}
-\sigma_0 = \frac{1}{12}B h^2 k^2 + \frac{\eta}{\tau}\frac{1}{\alpha k^2}
+\sigma_\parallel = \frac{1}{12}B h^2 k^2 + \frac{\eta}{\tau}\frac{1}{\alpha k^2}
 \label{eq:sigma0D}
 \end{equation}
 and can be minimised by $k_D$ such that
@@ -351,7 +351,7 @@ v = \frac{\alpha}{\eta} \frac{p_1-p_2}{h}.
 
 Combining Eqs.~(\ref{eq:pressures}, \ref{eq:conservationDarcy}, \ref{eq:Darcy}) we obtain the lateral load
 \begin{equation}
-q = p_1-p_2 = - \frac{\eta}{\tau} \frac{w}{\frac{H^3 k^2}{12} + \frac{\alpha}{h}},
+\sigma_\perp = p_1-p_2 = - \frac{\eta}{\tau} \frac{w}{\frac{H^3 k^2}{12} + \frac{\alpha}{h}},
 \label{eq:MixtLoad}
 \end{equation}
 
@@ -360,9 +360,9 @@ Note that we recover Eq~(\ref{eq:PoiseuilleLoad}) when $\alpha \rightarrow 0$ an
 H^* = 2^{2/3} 3^{1/6} \alpha^{1/2} \Upsilon^{1/6}.
 \end{equation}
 
-Analytic minimisation of $\sigma_0$ knowing $q$ is possible but heavy. Instead we rewrite Eq.~(\ref{eq:mecheqop}) in terms of previously calculated $\lambda_P$ and $\lambda_D$:
+Analytic minimisation of $\sigma_\parallel$ knowing $\sigma_\perp$ is possible but heavy. Instead we rewrite Eq.~(\ref{eq:mecheqop}) in terms of previously calculated $\lambda_P$ and $\lambda_D$:
 \begin{align}
-\frac{12\sigma_0}{k_D^2 h^2 B} &= \left(\frac{k}{k_D}\right)^2 + \frac{1}{2\frac{k_D^2}{k_P^6}k^4  + \left(\frac{k}{k_D}\right)^2}\\
+\frac{12\sigma_\parallel}{k_D^2 h^2 B} &= \left(\frac{k}{k_D}\right)^2 + \frac{1}{2\frac{k_D^2}{k_P^6}k^4  + \left(\frac{k}{k_D}\right)^2}\\
 &= \left(\frac{\lambda_D}{\lambda}\right)^2 + \frac{1}{2\frac{\lambda_P^6}{\lambda_D^2\lambda^4}  + \left(\frac{\lambda_D}{\lambda}\right)^2}
 \end{align}
 and we minimise this expression numerically.
