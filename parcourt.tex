@@ -1,0 +1,255 @@
+%calcul de l'age
+\newcounter{dateone}%
+\newcounter{datetwo}%
+\setmydatenumber{dateone}{1982}{05}{23}%
+\setmydatenumber{datetwo}{\the\year}{\the\month}{\the\day}%
+\FPsub\result{\thedatetwo}{\thedateone}
+\FPdiv\myage{\result}{365.2425}
+
+\begin{frame}{Mathieu Leocmach, {\normalsize\FPtrunc\myage{\myage}{0}\myage ~ans}\hfill \hspace{4.7cm}Cursus}
+%photo
+\newlength{\totorowidth}%
+\newsavebox{\totorobox}%
+\savebox\totorobox{\includegraphics[height=\textheight-\headheight-\footheight-2em]{shikoku.jpg}}%
+\settowidth{\totorowidth}{\usebox{\totorobox}}%
+%
+\begin{columns}[b]
+\column{0.7\textwidth}
+\begin{description}[2002-05]
+\item[2002-05] \nth{1} Master \hfill{\footnotesize Ecole Polytechnique}
+\item[2006-08] \nth{2} Master \hfill{\footnotesize Univ. Tokyo}
+\item[2008-11] PhD \hfill{\footnotesize Univ. Tokyo}
+\item[2011-12] Postdoc \hfill{\footnotesize Univ. Tokyo}
+\item[2012-\hfill] Postdoc \hfill{\footnotesize E.N.S. de Lyon}\\
+{\footnotesize $\approx$ 60 h/year teaching: 
+\begin{itemize}
+\item Physics long ($6\times \SI{8}{\hour}$) lab work (Master)
+\item Python programming (L3)
+\end{itemize}}
+\end{description}
+
+
+\begin{block}{9 articles (5 as first author)\\
+\footnotesize 10 invited talks, 4 contributed, 18 posters}
+\footnotesize 
+\begin{description}[Crystal]
+\item[Glass] Nature Commun., J. Chem. Phys., AIP Conf. Proc.
+\item[Crystal] Soft Matter, Europhys. Lett.
+\item[Oscil. reaction] Chemical Communications
+\item[Gel] Phys. Rev. Lett., Macromol. Rapid Commun.
+\item[Teaching] Bulletin de l'Union des Physiciens
+\hfill\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.2\normalbaselineskip}\right\}$ 2014}
+\end{description}
+\end{block}
+\column{\totorowidth}
+\usebox{\totorobox}
+\end{columns}
+\end{frame}
+
+\begin{frame}{PhD: colloidal glass transition}
+
+\begin{block}{Dynamic heterogeneity, candidate structural causes}
+\begin{columns}
+\column{0.25\textwidth}
+\tikzsetnextfilename{dh_perera}\begin{tikzpicture}
+\node[inner sep=0] (dh) {\includegraphics[width=\textwidth]{dh_perera}};
+\node[below=0 of dh.north, inner sep=1pt, fill=white, font=\footnotesize\itshape] {Perera 1999};
+\end{tikzpicture}
+\column{0.6\textwidth}
+\begin{enumerate}
+\item locally stable structures\\
+\tikzsetnextfilename{pentagons}\begin{tikzpicture}[pen/.style={regular polygon, regular polygon sides=5, draw, minimum size=0.4\baselineskip}]
+	\node[pen] (base) {};
+	\node[pen,anchor=south, rotate=180] at (base.side 3) {};
+	\node[pen,anchor=south, rotate=-108] at (base.side 4) {};
+\end{tikzpicture}
+\hfill {\footnotesize icosahedra}
+\item avoided crystal influence\\
+\newdimen\radius
+\setlength{\radius}{0.3\baselineskip}
+\tikzsetnextfilename{localangles}\input{fig_presentation/localangle.pgf}
+\hfill \textsc{\footnotesize fcc}
+\end{enumerate}
+\column{0.12\textwidth}
+\includegraphics[width=\textwidth]{ico_13}\\
+\includegraphics[width=\textwidth]{fcc_13}
+\end{columns}
+\end{block}
+\structure{Single-particle colloidal experiments}
+
+\smallskip
+\tikzsetnextfilename{ico_dyn}\input{fig_presentation/ico_dyn.pgf}
+\begin{scriptsize}
+Experiments \myfullcite{Leocmach2012}
+
+Simulations \myfullcite{Leocmach2013a}
+\end{scriptsize}
+
+\end{frame}
+
+
+%\begin{frame}{Des colloïdes pour comprendre les solidifications}
+%\begin{columns}[onlytextwidth,b]
+%\column{0.7\textwidth}
+%\begin{block}{Les colloïdes comme modèles d'atomes}
+%\textit{\footnotesize Einstein 1905, Perrin 1913}
+%\begin{itemize}
+%\item gros
+%\item lents 
+%	\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.1\normalbaselineskip}\right\}$ visibles (confocal)}
+%\item synthèses, solvants $\rightarrow$ interactions
+%\hfill\tikzsetnextfilename{schema_interactions}\raisebox{0pt}[0pt][0pt]{\begin{tikzpicture}[scale=1.25]
+%\input{fig_presentation/schema_interactions.pgf}
+%\end{tikzpicture}}
+%\end{itemize}
+%\end{block}
+%%
+%\column{0.25\textwidth}
+%Image confocale\\
+%\includegraphics[width=\textwidth]{draft_nwk_dense_perco.jpg}
+%\end{columns}
+%%
+%\structure{Accès aux coordonnées et trajectoires}\\
+%Analyses de données détaillées sur le système réel avec toute sa richesse physico-chimique
+%\end{frame}
+%
+%\begin{frame}{PhD : Transition vitreuse}
+%\begin{columns}
+%	\column{0.5\textwidth}
+%	\tikzsetnextfilename{glass_cooling}\input{fig_presentation/glass_cooling.pgf}
+%	%\begin{footnotesize}\citet{cavagna2009supercooled}\end{footnotesize}
+%\column{0.5\textwidth}
+%	\begin{itemize}
+%		\item Refroidir un liquide
+%		\item Cristallisation évitée
+%		\item Temps de relaxation $\times 10^{10+}$
+%		\item Sous $T_g$ solide non cristallin
+%		\item Impossible d'approcher la divergence
+%		\item Problème ouvert
+%	\end{itemize}
+%\end{columns}
+%\begin{block}{Hétérogénéités dynamiques, causes structurelles proposées}
+%\begin{columns}
+%\column{0.25\textwidth}
+%\tikzsetnextfilename{dh_perera}\begin{tikzpicture}
+%\node[inner sep=0] (dh) {\includegraphics[width=\textwidth]{dh_perera}};
+%\node[below=0 of dh.north, inner sep=1pt, fill=white, font=\footnotesize\itshape] {Perera 1999};
+%\end{tikzpicture}
+%\column{0.6\textwidth}
+%\begin{enumerate}
+%\item structures localement stables\\
+%\tikzsetnextfilename{pentagons}\begin{tikzpicture}[pen/.style={regular polygon, regular polygon sides=5, draw, minimum size=0.4\baselineskip}]
+%	\node[pen] (base) {};
+%	\node[pen,anchor=south, rotate=180] at (base.side 3) {};
+%	\node[pen,anchor=south, rotate=-108] at (base.side 4) {};
+%\end{tikzpicture}
+%\hfill {\footnotesize icosaèdre}
+%\item influence du cristal évité\\
+%\newdimen\radius
+%\setlength{\radius}{0.3\baselineskip}
+%\tikzsetnextfilename{localangles}
+%\hfill \textsc{\footnotesize fcc}
+%\end{enumerate}
+%\column{0.12\textwidth}
+%\includegraphics[width=\textwidth]{ico_13}\\
+%\includegraphics[width=\textwidth]{fcc_13}
+%\end{columns}
+%\end{block}
+%\end{frame}
+%
+%\begin{frame}{PhD : Le cristal évité gouverne la dynamique}
+%
+%\begin{columns}
+%\column{0.55\textwidth}
+%\tikzsetnextfilename{mrco_slow}\begin{tikzpicture}[inner sep=0]
+%\node (mrco) {\includegraphics[height=0.48\textwidth]{mrco24_scale_go1_t040_t048.png}};
+%\node [below right=0 and 0.04\textwidth of mrco.north east] (slow) {\includegraphics[height=0.48\textwidth]{cgsd_2tau.png}};
+%%labels
+%\begin{scope}[align=center, every node/.style={font=\footnotesize}]
+%	\node[above=0of mrco, text width=0.48\textwidth] {ordre proto-cristallin};
+%	\node[above=0of slow, text width=0.48\textwidth]  {particules lentes};
+%\end{scope}
+%\draw [help lines, step=0.12\textwidth, shift=(mrco.south west)] (0, 0) grid (0.48\textwidth, 0.48\textwidth);
+%	\draw [help lines, step=0.12\textwidth, shift=(slow.south west)] (0, 0) grid (0.48\textwidth, 0.48\textwidth);
+%\end{tikzpicture}
+%\end{columns}
+%%\[ \xi(\phi) \propto \xi_0 \left( \frac{\phi_0 - \phi}{\phi} \right)^{-\frac{2}{3}} \]
+%
+%
+%\smallskip
+%\structure{Longueurs de corrélation}\\
+%\tikzsetnextfilename{corelation_lengths}\begin{tikzpicture}
+%	\begin{groupplot}[%
+%		group style = {
+%			group size=2 by 1,
+%			horizontal sep = 4em
+%		},
+%		height=0.34\columnwidth,%
+%		width=0.5\columnwidth,
+%		label shift=-0.5em, %
+%		]
+%	\nextgroupplot[
+%		cycle list name=black white,
+%		every mark/.append style={scale=1.2},
+%		xlabel=$\phi$, xmin=0.49, xmax=0.58, xlabel near ticks,%
+%		xtick={0.5,0.52,...,0.6},%
+%		ylabel=$\xi/\xi_0$, ymax=10,
+%		ytick={2,4,6,8},
+%		legend pos=north west,%
+%		]
+%		\addplot+[only marks, mark=*, %
+%			every mark/.append style={fill=black, scale=1.2},
+%			error bars/.cd, y dir=both, y explicit relative,%
+%			] table[x index=0, y expr=\thisrowno{3}/0.126]{scale.xi};
+%		\addplot+[mark=none, forget plot, domain=0.49:0.58] {(0.6/x-1)^(-2.0/3.0)};
+%		\addplot+[only marks, mark=square, every mark/.append style={draw=gray, scale=1.2},] table[x index=0, y expr=\thisrowno{5}/0.216]{scale.xi};
+%		\legend{dynamique, cristalline};
+%	\nextgroupplot[
+%		ylabel={$\xi/\sigma$},
+%		ymax=2,
+%		xlabel={Pression},
+%		ymin=0,
+%		xmin=8,
+%		xtick={9,13,...,25},]
+%	\pgfplotstableread{lengths}\lengths
+%	\addplot+[Main] table[x index=0, y index=5]{\lengths} node[above left] {cristal};
+%	\addplot+[Accent2] table[x index=0, y index=4]{\lengths} node[above left] {icosaèdre};
+%	\end{groupplot}
+%\end{tikzpicture}
+%
+%
+%\begin{scriptsize}
+%Experiences \myfullcite{Leocmach2012}
+%
+%Simulations \myfullcite{Leocmach2013a}
+%\end{scriptsize}
+%\end{frame}
+
+\begin{frame}{Postdoc : mécanique de gélification}
+\begin{block}{Etat de l'art : Lu et al. \textit{Nature 2008}}
+Gélification = spinodale arrêtée par une transition vitreuse 
+\begin{description}[Simulations]
+\item[Experiences] pas de dynamique
+\item[Simulations] pas d'hydrodynamique
+\end{description}
+\end{block}
+
+Répulsif $\xrightarrow{\text{écrantage}}$ Attractif $\Rightarrow$ Gélification provoquée in situ
+%\begin{tabu} to \textwidth {X[1,c]X[1,c]X[1,c]X[1,c]X[1,c]}
+%	\rowfont{\scriptsize}\SI{5}{\minute} & \SI{10}{\minute} & \SI{20}{\minute} & \SI{30}{\minute} & \SI{40}{\minute} \\
+%	\includegraphics[width=0.18\textwidth]{155C_percolation_1645_p2size_t024.png}&
+%	\includegraphics[width=0.18\textwidth]{155C_percolation_1645_p2size_t044.png}&
+%	\includegraphics[width=0.18\textwidth]{155C_percolation_1645_p2size_t084.png}&
+%	\includegraphics[width=0.18\textwidth]{155C_1715_ageing_p2size_t00.png}&
+%	\includegraphics[width=0.18\textwidth]{155C_1715_ageing_p2size_t20.png}\\
+%\end{tabu}
+\begin{block}{Résultats}
+\begin{itemize}
+\item Forte influence de l'hydrodynamique sur la structure du gel
+\item On peut avoir un gel sans transition vitreuse locale
+\end{itemize}
+\myfullcite{Tsurusawa}
+\end{block}
+
+
+\end{frame}

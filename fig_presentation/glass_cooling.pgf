@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+\newdimen\mrad
+\setlength{\mrad}{0.75em}
+\begin{axis}[
+	name=glass,
+	width=\textwidth, height=0.75\textwidth,
+	xlabel=Temperature, xmin=0, xmax=1.25, axis x line=bottom, xtick=\empty,%
+	extra x ticks={0.2, 0.45, 0.7, 0.95}, extra x tick labels={$T_0$, $T_G$,,$T_m$},%
+	xlabel shift=-0.5em,
+	ylabel=Entropy, ymin=0.1, ymax=1.2, axis y line=left, ytick=\empty, ylabel shift=-0.5em,%
+	axis on top,
+	]
+		\fill[gray!20] (axis cs:0.45, 0.45) .. controls (axis cs:0.325, 0.325) .. (axis cs:0,0.3) -- (axis cs:0, 0.18) -- (axis cs:0.45, 0.227) -- cycle;
+		\draw (axis cs:0, 0.18) -- (axis cs:0.95, 0.28);
+		\coordinate (Tt) at (axis cs:1.2,1.2);
+		\coordinate (O) at (axis cs:0,0);
+		\path[
+			every node/.style={circle, inner sep=0.15em, outer sep=0, fill=magenta},
+			every label/.style={rectangle, fill=none, anchor=south east, inner sep=0.1em, font=\tiny},
+			label position=above left, 
+			] (axis cs:0.2, 0.2)-- (Tt) 
+			node[pos=0, label=$\tau\rightarrow\infty$ ?](T0){} 
+			node[pos=0.25, label=$\tau\sim10^{3}$ s](Tg){} 
+			node[pos=0.5, label=$\tau\sim10^{-9}$ s](Tc){} 
+			node[pos=0.75, label=$\tau\sim10^{-13}$ s](Tm){};
+		\draw (Tg) -- (Tt);
+		\begin{scope}[decoration={text along path,transform={yshift=-0.9em}}]
+			\draw[decorate, decoration={text={|\itshape\footnotesize|liquid}}] (Tm)--(Tt);
+			\draw[decorate, decoration={text={|\itshape\footnotesize|supercooled},text align={align=center}}] (Tg)--(Tm);
+		\end{scope}
+		\draw[dotted] (T0)-- (Tg);
+		\draw[help lines] (T0) -- (T0|-O) (Tg) -- (Tg|-O) (Tc) -- (Tc|-O) (Tm) -- (Tm|-O);
+
+		\draw[red] (Tg) .. controls (axis cs:0.375, 0.375) .. (axis cs:0,0.35) node[pos=0.85, above, black,font=\itshape\footnotesize] {glass};
+		\draw[orange] (Tg) .. controls (axis cs:0.35, 0.35) .. (axis cs:0,0.325);
+		\draw[yellow] (Tg) .. controls (axis cs:0.325, 0.325) .. (axis cs:0,0.3);
+\end{axis}
+
+%\draw (glass.outer north west) rectangle +(\textwidth,-\textheight);
+\end{tikzpicture}
