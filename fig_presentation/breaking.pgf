@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+	\matrix[
+		matrix of nodes, inner sep=0, column sep=0.014\textwidth, 
+		row sep=0.5em,
+		] (m){
+		\SI{0}{\minute} & \SI{16}{\minute} & \SI{22}{\minute} & \SI{30.5}{\minute} & \SI{31}{\minute} & \SI{90}{\minute} \\
+		\includegraphics[width=0.155\textwidth]{breaking_particles_wireframe_t0000s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_particles_wireframe_t0032s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_particles_wireframe_t0043s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_particles_wireframe_t0061s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_particles_wireframe_t0062s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_particles_wireframe_t0180s.png}\\
+		\includegraphics[width=0.155\textwidth]{breaking_wireframe_t0000s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_wireframe_t0032s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_wireframe_t0043s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_wireframe_t0061s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_wireframe_t0062s.png}&
+		\includegraphics[width=0.155\textwidth]{breaking_wireframe_t0180s.png}\\
+		};
+\end{tikzpicture}
