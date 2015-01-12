@@ -43,57 +43,55 @@
 \pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
 	\draw[line width=0.3em, white] ($(m-1-2.south west)+(0.75em,0.75em)$) -- +(0.0786\mydimb-0.0786\mydima,0);
 
-	\begin{axis}[
+\pgfmathsetlength{\mydima}{\columnwidth}
+\begin{axis}[
 	name=a,
-	anchor=south east,
-	at={($(m.north east)+(0,2em)$)},
-	width=\columnwidth, height=0.25\columnwidth, scale only axis,
+	anchor=north east,
+	at={($(g c1r2.below south east)+(0,-1em)$)},
+	width=\mydima, height=0.4\mydima, scale only axis,
 	domain=-0.25*pi:2.25*pi, no markers, ymin=-2, ymax=3,xmin=0,xmax=2*pi,
 	axis lines=none, xtick=\empty,
 	]
+	%tranche d'interet
 	\fill[lightgray] (axis cs:0.6*pi,-2) rectangle (axis cs:0.75*pi,3);
-	%\fill[gray!20] (axis cs:85,5) rectangle (axis cs:95,-4) (axis cs:265,5) rectangle (axis cs:275,-4);
-	%\addplot+[Accent1] {sin(deg(x))};
-%  	\addplot+[Accent1,variable=\t, name path=top] (
-% 		{t-0.75*cos(deg(t))/sqrt(100/pi^2+cos(deg(t))^2)}, 
-% 		{sin(deg(t))+0.75/sqrt(1+(pi/10*cos(deg(t)))^2)});
-%  	\addplot+[Accent1,variable=\t, name path=bot] (
-% 		{t+0.75*cos(deg(t))/sqrt(100/pi^2+cos(deg(t))^2)}, 
-% 		{sin(deg(t))-0.75/sqrt(1+(pi/10*cos(deg(t)))^2)});
-	%\addplot+[Accent1] ({rad(x)-0.75*cos(x)/sqrt(1+cos(x)^2)}, {sin(x)+0.75/sqrt(1+cos(x)^2)}) coordinate[pos=0.25] (M1);
-	%\addplot+[Accent1] ({rad(x)+0.75*cos(x)/sqrt(1+cos(x)^2)}, {sin(x)-0.75/sqrt(1+cos(x)^2)}) coordinate[pos=0.25] (M1);
-	%\addplot+[Accent1]({x+0.75*cos(x)/sqrt(cos(x)^2+1)}, {1+sin(x)-0.75/sqrt(cos(x)^2+1)}) coordinate[pos=0.2475] (M2);
-	\addplot+[Accent1, line width=2em] {sin(deg(x))};
-	\addplot+[draw=none,name path=top] {sin(deg(x))+0.75};
-	\addplot+[draw=none,name path=bot] {sin(deg(x))-0.75};
-	%\addplot+[Accent1] {sin(x)+0.75};
+	%gel et reperes
+	\addplot+[Accent1, line width=0.1\mydima] {sin(deg(x))};
+	\addplot+[draw=none,name path=top, yshift=0.055\mydima] {0.925*sin(deg(x))};
+	\addplot+[draw=none,name path=bot, yshift=-0.055\mydima] {1.05*sin(deg(x))};
+	\addplot+[name path=baseT, dashed, help lines,yshift=0.055\mydima]{0};
+	\addplot+[name path=baseB, dashed, help lines, yshift=-0.055\mydima]{0};
+	%Ã©paisseur penchÃ©e
  	\path[name path=Z] (axis cs:pi-1,-100/pi^2) -- (axis cs:pi+1,100/pi^2);
+	%chemin optique penchÃ©
  	\path[name path=D, name intersections={of=top and Z, by=Z2}] (Z2) -- +(0,-6\baselineskip);
- 	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}] (Z2) --(D1) (axis cs:0.5*pi,0.25) -- (axis cs:0.5*pi,1.75);
-
+	%Ã©paisseur au max
+	\path[name path=ZM] (axis cs:0.5*pi,-100/pi^2) -- (axis cs:0.5*pi,100/pi^2);
+	%trace les chemins optiques
+ 	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}, name intersections={of=top and ZM, by=ZM2}, name intersections={of=bot and ZM, by=ZM3}] (Z2) --(D1) (ZM2) -- (ZM3);
+	%trace les Ã©paisseurs h
+	\draw[<->] (ZM2) -- (ZM3) node[midway, left] {$h$};
+  	\draw[<->, name intersections={of=bot and Z, by=Z1}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
+	%trace les autres Ã©paisseurs
+	\draw[<->] (axis cs:1.5*pi,0.75) -- (axis cs:1.5*pi,3) node[midway, right] {$H_2$}; 
+	\draw[<->] (axis cs:0.1*pi,-0.75) -- (axis cs:0.1*pi,-2) node[midway, right] {$H_1$};
+	\draw[->, name intersections={of=baseB and ZM, by=BW}] (BW) -- (ZM3) node[midway, left] {$w(x,t)$};
+	
+	%noms
 	\node[white] at (axis cs:1.5*pi,-1){gel};
 	\node[Accent1] at (axis cs:1.5*pi,0.25){water};
 	
-	%\addplot+[dashed, black]{0};
-	\addplot+[dashed, help lines]{0.75};
-	\addplot+[dashed, help lines]{-0.75};
-	\draw[<->] (axis cs:1.5*pi,0.75) -- (axis cs:1.5*pi,3) node[midway, right] {$H_2$}; 
-	\draw[<->] (axis cs:0.1*pi,-0.75) -- (axis cs:0.1*pi,-2) node[midway, right] {$H_1$};
- 	%\draw[<->, help lines] (axis cs:0.5*pi,0) -- (axis cs:0.5*pi,1) node[midway, left] {$w$};
-	\draw[->] (axis cs:0.5*pi,-0.75) -- (axis cs:0.5*pi,0.25) node[midway, left] {$w(x,t)$};
- 	\draw[<->] (axis cs:0.5*pi,0.25) -- (axis cs:0.5*pi,1.75) node[midway, left] {$h$};
-  	\draw[<->, name intersections={of=bot and Z, by=Z1}, name intersections={of=top and Z, by=Z2}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
-	
-	\draw[->, ultra thick] (axis cs:0.6*pi,2.25) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_2(x,t)$};
-	\draw[->, ultra thick] (axis cs:0.75*pi,2.25) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_2(x+dx,t)$};
-	\draw[->, ultra thick] (axis cs:0.6*pi,-1.5) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_1(x,t)$};
-	\draw[->, ultra thick] (axis cs:0.75*pi,-1.5) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_1(x+dx,t)$};
-	\node at (axis cs:0.675*pi,2.25) {$P_2$};
-	\node at (axis cs:0.675*pi,-1.5) {$P_1$};
+	%flux
+	\draw[->, ultra thick] (axis cs:0.6*pi,3)++(0,-1em) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_2(x,t)$};
+	\draw[->, ultra thick] (axis cs:0.75*pi,3)++(0,-1em) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_2(x+dx,t)$};
+	\draw[->, ultra thick] (axis cs:0.6*pi,-2)++(0,0.6em) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_1(x,t)$};
+	\draw[->, ultra thick] (axis cs:0.75*pi,-2)++(0,0.6em) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_1(x+dx,t)$};
+	%pressures
+	\node[above] at (axis cs:0.675*pi,1.75) {$P_2$};
+	\node[below] at (axis cs:0.675*pi,-0.75) {$P_1$};
 	\draw[->, lightgray, ultra thick] (axis cs:0.675*pi,0.25) -- (axis cs:0.675*pi, 1.5) node[pos=0, right,white] {$v_{Darcy}$};
 
-	\draw[->] (axis cs:1.8*pi,-1.75) -- +(1.5em,0) node[right]{$x$};
-	\draw[->] (axis cs:1.8*pi,-1.75) -- +(0,1.5em) node[right]{$z$};
+	\draw[->] (axis cs:1.8*pi,1) -- +(1.5em,0) node[right]{$x$};
+	\draw[->] (axis cs:1.8*pi,1) -- +(0,1.5em) node[right]{$z$};
 	
 	%\node[below] at (axis cs:90,-1.75) (pb1) {$P_1$};
 	%\node[above] at (axis cs:90,1.75) (ph2) {$P_2$};
@@ -107,10 +105,10 @@
 %\draw (g c1r2.outer south east) rectangle +(-\columnwidth,\textheight);
 
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
-\node at (a.north east) {(a)};
-\node[white] at (m-1-2.north east) {(b)};
-\node at (g c1r1.north east) {(c)};
-\node at (g c1r2.north east) {(d)};
+\node[white] at (m-1-2.north east) {(a)};
+\node at (g c1r1.north east) {(b)};
+\node at (g c1r2.north east) {(c)};
+\node at (a.north east) {(d)};
 \end{scope}
 \end{tikzpicture}
 	
