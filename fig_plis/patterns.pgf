@@ -1,0 +1,13 @@
+\begin{tikzpicture}[inner sep=0]
+\node[anchor=north west] (ech2) at (0,0.43\textwidth) {\includegraphics[width=0.116\textwidth]{ech2_stitch.jpg}};
+\node[anchor=north west] (cas4) at ($(ech2.north east)+(0.018\textwidth,0)$) {\includegraphics[width=0.108\textwidth]{cas4.jpg}};
+\node[anchor=north west] (cas3p2) at ($(cas4.north east)+(0.018\textwidth,0)$) {\includegraphics[width=0.554\textwidth]{cas3p2_z6.jpg}};
+\node[anchor=north east] (ech4) at ($(ech2.north west)+(\textwidth,0)$) {\includegraphics[width=0.168\textwidth]{ech4_stitch.jpg}};
+
+\node[anchor=north west] (cas7p2) {\includegraphics[width=\textwidth]{cas7p2_z2.jpg}};
+\node[anchor=north west] (ech9) at ($(cas7p2.south west)+(0,-0.01\textwidth)$) {\includegraphics[width=0.217\textwidth]{ech9_stitch.jpg}};
+
+\node[anchor=north east] (ech6) at ($(cas7p2.south east)+(0,-0.01\textwidth)$) {\includegraphics[width=0.283\textwidth]{ech6_stitch.jpg}};
+\node[anchor=south east] (ech8) at ($(ech6.south west)+(-0.01\textwidth,0)$) {\includegraphics[width=0.282\textwidth]{ech8_stitch.jpg}};
+\node[anchor=south east] (ech5) at ($(ech8.south west)+(-0.01\textwidth,0)$) {\includegraphics[width=0.1395\textwidth]{ech5_stitch.jpg}};
+\end{tikzpicture}
