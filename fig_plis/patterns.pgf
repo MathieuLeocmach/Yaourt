@@ -10,4 +10,17 @@
 \node[anchor=north east] (ech6) at ($(cas7p2.south east)+(0,-0.01\textwidth)$) {\includegraphics[width=0.283\textwidth]{ech6_stitch.jpg}};
 \node[anchor=south east] (ech8) at ($(ech6.south west)+(-0.01\textwidth,0)$) {\includegraphics[width=0.282\textwidth]{ech8_stitch.jpg}};
 \node[anchor=south east] (ech5) at ($(ech8.south west)+(-0.01\textwidth,0)$) {\includegraphics[width=0.1395\textwidth]{ech5_stitch.jpg}};
+
+%wavelengths
+\begin{scope}[<->, Accent1, ultra thick]
+\draw (cas4.south west) ++(0.08\textwidth, 0.035\textwidth) -- +(100:0.049\textwidth);
+\draw (cas3p2.south west) ++(0.48\textwidth, 0.14\textwidth) -- +(130:0.089\textwidth);
+\draw (cas7p2.south west) ++(0.525\textwidth, 0.36\textwidth) -- +(110:0.088\textwidth);
+\draw (ech2.south west) ++(0.03\textwidth, 0.12\textwidth) -- +(80:0.052\textwidth);
+\draw (ech4.south west) ++(0.03\textwidth, 0.12\textwidth) -- +(0:0.095\textwidth);
+\draw (ech5.south west) ++(0.08\textwidth, 0.11\textwidth) -- +(-10:0.028\textwidth);
+\draw (ech6.south west) ++(0.117\textwidth, 0.06\textwidth) -- +(0:0.072\textwidth);
+\draw (ech8.south west) ++(0.195\textwidth, 0.1\textwidth) -- +(-15:0.035\textwidth);
+\draw (ech9.south west) ++(0.08\textwidth, 0.09\textwidth) -- +(-30:0.058\textwidth);
+\end{scope}
 \end{tikzpicture}
