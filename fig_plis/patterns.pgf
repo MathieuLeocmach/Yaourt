@@ -1,15 +1,17 @@
-\begin{tikzpicture}[inner sep=0]
+\begin{tikzpicture}
+\begin{scope}[inner sep=0]
 \node[anchor=north west] (ech2) at (0,0.36\textwidth) {\includegraphics[width=0.116\textwidth]{ech2_stitch.jpg}};
 \node[anchor=north west] (cas4) at ($(ech2.north east)+(0.018\textwidth,0)$) {\includegraphics[width=0.108\textwidth]{cas4.jpg}};
 \node[anchor=north west] (cas3p2) at ($(cas4.north east)+(0.018\textwidth,0)$) {\includegraphics[width=0.554\textwidth, clip=true, trim=0 1cm 0 1cm]{cas3p2_z6.jpg}};
 \node[anchor=north east] (ech4) at ($(ech2.north west)+(\textwidth,0)$) {\includegraphics[width=0.168\textwidth]{ech4_stitch.jpg}};
 
 \node[anchor=north west] (cas7p2) {\includegraphics[width=\textwidth]{cas7p2_z2.jpg}};
-\node[anchor=north west] (ech9) at ($(cas7p2.south west)+(0,-0.01\textwidth)$) {\includegraphics[width=0.217\textwidth]{ech9_stitch.jpg}};
+\node[anchor=north west] (ech9) at ($(cas7p2.south west)+(0,-0.01\textwidth)$) {\includegraphics[width=0.217\textwidth,angle=180]{ech9_stitch.jpg}};
 
-\node[anchor=north east] (ech6) at ($(cas7p2.south east)+(0,-0.01\textwidth)$) {\includegraphics[width=0.283\textwidth]{ech6_stitch.jpg}};
+\node[anchor=north east] (ech6) at ($(cas7p2.south east)+(0,-0.01\textwidth)$) {\scalebox{1}[-1]{\includegraphics[width=0.283\textwidth]{ech6_stitch.jpg}}};
 \node[anchor=south east] (ech8) at ($(ech6.south west)+(-0.01\textwidth,0)$) {\includegraphics[width=0.282\textwidth]{ech8_stitch.jpg}};
 \node[anchor=south east] (ech5) at ($(ech8.south west)+(-0.01\textwidth,0)$) {\includegraphics[width=0.1395\textwidth]{ech5_stitch.jpg}};
+\end{scope}
 
 %wavelengths
 \begin{scope}[<->, Accent1, ultra thick]
@@ -19,8 +21,22 @@
 \draw (ech2.south west) ++(0.03\textwidth, 0.12\textwidth) -- +(80:0.052\textwidth);
 \draw (ech4.south west) ++(0.03\textwidth, 0.12\textwidth) -- +(0:0.095\textwidth);
 \draw (ech5.south west) ++(0.08\textwidth, 0.11\textwidth) -- +(-10:0.028\textwidth);
-\draw (ech6.south west) ++(0.117\textwidth, 0.06\textwidth) -- +(0:0.072\textwidth);
+\draw (ech6.south west) ++(0.117\textwidth, 0.12\textwidth) -- +(0:0.072\textwidth);
 \draw (ech8.south west) ++(0.195\textwidth, 0.1\textwidth) -- +(-15:0.035\textwidth);
-\draw (ech9.south west) ++(0.08\textwidth, 0.09\textwidth) -- +(-30:0.058\textwidth);
+\draw (ech9.south west) ++(0.09\textwidth, 0.08\textwidth) -- +(-30:0.058\textwidth);
+\end{scope}
+%scalebar 1mm
+\draw[line width=0.3em] (cas3p2.south west) ++(-0.05\textwidth, 1em) -- +(-0.058\textwidth, 0) node[midway,above, inner sep=0.2em] {\SI{1}{\milli\metre}};
+%labels
+\begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em, white, fill=black}]
+\node at (ech2.north east) {(a)};
+\node[fill=none] at (cas4.north east) {(b)};
+\node at (cas3p2.north east) {(c)};
+\node at (ech4.north east) {(d)};
+\node at (cas7p2.north east) {(e)};
+\node at (ech9.north east) {(f)};
+\node[anchor=south west] at (ech5.south west) {(g)};
+\node[anchor=south west] at (ech8.south west) {(h)};
+\node[anchor=south west] at (ech6.south west) {(i)};
 \end{scope}
 \end{tikzpicture}
