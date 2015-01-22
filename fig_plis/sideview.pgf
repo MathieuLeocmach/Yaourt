@@ -1,5 +1,7 @@
 %\begin{figure}
 \begin{tikzpicture}
+\newdimen\mydima
+\newdimen\mydimb
 	\begin{groupplot}[%
 		group style={
 			group name=g, group size=1 by 2,
@@ -25,29 +27,13 @@
 	\addplot+[only marks,Accent1, mark=+] table[x expr={\thisrowno{0}+15},y expr={\thisrowno{2}*100}]{relative_volume_excess_area_plis_toi.txt};
 	\end{groupplot}
 
-	\matrix[matrix of nodes, matrix anchor=south east, inner sep=0, row sep=0.2em, nodes={anchor=west}, column sep=0.1em]  (m) at ($(g c1r1.north east) +(0,1em)$) {
-	\SI{10}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.054\columnwidth]{coupe_cloque_t000.png}\\
-	\SI{23}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
-	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png} & \SI{32}{\minute}\\
-	\SI{35}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t038.png} \\
-	\SI{36}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t040.png} \\
-	\SI{38}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t043.png} & \\
-	\SI{44}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t055.png}\\
-	\SI{53}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t070.png} \\
-	\SI{1}{\hour}~21 & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t123.png} \\
-	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png} & \SI{3}{\hour}~15\\
-	};
-\newdimen\mydima
-\newdimen\mydimb
-\pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{west}}
-\pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
-	\draw[line width=0.3em, white] ($(m-1-2.south west)+(0.75em,0.75em)$) -- +(0.0786\mydimb-0.0786\mydima,0);
+
 
 \pgfmathsetlength{\mydima}{\columnwidth}
 \begin{axis}[
 	name=a,
-	anchor=north east,
-	at={($(g c1r2.below south east)+(0,-1em)$)},
+	anchor=south east,
+	at={($(g c1r1.above north east)+(0,1em)$)},
 	width=\mydima, height=0.4\mydima, scale only axis,
 	domain=-0.25*pi:2.25*pi, no markers, ymin=-2, ymax=3,xmin=0,xmax=2*pi,
 	axis lines=none, xtick=\empty,
@@ -60,18 +46,18 @@
 	\addplot+[draw=none,name path=bot, yshift=-0.055\mydima] {1.05*sin(deg(x))};
 	\addplot+[name path=baseT, dashed, help lines,yshift=0.055\mydima]{0};
 	\addplot+[name path=baseB, dashed, help lines, yshift=-0.055\mydima]{0};
-	%Ã©paisseur penchÃ©e
+	%ÃÂ©paisseur penchÃÂ©e
  	\path[name path=Z] (axis cs:pi-1,-100/pi^2) -- (axis cs:pi+1,100/pi^2);
-	%chemin optique penchÃ©
+	%chemin optique penchÃÂ©
  	\path[name path=D, name intersections={of=top and Z, by=Z2}] (Z2) -- +(0,-6\baselineskip);
-	%Ã©paisseur au max
+	%ÃÂ©paisseur au max
 	\path[name path=ZM] (axis cs:0.5*pi,-100/pi^2) -- (axis cs:0.5*pi,100/pi^2);
 	%trace les chemins optiques
  	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}, name intersections={of=top and ZM, by=ZM2}, name intersections={of=bot and ZM, by=ZM3}] (Z2) --(D1) (ZM2) -- (ZM3);
-	%trace les Ã©paisseurs h
+	%trace les ÃÂ©paisseurs h
 	\draw[<->] (ZM2) -- (ZM3) node[midway, left] {$h$};
   	\draw[<->, name intersections={of=bot and Z, by=Z1}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
-	%trace les autres Ã©paisseurs
+	%trace les autres ÃÂ©paisseurs
 	\draw[<->] (axis cs:1.5*pi,0.75) -- (axis cs:1.5*pi,3) node[midway, right] {$H_2$}; 
 	\draw[<->] (axis cs:0.1*pi,-0.75) -- (axis cs:0.1*pi,-2) node[midway, right] {$H_1$};
 	\draw[->, name intersections={of=baseB and ZM, by=BW}] (BW) -- (ZM3) node[midway, left] {$w(x,t)$};
@@ -102,13 +88,29 @@
 \end{axis}
 \fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\columnwidth,-1em) (a.north west) rectangle +(\columnwidth,1em);
 
+	\matrix[matrix of nodes, matrix anchor=south east, inner sep=0, row sep=0.2em, nodes={anchor=west}, column sep=0.1em]  (m) at ($(a.north east) +(0,1.5em)$) {
+	\SI{10}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.054\columnwidth]{coupe_cloque_t000.png}\\
+	\SI{23}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
+	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png} & \SI{32}{\minute}\\
+	\SI{35}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t038.png} \\
+	\SI{36}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t040.png} \\
+	\SI{38}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t043.png} & \\
+	\SI{44}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t055.png}\\
+	\SI{53}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t070.png} \\
+	\SI{1}{\hour}~21 & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t123.png} \\
+	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png} & \SI{3}{\hour}~15\\
+	};
+\pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{west}}
+\pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
+	\draw[line width=0.3em, white] ($(m-1-2.south west)+(0.75em,0.75em)$) -- +(0.0786\mydimb-0.0786\mydima,0);
+
 %\draw (g c1r2.outer south east) rectangle +(-\columnwidth,\textheight);
 
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
 \node[white] at (m-1-2.north east) {(a)};
-\node at (g c1r1.north east) {(b)};
-\node at (g c1r2.north east) {(c)};
-\node at (a.north east) {(d)};
+\node at (a.north east) {(b)};
+\node at (g c1r1.north east) {(c)};
+\node at (g c1r2.north east) {(d)};
 \end{scope}
 \end{tikzpicture}
 	
