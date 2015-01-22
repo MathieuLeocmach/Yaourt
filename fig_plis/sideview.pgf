@@ -46,11 +46,11 @@
 	\addplot+[draw=none,name path=bot, yshift=-0.055\mydima] {1.05*sin(deg(x))};
 	\addplot+[name path=baseT, dashed, help lines,yshift=0.055\mydima]{0};
 	\addplot+[name path=baseB, dashed, help lines, yshift=-0.055\mydima]{0};
-	%ÃÂ©paisseur penchÃÂ©e
+	%epaisseur penchee
  	\path[name path=Z] (axis cs:pi-1,-100/pi^2) -- (axis cs:pi+1,100/pi^2);
-	%chemin optique penchÃÂ©
+	%chemin optique penche
  	\path[name path=D, name intersections={of=top and Z, by=Z2}] (Z2) -- +(0,-6\baselineskip);
-	%ÃÂ©paisseur au max
+	%epaisseur au max
 	\path[name path=ZM] (axis cs:0.5*pi,-100/pi^2) -- (axis cs:0.5*pi,100/pi^2);
 	%trace les chemins optiques
  	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}, name intersections={of=top and ZM, by=ZM2}, name intersections={of=bot and ZM, by=ZM3}] (Z2) --(D1) (ZM2) -- (ZM3);
@@ -58,8 +58,9 @@
 	\draw[<->] (ZM2) -- (ZM3) node[midway, left] {$h$};
   	\draw[<->, name intersections={of=bot and Z, by=Z1}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
 	%trace les autres ÃÂ©paisseurs
-	\draw[<->] (axis cs:1.5*pi,0.75) -- (axis cs:1.5*pi,3) node[midway, right] {$H_2$}; 
-	\draw[<->] (axis cs:0.1*pi,-0.75) -- (axis cs:0.1*pi,-2) node[midway, right] {$H_1$};
+	\draw[<->] (axis cs:1.85*pi,0.75) -- (axis cs:1.85*pi,3) node[midway, right] {$H_2$}; 
+	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,0.75) node[midway, right] {$h$};
+	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,-2) node[midway, right] {$H_1$};
 	\draw[->, name intersections={of=baseB and ZM, by=BW}] (BW) -- (ZM3) node[midway, left] {$w(x,t)$};
 	
 	%noms
@@ -76,8 +77,8 @@
 	\node[below] at (axis cs:0.675*pi,-0.75) {$P_1$};
 	\draw[->, lightgray, ultra thick] (axis cs:0.675*pi,0.25) -- (axis cs:0.675*pi, 1.5) node[pos=0, right,white] {$v_{Darcy}$};
 
-	\draw[->] (axis cs:1.8*pi,1) -- +(1.5em,0) node[right]{$x$};
-	\draw[->] (axis cs:1.8*pi,1) -- +(0,1.5em) node[right]{$z$};
+	\draw[->] (axis cs:1.5*pi,1) -- +(1.5em,0) node[right]{$x$};
+	\draw[->] (axis cs:1.5*pi,1) -- +(0,1.5em) node[right]{$z$};
 	
 	%\node[below] at (axis cs:90,-1.75) (pb1) {$P_1$};
 	%\node[above] at (axis cs:90,1.75) (ph2) {$P_2$};
