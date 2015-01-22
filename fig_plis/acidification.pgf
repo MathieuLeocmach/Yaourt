@@ -7,12 +7,13 @@
 			vertical sep=0.5em,
 			},
 		xlabel={time (\si{\hour})},
-		xmin=0,xmax=4, ymin=0,
+		xmin=0,xmax=3, ymin=0,
 		scale only axis,
 		width=\columnwidth-4em,
 		height=0.3\columnwidth,
 		extra tick style={grid=major},%
-		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em}
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em},
+		every axis plot/.append style={thick}
 		]
 	\nextgroupplot[
 		ymax=7, ylabel=pH,
@@ -29,13 +30,13 @@
 	\nextgroupplot[
 		ylabel={$\xi$ (\si{\micro\metre})}, restrict y to domain=0:10,
 		]
-	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}]{ech14_pore_size.txt};
-	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.3}]{ech12_pore_size.txt};
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{1}*2*pi}]{ech23_pore_size.txt};
+	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{1}*2*pi}]{ech25_pore_size.txt};
 	\end{groupplot}
-\begin{scope}[every node/.style={anchor=south east, text height=0.8em, text depth=0.2em}]
-\node at (g c1r1.south east) {(a)};
-\node at (g c1r2.south east) {(b)};
-\node at (g c1r3.south east) {(c)};
+\begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
+\node at (g c1r1.north east) {(a)};
+\node at (g c1r2.north east) {(b)};
+\node at (g c1r3.north east) {(c)};
 \end{scope}
 \end{tikzpicture}
 %\end{figure}
