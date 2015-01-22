@@ -22,14 +22,15 @@
 	colormap={accents}{color=(Accent1!25!black) color=(Accent1) color=(Accent2)},
 	point meta min=-1, point meta max=1,
 	]
-\nextgroupplot[xlabel={$\lambda$ Darcy (\si{\milli\metre})}]
+\nextgroupplot[xlabel={$\lambda_D$ (\si{\milli\metre})}]
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=D, x error=pmD, y=I, y error=pmI, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis.txt};
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Darcy, x error=pmD, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis_secondaires.txt};
-\addplot[Accent1!25!black] {0.63*x};
+\addplot {0.63*x};
+\node[anchor=base east, yshift=0.5em] at  (rel axis cs:1,0) {Darcy model};
 
 
 
-\nextgroupplot[xlabel={$\lambda$ Poiseuille (\si{\milli\metre})},, 
+\nextgroupplot[xlabel={$\lambda_P$ (\si{\milli\metre})},, 
 colorbar horizontal,
 colorbar style={
 	at={(0.5,0.95)}, anchor=north,
@@ -42,13 +43,15 @@ colorbar style={
 },]
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=P, x error=pmP, y=I, y error=pmI, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis.txt};
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Poiseuille, x error=pmP, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis_secondaires.txt};
-\addplot+[Accent2] {0.69*x};
+\addplot {0.69*x};
 \addplot {0.52*x+0.33};
+\node[anchor=base east, yshift=0.5em] at  (rel axis cs:1,0) {Poiseuille model};
 
 \nextgroupplot[xlabel={$\lambda_{D+P}$ (\si{\milli\metre})},]
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=M, x error=pmM, y=I, y error=pmI, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis.txt};
 \addplot+[scatter, error bars/.cd,x dir=both,y dir=both, x explicit,y explicit] table[x=Mixte, x error=pmM, y expr={\thisrow{Inter}/2}, y error expr={\thisrow{pmI}}, scatter src={ln(\thisrow{ratio})/ln(10)}]{plis_secondaires.txt};
-\addplot+[Accent1] {0.665*x};
+\addplot {0.665*x};
+\node[anchor=base east, yshift=0.5em] at  (rel axis cs:1,0) {mixed model};
 \end{groupplot}
 %\draw (g c1r1.outer north west) rectangle +(\textwidth, -\textheight);
 
