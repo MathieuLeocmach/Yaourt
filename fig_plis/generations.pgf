@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+\begin{axis}[
+	name=a,
+	width=\columnwidth,
+	height=0.75\columnwidth,
+	ymode=log, xmin=0, xmax=55, ymin=3, ymax=7e3,
+	xlabel={$q$ (\si{\per\milli\metre})},
+	ylabel={$\|I(q,t)\|^2$ (a.u.)},
+	extra x ticks={6.13,  12.26,  18.39,  24.52},%
+ 	extra x tick style={
+ 		grid=major, 
+ 		major grid style={%
+ 				dash pattern=on 0.5em off 1.5em on \columnwidth,
+ 				lightgray},
+		%ticklabel pos=right,
+		major tick length=0,
+		tick label style={anchor=base, yshift=1em, lightgray},
+		%yshift=2em,
+ 		},%
+	extra x tick labels={$\frac{2\pi}{\lambda}$,$\frac{2\pi}{\lambda/2}$, $\frac{2\pi}{\lambda/3}$, $\frac{2\pi}{\lambda/4}$},%
+	no marks,
+	]
+	\addplot+[Accent2] table[]{BW.Sqs} node at(axis cs:35,10) {\SI{38}{\minute}};
+	\addplot+[Accent1] table[y index=2]{BW.Sqs} node at(axis cs:35,28) {\SI{1}{\hour}};
+	\addplot+[Accent1!50!black] table[y index=3]{BW.Sqs}  node at(axis cs:35,200) {\SI{2}{\hour}};
+\end{axis}
+%inset
+\node[inner sep=0pt, line width=2pt, draw,Accent1!50!black, below left=0.5em and 1em of a.north east] (inset) {\includegraphics[height=4.5em]{pattern_100um_BW.png}};
+
+%scale bars
+\newdimen\mydima
+\newdimen\mydimb
+\pgfextractx{\mydima}{\pgfpointanchor{inset}{east}}
+\pgfextractx{\mydimb}{\pgfpointanchor{inset}{west}}
+ 	\draw[line width=0.3em] 	(inset.south east) ++(-0.5em,-0.5em)-- ++(0.17\mydimb-0.17\mydima,0);
+
+
+%\draw (m.north west) rectangle +(\columnwidth, -\textheight);
+\end{tikzpicture}

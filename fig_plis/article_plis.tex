@@ -47,7 +47,7 @@ Here, we introduce model permeable biogels that produce hierarchical wrinkling a
 
 \begin{figure}[ht!]
 	\includegraphics{dynamics}%
-	\caption{Dynamics of pattern formation in a confined film of casein gel (caseinate 4\%w, GDL 4\%w). (a) Light transmission microscopy. The same area is highlighted in yellow on all panels to show that the initial pattern is not evolving. (b) 3D reconstruction from fluorescent confocal microscopy. (c) Fourier spectra of binary altitudes of (a) corresponding to primary, secondary and tertiary patterns. Inset: reconstructed binary altitudes at time \SI{2}{\hour}. Scale bars are \SI{1}{\milli\metre}.}%
+	\caption{Dynamics of pattern formation in a confined film of casein gel (caseinate 4\%w, GDL 4\%w). (a) Light transmission microscopy. Successive generations of patterns are highlighted in colour to stress the absence of growth after formation. (b) 3D reconstruction from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}%
 	\label{fig:dynamics}%
 \end{figure}
 
@@ -122,7 +122,7 @@ To sum up, we expect two regimes of viscosity-dominated wrinkling: for $H\ll H^*
 
 \section*{Experimental tests}
 
-The two above models yield wavelengths that are of the same order in most of the cases under study. Thus only systematic measurements of the experimental $\lambda$ together with estimates for all the parameters involved in either model shall allow one to discriminate between them (see Supplementary Method for details on such measurements). As summarized in Supplementary Table~\ref{tab:data} we systematically varied (i) the thickness of the cell, impacting $h$ and the maximal amplitude, (ii) the gel composition and thus both its stiffness and its permeability, (iii) the viscosity of the solvent by adding glycerol, which also impacted the gel stiffness, permeability and $\tau$. Finally, the only parameter that we had no control upon was the initial altitude $H$ of the gel before wrinkling that varied randomly. However we were able to obtain more data at small $H/H^*$ ratios by considering not only the primary patterns but also the secondary ones. Since the saturation of the primary pattern flattens the gel on the top and bottom walls, the secondary blisters always appear in a Darcy situation ($H\ll H^*$). Here the wavelength associated to the secondary blister is taken as half of that of the primary pattern as shown in Fig.~\ref{fig:dynamics}c.
+The two above models yield wavelengths that are of the same order in most of the cases under study. Thus only systematic measurements of the experimental $\lambda$ together with estimates for all the parameters involved in either model shall allow one to discriminate between them (see Supplementary Method for details on such measurements). As summarized in Supplementary Table~\ref{tab:data} we systematically varied (i) the thickness of the cell, impacting $h$ and the maximal amplitude, (ii) the gel composition and thus both its stiffness and its permeability, (iii) the viscosity of the solvent by adding glycerol, which also impacted the gel stiffness, permeability and $\tau$. Finally, the only parameter that we had no control upon was the initial altitude $H$ of the gel before wrinkling that varied randomly. However we were able to obtain more data at small $H/H^*$ ratios by considering not only the primary patterns but also the secondary ones. Since the saturation of the primary pattern flattens the gel on the top and bottom walls, the secondary blisters always appear in a Darcy situation ($H\ll H^*$). Here the wavelength associated to the secondary blister is taken as half of that of the primary pattern as shown in Supplementary Fig.~\ref{fig:generations}.
 
 Our results are displayed in Fig.~\ref{fig:DarcyPoiseuille}. Although they provide the correct order of magnitude for $\lambda$, neither model alone is able to quantitatively reproduce the full data set. However considering only the points where $H<H^*$ (respectively $H>H^*$), the Darcy (resp. Poiseuille) model fits the data well albeit with a prefactor. Note that it would be easy to miss out on the failure of the Poiseuille model at small wavelengths by adding an unexplained offset (dashed line in Fig.~\ref{fig:DarcyPoiseuille}b). Nonetheless, a complete model (derived in Supplementary Methods), summing up the influence of both Poiseuille and Darcy dissipation shows a better agreement for all values of $H/H^*$.
 
@@ -134,11 +134,9 @@ Our results are displayed in Fig.~\ref{fig:DarcyPoiseuille}. Although they provi
 \section*{Methods summary}
 To prevent adsorption of caseins to surfaces, microscope slides and cover slips were cleaned and subsequently coated with a silane agent (3-(trimethoxysilyl) propyl methacrylate, Sigma Aldrich) to which a polyacrylamide brush was polymerized from methacrylate groups.
 Sodium caseinate (Firmenich) was labelled with Dylight~550 NHS ESTER (Thermo Scientific). Excess dye was removed by centrifugation. Unlabelled sodium caseinate powder was dissolved in deionised water (or water--glycerol mixture). To induce gelation glucono-$\delta$-lactone (GDL) in powder (Firmenich) was added to the solution. \SI{45}{\micro\litre} of this solution was immediately mixed with \SI{5}{\micro\litre} of labelled caseinate solution, stirred and injected in the microscopy cell, immediately sealed using ultraviolet-cured glue (Norland Optical) and placed under the microscope before gelation could take place. 
-3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either a 10x (air) lens to measure the geometry of wrinkling (see Supplemental Material) or a 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures, obtained either by stitching fluorescent microscopy images (Nikon Eclipse Ti) or by transmitted/reflected light macroscope (Nikon SMZ745T/Leica DMS1000) were used to measure the wavelength of the primary pattern (Supplementary Figure~\ref{fig:patterns}). Secondary pattern wavelength is set to half of the primary wavelength, according to Fig.~\ref{fig:dynamics}c.
+3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either a 10x (air) lens to measure the geometry of wrinkling (see Supplemental Material) or a 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures, obtained either by stitching fluorescent microscopy images (Nikon Eclipse Ti) or by transmitted/reflected light macroscope (Nikon SMZ745T/Leica DMS1000) were used to measure the wavelength of the primary pattern (Supplementary Figures~\ref{fig:patterns} and \ref{fig:generations}). Secondary pattern wavelength is set to half of the primary wavelength, according to Supplementary Fig.~\ref{fig:generations}.
 Data shown in Fig.~\ref{fig:acidification} a-b were obtained with a SevenCompact pH-meter (Mettler Toledo) and an MCR 301 rheometer (Anton Paar).
 Permeability is measured using a protocol found in \cite{VanDijk1986} (see Materials and Supplementary Fig.~\ref{fig:permeability}).
-
-\seb{\it Il y a pas mal de petits soucis dans la biblio : manque des page numbers ou refs a completer. Je joins un scan de mes notes pour ajuster le .bib.}
 
 \bibliographystyle{naturemag3}
 \bibliography{Yaourt}
@@ -391,5 +389,23 @@ Analytic minimization of $\sigma_\parallel$ knowing $\sigma_\perp$ is possible b
 &= \left(\frac{\lambda_D}{\lambda}\right)^2 + \frac{1}{2\frac{\lambda_P^6}{\lambda_D^2\lambda^4}  + \left(\frac{\lambda_D}{\lambda}\right)^2}
 \end{align}
 and we minimize this expression numerically.
+
+\subsection*{Wavelength measurement}
+
+\begin{figure*}
+	\includegraphics{patterns}
+	\caption{Patterns corresponding to the samples of Table~\ref{tab:data}. (a-d) increasing cell thickness. (e-f) larger solid content. (g-i) increasing glycerol content. All pictures are stitching of fluorescent microscopy images except (c,e) which are details of reflected light macroscope images. Scale is common to all panels (scale bar \SI{1}{\milli\metre}). Length of arrows correspond to the measured primary wavelength.}
+	\label{fig:patterns}
+\end{figure*}
+
+\begin{figure}
+	\includegraphics{generations}%
+	\caption{Fourier spectra of binary altitudes of Fig.~\ref{fig:dynamics}a corresponding to primary, secondary and tertiary patterns. Inset: reconstructed binary altitudes at time \SI{2}{\hour}. Scale bars is \SI{1}{\milli\metre}.}%
+	\label{fig:generations}%
+\end{figure}
+
+To measure wrinkle wavelength, we used large field pictures of the final state. These picture were obtained either by stitching fluorescent microscopy images obtained at 10x magnification (Fig.~\ref{fig:patterns} except c and e), or by transmitted or reflected light macroscope at magnifications ranging from 1x to 6x (Fig.~\ref{fig:patterns}c and e). The contrast in such pictures is a measure of the magnitude of the altitude gradient of the gel film. White lines in fluorescence and reflection (respectively black lines in transmission) denote a sharp transition between two extreme altitudes (on top wall or on bottom wall). It is thus possible to reconstruct a binary picture of the pattern (inset of Fig.~\ref{fig:generations}). Furthermore since the shape and size of a given generation of pattern do not change after formation, it is possible to revert the final picture to pure first generation.
+
+Figure~\ref{fig:generations} shows Fourier spectra of binarised altitudes at different times. When only the first generation pattern is present a peak clearly indicates the dominant mode. When second generation has appeared, the dominant wavelength is halved and the peak much weaker. This allows us to use secondary pattern is our analysis by setting their wavelength at half of the primary wavelength. Further generations do not seem to appear simultaneously and the peak is weak and broad. This could be a signature of a transition to chaos of a non-linear oscillator~\cite{Brau2011}.
 
 \end{document}
