@@ -115,6 +115,7 @@ which allows to identify $B_s = \frac{12\eta}{\tau H^3k^3}$. Since $B_s$ depends
 which yields 
 \begin{equation}
 k_P^6 = 2\times 12^2 \frac{1}{h^3H^3\Upsilon},
+\label{eq:Poiseuillek}
 \end{equation}
 with $\Upsilon = \frac{B\tau}{\eta}$ the viscoelastic factor. The dominant wavelength for Poiseuille model is thus
 \begin{equation}
@@ -205,7 +206,32 @@ Note that we recover a pure Poiseuille substrate when $\alpha \rightarrow 0$ and
 \end{align}
 and we minimise this expression numerically.
 
+\section{Growth rate maximisation}
 
+Rather than finding the mode that minimises the stress, it is possible to find the mode that has the maximum growth rate. Disclaimer: both methods always give the same result.
+
+In the case of an elastic film on a viscous layer the mechanical equilibrium writes:
+\begin{equation}
+\left(\frac{B h^3}{12}k^4 - \sigma_0 h k^2\right) w = -\frac{12\eta}{H^3 k^2}\frac{\partial w}{\partial t},
+\end{equation}
+which is of the form $\tau \frac{\partial w}{\partial t}=w$, with
+\begin{equation}
+\tau = \frac{12^2\eta}{H^3 h (12 \sigma_0 k^4 - B h^2 k^6)}.
+\end{equation}
+
+To minimise $\tau$ we must have
+\begin{equation}
+0 = \frac{\partial}{\partial k}\left(12 \sigma_0 k^4 - B h^2 k^6\right) = 6k^3\left( 8 \sigma_0 - B h^2 k^2\right).
+\end{equation}
+Thus the minimum $\tau$ is
+\begin{equation}
+\tau_\text{min} = \frac{2\times12^2\eta}{H^3 h^3 k^6 B},
+\end{equation}
+from which we express the wave number
+\begin{equation}
+\frac{2\time 12}{k^6} = H^3 h^3 \frac{B\tau_min}{\eta} = H^3 h^3  \Upsilon,
+\end{equation}
+which is the same as Eq.~(\ref{eq:Poiseuillek}).
 
 \bibliography{../../bib/Yaourt}
 
