@@ -44,7 +44,7 @@
 (tuber.south west) -- (tuber.north west) (tuber.south east) -- (tuber.north east);
 
 %labels
-\draw[<-] (wheyinfty.north east) -- +(1em,0) node[right]{$z(\infty)$};
+\draw[<-] (wheyinfty.north east) -- +(1em,0) node[right]{$z_\infty$};
 \draw[<-] (wheyt2.south west) -- +(-1em,0) node[left]{$z(t)$};
 %\draw[<-] (wheyt1.south east) -- +(1em,0) node[right]{$z(t_1)$};
 \draw  (wheyt1.south west) ++(0,-0.5em) -- +(-1em,0) coordinate[pos=0.9] (Ht) (tubel.south west) -- +(-1em,0) coordinate[pos=0.9] (Hb);
