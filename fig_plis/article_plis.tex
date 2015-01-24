@@ -239,20 +239,20 @@ By fitting $z(t)-z_\infty$ to an exponential (see Fig.~\ref{fig:permeability} b-
 
 At 10x magnification and depending on cell thickness, we acquired stacks 20 to 50 images spaced by \SI{6.69}{\micro\metre} (Nyquist sampling). Each confocal slice was $(\SI{256}{px})^2$ with pixels of \SI{4.97}{\micro\metre}. At such low resolution details of the gel microstructure are undistinguishable as $\xi$ is smaller than the pixel size for all compositions and the gel appears as a continuous medium.
 
-We first denoise each plane by a \seb{short-range} Gaussian blur ($\sigma=\SI{2}{px}\ll\lambda$). Then, for each $(x,y)$, we focus on the z-dependent intensity profile $I(z)$. We define the position of the top surface of the gel $z_\text{top}$ as the point where $I(z)$ first crosses half of its maximum value \seb{over the given vertical slice}. Since this criterion is local, we do not need to correct for background intensity variation. In this way we obtain $z_\text{top}(x,y)$ with subpixel resolution ($\pm\SI{0.1}{px}=\SI{0.67}{\micro\metre}$), and $z_\text{bottom}(x,y)$ in a symmetrical way.
+We first denoise each plane by a short-range Gaussian blur ($\sigma=\SI{2}{px}\ll\lambda$). Then, for each $(x,y)$, we focus on the z-dependent intensity profile $I(z)$. We define the position of the top surface of the gel $z_\text{top}$ as the point where $I(z)$ first crosses half of its maximum value over the given vertical line. Since this criterion is local, we do not need to correct for background intensity variation. In this way we obtain $z_\text{top}(x,y)$ with subpixel resolution ($\pm\SI{0.1}{px}=\SI{0.67}{\micro\metre}$), and $z_\text{bottom}(x,y)$ in a symmetrical way.
 
-From these data, we obtain for each stack the volume and thickness of the gel phase, area of the midsurface and peak-to-peak amplitude. Velocity is obtained by time differentiation. Once the instability has saturated on the top and bottom walls of the cell, peaks in the histograms of $z_\text{top}$ and $z_\text{bottom}$ yield the measure of the positions of both walls, thus \seb{of the cell thickness} $e$ and retrospectively of $H_1$ and $H_2$.
+From these data, we obtain for each stack the volume and thickness of the gel phase, area of the midsurface and peak-to-peak amplitude. Velocity is obtained by time differentiation. Once the instability has saturated on the top and bottom walls of the cell, peaks in the histograms of $z_\text{top}$ and $z_\text{bottom}$ yield the measure of the positions of both walls, thus of the cell thickness $e$ and retrospectively of $H_1$ and $H_2$.
 
 \subsection*{Characteristic time measurement}
 \begin{figure}
 	\includegraphics{growth}
-	\caption{Growth of the instability. (a) Evolution of the gel velocity $v$ \seb{averaged} over the whole surface. Inset: Evolution of the peak-to-peak amplitude $A(t)$ in semi logarithmic scale. Black line is the best exponential fit with $\tau=\SI{90}{\second}$. (b) Evolution of the bottom profile of the gel from onset of instability (yellow) to contact to both walls (brown). Note that the longitudinal size of the blister evolves in this regime. Thick black curve is the profile at much longer times. Note that the blister foot, highlighted by the orange vertical line, has not moved since contact. \seb{\it Utiliser des symboles ($t$, $r$,$ A(t)$) plutot que des mots ? + j'ai plusieurs petites questions par rapport a cette figure.}}
+	\caption{Growth of the instability. (a) Evolution of the gel velocity $v$ averaged over the whole surface. Inset: Evolution of the peak-to-peak amplitude $A(t)$ in semi logarithmic scale. Black line is the best exponential fit with $\tau=\SI{90}{\second}$. (b) Evolution of the bottom profile of the gel from onset of instability (yellow) to contact to both walls (brown). Note that the longitudinal size of the blister evolves in this regime. Thick black curve is the profile at much longer times. Note that the blister foot, highlighted by the orange vertical line, has not moved since contact. \seb{\it j'ai plusieurs petites questions par rapport a cette figure.}}
 	\label{fig:growth}
 \end{figure}
 
-In most of our samples it was possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both the highest and lowest points of the surface. Even when valid, such a local measurement is rather noisy and we prefer to focus on the measure of the vertical \seb{velocity ?} $v$ of the gel that can be integrated over the whole field of view.
+In most of our samples it was possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both the highest and lowest points of the surface. Even when valid, such a local measurement is rather noisy and we prefer to focus on the measure of the vertical velocity $v$ of the gel that can be integrated over the whole field of view.
 
-We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls \seb{and $v_\text{max}$ is the maximum velocity of the gel}. We used this approximation of $\tau$ for all our samples. This is consistent with the fact that the blister size ($\propto\lambda$) does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is set when $A(t) = A_\text{max}$.
+We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls and $v_\text{max}$ is the maximum velocity of the gel. We used this approximation of $\tau$ for all our samples. This is consistent with the fact that the blister size ($\propto\lambda$) does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is set when $A(t) = A_\text{max}$.
 
 \subsection*{Mixed Darcy--Poiseuille model}
 
@@ -263,35 +263,33 @@ The mechanical equilibrium of a plate of thickness $h$, Young modulus $E$ and Po
 \frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial x^4} + \sigma_\parallel h \frac{\partial^2 w}{\partial x^2} = \sigma_\perp,
 \label{eq:mecheq}
 \end{equation}
-where $w(x,t)$ is the deflection of the plate along $z$. \seb{\it Cette formulation --stationnaire-- des equations ne semble pas coherente avec le fait de chercher une solution dependant du temps. Clarifier ou donner des references...}
+where $w(x,t)$ is the deflection of the plate along $z$~\cite{Biot1957}. Since we deal with slow rates of deformation, inertia is neglected.
 
-We assume an exponentially growing sinusoidal deflection $w(x,t) =  A_0 e^{t/\tau} \sin kx$ of characteristic time $\tau$ and wavevector $k$. \seb{\it En lien avec la remarque precedente, il est delicat de donner un sens a $\tau$ ici en l'absence de l'eq (14).} \sseb{In operator language,} Eq.~(\ref{eq:mecheq}) then reads
+We assume that the deflection can be decomposed in exponentially growing sinusoidal modes and we consider one of them $w(x,t) =  A_0 e^{t/\tau} \sin kx$ of characteristic time $\tau$ and wavevector $k$. Eq.~(\ref{eq:mecheq}) then reads
 \begin{equation}
 \left(\frac{1}{12} B h^3 k^4 - \sigma_\parallel h k^2\right)w = \sigma_\perp,
 \label{eq:mecheqop}
 \end{equation}
 where $B=E/(1-\nu^2)$ is the modulus of the plate.
 
+Following \cite{Biot1957}, we consider the case where the compression load $\sigma_\parallel$ is increased quasistatically. The observed mode is the one that arises at the lowest possible $\sigma_\parallel$, i.e. the mode minimising $\sigma_\parallel$.
+
 \subsubsection*{Elastic film in an infinite elastic medium}
 
-\seb{\it Vraiment utile de detailler ce cas qui ne correspond pas aux manips ?}
-
-\seb{In the case of an elastic film lying over an infinite elastic medium,} the deformation of the substrate of modulus $B_s$ gives the transverse load as $\sigma_\perp = -k B_s w$, and thus the compression load writes
+In this framework, we recall here the well known case of an elastic film lying over an infinite elastic medium. The deformation of the substrate of modulus $B_s$ gives the transverse load as $\sigma_\perp = -k B_s w$, and thus the compression load writes
 \begin{equation}
 \sigma_\parallel = B \frac{h^2}{12} k^2 + \frac{B_s}{hk}.
 \label{eq:sigma0}
 \end{equation}
 
-Minimizing $\sigma_\parallel$ as a function of $k$ yields the well-known result $hk = \left(6B_s/B\right)^{1/3}$ \cite{Biot1957,Cerda2003} so that the dominant wavelength is \seb{\it Il serait bien de rappeler pourquoi on minimise ici $\sigma_\parallel$ : cela ne vient-il pas plus de considerations energetiques que de la selection du mode le plus instable dans une relation de dispersion ? Les deux visions sont-elles equivalentes ? Je n'ai pas les idees bien claires la-dessus --c'est sans doute relie au pb deja evoque plus haut-- et le lecteur moyen risque de se poser la question de comment on justifie proprement cette minimisation\dots}
+Minimizing $\sigma_\parallel$ as a function of $k$ yields the well-known result $hk = \left(6B_s/B\right)^{1/3}$ \cite{Biot1957,Cerda2003} so that the dominant wavelength is 
 \begin{equation}
-\lambda_d = 2\pi h \left(\frac{B}{6B_s}\right)^{1/3}.
+\lambda = 2\pi h \left(\frac{B}{6B_s}\right)^{1/3}.
 \label{eq:lambdaElEl}
 \end{equation}
 
-\seb{\it Anecdotique : pourquoi $\lambda_d$ plutot que $\lambda$ ?}
-
 \subsubsection*{Elastic film on a viscous layer}
-\seb{Let us now turn to the case of an elastic, impermeable film on a viscous layer which is more relevant for the present experimental situation.} Assuming the layer thickness $H$ to be much smaller than $\lambda_d$, we can use the lubrication approximation. \seb{This corresponds to the case where the gel film is close to one of the cell walls and this specifically applies to secondary blisters.} Further considering only small deflections, we may neglect the displacement of the plate along $x$. The flux along $x$ is thus of the Poiseuille form
+Let us now turn to the case of an elastic, impermeable film on a single viscous layer. As \cite{Huang2002} we neglect gravity, although it is difficult to do so in practice at a free interface. Assuming the layer thickness $H$ to be much smaller than $\lambda_d$, we can use the lubrication approximation. Further considering only small deflections, we may neglect the displacement of the plate along $x$. The flux along $x$ is thus of the Poiseuille form
 \begin{equation}
 Q = -\frac{H^3}{12\eta}\frac{\partial p}{\partial x}.
 \label{eq:PoiseuilleFlux}
@@ -303,7 +301,7 @@ Mass conservation writes
 \frac{\partial Q}{\partial x} + \frac{\partial w}{\partial t} = 0.
 \label{eq:conservation}
 \end{equation}
-Keeping only linear order terms, one gets \sseb{in operator language}
+Keeping only linear order terms, one gets
 \begin{equation}
 \frac{12\eta}{\tau} \frac{w}{H^3k^2} = -\sigma_\perp.
 \label{eq:PoiseuilleLoad}
@@ -324,13 +322,19 @@ with $\Upsilon = B\tau/\eta$ the viscoelastic factor. The dominant wavelength fo
 \lambda_P = \pi\sqrt{hH}\left(\frac{2}{9}\Upsilon\right)^{1/6}
 \end{equation}
 
+We note that the mode minimising $\sigma_\parallel$ is also maximising the growth rate
+\begin{equation}
+\frac{1}{\tau} = \frac{H^3k^2}{12^2\eta}\left(12\sigma_\parallel - Bh^3k^4\right).
+\end{equation}
+
 When the elastic film is sandwiched between two viscous layers of respective thickness $H_1$ and $H_2$, the linearity of Eq.~(\ref{eq:mecheq}) allows us to use an effective substrate of thickness 
 \begin{equation}
 \frac{1}{H^3} = \frac{1}{H_1^3}+\frac{1}{H_2^3}.
 \end{equation}
+This corresponds to the experimental case where the gel film is far from both of the cell walls. Since we have an almost buoyant gel and no more free surface the gravity can indeed be neglected.
 
 \subsubsection*{Porous elastic film with no possible Poiseuille flow}
-\seb{Another limiting case is that of a porous elastic film sandwiched between two viscous layers that are supposed to be large enough so that the previous Poiseuille mechanism can be neglected.} The transverse load derives from the Darcy law through the film of permeability $\alpha$:
+Another limiting case is that of a porous elastic film immersed in a viscous medium where longitudinal resistance to flow is infinite. It is the case in our experiments when the film is at contact with one of the walls. The only way to deform the film is to flow some liquid through the film of permeability $\alpha$. The transverse load derives from the Darcy law:
 \begin{equation}
 \sigma_\perp = p_1-p_2 = \frac{h\eta}{\alpha}\frac{\partial w}{\partial t}.
 \label{eq:DarcyLoad}
@@ -351,10 +355,11 @@ The dominant wavelength for Darcy model is thus
 \begin{equation}
 \lambda_D = 2\pi h^{1/2}\alpha^{1/4}\left(\frac{\Upsilon}{12}\right)^{1/4}.
 \end{equation}
+Here also the dominant mode maximises the growth rate.
 
 
 \subsubsection*{Porous elastic film between two viscous layers}
-\seb{Finally the most realistic scenario mixes both Poiseuille and Darcy mechanisms, i.e. considers a porous elastic film between two viscous layers of arbitrary thickness. In this case,} the mass conservation $Q_1 + Q_2 = 0$ over the whole height of the cell yields
+Finally the most realistic scenario mixes both Poiseuille and Darcy mechanisms, i.e. considers a porous elastic film between two viscous layers of arbitrary thickness. In this case, the mass conservation $Q_1 + Q_2 = 0$ over the whole height of the cell yields
 \begin{equation}
 H_1^3 p_1 + H_2^3 p_2 = 0.
 \label{eq:pressures}
@@ -383,7 +388,7 @@ Note that we recover Eq~(\ref{eq:PoiseuilleLoad}) when $\alpha \rightarrow 0$ an
 H^* = 2^{2/3} 3^{1/6} \alpha^{1/2} \Upsilon^{1/6}.
 \end{equation}
 
-Analytic minimization of $\sigma_\parallel$ knowing $\sigma_\perp$ is possible but \seb{cumbersome}. Instead we rewrite Eq.~(\ref{eq:mecheqop}) in terms of previously calculated $\lambda_P$ and $\lambda_D$:
+Analytic minimization of $\sigma_\parallel$ knowing $\sigma_\perp$ is possible but cumbersome. Instead we rewrite Eq.~(\ref{eq:mecheqop}) in terms of previously calculated $\lambda_P$ and $\lambda_D$:
 \begin{align}
 \frac{12\sigma_\parallel}{k_D^2 h^2 B} &= \left(\frac{k}{k_D}\right)^2 + \frac{1}{2\frac{k_D^2}{k_P^6}k^4  + \left(\frac{k}{k_D}\right)^2}\\
 &= \left(\frac{\lambda_D}{\lambda}\right)^2 + \frac{1}{2\frac{\lambda_P^6}{\lambda_D^2\lambda^4}  + \left(\frac{\lambda_D}{\lambda}\right)^2}
