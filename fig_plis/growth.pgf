@@ -22,8 +22,8 @@
 	
 	
 	\nextgroupplot[
-	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={position (\si{\micro\metre})},
-	ymin=0, ymax=50, ylabel={altitude (\si{\micro\metre})},
+	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={$x$ (\si{\micro\metre})},
+	ymin=0, ymax=50, ylabel={$w(x,t)$ (\si{\micro\metre})},
 	cycle list={
 		{Accent2}, 
 		{black!15!Accent2},
@@ -46,7 +46,7 @@
 	at={($(g c1r1.north east)-(1em,1em)$)},
 	width=0.6\columnwidth,
 	xlabel={time (\si{\minute})},
-	ylabel={amplitude (\si{\micro\metre})},
+	ylabel={$A(t)$ (\si{\micro\metre})},
 	ymode=log, ymin=5,
 	restrict x to domain=0:30,
 	ytick={5,10, 20, 50}, yticklabels={5,10,20,50},
