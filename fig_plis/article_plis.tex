@@ -218,22 +218,22 @@ where the susceptibility $\chi$ is related to the fluorescence contrast between 
 \subsection*{Permeability measurements}
 \begin{figure*}
 	\includegraphics{permeability}
-	\caption{Permeability measurements. (a) Schematic representation of the experiment. (b-c) Evolution of the height of the interface in tube 1 relative to the final height in tube 2. Black line is the best exponential fit $Ae^{-t/\tau}$. (b) Gel is 4\%w casein, 4\%w GDL in water, $H=\SI{2.3}{\milli\metre}$ and $\tau=\SI{57}{\minute}$. (c) Same as (b) for a 50\%w glycerol--water mixture, $H=\SI{4}{\milli\metre}$ and $\tau=\SI{100}{\hour}$. \seb{\it Changer $z(\infty)$ en $z_\infty$ dans le schema.}}
+	\caption{Permeability measurements. (a) Schematic representation of the experiment. (b-c) Evolution of the height of the interface in tube 1 relative to the final height in tube 2. Black line is the best exponential fit $Ae^{-t/\tau}$. (b) Gel is 4\%w casein, 4\%w GDL in water, $H=\SI{2.3}{\milli\metre}$ and $\tau=\SI{57}{\minute}$. (c) Same as (b) for a 50\%w glycerol--water mixture, $H=\SI{4}{\milli\metre}$ and $\tau=\SI{100}{\hour}$.}
 	\label{fig:permeability}
 \end{figure*}
 
 To measure the permeability of our gels, we adapt a method from \cite{VanDijk1986}. First, the gel of interest is formed at the lower extremity of a thin glass tube. The tube is held vertical in a water saturated atmosphere to prevent evaporation until the pH has reached the isoelectric point ($\approx\SI{1}{\hour}$ for our most common composition). Then, we dip the tube in a bath of acetic acid/acetate buffer at pH=4. The buffer has the same glycerol content as the gel solvent, so that the viscosity is constant throughout the experiment. Alongside the first tube (see Fig.~\ref{fig:permeability} a), we dip a second identical tube with no gel in it. A webcam (Logitech Webcam Pro 9000) captures the rise of the liquid in each tube. Since the liquid height in tube 2 reaches its final value quickly, we measure directly $z_\infty-z(t)$.
 
-Darcy law through the gel of permeability $\alpha$ and height $H$ reads \seb{\it Attention au signe ?} 
+Darcy law through the gel of permeability $\alpha$ and height $H$ reads 
 \begin{equation}
-\frac{dz}{dt} = \seb{-} \frac{\alpha}{\eta}\frac{\Delta P}{H}
+\frac{dz}{dt} = \frac{\alpha}{\eta}\frac{\Delta P}{H}
 \end{equation}
-where $\Delta P=\rho g(z_\infty-z(t))$ is the hydrostatic pressure \seb{drop through the gel, with $\rho$ the buffer density. {\it Avez-vous mesure $\rho$ independamment?}} We can thus write
+where $\Delta P=\rho g(z_\infty-z(t))$ is the hydrostatic pressure drop through the gel. We use tabulated values of water-glycerol mixtures for the density $\rho$ and viscosity $\eta$ of the buffer. We can thus write
 \begin{equation}
-\frac{d(z_\infty-z)}{dt} = -\frac{z_\infty-z}{\tau}\text{, with\,} \tau = \frac{\eta H}{\alpha \rho g}.
+\frac{d(z-z_\infty)}{dt} = -\frac{z-z_\infty}{\tau}\text{, with\,} \tau = \frac{\eta H}{\alpha \rho g}.
 \end{equation}
 
-By fitting $z_\infty-z(t)$ to an exponential (see Fig.~\ref{fig:permeability} b-c), we obtain $\tau$ and thus $\alpha$. Note that even with $H$ of the order of a few millimeters high glycerol contents yield $\tau\approx \SI{100}{\hour}$ due both to high viscosity and low permeability. Obtaining $z_\infty$ without tube 2 would be time prohibitive.
+By fitting $z(t)-z_\infty$ to an exponential (see Fig.~\ref{fig:permeability} b-c), we obtain $\tau$ and thus $\alpha$. Note that even with $H$ of the order of a few millimeters high glycerol contents yield $\tau\approx \SI{100}{\hour}$ due both to high viscosity and low permeability. Obtaining $z_\infty$ without tube 2 would be time prohibitive.
 
 \subsection*{Confocal images processing}
 
