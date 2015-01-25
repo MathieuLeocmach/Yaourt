@@ -122,7 +122,36 @@ To sum up, we expect two regimes of viscosity-dominated wrinkling: for $H\ll H^*
 
 \section*{Experimental tests}
 
-The two above models yield wavelengths that are of the same order in most of the cases under study. Thus only systematic measurements of the experimental $\lambda$ together with estimates for all the parameters involved in either model shall allow one to discriminate between them (see Supplementary Method for details on such measurements). As summarized in Supplementary Table~\ref{tab:data} we systematically varied (i) the thickness of the cell, impacting $h$ and the maximal amplitude, (ii) the gel composition and thus both its stiffness and its permeability, (iii) the viscosity of the solvent by adding glycerol, which also impacted the gel stiffness, permeability and $\tau$. Finally, the only parameter that we had no control upon was the initial altitude $H$ of the gel before wrinkling that varied randomly. However we were able to obtain more data at small $H/H^*$ ratios by considering not only the primary patterns but also the secondary ones. Since the saturation of the primary pattern flattens the gel on the top and bottom walls, the secondary blisters always appear in a Darcy situation ($H\ll H^*$). Here the wavelength associated to the secondary blister is taken as half of that of the primary pattern as shown in Supplementary Fig.~\ref{fig:generations}.
+\begin{table*}
+\begin{tabular}{SSSScSrrScSSSScSSSSSS}
+%\toprule
+\multicolumn{4}{c}{Preparation} & &  \multicolumn{4}{c}{Properties} & & \multicolumn{4}{c}{Measurements} & & \multicolumn{6}{c}{Results} \\ 
+\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
+{cas} & {GDL} & {gly} & {$e$} && {$\eta$} & \multicolumn{1}{c}{$G^\prime$} & \multicolumn{1}{c}{$\alpha$} & {$\xi$} && {$h$} & {$H_{min}$} & {$H_{max}$} & {$v$} && {$\Upsilon$} & {$H/H^*$} & {$\lambda_{xp}$} & {$\lambda_{D}$} & {$\lambda_{P}$} & {$\lambda_{D+P}$} \\ 
+{\%w} & {\%w} & {\%w} & \si{\micro\metre} && \si{\milli\pascal\second} & \multicolumn{1}{c}{\si{\pascal}} & \si{\square\nano\metre} & \si{\micro\metre} && \si{\micro\metre} & \si{\micro\metre} & \si{\micro\metre} & \si{\micro\metre/\second} && {$10^8$} &  & \si{\milli\metre} & \si{\milli\metre} & \si{\milli\metre} & \si{\milli\metre} \\ 
+\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
+%ech2
+4 & 4 & 0 & 74.5 && 1.0 & 487 & 67000 & 4.9 && 38.3 & 6.3 & 29.3 & 0.11 && 1.62 & 0.54 & 0.89 & 1.20 & 0.88 & 1.22 \\ 
+& & & && & & & && 40.2 & 1.7 & 32.9 & 0.09 && 0.70 & 0.09 & 0.45 & 1.00 & 0.39 & 1.00\\
+4 & 4 & 0 & 92.4 && 1.0 & 487 & 67000 & 4.9 && 27.8 & 13.5 & 50.8 & 0.20 && 1.57 & 1.17 & 0.85 & 1.01 & 1.10 & 1.20 \\ 
+4 & 4 & 0 & 106.1 && 1.0 & 487 & 67000 & 4.9 && 32.7 & 30.7 & 42.9 & 0.14 && 2.54 & 2.23 & 1.52 & 1.24 & 1.85 & 1.90 \\ 
+4 & 4 & 0 & 138.0 && 1.0 & 487 & 67000 & 4.9 && 48.2 & 32.0 & 63.9 & 0.11 && 4.05 & 2.28 & 1.62 & 1.69 & 2.56 & 2.62 \\
+& & & && & & & && 57.4 & 2.1 & 80.9 & 0.05 && 1.25 & 0.09 & 0.81 & 1.37 & 0.6 & 1.37 \\
+\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
+8 & 8 & 0 & 85.2 && 1.0 & 1817 & 2150 & 3.1 && 49.8 & 10.0 & 26.8 & 0.10 && 6.50 & 3.79 & 1.00 & 0.82 & 1.60 & 1.61 \\ 
+& & & && & & & && 60.5 & 1.1 & 24.0 & 0.11 && 1.94 & 0.42 & 0.50 & 0.77 & 0.55 & 0.82\\
+8 & 8 & 0 & 91.0 && 1.0 & 1817 & 2150 & 3.1 && 23.4 & 30.2 & 47.7 & 0.10 && 12.05 & 9.70 & 1.50 & 0.66 & 2.04 & 2.04 \\ 
+& & & && & & & && 30.7 & 1.6 & 55.0 & 0.02 && 15.60 & 0.32 & 0.75 & 0.82 & 0.59 & 0.83 \\
+\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
+4 & 4 & 20 & 63.7 && 1.6 & 1142 & 24600 & 2.7 && 39.1 & 1.2 & 10.9 & 0.21 && 0.86 & 0.20 & 0.49 & 0.80 & 0.36 & 0.80 \\ 
+4 & 4 & 35 & 82.3 && 2.7 & 1858 & 25300 & 1.8 && 58.3 & 0.9 & 12.6 & 0.02 && 10.98 & 0.13 & 0.61 & 1.06 & 0.56 & 1.06 \\ 
+4 & 4 & 50 & 95.3 && 5.4 & 4660 & 5700 & 1.5 && 65.1 & 7.9 & 14.4 & 0.02 && 16.30 & 1.52 & 1.23 & 1.50 & 1.85 & 1.96 \\ 
+\end{tabular}
+\caption{Characteristics of the samples discussed in the main text. Lines where preparation and properties are left blank correspond to the average of the secondary blisters of the previous line.}
+\label{tab:data}
+\end{table*}
+
+The two above models yield wavelengths that are of the same order in most of the cases under study. Thus only systematic measurements of the experimental $\lambda$ together with estimates for all the parameters involved in either model shall allow one to discriminate between them (see Supplementary Method for details on such measurements). As summarized in Table~\ref{tab:data} we systematically varied (i) the thickness of the cell, impacting $h$ and the maximal amplitude, (ii) the gel composition and thus both its stiffness and its permeability, (iii) the viscosity of the solvent by adding glycerol, which also impacted the gel stiffness, permeability and $\tau$. Finally, the only parameter that we had no control upon was the initial altitude $H$ of the gel before wrinkling that varied randomly. However we were able to obtain more data at small $H/H^*$ ratios by considering not only the primary patterns but also the secondary ones. Since the saturation of the primary pattern flattens the gel on the top and bottom walls, the secondary blisters always appear in a Darcy situation ($H\ll H^*$). Here the wavelength associated to the secondary blister is taken as half of that of the primary pattern as shown in Supplementary Fig.~\ref{fig:generations}.
 
 Our results are displayed in Fig.~\ref{fig:DarcyPoiseuille}. Although they provide the correct order of magnitude for $\lambda$, neither model alone is able to quantitatively reproduce the full data set. However considering only the points where $H<H^*$ (respectively $H>H^*$), the Darcy (resp. Poiseuille) model fits the data well albeit with a prefactor. Note that it would be easy to miss out on the failure of the Poiseuille model at small wavelengths by adding an unexplained offset (dashed line in Fig.~\ref{fig:DarcyPoiseuille}b). Nonetheless, a complete model (derived in Supplementary Methods), summing up the influence of both Poiseuille and Darcy dissipation shows a better agreement for all values of $H/H^*$.
 
@@ -161,59 +190,36 @@ The authors declare that they have no competing financial interests.
 Correspondence and requests for materials should be addressed to TG (\href{mailto:thomas.gibaud@ens-lyon.fr}{thomas.gibaud@ens-lyon.fr}).
 
 
+
+
+
+
 \clearpage
 \newpage
 \setcounter{figure}{0}
 
 \section*{Supplementary material}
 
-\begin{table*}
-\begin{tabular}{SSSScSrrScSSSScSSSSSS}
-%\toprule
-\multicolumn{4}{c}{Preparation} & &  \multicolumn{4}{c}{Properties} & & \multicolumn{4}{c}{Measurements} & & \multicolumn{6}{c}{Results} \\ 
-\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
-{cas} & {GDL} & {gly} & {$e$} && {$\eta$} & \multicolumn{1}{c}{$G^\prime$} & \multicolumn{1}{c}{$\alpha$} & {$\xi$} && {$h$} & {$H_{min}$} & {$H_{max}$} & {$v$} && {$\Upsilon$} & {$H/H^*$} & {$\lambda_{xp}$} & {$\lambda_{D}$} & {$\lambda_{P}$} & {$\lambda_{D+P}$} \\ 
-{\%w} & {\%w} & {\%w} & \si{\micro\metre} && \si{\milli\pascal\second} & \multicolumn{1}{c}{\si{\pascal}} & \si{\square\nano\metre} & \si{\micro\metre} && \si{\micro\metre} & \si{\micro\metre} & \si{\micro\metre} & \si{\micro\metre/\second} && {$10^8$} &  & \si{\milli\metre} & \si{\milli\metre} & \si{\milli\metre} & \si{\milli\metre} \\ 
-\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
-%ech2
-4 & 4 & 0 & 74.5 && 1.0 & 487 & 67000 & 4.9 && 38.3 & 6.3 & 29.3 & 0.11 && 1.62 & 0.54 & 0.89 & 1.20 & 0.88 & 1.22 \\ 
-& & & && & & & && 40.2 & 1.7 & 32.9 & 0.09 && 0.70 & 0.09 & 0.45 & 1.00 & 0.39 & 1.00\\
-4 & 4 & 0 & 92.4 && 1.0 & 487 & 67000 & 4.9 && 27.8 & 13.5 & 50.8 & 0.20 && 1.57 & 1.17 & 0.85 & 1.01 & 1.10 & 1.20 \\ 
-4 & 4 & 0 & 106.1 && 1.0 & 487 & 67000 & 4.9 && 32.7 & 30.7 & 42.9 & 0.14 && 2.54 & 2.23 & 1.52 & 1.24 & 1.85 & 1.90 \\ 
-4 & 4 & 0 & 138.0 && 1.0 & 487 & 67000 & 4.9 && 48.2 & 32.0 & 63.9 & 0.11 && 4.05 & 2.28 & 1.62 & 1.69 & 2.56 & 2.62 \\
-& & & && & & & && 57.4 & 2.1 & 80.9 & 0.05 && 1.25 & 0.09 & 0.81 & 1.37 & 0.6 & 1.37 \\
-\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
-8 & 8 & 0 & 85.2 && 1.0 & 1817 & 2150 & 3.1 && 49.8 & 10.0 & 26.8 & 0.10 && 6.50 & 3.79 & 1.00 & 0.82 & 1.60 & 1.61 \\ 
-& & & && & & & && 60.5 & 1.1 & 24.0 & 0.11 && 1.94 & 0.42 & 0.50 & 0.77 & 0.55 & 0.82\\
-8 & 8 & 0 & 91.0 && 1.0 & 1817 & 2150 & 3.1 && 23.4 & 30.2 & 47.7 & 0.10 && 12.05 & 9.70 & 1.50 & 0.66 & 2.04 & 2.04 \\ 
-& & & && & & & && 30.7 & 1.6 & 55.0 & 0.02 && 15.60 & 0.32 & 0.75 & 0.82 & 0.59 & 0.83 \\
-\cline{1-4} \cline{6-9} \cline{11-14} \cline{16-21}\\[-2ex]
-4 & 4 & 20 & 63.7 && 1.6 & 1142 & 24600 & 2.7 && 39.1 & 1.2 & 10.9 & 0.21 && 0.86 & 0.20 & 0.49 & 0.80 & 0.36 & 0.80 \\ 
-4 & 4 & 35 & 82.3 && 2.7 & 1858 & 25300 & 1.8 && 58.3 & 0.9 & 12.6 & 0.02 && 10.98 & 0.13 & 0.61 & 1.06 & 0.56 & 1.06 \\ 
-4 & 4 & 50 & 95.3 && 5.4 & 4660 & 5700 & 1.5 && 65.1 & 7.9 & 14.4 & 0.02 && 16.30 & 1.52 & 1.23 & 1.50 & 1.85 & 1.96 \\ 
-\end{tabular}
-\caption{Characteristics of the samples discussed in the main text. Lines where preparation and properties are left blank correspond to the average of the secondary blisters of the previous line.}
-\label{tab:data}
-\end{table*}
-
 \subsection*{Microstructure measurement}
 
-\begin{figure}
-	\includegraphics{mesh}
-	\caption{Gel microstructure. (a) Detail of a confocal micrograph of a 4\%w casein in water acidified with 4\%w GDL, when only the microscope slide is coated, not the cover slip. Images were taken at times corresponding to the minimum in mesh size. Scale bar is \SI{10}{\micro\metre}. (b) Corresponding radially averaged Fourier transform. \seb{\it Fourier transform or Fourier spectrum or power spectrum? Clarify?} Black line is the best fit by Eq.~(\ref{eq:fractalS}) with $\xi=\SI{2.0}{\micro\metre}$ and $d_{3D}=2.27$. Inset shows the center of the \sseb{non radial average} spectrum \seb{using a} logarithmic color scale. Scale bar is \SI{10}{\per\micro\metre}. (c-d) Same as (a-b) in a 50\%w \seb{glycerol--water mixture leading to} $\xi=\SI{0.3}{\micro\metre}$ and $d_{3D}=3$.}
-	\label{fig:mesh}
-\end{figure}
+\begin{figure*}
+	\includegraphics{nonmonotonic}%
+	\caption{Microstructure evolution. (a) Details of confocal images in fully adhesive conditions (left) and with no adhesion on top (right). Scale bar is \SI{10}{\micro\metre}. Arrows indicates the pore size. (b) Corresponding Fourier spectra in second situation and same times. Lines are fits by Eq.~\ref{eq:fractalS}. (c-d) Evolution of susceptibility and fractal dimension in both situations (black line and orange dashed line respectively). Symbols indicates the times of the images in (a).}%
+	\label{fig:nonmonotonic}%
+\end{figure*}
 
-To follow the evolution of the microstructure in a gel undergoing syn\ae{}resis and swelling, it was necessary to keep it into the thin focal plane of the 63x objective lens of the confocal microscope. To do so, we coated only the microscope slide with acrylamide brush to allow syn\ae{}resis on this side. The cover slip was cleaned but not coated, thus keeping strong adhesion on the side closer to the objective lens. Neither buckling nor wrinkling was detected in such configuration.
-
-We acquired slices of $(\SI{2048}{px})^2$ with pixels of \SI{98}{\nano\metre} (Fig.~\ref{fig:mesh}a and c). After Hann windowing we performed Fourier transform (see insets of Fig.~\ref{fig:mesh}b and d) and radially averaged the resulting spectrum to obtain $I(q)$ (see Fig.~\ref{fig:mesh}b and d) that was fitted by the following fractal form \seb{\it Clarify $I(q)$ vs $S(q)$}:
+To follow the evolution of the microstructure of the gel, we acquired slices of $(\SI{2048}{px})^2$ with pixels of \SI{98}{\nano\metre} (Fig.~\ref{fig:nonmonotonic}a). After Hann windowing we performed Fourier transform and radially averaged the resulting spectrum to obtain $I(q)$ (see Fig.~\ref{fig:nonmonotonic}b) that was fitted by the following fractal form:
 \begin{equation}
-I(q) = \frac{\chi}{1+(\xi q)^\gamma}
+I(q) = \frac{2\chi\Gamma(d)}{\left(1+\left((d+1)\xi q\right)^2\right)^{d/2}}
 \label{eq:fractalS}
 \end{equation}
-where the susceptibility $\chi$ is related to the fluorescence contrast between the network and the solvent, the cut off length $\xi$ corresponds to the largest pore size and the exponent $\gamma$ is loosely related to the fractal dimension $d_{3D}$.
+where the susceptibility $\chi$ is related to the fluorescence contrast between the network and the solvent, the cut off length $\xi$ corresponds to the largest pore size and $d$ is the fractal dimension. $\Gamma$ is the gamma function. 
 
-\seb{\it Actualiser la fin de cette partie avec nouvelle Eq. (6) et texte correspondant.}  
+Figure~\ref{fig:acidification}c of the main text and Supplementary Fig.~\ref{fig:nonmonotonic}c and d show the evolution of the fitting parameters in two different sets of boundary conditions: (i) complete adhesion of the gel on all walls, preventing syn\ae{}resis and swelling; (ii) complete adhesion except on the top wall, allowing syn\ae{}resis and swelling. The later situation is a proxy to the situation where we observe wrinkling, since it was necessary to keep the gel into the thin focal plane of the 63x objective lens of the confocal microscope. To do so, we coated only the microscope slide with acrylamide brush. The cover slip was cleaned but not coated, thus keeping strong adhesion on the side closer to the objective lens. Neither buckling nor wrinkling was detected in such configuration.
+
+In situation (i), the gel keeps its topology throughout the gelation and over acidification. Left of Fig.~\ref{fig:nonmonotonic}a shows that the arms of the gel first shrink laterally while keeping their length, and then swell again. Syn\ae{}resis and swelling are thus local processes. By contrast in situation (ii), the gel as a whole compresses while forming. Since our focal plane is a fixed depth, we cannot follow the topology of the same subset of the network, however the pore size is clearly smaller than in situation (ii). The isoelectric gel, at minimum gel volume, is probably isotropic or only marginally anisotropic in $z$. This explains that subsequent swelling is not occurring only along $z$ but also in plane, causing buckling.
+
+$\xi$ was also systematically measured in the same way at the end of each wrinkling experiment and reported in table~\ref{tab:data}. %Final fractal dimension was always close to 2 within error bars. Comparing $\chi$ across different setting of the microscope is not relevant.
 
 \subsection*{Permeability measurements}
 \begin{figure*}
@@ -399,7 +405,7 @@ and we minimize this expression numerically.
 
 \begin{figure*}
 	\includegraphics{patterns}
-	\caption{Patterns corresponding to the samples of Table~\ref{tab:data}. (a-d) increasing cell thickness. (e-f) larger solid content. (g-i) increasing glycerol content. All pictures are stitching of fluorescent microscopy images except (c,e) which are details of reflected light macroscope images. Scale is common to all panels (scale bar \SI{1}{\milli\metre}). Length of arrows correspond to the measured primary wavelength.}
+	\caption{Patterns corresponding to the samples of Table~\ref{tab:data} of the main text. (a-d) increasing cell thickness. (e-f) larger solid content. (g-i) increasing glycerol content. All pictures are stitching of fluorescent microscopy images except (c,e) which are details of reflected light macroscope images. Scale is common to all panels (scale bar \SI{1}{\milli\metre}). Length of arrows correspond to the measured primary wavelength.}
 	\label{fig:patterns}
 \end{figure*}
 
