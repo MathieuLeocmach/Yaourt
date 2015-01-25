@@ -1,4 +1,4 @@
-%\begin{figure*}
+\begin{figure*}
 \begin{tikzpicture}[every axis/.style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}}]
 
 \begin{groupplot}[
@@ -11,17 +11,18 @@
 	width=0.4\textwidth,
 	xlabel={time (\si{\hour})},
 	xmin=0,xmax=3, ymin=0,
-	cycle list name=linestyles,
-	no marks,
 	]
-\nextgroupplot[ylabel={$\chi$ (a.u.)}, restrict y to domain=0:1,]
-\begin{scope}[every node/.style={anchor=base west, font=\scriptsize}]
-	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{2}/4096}]{ech23_pore_size.txt};
-	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{2}/4096}]{ech25_pore_size.txt};
-\end{scope}
-\nextgroupplot[ylabel={$d$}, restrict y to domain=0:3,]
-\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{3}}]{ech23_pore_size.txt};
+\nextgroupplot[ylabel={$\chi$ (a.u.)}, restrict y to domain=0:4,]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{2}/1024}]{ech23_pore_size.txt};
+	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{2}/1024}]{ech25_pore_size.txt};
+	\addplot[only marks, mark=o]  table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{2}/1024}]{ech23_pore_size_toi.txt};
+	\addplot[only marks,mark=x,Accent1] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{2}/1024}]{ech25_pore_size_toi.txt};
+
+\nextgroupplot[ylabel={$d$}, restrict y to domain=0:3,restrict x to domain=0.25:3]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{3}}]{ech23_pore_size.txt};
 	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{3}}]{ech25_pore_size.txt};
+	\addplot[only marks, mark=o]  table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{3}}]{ech23_pore_size_toi.txt};
+	\addplot[only marks,mark=x,Accent1] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{3}}]{ech25_pore_size_toi.txt};
 \end{groupplot}
 
  \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] (m) at ($(g c1r1.right of north east)+(-\textwidth,0)$){
@@ -34,6 +35,25 @@
 &stick&coated top\\
 };
 
+\newdimen\mydima
+\newdimen\mydimb
+\pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{west}}
+\pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
+\pgfmathsetlength{\mydima}{\mydimb-\mydima}
+%scalebar 10um
+\draw[line width=0.3em] (m-4-3.south east) ++(-0.1\mydima,0.1\mydima) -- +(-0.398\mydima,0);
+
+%xis
+\begin{scope}[<->,gray]
+\draw (m-1-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.213447\mydima);
+\draw (m-2-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.264612\mydima);
+\draw (m-3-2.south west) ++(0.55\mydima,0.38\mydima) -- +(0:0.208163\mydima);
+\draw (m-4-2.south west) ++(0.6\mydima,0.38\mydima) -- +(0:0.145926\mydima);
+\draw (m-1-3.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.19632\mydima);
+\draw (m-2-3.south west) ++(0.05\mydima,0.1\mydima) -- +(0:0.185374\mydima);
+\draw (m-3-3.south west) ++(0.15\mydima,0.225\mydima) -- +(0:0.156326\mydima);
+\draw (m-4-3.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.138075\mydima);
+\end{scope}
 %\draw (m.north west) rectangle ++(\textwidth,-\textheight);
 
 \begin{loglogaxis}[
@@ -69,5 +89,12 @@
  	\addplot+[domain=0.1:8] {2.54109/(1+(0.2995*x)^2)^1.20665};
 	
  \end{loglogaxis}
+
+\begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
+\node[anchor=north west] at (m.north west) {(a)};
+\node at (Sq1.north east) {(b)};
+\node at (g c1r1.north east) {(c)};
+\node at (g c1r2.north east) {(d)};
+\end{scope}
 \end{tikzpicture}
-%\end{figure*}
+\end{figure*}
