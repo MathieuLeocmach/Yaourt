@@ -7,8 +7,9 @@
 			vertical sep=0.5em,
 			x descriptions at=edge bottom,
 		},
-	height=8.5\baselineskip,
-	width=0.4\textwidth,
+	scale only axis,
+	height=4.25\baselineskip,
+	width=\textwidth-32\baselineskip,
 	xlabel={time (\si{\hour})},
 	xmin=0,xmax=3, ymin=0,
 	]
@@ -60,7 +61,8 @@
 	name={Sq1},
 	anchor=left of north west,
 	at={($(m.north east)+(1em,0)$)},
-	height=13.4\baselineskip,
+	scale only axis,
+	height=9\baselineskip,
 	ymin=0.1, ymax=13,
 	xlabel={$q$ (\si{\per\micro\metre})},
 	ylabel={$|I(q)|$ (a.u.)},
@@ -89,5 +91,6 @@
 \node at (g c1r1.north east) {(c)};
 \node at (g c1r2.north east) {(d)};
 \end{scope}
+%\draw (m.south west) -- +(\textwidth,0);
 \end{tikzpicture}
 %\end{figure*}
