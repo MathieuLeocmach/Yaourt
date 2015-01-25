@@ -68,7 +68,7 @@ The slow acidification of a protein (sodium caseinate) solution down to the isoe
 
 
 
-Figure~\ref{fig:sideview}a shows confocal measurements in the case where both top and bottom walls have been coated. Starting from a homogeneous solution (first panel Fig.~\ref{fig:sideview}a where black margins correspond to the glass walls), the gel forms and simultaneously expels solvent on both sides. Since two interfaces clearly separate a protein-rich phase and a protein-poor phase, we model the resulting situation as a porous elastic film of thickness $h$ sandwiched between two viscous layers of respective thicknesses $H_1$ and $H_2$ in a cell of thickness $e=H_1+h+H_2$ (Fig.~\ref{fig:sideview}b). Wavelength being much larger than thickness, we can assume small strain in the film and lubrication in the layers. Relative increase in protein concentration during syn\ae{}resis can be deduced from the brighter fluorescence in the second panel of Fig.~\ref{fig:sideview}a. Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume (Fig.~\ref{fig:sideview}c) and excess surface area of the gel film (Fig.~\ref{fig:sideview}d). This confirms that the instability is due to swelling.
+Figure~\ref{fig:sideview}a shows confocal measurements in the case where both top and bottom walls have been coated. Starting from a homogeneous solution (first panel Fig.~\ref{fig:sideview}a where black margins correspond to the glass walls), the gel forms and simultaneously expels solvent on both sides. Since two interfaces clearly separate a protein-rich phase and a protein-poor phase, we model the resulting situation as a porous elastic film of thickness $h$ sandwiched between two viscous layers of respective thicknesses $H_1$ and $H_2$ in a cell of thickness $e=H_1+h+H_2$ (Fig.~\ref{fig:sideview}b). Wavelength being much larger than thickness, we can assume small strain in the film and lubrication in the layers. Relative increase in protein concentration during syn\ae{}resis can be deduced from the brighter fluorescence in the second panel of Fig.~\ref{fig:sideview}a. Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume (Fig.~\ref{fig:sideview}c) and excess surface area of the gel film (Fig.~\ref{fig:sideview}d) (see Supplementary Methods). This confirms that the instability is due to swelling.
 
 Note that adhesion to side walls is necessary to prevent total syn\ae{}resis and thus allow subsequent planar stresses to develop while swelling: the only situation were wrinkling was observed is when both top and bottom walls are coated. We also confirmed that at any given point in time and space the thickness $h$ of the film of gel is homogeneous. The contrast in transmission microscopy (Fig.~\ref{fig:dynamics}a) is therefore not due to thickness inhomogeneities but to altitude gradients. Indeed the length of the optical path along the vertical direction $z$ through the gel phase is larger where the gel makes a slope compared to a flat situation, as indicated by the yellow vertical lines in Fig.~\ref{fig:sideview}b.
 
@@ -202,11 +202,11 @@ Correspondence and requests for materials should be addressed to TG (\href{mailt
 
 \subsection*{Microstructure measurement}
 
-\begin{figure*}
+\begin{figure}
 	\includegraphics{nonmonotonic}%
-	\caption{Microstructure evolution. (a) Details of confocal images in fully adhesive conditions (left) and with no adhesion on top (right). Scale bar is \SI{10}{\micro\metre}. Arrows indicates the pore size. (b) Corresponding Fourier spectra in second situation and same times. Lines are fits by Eq.~\ref{eq:fractalS}. (c-d) Evolution of susceptibility and fractal dimension in both situations (black line and orange dashed line respectively). Symbols indicates the times of the images in (a).}%
+	\caption{Microstructure evolution. (a) Details of confocal images in fully adhesive conditions (top row) and with no adhesion on top (bottom row). Scale bar is \SI{10}{\micro\metre}. Arrows indicates the pore size. (b) Corresponding Fourier spectra in second situation and same times. Lines are fits by Eq.~\ref{eq:fractalS}. (c-d) Evolution of susceptibility and fractal dimension in both situations (black line and orange dashed line respectively). Symbols indicates the times of the images in (a).}%
 	\label{fig:nonmonotonic}%
-\end{figure*}
+\end{figure}
 
 To follow the evolution of the microstructure of the gel, we acquired slices of $(\SI{2048}{px})^2$ with pixels of \SI{98}{\nano\metre} (Fig.~\ref{fig:nonmonotonic}a). After Hann windowing we performed Fourier transform and radially averaged the resulting spectrum to obtain $I(q)$ (see Fig.~\ref{fig:nonmonotonic}b) that was fitted by the following fractal form:
 \begin{equation}
@@ -221,25 +221,7 @@ In situation (i), the gel keeps its topology throughout the gelation and over ac
 
 $\xi$ was also systematically measured in the same way at the end of each wrinkling experiment and reported in table~\ref{tab:data}. %Final fractal dimension was always close to 2 within error bars. Comparing $\chi$ across different setting of the microscope is not relevant.
 
-\subsection*{Permeability measurements}
-\begin{figure*}
-	\includegraphics{permeability}
-	\caption{Permeability measurements. (a) Schematic representation of the experiment. (b-c) Evolution of the height of the interface in tube 1 relative to the final height in tube 2. Black line is the best exponential fit $Ae^{-t/\tau}$. (b) Gel is 4\%w casein, 4\%w GDL in water, $H=\SI{2.3}{\milli\metre}$ and $\tau=\SI{57}{\minute}$. (c) Same as (b) for a 50\%w glycerol--water mixture, $H=\SI{4}{\milli\metre}$ and $\tau=\SI{100}{\hour}$.}
-	\label{fig:permeability}
-\end{figure*}
 
-To measure the permeability of our gels, we adapt a method from \cite{VanDijk1986}. First, the gel of interest is formed at the lower extremity of a thin glass tube. The tube is held vertical in a water saturated atmosphere to prevent evaporation until the pH has reached the isoelectric point ($\approx\SI{1}{\hour}$ for our most common composition). Then, we dip the tube in a bath of acetic acid/acetate buffer at pH=4. The buffer has the same glycerol content as the gel solvent, so that the viscosity is constant throughout the experiment. Alongside the first tube (see Fig.~\ref{fig:permeability} a), we dip a second identical tube with no gel in it. A webcam (Logitech Webcam Pro 9000) captures the rise of the liquid in each tube. Since the liquid height in tube 2 reaches its final value quickly, we measure directly $z_\infty-z(t)$.
-
-Darcy law through the gel of permeability $\alpha$ and height $H$ reads 
-\begin{equation}
-\frac{dz}{dt} = \frac{\alpha}{\eta}\frac{\Delta P}{H}
-\end{equation}
-where $\Delta P=\rho g(z_\infty-z(t))$ is the hydrostatic pressure drop through the gel. We use tabulated values of water-glycerol mixtures for the density $\rho$ and viscosity $\eta$ of the buffer. We can thus write
-\begin{equation}
-\frac{d(z-z_\infty)}{dt} = -\frac{z-z_\infty}{\tau}\text{, with\,} \tau = \frac{\eta H}{\alpha \rho g}.
-\end{equation}
-
-By fitting $z(t)-z_\infty$ to an exponential (see Fig.~\ref{fig:permeability} b-c), we obtain $\tau$ and thus $\alpha$. Note that even with $H$ of the order of a few millimeters high glycerol contents yield $\tau\approx \SI{100}{\hour}$ due both to high viscosity and low permeability. Obtaining $z_\infty$ without tube 2 would be time prohibitive.
 
 \subsection*{Confocal images processing}
 
@@ -249,16 +231,7 @@ We first denoise each plane by a short-range Gaussian blur ($\sigma=\SI{2}{px}\l
 
 From these data, we obtain for each stack the volume and thickness of the gel phase, area of the midsurface and peak-to-peak amplitude. Velocity is obtained by time differentiation. Once the instability has saturated on the top and bottom walls of the cell, peaks in the histograms of $z_\text{top}$ and $z_\text{bottom}$ yield the measure of the positions of both walls, thus of the cell thickness $e$ and retrospectively of $H_1$ and $H_2$.
 
-\subsection*{Characteristic time measurement}
-\begin{figure}
-	\includegraphics{growth}
-	\caption{Growth of the instability. (a) Evolution of the gel velocity $v$ averaged over the whole surface. Inset: Evolution of the peak-to-peak amplitude $A(t)$ in semi logarithmic scale. Black line is the best exponential fit with $\tau=\SI{90}{\second}$. (b) Evolution of the bottom profile of the gel from onset of instability (yellow) to contact to both walls (brown). Note that the longitudinal size of the blister evolves in this regime. Thick black curve is the profile at much longer times. Note that the blister foot, highlighted by the orange vertical line, has not moved since contact. \seb{\it j'ai plusieurs petites questions par rapport a cette figure.}}
-	\label{fig:growth}
-\end{figure}
 
-In most of our samples it was possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both the highest and lowest points of the surface. Even when valid, such a local measurement is rather noisy and we prefer to focus on the measure of the vertical velocity $v$ of the gel that can be integrated over the whole field of view.
-
-We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls and $v_\text{max}$ is the maximum velocity of the gel. We used this approximation of $\tau$ for all our samples. This is consistent with the fact that the blister size ($\propto\lambda$) does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is set when $A(t) = A_\text{max}$.
 
 \subsection*{Mixed Darcy--Poiseuille model}
 
@@ -403,20 +376,51 @@ and we minimize this expression numerically.
 
 \subsection*{Wavelength measurement}
 
-\begin{figure*}
-	\includegraphics{patterns}
-	\caption{Patterns corresponding to the samples of Table~\ref{tab:data} of the main text. (a-d) increasing cell thickness. (e-f) larger solid content. (g-i) increasing glycerol content. All pictures are stitching of fluorescent microscopy images except (c,e) which are details of reflected light macroscope images. Scale is common to all panels (scale bar \SI{1}{\milli\metre}). Length of arrows correspond to the measured primary wavelength.}
-	\label{fig:patterns}
-\end{figure*}
-
 \begin{figure}
 	\includegraphics{generations}%
 	\caption{Fourier spectra of binary altitudes of Main Fig.~\ref{fig:dynamics}a corresponding to primary, secondary and tertiary patterns. Inset: reconstructed binary altitudes at time \SI{2}{\hour}. Scale bars is \SI{1}{\milli\metre}.}%
 	\label{fig:generations}%
 \end{figure}
 
+\begin{figure*}
+	\includegraphics{patterns}
+	\caption{Patterns corresponding to the samples of Table~\ref{tab:data} of the main text. (a-d) increasing cell thickness. (e-f) larger solid content. (g-i) increasing glycerol content. All pictures are stitching of fluorescent microscopy images except (c,e) which are details of reflected light macroscope images. Scale is common to all panels (scale bar \SI{1}{\milli\metre}). Length of arrows correspond to the measured primary wavelength.}
+	\label{fig:patterns}
+\end{figure*}
+
 To measure wrinkle wavelength, we used large field pictures of the final state. These picture were obtained either by stitching fluorescent microscopy images obtained at 10x magnification (Fig.~\ref{fig:patterns} except c and e), or by transmitted or reflected light macroscope at magnifications ranging from 1x to 6x (Fig.~\ref{fig:patterns}c and e). The contrast in such pictures is a measure of the magnitude of the altitude gradient of the gel film. White lines in fluorescence and reflection (respectively black lines in transmission) denote a sharp transition between two extreme altitudes (on top wall or on bottom wall). It is thus possible to reconstruct a binary picture of the pattern (inset of Fig.~\ref{fig:generations}). Furthermore since the shape and size of a given generation of pattern do not change after formation, it is possible to revert the final picture to pure first generation.
 
 Figure~\ref{fig:generations} shows Fourier spectra of binarised altitudes at different times. When only the first generation pattern is present a peak clearly indicates the dominant mode. When second generation has appeared, the dominant wavelength is halved and the peak much weaker. This allows us to use secondary pattern is our analysis by setting their wavelength at half of the primary wavelength. Further generations do not seem to appear simultaneously and the peak is weak and broad. This could be a signature of a transition to chaos of a non-linear oscillator~\cite{Brau2011}.
+
+\subsection*{Characteristic time measurement}
+\begin{figure}
+	\includegraphics{growth}
+	\caption{Growth of the instability. (a) Evolution of the gel velocity $v$ averaged over the whole surface. Inset: Evolution of the peak-to-peak amplitude $A(t)$ in semi logarithmic scale. Black line is the best exponential fit with $\tau=\SI{90}{\second}$. (b) Evolution of the bottom profile of the gel from onset of instability (yellow) to contact to both walls (brown). Note that the longitudinal size of the blister evolves in this regime. Thick black curve is the profile at much longer times. Note that the blister foot, highlighted by the orange vertical line, has not moved since contact. \seb{\it j'ai plusieurs petites questions par rapport a cette figure.}}
+	\label{fig:growth}
+\end{figure}
+
+In most of our samples it was possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both the highest and lowest points of the surface. Even when valid, such a local measurement is rather noisy and we prefer to focus on the measure of the vertical velocity $v$ of the gel that can be integrated over the whole field of view.
+
+We note that when both measurements were available (as in Fig.~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ was about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls and $v_\text{max}$ is the maximum velocity of the gel. We used this approximation of $\tau$ for all our samples. This is consistent with the fact that the blister size ($\propto\lambda$) does not evolve after contact (see Fig.~\ref{fig:growth}b), thus the kinetic wavelength is set when $A(t) = A_\text{max}$.
+
+\subsection*{Permeability measurements}
+\begin{figure*}
+	\includegraphics{permeability}
+	\caption{Permeability measurements. (a) Schematic representation of the experiment. (b-c) Evolution of the height of the interface in tube 1 relative to the final height in tube 2. Black line is the best exponential fit $Ae^{-t/\tau}$. (b) Gel is 4\%w casein, 4\%w GDL in water, $H=\SI{2.3}{\milli\metre}$ and $\tau=\SI{57}{\minute}$. (c) Same as (b) for a 50\%w glycerol--water mixture, $H=\SI{4}{\milli\metre}$ and $\tau=\SI{100}{\hour}$.}
+	\label{fig:permeability}
+\end{figure*}
+
+To measure the permeability of our gels, we adapt a method from \cite{VanDijk1986}. First, the gel of interest is formed at the lower extremity of a thin glass tube. The tube is held vertical in a water saturated atmosphere to prevent evaporation until the pH has reached the isoelectric point ($\approx\SI{1}{\hour}$ for our most common composition). Then, we dip the tube in a bath of acetic acid/acetate buffer at pH=4. The buffer has the same glycerol content as the gel solvent, so that the viscosity is constant throughout the experiment. Alongside the first tube (see Fig.~\ref{fig:permeability} a), we dip a second identical tube with no gel in it. A webcam (Logitech Webcam Pro 9000) captures the rise of the liquid in each tube. Since the liquid height in tube 2 reaches its final value quickly, we measure directly $z_\infty-z(t)$.
+
+Darcy law through the gel of permeability $\alpha$ and height $H$ reads 
+\begin{equation}
+\frac{dz}{dt} = \frac{\alpha}{\eta}\frac{\Delta P}{H}
+\end{equation}
+where $\Delta P=\rho g(z_\infty-z(t))$ is the hydrostatic pressure drop through the gel. We use tabulated values of water-glycerol mixtures for the density $\rho$ and viscosity $\eta$ of the buffer. We can thus write
+\begin{equation}
+\frac{d(z-z_\infty)}{dt} = -\frac{z-z_\infty}{\tau}\text{, with\,} \tau = \frac{\eta H}{\alpha \rho g}.
+\end{equation}
+
+By fitting $z(t)-z_\infty$ to an exponential (see Fig.~\ref{fig:permeability} b-c), we obtain $\tau$ and thus $\alpha$. Note that even with $H$ of the order of a few millimeters high glycerol contents yield $\tau\approx \SI{100}{\hour}$ due both to high viscosity and low permeability. Obtaining $z_\infty$ without tube 2 would be time prohibitive.
 
 \end{document}
