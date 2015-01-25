@@ -1,4 +1,4 @@
-%\begin{figure*}
+%\begin{figure}
 \begin{tikzpicture}[every axis/.style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}}]
 
 \begin{groupplot}[
@@ -7,9 +7,8 @@
 			vertical sep=0.5em,
 			x descriptions at=edge bottom,
 		},
-	scale only axis,
-	height=4.25\baselineskip,
-	width=\textwidth-32\baselineskip,
+	height=8.5\baselineskip,
+	width=\columnwidth-9.5\baselineskip,
 	xlabel={time (\si{\hour})},
 	xmin=0,xmax=3, ymin=0,
 	]
@@ -26,45 +25,77 @@
 	\addplot[only marks,mark=x,Accent1] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{3}}]{ech25_pore_size_toi.txt};
 \end{groupplot}
 
- \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] (m) at ($(g c1r1.right of north east)+(-\textwidth,0)$){
-%16 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t02.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t05.jpg}\\
-18 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t03.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t06.jpg}\\
-22 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t05.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t08.jpg}\\
- %\includegraphics[width=5\baselineskip]{ech23_x63_crop_t09.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t12.jpg}\\
- 47 min&\includegraphics[width=5\baselineskip]{ech23_x63_crop_t17.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t20.jpg}\\
-2h15& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t59.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t62.jpg}\\
-&stick&coated top\\
+ \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west, column 1/.style={minimum width=\columnwidth-20.8\baselineskip}] (m) at ($(g c1r1.right of north east)+(-\columnwidth,6.5\baselineskip)$){
+\hspace{1.6\baselineskip}\rotatebox{90}{stick} & 
+\includegraphics[width=5\baselineskip]{ech23_x63_crop_t03.jpg}& 
+\includegraphics[width=5\baselineskip]{ech23_x63_crop_t05.jpg}& 
+\includegraphics[width=5\baselineskip]{ech23_x63_crop_t17.jpg}& 
+\includegraphics[width=5\baselineskip]{ech23_x63_crop_t59.jpg}\\
+\hspace{0.8\baselineskip}\rotatebox{90}{\parbox[c]{2.5\baselineskip}{coated top}}&
+\includegraphics[width=5\baselineskip]{ech25_x63_crop_t06.jpg}&
+\includegraphics[width=5\baselineskip]{ech25_x63_crop_t08.jpg}&
+\includegraphics[width=5\baselineskip]{ech25_x63_crop_t20.jpg}&
+\includegraphics[width=5\baselineskip]{ech25_x63_crop_t62.jpg}\\
+& 18 min&22 min&47 min&2h15\\
+% %16 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t02.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t05.jpg}\\
+% 18 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t03.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t06.jpg}\\
+% 22 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t05.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t08.jpg}\\
+%  %\includegraphics[width=5\baselineskip]{ech23_x63_crop_t09.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t12.jpg}\\
+%  47 min&\includegraphics[width=5\baselineskip]{ech23_x63_crop_t17.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t20.jpg}\\
+% 2h15& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t59.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t62.jpg}\\
+% &stick&coated top\\
 };
 
 \newdimen\mydima
 \newdimen\mydimb
-\pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{west}}
-\pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
+\pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{north west}}
+\pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{south east}}
 \pgfmathsetlength{\mydima}{\mydimb-\mydima}
 %scalebar 10um
-\draw[line width=0.3em] (m-4-3.south east) ++(-0.1\mydima,0.1\mydima) -- +(-0.398\mydima,0);
+\draw[line width=0.3em] (m-2-5.south east) ++(-0.1\mydima,0.1\mydima) -- +(-0.398\mydima,0);
 
 %xis
 \begin{scope}[<->,gray]
+%no picture rotation
+% \draw (m-1-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.213447\mydima);
+% \draw (m-2-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.264612\mydima);
+% \draw (m-3-2.south west) ++(0.55\mydima,0.38\mydima) -- +(0:0.208163\mydima);
+% \draw (m-4-2.south west) ++(0.6\mydima,0.38\mydima) -- +(0:0.145926\mydima);
+% \draw (m-1-3.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.19632\mydima);
+% \draw (m-2-3.south west) ++(0.05\mydima,0.1\mydima) -- +(0:0.185374\mydima);
+% \draw (m-3-3.south west) ++(0.15\mydima,0.225\mydima) -- +(0:0.156326\mydima);
+% \draw (m-4-3.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.138075\mydima);
+%no picture rotation
 \draw (m-1-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.213447\mydima);
-\draw (m-2-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.264612\mydima);
-\draw (m-3-2.south west) ++(0.55\mydima,0.38\mydima) -- +(0:0.208163\mydima);
-\draw (m-4-2.south west) ++(0.6\mydima,0.38\mydima) -- +(0:0.145926\mydima);
-\draw (m-1-3.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.19632\mydima);
+\draw (m-1-3.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.264612\mydima);
+\draw (m-1-4.south west) ++(0.55\mydima,0.38\mydima) -- +(0:0.208163\mydima);
+\draw (m-1-5.south west) ++(0.6\mydima,0.38\mydima) -- +(0:0.145926\mydima);
+\draw (m-2-2.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.19632\mydima);
 \draw (m-2-3.south west) ++(0.05\mydima,0.1\mydima) -- +(0:0.185374\mydima);
-\draw (m-3-3.south west) ++(0.15\mydima,0.225\mydima) -- +(0:0.156326\mydima);
-\draw (m-4-3.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.138075\mydima);
+\draw (m-2-4.south west) ++(0.15\mydima,0.225\mydima) -- +(0:0.156326\mydima);
+\draw (m-2-5.south west) ++(0.2\mydima,0.1\mydima) -- +(0:0.138075\mydima);
+%with picture rotation
+% \draw (m-1-2.south west) ++(-0.1\mydima,-0.5\mydima) -- +(-90:0.213447\mydima);
+% \draw (m-1-3.south west) ++(-0.1\mydima,-0.5\mydima) -- +(-90:0.264612\mydima);
+% \draw (m-1-4.south west) ++(-0.12\mydima,-0.55\mydima) -- +(-90:0.208163\mydima);
+% \draw (m-1-5.south west) ++(-0.12\mydima,-0.6\mydima) -- +(-90:0.145926\mydima);
+% \draw (m-2-2.south west) ++(-0.4\mydima,-0.2\mydima) -- +(-90:0.19632\mydima);
+% \draw (m-2-3.south west) ++(-0.4\mydima, -0.05\mydima) -- +(-90:0.185374\mydima);
+% \draw (m-2-4.south west) ++(-0.275\mydima,-0.15\mydima) -- +(-90:0.156326\mydima);
+% \draw (m-2-5.south west) ++(-0.4\mydima, -0.2\mydima) -- +(-90:0.138075\mydima);
 \end{scope}
-%\draw (m.north west) rectangle ++(\textwidth,-\textheight);
+%\draw (m.north west) rectangle ++(\columnwidth,-\textheight);
 
 \begin{loglogaxis}[
 	name={Sq1},
 	anchor=left of north west,
-	at={($(m.north east)+(1em,0)$)},
+	at={($(m.south west |- g c1r1.north)$)},
 	scale only axis,
-	height=9\baselineskip,
+	height=8.8\baselineskip,
+	width=\columnwidth-16\baselineskip,
 	ymin=0.1, ymax=13,
 	xlabel={$q$ (\si{\per\micro\metre})},
+	ytick={0.1,1,10}, yticklabels={0.1,1,10},
 	ylabel={$|I(q)|$ (a.u.)},
 	]
 	 \begin{scope}[every axis plot post/.append style={only marks, mark options={scale=0.3}}]
@@ -93,4 +124,4 @@
 \end{scope}
 %\draw (m.south west) -- +(\textwidth,0);
 \end{tikzpicture}
-%\end{figure*}
+%\end{figure}
