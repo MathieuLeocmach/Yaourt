@@ -1,7 +1,30 @@
-\begin{figure*}
+%\begin{figure*}
 \begin{tikzpicture}[every axis/.style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}}]
 
- \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] (m){
+\begin{groupplot}[
+	group style={
+			group name=g, group size=1 by 2,
+			vertical sep=0.5em,
+			x descriptions at=edge bottom,
+		},
+	height=8.5\baselineskip,
+	width=0.4\textwidth,
+	xlabel={time (\si{\hour})},
+	xmin=0,xmax=3, ymin=0,
+	cycle list name=linestyles,
+	no marks,
+	]
+\nextgroupplot[ylabel={$\chi$ (a.u.)}, restrict y to domain=0:1,]
+\begin{scope}[every node/.style={anchor=base west, font=\scriptsize}]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{2}/4096}]{ech23_pore_size.txt};
+	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{2}/4096}]{ech25_pore_size.txt};
+\end{scope}
+\nextgroupplot[ylabel={$d$}, restrict y to domain=0:3,]
+\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{3}}]{ech23_pore_size.txt};
+	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{3}}]{ech25_pore_size.txt};
+\end{groupplot}
+
+ \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] (m) at ($(g c1r1.right of north east)+(-\textwidth,0)$){
 %16 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t02.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t05.jpg}\\
 18 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t03.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t06.jpg}\\
 22 min& \includegraphics[width=5\baselineskip]{ech23_x63_crop_t05.jpg} & \includegraphics[width=5\baselineskip]{ech25_x63_crop_t08.jpg}\\
@@ -11,12 +34,12 @@
 &stick&coated top\\
 };
 
-\draw (m.north west) rectangle ++(\textwidth,-\textheight);
+%\draw (m.north west) rectangle ++(\textwidth,-\textheight);
 
 \begin{loglogaxis}[
 	name={Sq1},
 	anchor=left of north west,
-	at={(m.north east)},
+	at={($(m.north east)+(1em,0)$)},
 	height=13.4\baselineskip,
 	ymin=0.1, ymax=13,
 	xlabel={$q$ (\si{\per\micro\metre})},
@@ -46,108 +69,5 @@
  	\addplot+[domain=0.1:8] {2.54109/(1+(0.2995*x)^2)^1.20665};
 	
  \end{loglogaxis}
-
-% \begin{groupplot}[
-% 	group style={
-% 			group name=g, group size=1 by 3,
-% 			vertical sep=0.5em,
-% 			xticklabels at=edge bottom,
-% 		},
-% 	height=7.5\baselineskip,
-% 	width=0.3\textwidth,
-% 	xmin=0, xmax=17, ymin=0,
-% 	cycle list name=linestyles,
-% 	no marks,
-% 	]
-% \nextgroupplot[ylabel={$\xi$ (\si{\micro\metre})}]
-% \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}]{ech17_pore_size.txt};
-% \addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}]{ech19_pore_size.txt};
-% \nextgroupplot[ylabel={$\chi$ (a.u.)}]
-% \begin{scope}[every node/.style={anchor=base west, font=\scriptsize}]
-% \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e7}]{ech17_pore_size.txt} node (l1) {1\%};
-% \addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e7}]{ech19_pore_size.txt} node at ($(l1.base west)-(axis cs:0,1.8)$) {4\%};
-% \end{scope}
-% \nextgroupplot[xlabel={time (\si{\hour})}, ylabel={$\gamma$}]
-% \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y index=3]{ech17_pore_size.txt};
-% \addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}, y index=3]{ech19_pore_size.txt};
-% \end{groupplot}
-% 
-% 
-% \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] 
-% at ($(g c1r1.right of north east)+(-\textwidth,0)$)
-% (m) {
-% \SI{5}{\minute} & \SI{27}{\minute} & \SI{49}{\minute} & \SI{8}{\hour}\\
-% \includegraphics[width=5\baselineskip]{ech19_t001.jpg}&
-% \includegraphics[width=5\baselineskip]{ech19_t043.jpg}&
-% \includegraphics[width=5\baselineskip]{ech19_t085.jpg}&
-% \includegraphics[width=5\baselineskip]{ech19_t132.jpg}\\
-% };
-% \draw[ultra thick, white] (m-2-1.south east) ++(-0.5\baselineskip,1em) -- +(-4\baselineskip,0);
-% 
-% \newdimen\mydima
-% \newdimen\mydimb
-% \pgfextracty{\mydima}{\pgfpointanchor{g c1r1}{north}}
-% \pgfextracty{\mydimb}{\pgfpointanchor{g c1r3}{south}}
-% \begin{loglogaxis}[
-% 	name=Sq,
-% 	scale only axis,
-% 	width=0.24\textwidth,
-% 	height=\mydima-\mydimb,
-% 	anchor=left of north west,
-% 	at={(m.north east)},
-% 	cycle list name=earthy,
-% 	xlabel={$q$ (\si{\per\micro\metre})},
-% 	ylabel={$S(q)$ (a.u.)},
-% 	domain=0.1:6.1,
-% 	xmin=0.03, xmax=1e3,
-% 	ymin=1e5, ymax=6e7,
-% 	clip mode=individual,
-% 	]
-% \begin{scope}[
-% 	every axis plot post/.append style={only marks, mark options={scale=0.3}},
-% ]
-% \addplot table{ech19_t016.Sq};
-% \addplot table{ech19_t018.Sq};
-% \addplot table{ech19_t020.Sq};
-% \addplot table{ech19_t022.Sq};
-% \addplot table{ech19_t024.Sq};
-% \addplot table{ech19_t026.Sq};
-% \addplot table{ech19_t028.Sq};
-% 
-% \pgfplotsset{cycle list shift=-7}
-% \addplot table[x expr={100*\thisrowno{0}}]{ech19_t049.Sq};
-% \addplot table[x expr={100*\thisrowno{0}}]{ech19_t091.Sq};
-% \addplot table[x expr={100*\thisrowno{0}}]{ech19_t095.Sq};
-% \addplot table[x expr={100*\thisrowno{0}}]{ech19_t110.Sq};
-% \addplot table[x expr={100*\thisrowno{0}}]{ech19_t132.Sq};
-% %\pgfplotsset{cycle list shift=2}
-% \addplot table[x expr={100*\thisrowno{0}}]{ech19_t183.Sq};
-% \end{scope}
-% \pgfplotsset{cycle list shift=-5}
-% \addplot+[domain=0.1:2.37] {1.54042e+06/(1+(0.830078*x)^(2.49725)} coordinate[pos=0] (t0);
-% \addplot+[domain=0.1:3.21] {3.18333e+06/(1+(0.674366*x)^(3.20292)};
-% \addplot+[domain=0.1:4.26] {7.33285e+06/(1+(0.682842*x)^(3.37189)};
-% \addplot+[domain=0.1:5.04] {1.30025e+07/(1+(0.683873*x)^(3.43697)};
-% \addplot+[domain=0.1:5.67] {2.02087e+07/(1+(0.681114*x)^(3.55135)};
-% \addplot+[domain=0.1:5.88] {2.69252e+07/(1+(0.674936*x)^(3.65006)};
-% \addplot+[domain=0.1:6.19] {3.16555e+07/(1+(0.67775*x)^(3.68483)} coordinate[pos=0] (t1);
-% 
-% \pgfplotsset{cycle list shift=-4}
-% \addplot+[domain=10:659.97] {3.95386e+07/(1+(0.0064764*x)^(3.88347)} coordinate[pos=0] (t2);
-% \addplot+[domain=10:607.05] {2.28285e+07/(1+(0.00584224*x)^(3.83587)};
-% \addplot+[domain=10:526.11] {1.43395e+07/(1+(0.00654421*x)^(3.73896)};
-% \addplot+[domain=10:454.51] {9.58685e+06/(1+(0.00865948*x)^(2.84983)};
-% \addplot+[domain=10:392.25] {6.8931e+06/(1+(0.00946977*x)^(2.56298)};
-% \addplot+[domain=10:373.57] {5.5388e+06/(1+(0.00950251*x)^(2.52804)} coordinate[pos=0] (t3);
-% \draw[->, ultra thick] (t0) -- (t1) node[midway,rotate=90, above, font=\footnotesize] {time};
-% \draw[->, ultra thick] (t2) -- (t3) node[midway,rotate=90, above, font=\footnotesize] {time};
-% \end{loglogaxis}
-% \begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
-% \node[white] at (m-2-1.north west) {(a)};
-% \node[anchor=north east] at (Sq.north east) {(b)};
-% \node[anchor=east] at (g c1r1.east) {(c)};
-% \node[anchor=east] at (g c1r2.east) {(d)};
-% \node[anchor=south east] at (g c1r3.south east) {(e)};
-% \end{scope}
 \end{tikzpicture}
-\end{figure*}
+%\end{figure*}
