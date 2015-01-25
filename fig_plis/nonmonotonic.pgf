@@ -1,4 +1,4 @@
-\begin{figure*}
+%\begin{figure*}
 \begin{tikzpicture}[every axis/.style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}}]
 
 \begin{groupplot}[
@@ -64,29 +64,22 @@
 	ymin=0.1, ymax=13,
 	xlabel={$q$ (\si{\per\micro\metre})},
 	ylabel={$|I(q)|$ (a.u.)},
-	cycle list name=earthy,
 	]
-	 \begin{scope}[
-	every axis plot post/.append style={only marks, mark options={scale=0.3}},
-]
-	\addplot file{ech25_t06.Sq};
-	\pgfplotsset{cycle list shift=1}
-	\addplot file{ech25_t08.Sq};
-	\pgfplotsset{cycle list shift=2}
-	\addplot file{ech25_t20.Sq};
-	\pgfplotsset{cycle list shift=3}
-	\addplot file{ech25_t62.Sq};
+	 \begin{scope}[every axis plot post/.append style={only marks, mark options={scale=0.3}}]
+	\addplot[red!50!black] file{ech25_t06.Sq};
+	\addplot[red] file{ech25_t08.Sq};
+	\addplot[red!40!yellow] file{ech25_t20.Sq};
+	\addplot[red!10!yellow] file{ech25_t62.Sq};
 	\end{scope}
-	\pgfplotsset{cycle list shift=-4}
+	\begin{scope}[every axis plot/.append style={no marks}]
 	%\addplot+[domain=0.1:10] {6.04228/(1+(889.042*x)^2)^0.190794};
-	\addplot+[domain=0.1:12] {5.14684/(1+(0.383521*x)^2)^1.03705};
-	\pgfplotsset{cycle list shift=-3}
- 	\addplot+[domain=0.1:11] {4.15863/(1+(0.366185*x)^2)^1.05423};
-	\pgfplotsset{cycle list shift=-2}
+	\addplot[domain=0.1:12,red!50!black] {5.14684/(1+(0.383521*x)^2)^1.03705};
+ 	\addplot[domain=0.1:11, red] {4.15863/(1+(0.366185*x)^2)^1.05423};
 % 	%\addplot+[domain=0.1:2.37] {3.59144/(1+(0.346867*x)^2)^1.07921};
- 	\addplot+[domain=0.1:10] {3.57687/(1+(0.324572*x)^2)^1.13359};
-	\pgfplotsset{cycle list shift=-1}
- 	\addplot+[domain=0.1:8] {2.54109/(1+(0.2995*x)^2)^1.20665};
+ 	\addplot[domain=0.1:10,red!40!yellow] {3.57687/(1+(0.324572*x)^2)^1.13359};
+ 	\addplot[domain=0.1:8,red!10!yellow] {2.54109/(1+(0.2995*x)^2)^1.20665};
+	\end{scope}
+	\draw[->] (axis cs:2,5) -- (axis cs:1.25,1.5) node[below]{$t$};
 	
  \end{loglogaxis}
 
@@ -97,4 +90,4 @@
 \node at (g c1r2.north east) {(d)};
 \end{scope}
 \end{tikzpicture}
-\end{figure*}
+%\end{figure*}
