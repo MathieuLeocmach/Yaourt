@@ -19,6 +19,10 @@
                 /pgf/number format/precision=2},
 		]
 	\addplot+[Accent1, mark options={fill=Accent1}] table[x expr={\thisrowno{0}/3600.+0.05}]{cas3p2_fluo0p8_GDL4.vel};
+	\draw[<-] (axis cs:0.28, 0.02) -- +(0,1em) node[right, rotate=90] {syn\ae{}resis};
+	\draw[<-] (axis cs:0.71, 0.055) -- +(0,1em) node[right, rotate=90] {secondary};
+	\draw[<-] (axis cs:0.45, 0.139) -- +(1em,0) node[right] {$v_\text{max}$};
+	\draw[<-] (axis cs:1.15, 0.012) -- +(0,1em) node[right, rotate=90] {tertiary};
 	
 	
 	\nextgroupplot[
@@ -44,7 +48,7 @@
 \begin{axis}[
 	anchor=north east,
 	at={($(g c1r1.north east)-(1em,1em)$)},
-	width=0.6\columnwidth,
+	width=0.55\columnwidth,
 	xlabel={time (\si{\minute})},
 	ylabel={$A(t)$ (\si{\micro\metre})},
 	ymode=log, ymin=5,
