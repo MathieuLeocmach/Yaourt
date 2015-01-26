@@ -55,7 +55,7 @@
 \draw[line width=0.3em] (m-2-5.south east) ++(-0.1\mydima,0.1\mydima) -- +(-0.398\mydima,0);
 
 %xis
-\begin{scope}[<->,gray]
+\begin{scope}[<->,cyan, line width=0.1em]
 %no picture rotation
 % \draw (m-1-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.213447\mydima);
 % \draw (m-2-2.south west) ++(0.5\mydima,0.4\mydima) -- +(0:0.264612\mydima);
