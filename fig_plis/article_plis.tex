@@ -164,7 +164,7 @@ To prevent adsorption of caseins to surfaces, microscope slides and cover slips 
 Sodium caseinate (Firmenich) was labelled with Dylight~550 NHS ESTER (Thermo Scientific). Excess dye was removed by centrifugation. Unlabelled sodium caseinate powder was dissolved in deionised water (or water--glycerol mixture). To induce gelation glucono-$\delta$-lactone (GDL) in powder (Firmenich) was added to the solution. \SI{45}{\micro\litre} of this solution was immediately mixed with \SI{5}{\micro\litre} of labelled caseinate solution, stirred and injected in the microscopy cell, immediately sealed using ultraviolet-cured glue (Norland Optical) and placed under the microscope before gelation could take place. 
 3D data were collected on a Zeiss LSM510 confocal microscope, using \SI{532}{\nano\meter} laser excitation. We used either a 10x (air) lens to measure the geometry of wrinkling (see Supplementary Material) or a 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures, obtained either by stitching fluorescent microscopy images (Nikon Eclipse Ti) or by transmitted/reflected light macroscope (Nikon SMZ745T/Leica DMS1000) were used to measure the wavelength of the primary pattern (Supplementary Figures~\ref{fig:patterns} and \ref{fig:generations}). Secondary pattern wavelength is set to half of the primary wavelength, according to Supplementary Fig.~\ref{fig:generations}.
 Data shown in Fig.~\ref{fig:acidification} a-b were obtained with a SevenCompact pH-meter (Mettler Toledo) and an MCR 301 rheometer (Anton Paar).
-Permeability is measured using a protocol found in \cite{VanDijk1986} (see Materials and Supplementary Fig.~\ref{fig:permeability}).
+Permeability is measured using a protocol found in \cite{VanDijk1986} (see Supplementary Method and Supplementary Fig.~\ref{fig:permeability}).
 
 \bibliographystyle{naturemag3}
 \bibliography{Yaourt}
@@ -203,7 +203,7 @@ Correspondence and requests for materials should be addressed to TG (\href{mailt
 
 \begin{figure}[b]
 	\includegraphics{nonmonotonic}%
-	\caption{Microstructure evolution. (a) Details of confocal images in fully adhesive conditions (top row) and with no adhesion on top (bottom row). The scale bar is \SI{10}{\micro\metre}. Arrows indicates the pore size. (b) Corresponding Fourier spectra in second situation and same times. Lines are fits by Eq.~\ref{eq:fractalS}. (c-d) Evolution of susceptibility and fractal dimension in both situations (black line and orange dashed line respectively). Symbols indicates the times of the images in (a).}%
+	\caption{Microstructure evolution. (a) Details of confocal images in fully adhesive conditions (top row) and with no adhesion on top (bottom row). The scale bar is \SI{10}{\micro\metre}. Arrows indicates the pore size. (b) Corresponding Fourier spectra when no adhesion on top and same times. Lines are fits by Eq.~\ref{eq:fractalS}. (c-d) Evolution of susceptibility and fractal dimension in full adhesive (black line) and no adhesion on top (orange dashed line) situations. Symbols indicates the times of the images in (a).}%
 	\label{fig:nonmonotonic}%
 \end{figure}
 
@@ -212,7 +212,7 @@ To follow the evolution of the microstructure of the gel, we acquired slices of 
 I(q) = \frac{2\chi\Gamma(d)}{\left(1+\left((d+1)\xi q\right)^2\right)^{d/2}}
 \label{eq:fractalS}
 \end{equation}
-where the susceptibility $\chi$ is related to the fluorescence contrast between the network and the solvent, the cut off length $\xi$ corresponds to the largest pore size and $d$ is the fractal dimension. $\Gamma$ is the gamma function. 
+where the susceptibility $\chi$ is related to the fluorescence contrast between the network and the solvent, the cut off length $\xi$ corresponds to the largest pore size and $d$ is the fractal dimension. $\Gamma$ is the gamma function. Eq.~(\ref{eq:fractalS}) is a good approximation to the 2D Fourier transform of a fractal pair correlation function $g(r) \sim 1+ e^{-r/\xi} r^{d-2}$.
 
 Figure~\ref{fig:acidification}c of the main text and Supplementary Fig.~\ref{fig:nonmonotonic}c and d show the evolution of the fitting parameters in two different sets of boundary conditions: (i) complete adhesion of the gel on all walls, preventing syn\ae{}resis and swelling; (ii) complete adhesion except on the top wall, allowing syn\ae{}resis and swelling. The later situation is a proxy to the situation where we observe wrinkling, since it was necessary to keep the gel into the thin focal plane of the 63x objective lens of the confocal microscope. To do so, we coated only the microscope slide with acrylamide brush. The cover slip was cleaned but not coated, thus keeping strong adhesion on the side closer to the objective lens. Neither buckling nor wrinkling was detected in such configuration.
 
