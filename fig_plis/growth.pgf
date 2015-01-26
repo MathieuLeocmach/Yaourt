@@ -27,7 +27,7 @@
 	
 	\nextgroupplot[
 	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={$x$ (\si{\micro\metre})},
-	ymin=0, ymax=50, ylabel={$w(x,t)$ (\si{\micro\metre})},
+	ymin=0, ymax=50, ylabel={$z_\text{bottom}(x,t)$ (\si{\micro\metre})},
 	cycle list={
 		{Accent2}, 
 		{black!15!Accent2},
@@ -52,11 +52,11 @@
 	xlabel={time (\si{\minute})},
 	ylabel={$A(t)$ (\si{\micro\metre})},
 	ymode=log, ymin=5,
-	restrict x to domain=0:30,
+	restrict x to domain=17:30,
 	ytick={5,10, 20, 50}, yticklabels={5,10,20,50},
 	clip mode=individual,
 	]
-	\addplot+[Accent1, only marks,mark options={fill=Accent1}] table[x expr={\thisrowno{0}/60.+3}]{cas3p2_fluo0p8_GDL4.ampl};
+	\addplot+[Accent2, only marks,mark=+] table[x expr={\thisrowno{0}/60.+3}]{cas3p2_fluo0p8_GDL4.ampl};
 	%\addplot[black, no marks, domain=22:25] {exp((x-100)/120.*60)};
 	\addplot[black, no marks, domain=23:25.5] {exp((x-19.2)/1.5)};
 \end{axis}
