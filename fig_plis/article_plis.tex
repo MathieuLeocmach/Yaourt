@@ -243,9 +243,9 @@ The mechanical equilibrium of a plate of thickness $h$, Young modulus $E$ and Po
 \end{equation}
 where $w(x,t)$ is the deflection of the plate along $z$~\cite{Biot1957}. Since we deal with slow rates of deformation, inertia is neglected.
 
-We assume that the deflection can be decomposed in exponentially growing sinusoidal modes and we consider one of them $w(x,t) =  A_0 e^{t/\tau} \sin kx$ of characteristic time $\tau$ and wavevector $k$. Eq.~(\ref{eq:mecheq}) then reads
+We assume that the deflection can be decomposed in exponentially growing sinusoidal modes and we consider one of them $w(x,t) =  A_0 e^{t/\tau} \sin qx$ of characteristic time $\tau$ and wavevector $q$. Eq.~(\ref{eq:mecheq}) then reads
 \begin{equation}
-\left(\frac{1}{12} B h^3 k^4 - \sigma_\parallel h k^2\right)w = \sigma_\perp,
+\left(\frac{1}{12} B h^3 q^4 - \sigma_\parallel h q^2\right)w = \sigma_\perp,
 \label{eq:mecheqop}
 \end{equation}
 where $B=E/(1-\nu^2)$ is the modulus of the plate.
@@ -254,13 +254,13 @@ Following \cite{Biot1957}, we consider the case where the compression load $\sig
 
 \subsubsection*{Elastic film in an infinite elastic medium}
 
-In this framework, we recall here the well known case of an elastic film lying over an infinite elastic medium. The deformation of the substrate of modulus $B_s$ gives the transverse load as $\sigma_\perp = -k B_s w$, and thus the compression load writes
+In this framework, we recall here the well known case of an elastic film lying over an infinite elastic medium. The deformation of the substrate of modulus $B_s$ gives the transverse load as $\sigma_\perp = -q B_s w$, and thus the compression load writes
 \begin{equation}
-\sigma_\parallel = B \frac{h^2}{12} k^2 + \frac{B_s}{hk}.
+\sigma_\parallel = B \frac{h^2}{12} q^2 + \frac{B_s}{hq}.
 \label{eq:sigma0}
 \end{equation}
 
-Minimizing $\sigma_\parallel$ as a function of $k$ yields the well-known result $hk = \left(6B_s/B\right)^{1/3}$ \cite{Biot1957,Cerda2003} so that the dominant wavelength is 
+Minimizing $\sigma_\parallel$ as a function of $q$ yields the well-known result $hq = \left(6B_s/B\right)^{1/3}$ \cite{Biot1957,Cerda2003} so that the dominant wavelength is 
 \begin{equation}
 \lambda = 2\pi h \left(\frac{B}{6B_s}\right)^{1/3}.
 \label{eq:lambdaElEl}
@@ -281,19 +281,19 @@ Mass conservation writes
 \end{equation}
 Keeping only linear order terms, one gets
 \begin{equation}
-\frac{12\eta}{\tau} \frac{w}{H^3k^2} = -\sigma_\perp.
+\frac{12\eta}{\tau} \frac{w}{H^3q^2} = -\sigma_\perp.
 \label{eq:PoiseuilleLoad}
 \end{equation}
 
 Combining Eqs.~(\ref{eq:mecheqop}) and (\ref{eq:PoiseuilleLoad}), the compression load writes
 \begin{equation}
-\sigma_\parallel = \frac{1}{12}B h^2 k^2 + 12\frac{\eta}{\tau}\frac{1}{H^3 h k^4}
+\sigma_\parallel = \frac{1}{12}B h^2 q^2 + 12\frac{\eta}{\tau}\frac{1}{H^3 h q^4}
 \label{eq:sigma0P}
 \end{equation}
-and is minimized at $k_P$ such that
+and is minimized at $q_P$ such that
 \begin{equation}
-k_P^6 = 2\times 12^2 \frac{1}{h^3H^3\Upsilon},
-\label{eq:kP}
+q_P^6 = 2\times 12^2 \frac{1}{h^3H^3\Upsilon},
+\label{eq:qP}
 \end{equation}
 with $\Upsilon = B\tau/\eta$ the viscoelastic factor. The dominant wavelength for the Poiseuille model is thus
 \begin{equation}
@@ -302,7 +302,7 @@ with $\Upsilon = B\tau/\eta$ the viscoelastic factor. The dominant wavelength fo
 
 We note that the mode minimising $\sigma_\parallel$ is also maximising the growth rate
 \begin{equation}
-\frac{1}{\tau} = \frac{H^3k^2}{12^2\eta}\left(12\sigma_\parallel - Bh^3k^4\right).
+\frac{1}{\tau} = \frac{H^3q^2}{12^2\eta}\left(12\sigma_\parallel - Bh^3q^4\right).
 \end{equation}
 
 When the elastic film is sandwiched between two viscous layers of respective thickness $H_1$ and $H_2$, the linearity of Eq.~(\ref{eq:mecheq}) allows us to use an effective substrate of thickness 
@@ -320,13 +320,13 @@ Another limiting case is that of a porous elastic film immersed in a viscous med
 
 Combining Eqs.~(\ref{eq:mecheqop}) and (\ref{eq:DarcyLoad}), the compression load writes
 \begin{equation}
-\sigma_\parallel = \frac{1}{12}B h^2 k^2 + \frac{\eta}{\tau}\frac{1}{\alpha k^2}
+\sigma_\parallel = \frac{1}{12}B h^2 q^2 + \frac{\eta}{\tau}\frac{1}{\alpha q^2}
 \label{eq:sigma0D}
 \end{equation}
-and is minimized at $k_D$ such that
+and is minimized at $q_D$ such that
 \begin{equation}
-k_D^4 = \frac{12}{h^2\alpha\Upsilon}.
-\label{eq:kD}
+q_D^4 = \frac{12}{h^2\alpha\Upsilon}.
+\label{eq:qD}
 \end{equation}
 
 The dominant wavelength for Darcy model is thus
@@ -357,18 +357,18 @@ v = \frac{\alpha}{\eta} \frac{p_1-p_2}{h}.
 
 Combining Eqs.~(\ref{eq:pressures}, \ref{eq:conservationDarcy}, \ref{eq:Darcy}) we obtain the transverse load
 \begin{equation}
-\sigma_\perp = p_1-p_2 = - \frac{\eta}{\tau} \frac{w}{\frac{H^3 k^2}{12} + \frac{\alpha}{h}},
+\sigma_\perp = p_1-p_2 = - \frac{\eta}{\tau} \frac{w}{\frac{H^3 q^2}{12} + \frac{\alpha}{h}},
 \label{eq:MixtLoad}
 \end{equation}
 
-Note that we recover Eq~(\ref{eq:PoiseuilleLoad}) when $\alpha \rightarrow 0$ and Eq.~(\ref{eq:DarcyLoad}) when $H \rightarrow 0$. We can recast this intuition in terms of the dimensionless number $H/H^*$ where $H^*$ is obtained by equating $k_P$ and $k_D$:
+Note that we recover Eq~(\ref{eq:PoiseuilleLoad}) when $\alpha \rightarrow 0$ and Eq.~(\ref{eq:DarcyLoad}) when $H \rightarrow 0$. We can recast this intuition in terms of the dimensionless number $H/H^*$ where $H^*$ is obtained by equating $q_P$ and $q_D$:
 \begin{equation}
 H^* = 2^{2/3} 3^{1/6} \alpha^{1/2} \Upsilon^{1/6}.
 \end{equation}
 
 Analytic minimization of $\sigma_\parallel$ knowing $\sigma_\perp$ is possible but cumbersome. Instead we rewrite Eq.~(\ref{eq:mecheqop}) in terms of previously calculated $\lambda_P$ and $\lambda_D$:
 \begin{align}
-\frac{12\sigma_\parallel}{k_D^2 h^2 B} &= \left(\frac{k}{k_D}\right)^2 + \frac{1}{2\frac{k_D^2}{k_P^6}k^4  + \left(\frac{k}{k_D}\right)^2}\\
+\frac{12\sigma_\parallel}{q_D^2 h^2 B} &= \left(\frac{q}{q_D}\right)^2 + \frac{1}{2\frac{q_D^2}{q_P^6}q^4  + \left(\frac{q}{q_D}\right)^2}\\
 &= \left(\frac{\lambda_D}{\lambda}\right)^2 + \frac{1}{2\frac{\lambda_P^6}{\lambda_D^2\lambda^4}  + \left(\frac{\lambda_D}{\lambda}\right)^2}
 \end{align}
 and we minimize this expression numerically.
