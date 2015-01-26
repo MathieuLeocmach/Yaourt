@@ -112,7 +112,7 @@
  	\addplot[domain=0.1:10,red!40!yellow] {3.57687/(1+(0.324572*x)^2)^1.13359};
  	\addplot[domain=0.1:8,red!10!yellow] {2.54109/(1+(0.2995*x)^2)^1.20665};
 	\end{scope}
-	\draw[->] (axis cs:2,5) -- (axis cs:1.25,1.5) node[below]{$t$};
+	\draw[->] (axis cs:1.25,5) -- (axis cs:2,1.5) node[below]{$t$};
 	
  \end{loglogaxis}
 
