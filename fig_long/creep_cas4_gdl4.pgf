@@ -36,6 +36,7 @@
 \addplot table {Y246_60Pa_gdot_decimated.txt};
 \addplot table {Y236_100Pa_gdot_decimated.txt};
 \addplot+[restrict x to domain=-2.75:1] table {Y249_120Pa_gdot_decimated.txt};
+\addplot[thick, domain=2e-3:0.2] {x^(3.577904234332944522e-02-1)} node[pos=0.25, right, font=\footnotesize]{$-0.96$};
 
 \nextgroupplot[
 	xlabel={$t/\tau_f$}, xmode=linear, ymode=linear, 
@@ -56,5 +57,11 @@
 \addplot table[x expr={1-\thisrowno{0}}] {Y236_100Pa_gdot_decimated.txt};
 \addplot table[x expr={1-\thisrowno{0}}] {Y249_120Pa_gdot_decimated.txt};
 \end{groupplot}
+\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\node at (g c1r1.north west) {(a)};
+\node at (g c2r1.north west) {(b)};
+\node at (g c3r1.north west) {(c)};
+\node at (g c4r1.north west) {(d)};
+\end{scope}
 \end{tikzpicture}
 \end{figure*}
