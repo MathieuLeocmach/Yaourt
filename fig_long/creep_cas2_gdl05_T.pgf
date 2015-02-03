@@ -1,0 +1,26 @@
+\begin{figure}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+			group name=g, group size=1 by 2,
+			%horizontal sep=4em,
+			%xticklabels at=edge bottom,
+		},
+	width=\columnwidth,
+	cycle list name=earthy,
+	]
+\nextgroupplot[xmode=log, ymode=log,ymin=0.1,ymax=3]
+	\addplot file {yaourt_2pc_0p5_T10.gamma};
+	\addplot file {yaourt_2pc_0p5_T15.gamma};
+	\addplot file {yaourt_2pc_0p5_T20.gamma};
+	\addplot file {yaourt_2pc_0p5_T25.gamma};
+	\addplot file {yaourt_2pc_0p5_T30.gamma};
+\nextgroupplot[xmode=log, ymode=log]
+	%\addplot file {yaourt_2pc_0p5_T10.gdot};
+	\addplot file {yaourt_2pc_0p5_T15.gdot};
+	\addplot file {yaourt_2pc_0p5_T20.gdot};
+	\addplot file {yaourt_2pc_0p5_T25.gdot};
+	\addplot file {yaourt_2pc_0p5_T30.gdot};
+\end{groupplot}
+\end{tikzpicture}
+\end{figure}
