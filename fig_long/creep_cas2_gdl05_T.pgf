@@ -22,5 +22,38 @@
 	\addplot file {yaourt_2pc_0p5_T25.gdot};
 	\addplot file {yaourt_2pc_0p5_T30.gdot};
 \end{groupplot}
+\begin{axis}[
+	anchor=below south east,
+	at={($(g c1r1.south east)+(-0.5em,0)$)},
+	small,
+	scale only axis,
+	width=0.4\columnwidth-4em,
+	height=0.5\columnwidth-2em,
+	xlabel={$300/T$ (\si{\per\kelvin})},
+	ylabel={$\tau_f$ (\si{\second})},
+	axis background/.style={fill=white}, 
+	xtick={1,1.05},
+	%xmode=log,
+	ymode=log,
+]
+\addplot[black, mark=*, only marks] table[x expr={300/(\thisrowno{0}}, y expr={\thisrowno{4}}]{yaourt_2pc_0p5.Ginf};
+\end{axis}
+\begin{axis}[
+	anchor=below south east,
+	at={($(g c1r2.south east)+(-0.5em,0)$)},
+	small,
+	scale only axis,
+	width=0.4\columnwidth-4em,
+	height=0.5\columnwidth-2em,
+	xlabel={$\sigma/G^\prime_\infty$},
+	ylabel={$\tau_f$ (\si{\second})},
+	axis background/.style={fill=white}, 
+	xtick={0.2,0.4, 0.6, 1}, xticklabels={0.2,0.4, 0.6, 1},
+	xmode=log,
+	ymode=log,
+]
+\addplot[black, mark=*, only marks] table[x expr={70/\thisrowno{1}}, y expr={\thisrowno{4}}]{yaourt_2pc_0p5.Ginf};
+\addplot[no marks,domain=0.2:1] {6*x^(-5.5)};
+\end{axis}
 \end{tikzpicture}
 \end{figure}
