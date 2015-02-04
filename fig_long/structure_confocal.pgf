@@ -76,11 +76,14 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 \end{scope}
 \pgfplotsset{cycle list shift=-11}
 \addplot+[domain=0.3:2.37] {433.311/(1+ (1.69431 * x)^2)^0.236884/1024} coordinate[pos=0] (t0);
-\pgfplotsset{cycle list shift=-7}
+\addplot+[domain=0.3:10] {644.444/(1+ (0.823735 * x)^2)^0.333491/1024};
+\addplot+[domain=0.3:10] {1068.47/(1+ (0.319547 * x)^2)^0.722472/1024};
+\addplot+[domain=0.3:10] {2549/(1+ (0.373792 * x)^2)^0.910784/1024};
+\addplot+[domain=0.3:10] {4118.24/(1+ (0.452573 * x)^2)^0.94752/1024};
 \addplot+[domain=0.3:10] {7686.9/(1+ (0.586638 * x)^2)^0.988148/1024};
 \addplot+[domain=0.3:10] {9658.98/(1+ (0.608623 * x)^2)^0.979782/1024} coordinate[pos=0] (t1);
 % 
-\pgfplotsset{cycle list shift=-6}
+\pgfplotsset{cycle list shift=-18}
 \addplot+[domain=30:1000] {9652.06/(1+ (0.00602325 * x)^2)^0.995111/1024} coordinate[pos=0] (t2);
 \addplot+[domain=30:850] {6749.64/(1+ (0.0049138 * x)^2)^1.06539/1024};
 \addplot+[domain=30:800] {3820.27/(1+ (0.00406237 * x)^2)^1.09554/1024};
