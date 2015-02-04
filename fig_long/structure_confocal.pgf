@@ -12,17 +12,17 @@
 	cycle list name=linestyles,
 	no marks,
 	]
-\nextgroupplot[ylabel={$\xi$ (\si{\micro\metre})}, restrict y to domain=0:15]
+\nextgroupplot[ylabel={$\xi$ (\si{\micro\metre})}, restrict y to domain=0:15, ymax=10, ytick={0,4,8}]
 \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{1}*2*pi}]{ech17_pore_size.txt};
-\addplot[Accent1] table[skip coords between index={0}{16}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{1}*2*pi}]{ech19_pore_size.txt};
+\addplot[Accent1] table[x expr={\thisrowno{0}/3600}, y expr={\thisrowno{1}*2*pi}]{ech26_pore_size.txt};
 \nextgroupplot[ylabel={$\chi$ (a.u.)}]
 \begin{scope}[every node/.style={anchor=base west, font=\scriptsize}]
-\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1024}]{ech17_pore_size.txt} node (l1) {1\%};
-\addplot[Accent1] table[skip coords between index={0}{16}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1024}]{ech19_pore_size.txt} node at ($(l1.base west)-(axis cs:0,1.8)$) {4\%};
+\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={1.75*\thisrowno{2}/1024}]{ech17_pore_size.txt} node (l1) {1\%};
+\addplot[Accent1] table[x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1024}]{ech26_pore_size.txt} node at ($(l1.base west)-(axis cs:0,1.8)$) {4\%};
 \end{scope}
-\nextgroupplot[xlabel={time (\si{\hour})}, ylabel={$\gamma$}, restrict y to domain=0:3]
+\nextgroupplot[xlabel={time (\si{\hour})}, ylabel={$d$}, restrict y to domain=0:3]
 \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y index=3]{ech17_pore_size.txt};
-\addplot[Accent1] table[skip coords between index={0}{16},x expr={\thisrowno{0}/3600}, y index=3]{ech19_pore_size.txt};
+\addplot[Accent1] table[x expr={\thisrowno{0}/3600}, y index=3]{ech26_pore_size.txt};
 %\addplot[Accent2] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{3}}]{ech23_pore_size.txt};
 \end{groupplot}
 
@@ -53,53 +53,45 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 	xlabel={$q$ (\si{\per\micro\metre})},
 	ylabel={$|I(q)|$ (a.u.)},
 	domain=0.1:6.1,
-	xmin=0.03, xmax=1e3,
-	ymin=1e5, ymax=6e7,
+	xmin=0.1, xmax=5e3,
+	ymin=1.2e2, ymax=1.5e4,
 	clip mode=individual,
 	]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark options={scale=0.3}},
 ]
-\addplot table{ech19_t016.Sq};
-\addplot table{ech19_t018.Sq};
-\addplot table{ech19_t020.Sq};
-\addplot table{ech19_t022.Sq};
-\addplot table{ech19_t024.Sq};
-\addplot table{ech19_t026.Sq};
-\addplot table{ech19_t028.Sq};
+\addplot table{ech26_t00.Sq};
+\addplot table{ech26_t02_4.Sq};
+\addplot table{ech26_t02_5.Sq};
+\addplot table{ech26_t02_6.Sq};
+\addplot table{ech26_t02_7.Sq};
+\addplot table{ech26_t03.Sq};
+\addplot table{ech26_t04.Sq};
 
 \pgfplotsset{cycle list shift=-7}
-\addplot table[x expr={100*\thisrowno{0}}]{ech19_t049.Sq};
-\addplot table[x expr={100*\thisrowno{0}}]{ech19_t091.Sq};
-\addplot table[x expr={100*\thisrowno{0}}]{ech19_t095.Sq};
-\addplot table[x expr={100*\thisrowno{0}}]{ech19_t110.Sq};
-\addplot table[x expr={100*\thisrowno{0}}]{ech19_t132.Sq};
-%\pgfplotsset{cycle list shift=2}
-\addplot table[x expr={100*\thisrowno{0}}]{ech19_t183.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech26_t14.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech26_t30.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech26_t50.Sq};
+\addplot table[x expr={100*\thisrowno{0}}]{ech26_t70.Sq};
 \end{scope}
-\pgfplotsset{cycle list shift=-5}
-\addplot+[domain=0.1:2.37] {1.54042e+06/(1+(0.830078*x)^(2.49725)} coordinate[pos=0] (t0);
-\addplot+[domain=0.1:3.21] {3.18333e+06/(1+(0.674366*x)^(3.20292)};
-\addplot+[domain=0.1:4.26] {7.33285e+06/(1+(0.682842*x)^(3.37189)};
-\addplot+[domain=0.1:5.04] {1.30025e+07/(1+(0.683873*x)^(3.43697)};
-\addplot+[domain=0.1:5.67] {2.02087e+07/(1+(0.681114*x)^(3.55135)};
-\addplot+[domain=0.1:5.88] {2.69252e+07/(1+(0.674936*x)^(3.65006)};
-\addplot+[domain=0.1:6.19] {3.16555e+07/(1+(0.67775*x)^(3.68483)} coordinate[pos=0] (t1);
-
-\pgfplotsset{cycle list shift=-4}
-\addplot+[domain=10:659.97] {3.95386e+07/(1+(0.0064764*x)^(3.88347)} coordinate[pos=0] (t2);
-\addplot+[domain=10:607.05] {2.28285e+07/(1+(0.00584224*x)^(3.83587)};
-\addplot+[domain=10:526.11] {1.43395e+07/(1+(0.00654421*x)^(3.73896)};
-\addplot+[domain=10:454.51] {9.58685e+06/(1+(0.00865948*x)^(2.84983)};
-\addplot+[domain=10:392.25] {6.8931e+06/(1+(0.00946977*x)^(2.56298)};
-\addplot+[domain=10:373.57] {5.5388e+06/(1+(0.00950251*x)^(2.52804)} coordinate[pos=0] (t3);
+\pgfplotsset{cycle list shift=-11}
+\addplot+[domain=0.3:2.37] {433.311/(1+ (1.69431 * x)^2)^0.236884} coordinate[pos=0] (t0);
+\pgfplotsset{cycle list shift=-7}
+\addplot+[domain=0.3:10] {7686.9/(1+ (0.586638 * x)^2)^0.988148};
+\addplot+[domain=0.3:10] {9658.98/(1+ (0.608623 * x)^2)^0.979782} coordinate[pos=0] (t1);
+% 
+\pgfplotsset{cycle list shift=-6}
+\addplot+[domain=30:1000] {9652.06/(1+ (0.00602325 * x)^2)^0.995111} coordinate[pos=0] (t2);
+\addplot+[domain=30:850] {6749.64/(1+ (0.0049138 * x)^2)^1.06539};
+\addplot+[domain=30:800] {3820.27/(1+ (0.00406237 * x)^2)^1.09554};
+\addplot+[domain=30:700] {3111.36/(1+ (0.00443241 * x)^2)^1.0396} coordinate[pos=0] (t3);
 \draw[->, ultra thick] (t0) -- (t1) node[midway,rotate=90, above, font=\footnotesize] {time};
 \draw[->, ultra thick] (t2) -- (t3) node[midway,rotate=90, above, font=\footnotesize] {time};
 \end{loglogaxis}
 \begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
 \node[white] at (m-2-1.north west) {(a)};
 \node[anchor=north east] at (Sq.north east) {(b)};
-\node[anchor=east] at (g c1r1.east) {(c)};
+\node[anchor=north east] at (g c1r1.north east) {(c)};
 \node[anchor=east] at (g c1r2.east) {(d)};
 \node[anchor=south east] at (g c1r3.south east) {(e)};
 \end{scope}
