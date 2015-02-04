@@ -54,37 +54,37 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 	ylabel={$|I(q)|$ (a.u.)},
 	domain=0.1:6.1,
 	xmin=0.1, xmax=5e3,
-	ymin=1.2e2, ymax=1.5e4,
+	ymin=0.12, ymax=15,
 	clip mode=individual,
 	]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark options={scale=0.3}},
 ]
-\addplot table{ech26_t00.Sq};
-\addplot table{ech26_t02_4.Sq};
-\addplot table{ech26_t02_5.Sq};
-\addplot table{ech26_t02_6.Sq};
-\addplot table{ech26_t02_7.Sq};
-\addplot table{ech26_t03.Sq};
-\addplot table{ech26_t04.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t00.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t02_4.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t02_5.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t02_6.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t02_7.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t03.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t04.Sq};
 
 \pgfplotsset{cycle list shift=-7}
-\addplot table[x expr={100*\thisrowno{0}}]{ech26_t14.Sq};
-\addplot table[x expr={100*\thisrowno{0}}]{ech26_t30.Sq};
-\addplot table[x expr={100*\thisrowno{0}}]{ech26_t50.Sq};
-\addplot table[x expr={100*\thisrowno{0}}]{ech26_t70.Sq};
+\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t14.Sq};
+\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t30.Sq};
+\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t50.Sq};
+\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t70.Sq};
 \end{scope}
 \pgfplotsset{cycle list shift=-11}
-\addplot+[domain=0.3:2.37] {433.311/(1+ (1.69431 * x)^2)^0.236884} coordinate[pos=0] (t0);
+\addplot+[domain=0.3:2.37] {433.311/(1+ (1.69431 * x)^2)^0.236884/1024} coordinate[pos=0] (t0);
 \pgfplotsset{cycle list shift=-7}
-\addplot+[domain=0.3:10] {7686.9/(1+ (0.586638 * x)^2)^0.988148};
-\addplot+[domain=0.3:10] {9658.98/(1+ (0.608623 * x)^2)^0.979782} coordinate[pos=0] (t1);
+\addplot+[domain=0.3:10] {7686.9/(1+ (0.586638 * x)^2)^0.988148/1024};
+\addplot+[domain=0.3:10] {9658.98/(1+ (0.608623 * x)^2)^0.979782/1024} coordinate[pos=0] (t1);
 % 
 \pgfplotsset{cycle list shift=-6}
-\addplot+[domain=30:1000] {9652.06/(1+ (0.00602325 * x)^2)^0.995111} coordinate[pos=0] (t2);
-\addplot+[domain=30:850] {6749.64/(1+ (0.0049138 * x)^2)^1.06539};
-\addplot+[domain=30:800] {3820.27/(1+ (0.00406237 * x)^2)^1.09554};
-\addplot+[domain=30:700] {3111.36/(1+ (0.00443241 * x)^2)^1.0396} coordinate[pos=0] (t3);
+\addplot+[domain=30:1000] {9652.06/(1+ (0.00602325 * x)^2)^0.995111/1024} coordinate[pos=0] (t2);
+\addplot+[domain=30:850] {6749.64/(1+ (0.0049138 * x)^2)^1.06539/1024};
+\addplot+[domain=30:800] {3820.27/(1+ (0.00406237 * x)^2)^1.09554/1024};
+\addplot+[domain=30:700] {3111.36/(1+ (0.00443241 * x)^2)^1.0396/1024} coordinate[pos=0] (t3);
 \draw[->, ultra thick] (t0) -- (t1) node[midway,rotate=90, above, font=\footnotesize] {time};
 \draw[->, ultra thick] (t2) -- (t3) node[midway,rotate=90, above, font=\footnotesize] {time};
 \end{loglogaxis}
