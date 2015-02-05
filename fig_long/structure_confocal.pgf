@@ -33,11 +33,11 @@
 \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] 
 at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 (m) {
-\SI{5}{\minute} & \SI{27}{\minute} & \SI{49}{\minute} & \SI{8}{\hour}\\
-\includegraphics[width=5\baselineskip]{ech19_t001.jpg}&
-\includegraphics[width=5\baselineskip]{ech19_t043.jpg}&
-\includegraphics[width=5\baselineskip]{ech19_t085.jpg}&
-\includegraphics[width=5\baselineskip]{ech19_t132.jpg}\\
+\SI{5}{\minute} & \SI{15}{\minute} & \SI{1}{\hour} & \SI{16}{\hour}\\
+\includegraphics[width=5\baselineskip]{ech26_t00.jpg}&
+\includegraphics[width=5\baselineskip]{ech26_t05.jpg}&
+\includegraphics[width=5\baselineskip]{ech26_t30.jpg}&
+\includegraphics[width=5\baselineskip]{ech26_t70.jpg}\\
 };
 \draw[ultra thick, white] (m-2-1.south east) ++(-0.5\baselineskip,1em) -- +(-4\baselineskip,0);
 
