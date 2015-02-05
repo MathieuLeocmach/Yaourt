@@ -48,7 +48,7 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 \begin{loglogaxis}[
 	name=Sq,
 	scale only axis,
-	width=0.24\textwidth,
+	width=0.10\textwidth,
 	height=\mydima-\mydimb,
 	anchor=left of north west,
 	at={(m.north east)},
@@ -56,7 +56,7 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 	xlabel={$q$ (\si{\per\micro\metre})},
 	ylabel={$|I(q)|$ (a.u.)},
 	domain=0.1:6.1,
-	xmin=0.1, xmax=5e3,
+	xmin=0.1, xmax=50,
 	ymin=0.12, ymax=15,
 	clip mode=individual,
 	]
@@ -70,14 +70,8 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 \addplot table[y expr={\thisrowno{1}/1024}]{ech26_t02_7.Sq};
 \addplot table[y expr={\thisrowno{1}/1024}]{ech26_t03.Sq};
 \addplot table[y expr={\thisrowno{1}/1024}]{ech26_t04.Sq};
-
-\pgfplotsset{cycle list shift=-7}
-\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t14.Sq};
-\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t30.Sq};
-\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t49.Sq};
-\addplot table[x expr={100*\thisrowno{0}}, y expr={\thisrowno{1}/1024}]{ech26_t70.Sq};
 \end{scope}
-\pgfplotsset{cycle list shift=-11}
+\pgfplotsset{cycle list shift=-7}
 \addplot+[domain=0.3:2.37] {433.311/(1+ (1.69431 * x)^2)^0.236884/1024} coordinate[pos=0] (t0);
 \addplot+[domain=0.3:8] {644.444/(1+ (0.823735 * x)^2)^0.333491/1024};
 \addplot+[domain=0.3:10] {1068.47/(1+ (0.319547 * x)^2)^0.722472/1024};
@@ -85,21 +79,46 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 \addplot+[domain=0.3:10] {4118.24/(1+ (0.452573 * x)^2)^0.94752/1024};
 \addplot+[domain=0.3:10] {7686.9/(1+ (0.586638 * x)^2)^0.988148/1024};
 \addplot+[domain=0.3:10] {9658.98/(1+ (0.608623 * x)^2)^0.979782/1024} coordinate[pos=0] (t1);
-% 
-\pgfplotsset{cycle list shift=-18}
-\addplot+[domain=30:1000] {9652.06/(1+ (0.00602325 * x)^2)^0.995111/1024} coordinate[pos=0] (t2);
-\addplot+[domain=30:850] {6749.64/(1+ (0.0049138 * x)^2)^1.06539/1024};
-\addplot+[domain=30:800] {3820.27/(1+ (0.00428025 * x)^2)^1.09602/1024};
-\addplot+[domain=30:700] {3111.36/(1+ (0.00443241 * x)^2)^1.0396/1024} coordinate[pos=0] (t3);
 \draw[->, ultra thick] (t0) -- (t1) node[midway,rotate=90, above, font=\footnotesize] {time};
+\end{loglogaxis}
+\begin{loglogaxis}[
+	name=Sq2,
+	scale only axis,
+	width=0.1\textwidth,
+	height=\mydima-\mydimb,
+	anchor=left of north west,
+	at={(Sq.north east)},
+	cycle list name=earthy,
+	xlabel={$q$ (\si{\per\micro\metre})},
+	yticklabels={},
+	domain=0.1:6.1,
+	xmin=0.1, xmax=50,
+	ymin=0.12, ymax=15,
+	clip mode=individual,
+	]
+\begin{scope}[
+	every axis plot post/.append style={only marks, mark options={scale=0.3}},
+]
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t14.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t30.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t49.Sq};
+\addplot table[y expr={\thisrowno{1}/1024}]{ech26_t70.Sq};
+\end{scope}
+% 
+\pgfplotsset{cycle list shift=-4}
+\addplot+[domain=0.3:10] {9652.06/(1+ (0.602325 * x)^2)^0.995111/1024} coordinate[pos=0] (t2);
+\addplot+[domain=0.3:8.5] {6749.64/(1+ (0.49138 * x)^2)^1.06539/1024};
+\addplot+[domain=0.3:8] {3820.27/(1+ (0.428025 * x)^2)^1.09602/1024};
+\addplot+[domain=0.3:7] {3111.36/(1+ (0.443241 * x)^2)^1.0396/1024} coordinate[pos=0] (t3);
 \draw[->, ultra thick] (t2) -- (t3) node[midway,rotate=90, above, font=\footnotesize] {time};
 \end{loglogaxis}
-\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
-\node[white] at (m-2-1.north west) {(a)};
-\node[anchor=north east] at (Sq.north east) {(b)};
-\node[anchor=north east] at (g c1r1.north east) {(c)};
-\node[anchor=north east] at (g c1r2.north east) {(d)};
-\node[anchor=south east] at (g c1r3.south east) {(e)};
+\begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
+\node[white,anchor=north west] at (m-2-1.north west) {(a)};
+\node at (Sq.north east) {(b)};
+\node at (Sq2.north east) {(c)};
+\node at (g c1r1.north east) {(d)};
+\node at (g c1r2.north east) {(e)};
+\node[anchor=south east] at (g c1r3.south east) {(f)};
 \end{scope}
 \end{tikzpicture}
 \end{figure*}
