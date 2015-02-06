@@ -2,7 +2,7 @@
 \begin{tikzpicture}
 	\begin{groupplot}[%
 		group style={
-			group name=g, group size=1 by 3,
+			group name=g, group size=1 by 4,
 			x descriptions at=edge bottom,
 			vertical sep=0.5em,
 			},
@@ -21,6 +21,9 @@
 		]
 	\addplot+[no marks,black] table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH};
 	\node[base left=0] at (axis cs:8,4.6) {isoelectric};
+
+	\nextgroupplot[ylabel={free cas. (\%)}, ymax=100,skip coords between index={0}{1}, ytick={0,20,...,80}]
+		\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.05}, y expr={100*\thisrowno{1}}] {freefraction_cas4_GDL4.txt};
 
 	\nextgroupplot[
 		ylabel={$G^\prime$ (\si{\pascal})}
