@@ -1,7 +1,7 @@
 \documentclass[twocolumn,superscriptaddress,showpacs,preprintnumbers,amsmath,amssymb,prl]{revtex4-1}
 \usepackage{siunitx}
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap,fit}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap,fit,lindenmayersystems}
 %\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
 
 \usepackage{pgfplots}
