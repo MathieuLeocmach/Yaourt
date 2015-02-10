@@ -19,11 +19,12 @@
 		ymax=7, ylabel=pH,
 		extra y ticks={4.6}, extra y tick labels={},%
 		]
-	\addplot+[no marks,black] table[x expr={\thisrowno{0}/3600.+0.05}]{Y189_28800s.pH};
+	\addplot+[no marks,black] table[x expr={\thisrowno{0}/3600.}]{freefraction_cas4_GDL4_interp_HCL_tinf.txt};
 	\node[base left=0] at (axis cs:8,4.6) {isoelectric};
 
-	\nextgroupplot[ylabel={free cas. (\%)}, ymax=100,skip coords between index={0}{1}, ytick={0,20,...,80}]
-		\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.05}, y expr={100*\thisrowno{1}}] {freefraction_cas4_GDL4.txt};
+	\nextgroupplot[ylabel={$x_\text{free}$ (\%)}, ymax=100, ytick={0,20,...,80}]
+		\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.}, y expr={100*\thisrowno{2}}] {freefraction_cas4_GDL4_interp_HCL_tinf.txt};
+		\addplot+[only marks, Accent1, every mark/.style={fill=Accent1}] table[x expr={\thisrowno{0}/3600.}, y expr={100*\thisrowno{1}},skip coords between index={0}{5}] {freefraction_cas4_GDL4.txt};
 
 	\nextgroupplot[
 		ylabel={$G^\prime$ (\si{\pascal})}
@@ -36,10 +37,25 @@
 	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{1}*2*pi}]{ech23_pore_size.txt};
 	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{1}*2*pi}]{ech25_pore_size.txt};
 	\end{groupplot}
+
+%inset
+\begin{axis}[
+	at={($(g c1r2.north)-(0.15\columnwidth,0)$)},
+	anchor=outer north,
+	height=0.35\columnwidth,
+	width=0.5\columnwidth,
+	xlabel={pH}, xmin=1, xmax=7,
+	ylabel={$x_\text{free}$ (\%)}, ymin=0, ymax=100,  ytick={0,30,...,90},
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-0.3em},
+	]
+	\addplot+[no marks, black, thick] table[y expr={100*\thisrowno{1}}]{freefraction_cas4_HCL_tinf.txt};
+\end{axis}
+
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
 \node at (g c1r1.north east) {(a)};
 \node at (g c1r2.north east) {(b)};
 \node at (g c1r3.north east) {(c)};
+\node at (g c1r4.north east) {(d)};
 \end{scope}
 \end{tikzpicture}
 %\end{figure}
