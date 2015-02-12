@@ -3,7 +3,7 @@
 
 \begin{groupplot}[
 	group style={
-			group name=g, group size=1 by 2,
+			group name=g, group size=1 by 3,
 			vertical sep=0.5em,
 			x descriptions at=edge bottom,
 		},
@@ -12,6 +12,14 @@
 	xlabel={time (\si{\hour})},
 	xmin=0,xmax=3, ymin=0,
 	]
+\nextgroupplot[
+		ylabel={$\xi$ (\si{\micro\metre})}, restrict y to domain=0:10,
+		]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{1}*2*pi}]{ech23_pore_size.txt};
+	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{1}*2*pi}]{ech25_pore_size.txt};
+	\addplot[only marks, mark=o]  table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{1}*2*pi}]{ech23_pore_size_toi.txt};
+	\addplot[only marks,mark=x,Accent1] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{1}*2*pi}]{ech25_pore_size_toi.txt};
+
 \nextgroupplot[ylabel={$\chi$ (a.u.)}, restrict y to domain=0:4,]
 	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{2}/1024}]{ech23_pore_size.txt};
 	\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{2}/1024}]{ech25_pore_size.txt};
@@ -91,7 +99,7 @@
 	anchor=left of north west,
 	at={($(m.south west |- g c1r1.north)$)},
 	scale only axis,
-	height=8.8\baselineskip,
+	height=13.5\baselineskip,
 	width=\columnwidth-16\baselineskip,
 	ymin=0.1, ymax=13,
 	xlabel={$q$ (\si{\per\micro\metre})},
@@ -113,6 +121,16 @@
  	\addplot[domain=0.1:8,red!10!yellow] {2.54109/(1+(0.2995*x)^2)^1.20665};
 	\end{scope}
 	\draw[->] (axis cs:1.25,5) -- (axis cs:2,1.5) node[below]{$t$};
+
+	\node[anchor=south west] (sketch) at (rel axis cs:0,0) {\includegraphics[width=0.25\columnwidth,angle=90]{gel_sketch}};
+	\begin{scope}[every node/.style={anchor=south, circle, draw=gray, shift=(sketch.south west), xshift=0.125\columnwidth, yshift=0.06\columnwidth, rotate=15}]
+		\node[minimum height=0.025\columnwidth] (c1){};
+		\node[minimum height=0.09\columnwidth] (c2){};
+		\node[minimum height=0.18\columnwidth] (c3){};
+	\end{scope}
+	\draw[->,gray] (c1) -- (axis cs:5,0.4);
+	\draw[->,gray] (c2) -- (axis cs:1,2);
+	\draw[->,gray] (c3) -- (axis cs:0.1,2.54109);
 	
  \end{loglogaxis}
 
@@ -121,6 +139,7 @@
 \node at (Sq1.north east) {(b)};
 \node at (g c1r1.north east) {(c)};
 \node at (g c1r2.north east) {(d)};
+\node at (g c1r3.north east) {(e)};
 \end{scope}
 %\draw (m.south west) -- +(\textwidth,0);
 \end{tikzpicture}
