@@ -41,8 +41,8 @@
 	\draw[->, ultra thick] (axis cs:0.6*pi,-2)++(0,0.6em) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_1(x,t)$};
 	\draw[->, ultra thick] (axis cs:0.75*pi,-2)++(0,0.6em) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_1(x+dx,t)$};
 	%pressures
-	\node[above] at (axis cs:0.675*pi,1.75) {$P_2$};
-	\node[below] at (axis cs:0.675*pi,-0.75) {$P_1$};
+	\node[above] at (axis cs:0.675*pi,1.75) {$p_2$};
+	\node[below] at (axis cs:0.675*pi,-0.75) {$p_1$};
 	\draw[->, lightgray, ultra thick] (axis cs:0.675*pi,0.25) -- (axis cs:0.675*pi, 1.5) node[pos=0, right,white] {$v_{Darcy}$};
 
 	\draw[->] (axis cs:1.5*pi,1) -- +(1.5em,0) node[right]{$x$};

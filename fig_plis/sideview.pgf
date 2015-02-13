@@ -73,8 +73,8 @@
 	\node[white, rotate=-20]  at (axis cs:pi,0) {elastic ($B$) \hspace{1.5em} porous ($\alpha$)};
 	
 	%pressures
-	\node[above] at (axis cs:0.5*pi,1.75) {$P_2$};
-	\node[below] at (axis cs:0.5*pi,-0.75) {$P_1$};
+	\node[above] at (axis cs:0.5*pi,1.75) {$p_2$};
+	\node[below] at (axis cs:0.5*pi,-0.75) {$p_1$};
 	\coordinate (Bm) at (axis cs:1.5*pi, -1.6);
 	\node[single arrow, draw, anchor=tip, shape border rotate=270, inner xsep=0] at (axis cs:0.3*pi, 1.6) {$\sigma_\perp$};
 	%flows
