@@ -47,17 +47,17 @@
 	\addplot+[name path=baseT, dashed, help lines,yshift=0.055\mydima]{0};
 	\addplot+[name path=baseB, dashed, help lines, yshift=-0.055\mydima]{0};
 	%epaisseur penchee
- 	\path[name path=Z] (axis cs:pi-1,-100/pi^2) -- (axis cs:pi+1,100/pi^2);
+ 	\path[name path=Z] (axis cs:pi-1,-40/pi^2) -- (axis cs:pi+1,40/pi^2);
 	%chemin optique penche
  	\path[name path=D, name intersections={of=top and Z, by=Z2}] (Z2) -- +(0,-6\baselineskip);
 	%epaisseur au max
 	\path[name path=ZM] (axis cs:0.5*pi,-100/pi^2) -- (axis cs:0.5*pi,100/pi^2);
 	%trace les chemins optiques
  	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}, name intersections={of=top and ZM, by=ZM2}, name intersections={of=bot and ZM, by=ZM3}] (Z2) --(D1) (ZM2) -- (ZM3);
-	%trace les ÃÂÃÂ©paisseurs h
+	%trace les ÃÂÃÂÃÂÃÂ©paisseurs h
 	\draw[<->] (ZM2) -- (ZM3) node[midway, left] {$h$};
   	\draw[<->, name intersections={of=bot and Z, by=Z1}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
-	%trace les autres ÃÂÃÂ©paisseurs
+	%trace les autres ÃÂÃÂÃÂÃÂ©paisseurs
 	\draw[<->] (axis cs:1.85*pi,0.75) -- (axis cs:1.85*pi,3) node[midway, right] {$H_2$}; 
 	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,0.75) node[midway, right] {$h$};
 	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,-2) node[midway, right] {$H_1$};
