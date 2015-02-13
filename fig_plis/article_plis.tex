@@ -285,6 +285,12 @@ From these data, we obtain for each stack the volume and thickness of the gel ph
 
 \subsubsection*{General framework for wrinkling}
 
+\begin{figure}
+\includegraphics{notations}%
+\caption{Schematic side view of the slit. The constant thickness gel film (orange) is surrounded by solvent. The region of interest of the mass conservation is highlighted in gray. Arrows are oriented as x or z to allow algebraic notations.}%
+\label{fig:notations}%
+\end{figure}
+
 The mechanical equilibrium of a plate of thickness $h$, Young modulus $E$ and Poisson ratio $\nu$ submitted to a compression load $\sigma_\parallel$ along $x$ and a transverse load $\sigma_\perp$ along $z$ writes
 \begin{equation}
 \frac{E h^3}{12(1-\nu^2)}\frac{\partial^4 w}{\partial x^4} + \sigma_\parallel h \frac{\partial^2 w}{\partial x^2} = \sigma_\perp,
@@ -323,7 +329,7 @@ Q = -\frac{H^3}{12\eta}\frac{\partial p}{\partial x}.
 \end{equation}
 where $p(x)$ is the pressure in the layer of viscosity $\eta$.
 
-Mass conservation writes
+Mass conservation (on the lower gray area of Supplementary Figure~\ref{fig:notations}) writes
 \begin{equation}
 \frac{\partial Q}{\partial x} + \frac{\partial w}{\partial t} = 0.
 \label{eq:conservation}
@@ -387,7 +393,7 @@ Here also the dominant mode maximises the growth rate.
 
 
 \subsubsection*{Porous elastic film between two viscous layers}
-Finally the most realistic scenario mixes both Poiseuille and Darcy mechanisms, i.e. considers a porous elastic film between two viscous layers of arbitrary thickness. In this case, the mass conservation $Q_1 + Q_2 = 0$ over the whole height of the cell yields
+Finally the most realistic scenario mixes both Poiseuille and Darcy mechanisms, i.e. considers a porous elastic film between two viscous layers of arbitrary thickness. In this case (see Supplementary Figure~\ref{fig:notations}), the mass conservation $Q_1 + Q_2 = 0$ over the whole height of the cell yields
 \begin{equation}
 H_1^3 p_1 + H_2^3 p_2 = 0.
 \label{eq:pressures}
