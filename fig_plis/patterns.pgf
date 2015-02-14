@@ -2,7 +2,7 @@
 \begin{scope}[inner sep=0]
 \node[anchor=north west] (ech2) at (0,0.36\textwidth) {\includegraphics[width=0.116\textwidth]{ech2_stitch.jpg}};
 \node[anchor=north west] (cas4) at ($(ech2.north east)+(0.018\textwidth,0)$) {\includegraphics[width=0.108\textwidth]{cas4.jpg}};
-\node[anchor=north west] (cas3p2) at ($(cas4.north east)+(0.018\textwidth,0)$) {\includegraphics[width=0.554\textwidth, clip=true, trim=0 1cm 0 1cm]{cas3p2_z6.jpg}};
+\node[anchor=north west] (cas3p2) at ($(cas4.north east)+(0.018\textwidth,0)$) {\includegraphics[width=0.554\textwidth, clip=true, trim=0 5mm 0 5mm]{cas3p2_z6.jpg}};
 \node[anchor=north east] (ech4) at ($(ech2.north west)+(\textwidth,0)$) {\includegraphics[width=0.168\textwidth]{ech4_stitch.jpg}};
 
 \node[anchor=north west] (cas7p2) {\includegraphics[width=\textwidth]{cas7p2_z2.jpg}};
