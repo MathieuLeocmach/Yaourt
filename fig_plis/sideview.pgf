@@ -39,7 +39,7 @@
 	axis lines=none, xtick=\empty,
 	]
 	%tranche d'interet
-	\fill[lightgray] (axis cs:0.425*pi,-2) rectangle (axis cs:0.575*pi,3);
+	%\fill[lightgray] (axis cs:0.425*pi,-2) rectangle (axis cs:0.575*pi,3);
 	%gel et reperes
 	\addplot+[Accent1, line width=0.1\mydima] {sin(deg(x))};
 	\addplot+[draw=none,name path=top, yshift=0.055\mydima] {0.925*sin(deg(x))};
@@ -54,10 +54,10 @@
 	\path[name path=ZM] (axis cs:0.5*pi,-100/pi^2) -- (axis cs:0.5*pi,100/pi^2);
 	%trace les chemins optiques
  	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}, name intersections={of=top and ZM, by=ZM2}, name intersections={of=bot and ZM, by=ZM3}] (Z2) --(D1) (ZM2) -- (ZM3);
-	%trace les ÃÂÃÂÃÂÃÂ©paisseurs h
+	%trace les epaisseurs h
 	\draw[<->] (ZM2) -- (ZM3) node[midway, left] {$h$};
   	\draw[<->, name intersections={of=bot and Z, by=Z1}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
-	%trace les autres ÃÂÃÂÃÂÃÂ©paisseurs
+	%trace les autres epaisseurs
 	\draw[<->] (axis cs:1.85*pi,0.75) -- (axis cs:1.85*pi,3) node[midway, right] {$H_2$}; 
 	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,0.75) node[midway, right] {$h$};
 	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,-2) node[midway, right] {$H_1$};
@@ -109,7 +109,7 @@
 	\SI{44}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t055.png}\\
 	\SI{53}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t070.png} \\
 	\SI{1}{\hour}~21 & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t123.png} \\
-	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t332.png} & \SI{3}{\hour}~15\\
+	\SI{3}{\hour} & \includegraphics[width=0.88\columnwidth, height=0.046\columnwidth]{coupe_plis_t303.png}\\
 	};
 \pgfextractx{\mydima}{\pgfpointanchor{m-1-2}{west}}
 \pgfextractx{\mydimb}{\pgfpointanchor{m-1-2}{east}}
