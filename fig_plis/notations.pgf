@@ -36,8 +36,8 @@
 	\node[Accent1] at (axis cs:1.5*pi,0.25){solvent};
 	
 	%flux
-	\draw[->, ultra thick] (axis cs:0.6*pi,3)++(0,-1em) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_2(x,t)$};
-	\draw[->, ultra thick] (axis cs:0.75*pi,3)++(0,-1em) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_2(x+dx,t)$};
+	\draw[->, ultra thick] (axis cs:0.6*pi,3.2)++(0,-1em) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_2(x,t)$};
+	\draw[->, ultra thick] (axis cs:0.75*pi,3.2)++(0,-1em) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_2(x+dx,t)$};
 	\draw[->, ultra thick] (axis cs:0.6*pi,-2)++(0,0.6em) + (-0.5em, 0) -- +(0.5em,0) node[pos=0, left] {$Q_1(x,t)$};
 	\draw[->, ultra thick] (axis cs:0.75*pi,-2)++(0,0.6em) + (-0.5em, 0) -- +(0.5em,0) node[pos=1, right] {$Q_1(x+dx,t)$};
 	%pressures
@@ -45,9 +45,11 @@
 	\node[below] at (axis cs:0.675*pi,-0.75) {$p_1$};
 	\draw[->, lightgray, ultra thick] (axis cs:0.675*pi,0.25) -- (axis cs:0.675*pi, 1.5) node[pos=0, right,white] {$v_{Darcy}$};
 
-	%sigma_parallel
+	%stresses
+	\node[single arrow, draw, anchor=tip, shape border rotate=270, inner xsep=0] at (axis cs:0.3*pi, 1.4) {$\sigma_\perp$};
 	\node[single arrow, draw, anchor=tip, shape border rotate=0, inner xsep=0, right] at (axis cs:0, 0) {$\sigma_\parallel$};
 	\node[single arrow, draw, anchor=tip, shape border rotate=180, inner xsep=0, left] at (axis cs:2*pi, 0) {$\sigma_\parallel$};
+	\coordinate (Bm) at (axis cs:1.5*pi, -1.6);
 
 	\draw[->] (axis cs:1.5*pi,1) -- +(1.5em,0) node[right]{$x$};
 	\draw[->] (axis cs:1.5*pi,1) -- +(0,1.5em) node[right]{$z$};
@@ -59,7 +61,8 @@
 	%\draw[line width=0.1em, ->] (ph2) -- (axis cs:90,0.25) node[midway, left] {Darcy} node[midway, right] {$v$};
 	%\draw[line width=0.1em, ->] (pb2) -- (pb1) node[midway, above] {Poiseuille} node[midway, below] {$u \sim \frac{\lambda}{H} v$};
 \end{axis}
-\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\columnwidth,-1em) (a.north west) rectangle +(\columnwidth,1em);
+\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\columnwidth,-\baselineskip) (a.north west) rectangle +(\columnwidth,\baselineskip);
+\node[single arrow, draw, anchor=tip, shape border rotate=90, inner xsep=0] at ($(Bm)+(1.5em,0)$) {$\sigma_\perp$};
 \end{tikzpicture}
 	
 %\end{figure}
