@@ -44,7 +44,7 @@
 	\addplot+[Accent1, line width=0.1\mydima] {sin(deg(x))};
 	\addplot+[draw=none,name path=top, yshift=0.055\mydima] {0.925*sin(deg(x))};
 	\addplot+[draw=none,name path=bot, yshift=-0.055\mydima] {1.05*sin(deg(x))};
-	\addplot+[name path=baseT, dashed, help lines,yshift=0.055\mydima]{0};
+	\addplot+[name path=baseT, dashed, help lines,yshift=0.055\mydima, domain=1.85*pi:2*pi]{0};
 	\addplot+[name path=baseB, dashed, help lines, yshift=-0.055\mydima]{0};
 	%epaisseur penchee
  	\path[name path=Z] (axis cs:pi-1,-40/pi^2) -- (axis cs:pi+1,40/pi^2);
@@ -76,6 +76,8 @@
 	\node[above] at (axis cs:0.5*pi,1.75) {$p_2$};
 	\node[below] at (axis cs:0.5*pi,-0.75) {$p_1$};
 	\coordinate (Bm) at (axis cs:1.5*pi, -1.6);
+	\node[below] at (axis cs:1.5*pi,-1.5) {$p_2$};
+	\node[above] at (axis cs:1.5*pi,1.75) {$p_1$};
 	\node[single arrow, draw, anchor=tip, shape border rotate=270, inner xsep=0] at (axis cs:0.3*pi, 1.6) {$\sigma_\perp$};
 	%flows
 	\draw[->, lightgray, ultra thick] (axis cs:0.3*pi,1.4) -- (axis cs:0.3*pi, 0.3);
@@ -96,7 +98,7 @@
 	%\draw[line width=0.1em, ->] (pb2) -- (pb1) node[midway, above] {Poiseuille} node[midway, below] {$u \sim \frac{\lambda}{H} v$};
 \end{axis}
 \fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\columnwidth,-\baselineskip) (a.north west) rectangle +(\columnwidth,\baselineskip);
-\node[single arrow, draw, anchor=tip, shape border rotate=90, inner xsep=0] at (Bm) {$\sigma_\perp$};
+\node[single arrow, draw, anchor=tip, shape border rotate=90, inner xsep=0] at ($(Bm)+(1.5em,0)$) {$\sigma_\perp$};
 %
 
 	\matrix[matrix of nodes, matrix anchor=south east, inner sep=0, row sep=0.2em, nodes={anchor=west}, column sep=0.1em]  (m) at ($(a.north east) +(0,1.5\baselineskip)$) {
