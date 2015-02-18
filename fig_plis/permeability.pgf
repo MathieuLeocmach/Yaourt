@@ -4,7 +4,7 @@
 	group style={
 			group name=g, group size=2 by 1,
 			y descriptions at=edge left,
-			horizontal sep=0.5em,
+			horizontal sep=1em,
 			},
 	width=0.4\textwidth,
 	height=0.5\columnwidth,
