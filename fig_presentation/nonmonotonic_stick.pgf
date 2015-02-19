@@ -1,0 +1,38 @@
+\begin{figure}
+\begin{tikzpicture}[every axis/.style={xlabel absolute, every axis x label/.append style={anchor=base, yshift=-1em}}]
+
+\begin{groupplot}[
+	group style={
+			group name=g, group size=1 by 3,
+			vertical sep=0.5em,
+			x descriptions at=edge bottom,
+		},
+	height=8.5\baselineskip,
+	width=\columnwidth-9.5\baselineskip,
+	xlabel={time (\si{\hour})},
+	xmin=0,xmax=3, ymin=0,
+	]
+\nextgroupplot[
+		ylabel={$\xi$ (\si{\micro\metre})}, restrict y to domain=0:10,
+		]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{1}*2*pi}]{ech23_pore_size.txt};
+	%\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{1}*2*pi}]{ech25_pore_size.txt};
+	\addplot[only marks, mark=o]  table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{1}*2*pi}]{ech23_pore_size_toi.txt};
+	%\addplot[only marks,mark=x,Accent1] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{1}*2*pi}]{ech25_pore_size_toi.txt};
+
+\nextgroupplot[ylabel={$\chi$ (a.u.)}, restrict y to domain=0:4,]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{2}/1024}]{ech23_pore_size.txt};
+	%\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{2}/1024}]{ech25_pore_size.txt};
+	\addplot[only marks, mark=o]  table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{2}/1024}]{ech23_pore_size_toi.txt};
+	%\addplot[only marks,mark=x,Accent1] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{2}/1024}]{ech25_pore_size_toi.txt};
+
+\nextgroupplot[ylabel={$d$}, restrict y to domain=0:3,restrict x to domain=0.25:3]
+	\addplot+[no marks, black] table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{3}}]{ech23_pore_size.txt};
+	%\addplot+[no marks, Accent1,dashed] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{3}}]{ech25_pore_size.txt};
+	\addplot[only marks, mark=o]  table[x expr={\thisrowno{0}/3600.+0.2}, y expr={\thisrowno{3}}]{ech23_pore_size_toi.txt};
+	%\addplot[only marks,mark=x,Accent1] table[x expr={\thisrowno{0}/3600.+0.1}, y expr={\thisrowno{3}}]{ech25_pore_size_toi.txt};
+\end{groupplot}
+
+ 
+\end{tikzpicture}
+\end{figure}
