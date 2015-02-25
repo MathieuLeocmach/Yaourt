@@ -1,4 +1,11 @@
-\documentclass[twocolumn,superscriptaddress,showpacs,preprintnumbers,amsmath,amssymb,prl]{revtex4-1}
+%% PNAStwoS.tex
+%% Sample file to use for PNAS articles prepared in LaTeX
+%% For two column PNAS articles
+%% Version1: Apr 15, 2008
+%% Version2: Oct 04, 2013
+
+%% BASIC CLASS FILE
+\documentclass{pnastwo}
 \usepackage[utf8]{inputenc}
 
 \usepackage{graphicx} 
@@ -6,9 +13,9 @@
 \usepackage{hyperref}
 \usepackage[range-units = single]{siunitx}
 %\usepackage{multirow}
-\usepackage{bm}
+%\usepackage{bm}
 %\usepackage{dcolumn,ulem}
-\usepackage{amsfonts}
+%\usepackage{amsfonts}
 
 \definecolor{Main}{rgb}{1, 0.57, 0}
 \definecolor{Accent1}{rgb}{1,0.28,0}
@@ -19,61 +26,55 @@
 
 \begin{document}
 \title{Hierarchical wrinkling in a confined permeable biogel}
-\author{Mathieu Leocmach}
-\affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
-\author{Mathieu Nespoulous}
-\affiliation{Aix-Marseille Université, CNRS, MADIREL UMR 7246, Marseille, France}
-\author{Sébastien Manneville}
-\affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
-\author{Thomas Gibaud}
-\email{thomas.gibaud@ens-lyon.fr}
-\affiliation{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France}
+\author{Mathieu Leocmach\affil{1}{Universit\'e de Lyon, Laboratoire de Physique, \'Ecole Normale Sup\'erieure de Lyon, CNRS UMR 5672, 46 All\'ee d'Italie, 69364 Lyon cedex 07, France},
+Mathieu Nespoulous\affil{2}{Aix-Marseille Université, CNRS, MADIREL UMR 7246, Marseille, France},
+Sébastien Manneville\affil{1}{},
+Thomas Gibaud\affil{1}{}}
+%\email{thomas.gibaud@ens-lyon.fr}
 
+\significancetext{ML and MN conducted preliminary experiments. ML, SM and TG designed the experiments and interpreted the results. ML and TG performed quantitative experiments. ML performed data analysis and modelling. ML, SM and TG wrote the manuscript.}
+
+\maketitle
+
+\begin{article}
 \begin{abstract}
 The slow acidification of caseins, a family of milk proteins, is well known to result in the formation of gels, e.g. yoghurt. Less known is the partial redissolution of the gel at even lower pH. Here, using caseins as pH-responsive building blocks and the acidulent glucono-$\delta$-lactone, we design a model biogel film that spontaneously wrinkles in cascade, provided non-adhesive confinement. Using a combination of titration, rheology, light microscopy and confocal microscopy, we demonstrate that, during continuous acidification, the gel first shrinks and then swells, inducing wrinkling. Taking into account both Darcy flow through the gel and Poiseuille flow in the surrounding solvent, we develop a model that predicts correctly the wrinkling wavelength. Our results should be universal for acid-induced protein gels as they are based on pH-induced charge stabilisation/destabilisation. As such our results could set a benchmark to gain fundamental insights into wrinkled biological tissues, to texture food or to design surfaces for optical purposes.
 \end{abstract}
 
-\maketitle
+\keywords{wrinkling | porosity | gel | syn\ae{}resis}
 
-\section*{Introduction}
+\abbreviations{GDL, glucono-$\delta$-lactone}
 
 
-%There are many ways and reasons for a film to wrinkle. An elastic film buckles due to excess area with respect to its boundaries. Wrinkling is a buckling hindered by a substrate: the mismatch of elastic properties between the film and the substrate selects the preferred wrinkling wavelength~\cite{Gough1940, Bijlaard1946}. On the engineering side the last two decades have seen a bloom of methods to obtain well-controlled patterns via linear~\cite{Bowden1998, Genzer2006, Hu1998, Kim2010, Vandeparre2011, Li2013} or nonlinear wrinkling~\cite{Efimenko2005, Guvendiren2010, Kim2011a, Brau2011}. Such patterns can be triggered by temperature dilation, swelling or the removal of pre-strain. On the biology side wrinkling-controlled morphogenesis is ubiquitous: ageing and the loss of elastic fibres makes our skin wrinkles~\cite{Bissett1987, Genzer2006}, difference in growth rates between the gut tube and its dorsal anchoring is responsible for the vilification of guts~\cite{Savin2011, Ciarletta2014, Shyer2013}, localized cell death in biofilms focuses mechanical forces and initiates 3D labyrinth pattern~\cite{Trejo2013, Asally2012}. On the physics side analogues of wrinkling have been found in situations where an effective substrate comes from the resistance to uniaxial stretching~\cite{Cerda2003}, from gravity~\cite{Kolinski2009, Vella2009, Pineirua2013, Lucantonio2013}, from boundaries~\cite{Vandeparre2011a, Li2013} or from adhesion~\cite{Vella2009a}. Dealing only with (semi)infinite substrates, Biot generalised the elasticity of both the film and the substrate to viscoelasticity~\cite{Biot1957} or poroelasticity~\cite{Biot1964}, leading to time-dependent kinetic wavelength selection. Stability analysis of a film lying on a thin viscous substrate was studied only recently~\cite{Huang2002}. Since in practice gravity sets the wavelength in such situation~\cite{Smoluchowski1910}, the wrinkling on a confined viscous substrate has not been studied experimentally.
 
-There are many ways and reasons for a film to wrinkle. An elastic film buckles due to excess area with respect to its boundaries and wrinkles when buckling is hindered by a substrate. The selection of the preferred wrinkling wavelength is peculiar to the situation and is related to the mismatch of elastic properties between the surface and the substrate~\cite{Gough1940, Bijlaard1946, Biot1957, Bowden1998, Cerda2003, Genzer2006}. On the biology side wrinkling-controlled morphogenesis is ubiquitous. Ageing and the loss of elastic fibres makes our skin wrinkle~\cite{Bissett1987, Genzer2006}. Difference in growth rates between the gut tube and its dorsal anchoring is responsible for the vilification of guts~\cite{Savin2011, Ciarletta2014, Shyer2013}. Localised cell death in biofilms focuses mechanical forces and initiates 3D labyrinth pattern~\cite{Trejo2013, Asally2012}. On the physics side the last two decades have seen a bloom of methods to obtain well-controlled patterns via linear~\cite{Bowden1998, Genzer2006, Hu1998, Kim2010, Vandeparre2011, Li2013} or nonlinear wrinkling~\cite{Efimenko2005, Guvendiren2010, Kim2011a, Brau2011}. Such patterns can be triggered by temperature dilation~\cite{Bowden1998}, swelling~\cite{Hu1998,Kim2010} or the removal of pre-strain~\cite{Genzer2006}. 
 
-%ph swelling: hu_1998_Polymer gels with engineered environmentally and kim_2010_Dynamic display of biomolecular patterns
-%compressive stress: kim_2011_Hierarchical folding of elastic membranes under
+
+
+\dropcap{T}here are many ways and reasons for a film to wrinkle. An elastic film buckles due to excess area with respect to its boundaries and wrinkles when buckling is hindered by a substrate. The selection of the preferred wrinkling wavelength is peculiar to the situation and is related to the mismatch of elastic properties between the surface and the substrate~\cite{Gough1940, Bijlaard1946, Biot1957, Bowden1998, Cerda2003, Genzer2006}. On the biology side wrinkling-controlled morphogenesis is ubiquitous. Ageing and the loss of elastic fibres makes our skin wrinkle~\cite{Bissett1987, Genzer2006}. Difference in growth rates between the gut tube and its dorsal anchoring is responsible for the vilification of guts~\cite{Savin2011, Ciarletta2014, Shyer2013}. Localised cell death in biofilms focuses mechanical forces and initiates 3D labyrinth pattern~\cite{Trejo2013, Asally2012}. On the physics side the last two decades have seen a bloom of methods to obtain well-controlled patterns via linear~\cite{Bowden1998, Genzer2006, Hu1998, Kim2010, Vandeparre2011, Li2013} or nonlinear wrinkling~\cite{Efimenko2005, Guvendiren2010, Kim2011a, Brau2011}. Such patterns can be triggered by temperature dilation~\cite{Bowden1998}, swelling~\cite{Hu1998,Kim2010} or the removal of pre-strain~\cite{Genzer2006}. 
 
 
 Yet, benchmark experiments that explore the possibility of wrinkling in confined porous soft materials immersed in a buoyancy-matched viscous medium are in line, not only from a physics point of view, but also to get fundamental insights into biologically relevant situations. Indeed, stability analysis of a film lying on a thin viscous substrate was performed only recently~\cite{Huang2002} and remains theoretical because, on a free interface, gravity dominates over viscous substrate. In a biological context, however, thin tissues, e.g. epithelimum or endothelium, are naturally confined and immersed in a nearly buoyant medium, e.g. lymph, blood or mucus, a practical situation where a thin viscous substrate would set the wrinkling wavelength~\cite{Fleury2015}. Moreover, most biological films are porous, and little is known on the interplay between permeability and wrinkling~\cite{Ma2004,Longley2013}.
 
 Here, we introduce model permeable biogels that produce hierarchical wrinkling as a result of their interplay between their gelation dynamics and the confinement conditions. In slit geometry, we slowly acidify a dispersion of caseins, a family of milk proteins. As a result, not only does the casein form a gel as expected~\cite{Roefs1986,Bremer1989,Lucey1998,Dickinson2002} --this is a well-known effect used in yoghurt making-- but the gel starts to produce wrinkling patterns in cascade when casein adhesion to the slit walls is turned off, Figure~\ref{fig:dynamics} and Supplementary Videos~\ref{S-vid:transmitted} and \ref{S-vid:reconstructed}. Using a combination of titration, rheology, light microscopy and confocal microscopy, we demonstrate that upon acidification the casein network spontaneously shrinks then swells at the micron level and wrinkles at the millimetre scale. We systematically investigate such swelling-induced wrinkling of a porous gel film sandwiched between two viscous layers, the whole system being confined between two glass plates.  The main goal of the present study is to unveil the physical origin of the observed patterns and to identify the selection mechanism of the wavelength.
 
-\begin{figure}
-	\includegraphics{dynamics}%
-	\caption{Dynamics of pattern formation in a confined film of casein gel (caseinate 4\%w, GDL 4\%w in water). (a) Light transmission microscopy. Successive generations of patterns are highlighted in colour to stress the absence of coarsening after formation. (b) 3D reconstruction from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}%
-	\label{fig:dynamics}%
-\end{figure}
+%fig:dynamics
+
 
 In the following we first describe the physical chemistry that allows us to form such patterns.
 We then show how transverse confinement leads to saturation of the amplitude on both the top and bottom walls followed by a cascade of secondary and ternary patterns. Finally we model the situation and identify two possible selection mechanisms, namely porous Darcy flow or viscous Poiseuille flow. Comparing our experimental data to these two models we show that a combination of both Darcy and Poiseuille mechanisms accurately describes our data. This combined model pins down the dynamical origin of the constraints exerted on the gel and nicely predicts the wrinkling wavelength.
-%Poiseuille~\cite{Poiseuille1842} flows of the solvent above and below the gel film for long wavelengths and a new mechanism, Darcy~\cite{Darcy1856} flows of the solvent through the gel film for short wavelengths.
 
-\section*{System design}
 
-\begin{figure}
-	\includegraphics{acidification}%
-	\caption{Acid-induced protein gel properties behave non monotonically with pH. (a) pH decrease over time in a 4\%w sodium caseinate solution acidified by 4\%w GDL in water. The horizontal line indicates isoelectric pH of caseins. (b) Corresponding evolution of the fraction of free caseins. Symbols are direct measures upon addition of GDL. The continuous line is deduced from $x_\text{free}$ at the same pH obtained by addition of HCl 1 molar and waiting for equilibration (insert). (c) Evolution of the elastic modulus $G'$ measured in a rheometer with full adhesion to the cone-plane geometry. (d) Evolution of pore size measured by confocal microscopy in a slit geometry with either adhesion to all walls (black line) or no adhesion to top wall, i.e. allowed syn\ae{}resis and swelling (orange dashed line).}%
-	\label{fig:acidification}
-\end{figure}
+\section{System design}
+
+%fig:acidification
+
 
 
 To form wrinkled patterns such as the one observed in Figure~\ref{fig:dynamics}, ones needs (i) to take advantage of the pH sensitivity of caseins, (ii) to control the route to gelation, (iii) to fine tune the gel properties and the boundary conditions.
 
 The stability of casein dispersions strongly depends on the pH. Supplementary Video~\ref{S-vid:titration} shows the titration of a casein dispersion at 4\%w by 1 molar HCl. At pH=7, the caseins are well dispersed then they flocculate between pH=5.5 to 4 and finally at pH=3 the solution becomes clearer as caseins partially redisperse. The state diagram of caseins as a function of pH is thus related to charge stabilisation. At neutral pH caseins are charged negatively and repel each other. As the pH decreases to the isoelectric point of the caseins (pH$\approx 4.6$), casein molecules loose their negative net charge and tend to stick to each other~\cite{Roefs1986,Bremer1989,Lucey1998,Dickinson2002}. Beyond the isoelectric point caseins acquire a positive net charge and therefore partially re-dissolve. In the inset of Figure~\ref{fig:acidification}b, we quantify this effect and measure with UV absorption spectroscopy the amount of free caseins within the 4\%w dispersion as a function of pH, see Supplementary Methods. Starting at pH=6.8 all the casein molecules are well dispersed and the free casein fraction $x_\text{free}$ is 1. Upon decreasing the pH to the isolectric point the free casein fraction drops to almost 0: almost all the casein molecules are aggregated. Further decrease of the pH of the solution leads to a partial redissolution of the casein aggregates. At pH=2 the fraction of free casein is 0.35.
 
-%On the Stability of Casein Micelles, Pieter Walstra J. of dairy science 1990
+
 
 When acidified by a strong acid like HCl, caseins flocculate and do not form a space-spanning gel. Therfore, we use glucono-$\delta$-lactone (GDL) a molecule that slowly hydrolyses into gluconic acid and thus lowers slowly, continuously and homogeneously the pH of the medium, Figure~\ref{fig:acidification}a. This GDL-controlled acidification enables the formation of a bulk gel phase below pH=5.3 with $x_\text{free}\approx 0$. This process is kinetically driven by diffusion limited cluster aggregation~\cite{Bremer1989}. As shown in Figure~\ref{fig:acidification}a and b, when adding enough GDL the pH decreases beyond the isoelectric point shifting the balance between attraction and charge repulsion at the casein level, so that caseins partially dissociate from the fractal network. This results in the coexistence between a dilute phase $x_\text{free}\approx 5-20\%$ and a dense glassy network, a scenario reminiscent of arrested phase separation~\cite{Cardinaux2007,lu2008gelation}.
 
@@ -81,39 +82,25 @@ We monitor the GDL-induced gelation with a rheometer in cone-plate geometry. As 
 
 To gain further insight into the mechanical properties of the gel we turn to microstructural observations under confocal microscopy. As shown in Supplementary Videos~\ref{S-vid:stick63} and \ref{S-vid:nostick63} and in Supplementary Figure~\ref{S-fig:nonmonotonic} the gel consists in a space spanning fractal network with a cut-off length scale $\xi$ that corresponds to the maximum pore size~\cite{VanDijk1986}. Permeability $\alpha$ is of the order of \SI{67000}{\square\nano\metre}, see Supplementary Figure~\ref{S-fig:permeability}. The fractal model fits the structure at all times but its parameters vary non-monotonically during GDL acidification. As shown in Figure~\ref{fig:acidification}d and Supplementary Figure~\ref{S-fig:nonmonotonic}, when reaching the isolectric point $\xi$ increases up to a maximum length of \SI{7}{\micro\metre} due to the solvent expulsion out of the casein network~\cite{Lucey1998} like in viscoelastic phase separation~\cite{Tanaka2000h}. This corresponds to a tighter packing of the caseins within the network strands. Such stiffening of the strands explains the observed increase of elasticity. Beyond the isoelectric point caseins partially regain solubility, the packing within the strands loosens which results in weaker, thicker strands and smaller pores as $\xi$ decreases down to \SI{4}{\micro\metre}, hence the long-term decrease of the elastic modulus.
 
-%XXXCe paragraphe fait-il sens ici ?XXX As seen on the confocal measurements, the gel is porous and is permeable to the solvent.  This property is determinant as it allow the gel to absorb and expel the solvent and therefore change its volume when sticky boundary are turned off. To quantify this effect, we make the casein gel inside a capillary and dip vertically the capillary in an aqueous buffer~\cite{VanDijk1986}. In the Supplementary Figure~\ref{S-fig:permeability}, we observe that the aqueous buffer goes through the gel and rises in the tube due to capillary forces. Exploitation of this experiment give the permeability of the gel: \SI{67000}{\square\nano\metre}.
 
 Boundary conditions is the final parameter that is essential to form wrinkled patterns. In order to turn off the adsorption of the caseins on a surface, we coat the surface with polymer brushes, see Methods, effectively creating non adhesive boundary conditions for the gel. When the casein adhesion to the upper boundary is turned off, the gel still not wrinkles because it remains attached to the bottom wall, but it detaches from the top wall. In this situation we can monitor $\xi$, Figure~\ref{fig:acidification}d. $\xi$ remains mostly constant but the volume occupied by the gel varies, as will be reported below.
 
 Finally, if the adhesion to both top and bottom walls is turned off, the film wrinkles as shown in Figure~\ref{fig:dynamics}. Such cascade buckling has already been observed in a one-dimensional macroscopic system, a sheet of steel forced to buckle between two solid plates~\cite{Roman1999}. In addition one has to note that the primary wavelength is much smaller than the size of the system, implying that a simple buckling scenario cannot explain the observations in Figure~\ref{fig:dynamics} and that only a wrinkling instability can be invoked.
 
 
-%We coat the glass slides with acrylamide brushes to prevent the adhesion of the casein. In fig.2c, when the top slide of the optical cell is coated with acrylamide brushes, we then observe that the casein network detaches from the top slide. $\xi$ does not peak at the isoelectric point but remains constant
-
-%Boundary conditions is the final parameter that is essential to form wrinkled patterns. Once the space spanning network is formed and sticks to the container, protein attraction can only proceed by local shrinking of the protein agregates, leading to larger pores.
-
-%The difference in value of $\xi$ between the fully un-coated  and the half-coated optical cell demonstrate that the gel is subject to constrains as the pH decreases. The relaxation of thoses constrain is key to the wrinkling formation when both the top and bottom slide are coated with acrylamide brushes.
-
-%on a change les condition daccroche ce aui permet au contrainte de se relacher 
 
 
-%The slow acidification of a protein (sodium caseinate) solution down to the isoelectric pH induces gelation~\cite{Bremer1989} (Fig.~\ref{fig:acidification}a). Since caseins strongly adsorb to interfaces, the resulting gel sticks to the container walls, allowing rheological measurements (Fig.~\ref{fig:acidification}b). Further decrease of the pH beyond the isoelectric point makes the casein aggregates swell (Supplementary Fig.~\ref{S-fig:nonmonotonic}), thus weakening the gel~\cite{Braga2006}. In a microscopy cell of slit geometry coated so that the casein cannot adsorb on the top wall, this microscopic nonmonotonic behaviour translates into little variation of the pore size $\xi$ but to solvent expulsion out of the gel phase (syn\ae{}resis) followed by global swelling (Fig.~\ref{fig:acidification}c and Supplementary Fig.~\ref{S-fig:nonmonotonic}).
-
-\section*{Dynamics of the wrinkling process}
+\section{Dynamics of the wrinkling process}
 
 Figure~\ref{fig:sideview}a shows successive side views of confocal measurements in the case where both top and bottom walls are coated, adhesion turned off, a configuration that induces wrinkling, see also Supplementary Videos~\ref{S-vid:cutDarcy} and \ref{S-vid:cutPoiseuille}. Initially the dispersion is homogeneous and fills the entire slit. The black margins correspond to the glass walls. Around \SI{23}{\minute}, the gel forms and simultaneously becomes thinner and more concentrated --the fluorescence signal which is proportional to the casein concentration is brighter compared to the initial situation. This effect is the fingerprint of syn\ae{}resis: as gelation proceeds, the solvent is expelled on both the upper and lower sides. We describe this situation as a porous elastic film of thickness $h$ sandwiched between two viscous layers of respective thickness $H_1$ and $H_2$ in a cell of thickness $e=H_1+h+H_2$,  Figure~\ref{fig:sideview}b. Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume, Figure~\ref{fig:sideview}c, and excess surface area of the gel film, Figure~\ref{fig:sideview}d, see Supplementary Methods. As expected from the system design, the evolution of the gel volume is non-monotonic. After reaching a minimum around 35\% of its initial value at \SI{23}{\minute}, the volume increases. Shortly after,  at \SI{36}{\minute}, the planar film destabilises and starts to wrinkle in the $z$-direction creating excess area. This confirms that the instability is due to swelling. Around \SI{38}{\minute}, the amplitude of the wrinkles reaches the thickness of the slit. The size of the primary pattern is now fixed, Supplementary Figure~\ref{S-fig:growth}. However swelling continues, the gel flattens on both top and bottom walls (\SI{44}{\minute}) and finally buckles back (\SI{53}{\minute}) to form the secondary pattern (\SI{1}{\hour}21). When the excess area saturates, the dynamics stop (\SI{3}{\hour}). The amount of GDL controls the ability of the gel to swell: at low GDL concentrations we only observe the primary pattern, at high GDL concentrations we observe the formation of higher order patterns. 
 
 Note that adhesion to side walls is necessary to prevent total syn\ae{}resis and thus allows subsequent planar stresses to develop while swelling: the only situation where we observe wrinkling is when the adhesion on both top and bottom wall is turned off. We also confirm that at any given point in time the thickness $h$ of the film of gel is spatially homogeneous. The contrast in transmission microscopy, Figure~\ref{fig:dynamics}a, is therefore not due to thickness inhomogeneities but to altitude gradients. Indeed the length of the optical path along the vertical direction $z$ through the gel phase is larger where the gel makes a slope compared to a flat situation, as indicated by the yellow vertical lines in Figure~\ref{fig:sideview}b.
 
-\begin{figure}
-	\includegraphics{sideview}
-	\caption{Measurements and modelling. (a) Confocal $(x,z)$ cuts showing syn\ae{}resis, swelling, wrinkling and cascade buckling. The scale bar is \SI{100}{\micro\metre} (real size ratio). (b) Schematic side view of the cell. The constant thickness gel film (orange) is surrounded by solvent. Yellow lines show the path of transmitted light through the gel phase. (c-d) Confocal microscopy measurement of the volume of the gel phase relative to cell volume and excess area. Crosses correspond to times in (a).}
-	\label{fig:sideview}
-\end{figure}
+%fig:sideview
 
-\section*{Models and scaling laws}
 
-%Longitudinally constrained swelling of the gel film is the origin and driving force of the buckling instability. The gel area becomes in excess compared to the available area, thus the gel must fold. However, this does not explains how a wavelength is selected.
+\section{Models and scaling laws}
+
 
 The determination of the characteristic length $\lambda$ of a wrinkling pattern is an old problem. Large deformations of thin sheets is governed by F\"{o}ppl-von K\'arm\'an equations~\cite{landau1986}, which are essentially impossible to solve in analytical form. However using scaling and asymptotic arguments one can obtain the dominant wavelength of the wrinkling pattern up to dimensionless prefactors and isolate the physically meaningful ingredients~\cite{Cerda2003}. An elastic film buckles due to excess area with respect to its boundaries. Wrinkling is a buckling hindered by a substrate: the mismatch of elastic properties between the film and the substrate selects the preferred wrinkling wavelength~\cite{Gough1940, Bijlaard1946}. $\lambda$ is then set by the competition between the flexural modulus of the film $B=E/(1-\nu^2)$ ($E$ Young modulus, $\nu$ Poisson ratio) and a transverse load $\sigma_\perp$. For small deflections of  amplitude $A$, $\lambda$ scales as~\cite{Vella2009,Kolinski2009}: 
 %
@@ -123,18 +110,14 @@ The determination of the characteristic length $\lambda$ of a wrinkling pattern 
 \end{equation}
 
 
-%L. Landau and E.M. Lifshitz, Theory of Elasticity (Pergamon, New York, 1986), 3rd ed.
+
 
 This framework has been successfully applied to situations where $\sigma_{\perp}$ comes from the resistance of an elastic substrate ~\cite{Gough1940, Bijlaard1946}. Dealing only with (semi)infinite substrates, Biot generalised the elasticity of both the film and the substrate to viscoelasticity~\cite{Biot1957} or poroelasticity~\cite{Biot1964}, leading to time-dependent kinetic wavelength selection. Furthermore, equation~(\ref{eq:lstar}) remains valid even when $\sigma_{\perp}$ comes from the resistance to uniaxial stretching~\cite{Cerda2003}, from gravity~\cite{Smoluchowski1910, Kolinski2009, Vella2009, Pineirua2013, Lucantonio2013}, from boundaries~\cite{Vandeparre2011a, Li2013} or from adhesion~\cite{Vella2009a}.
 
 In our situation we now have to determine $\sigma_\perp$. We identify three possible candidates for the transverse load $\sigma_\perp$: the weight or buoyancy of the gel, the porous flow through the gel or the viscous flows in the surrounding solvent layers. We confirmed that gravity plays no significant role by successfully repeating the wrinkling pattern in a cell held vertically, i.e. with the weight acting longitudinally rather than transversely.
 
+%fig:DarcyPoiseuille
 
-\begin{figure*}
-	\includegraphics{Darcy_vs_Poiseuille}
-	\caption{Comparing model predictions $\lambda_D$, $\lambda_P$ and $\lambda_{D+P}$ with measured wavelengths $\lambda_\text{exp}$. Dots come from primary pattern, squares from secondary blisters. Lines are the best linear fits through the origin taking into account only the points that should be (a) in Darcy mode $H<H^*$, (b) in Poiseuille mode $H>H^*$ (c) all points. Prefactors are 0.63, 0.69 and 0.67 respectively. The dashed line in (b) is the best affine fit ($\lambda_{\rm exp}=0.52\lambda_{P}+\SI{0.33}{\milli\metre}$) to all data points.}
-	\label{fig:DarcyPoiseuille}
-\end{figure*}
 
 Therefore we consider two limit scenarios that leads to wrinkling patterns. In a first limit, the film of gel sits without sticking to the bottom wall of the cell, i.e. $H_1\rightarrow0$, see Supplementary Video~\ref{S-vid:cutDarcy}. Creating a two dimensional blister requires flowing solvent of viscosity $\eta$ through the gel of permeability $\alpha$. Darcy law~\cite{Darcy1856} relates the pressure gradient, $(p_2-p_1)/h$, to the volume flux per unit area $v = \frac{\alpha}{\eta}\frac{p_2-p_1}{h} = \frac{dA}{dt}$. Identifying $\sigma_{\perp}=p_2-p_1$ and injecting this expression in equation~(\ref{eq:lstar}) yields the wavelength of the Darcy mode as
 \begin{equation}
@@ -157,7 +140,7 @@ where $H$ is redefined by $1/H^3 = 1/H_1^3 + 1/H_2^3$. The crossover between the
 
 To sum up, we expect two regimes of viscosity-dominated wrinkling: for $H\ll H^*$, i.e. slow destabilisation of a highly permeable film close to a wall, the main dissipation mechanism would be the flow through the porous film; whereas for $H\gg H^*$, i.e. fast wrinkling of a poorly permeable film far from any wall, the flow in the viscous layers would dominate and set the wavelength.
 
-\section*{Experimental tests}
+\section{Experimental tests}
 
 For a typical gel sheet, the buoyancy after syn\ae{}resis is estimated from the initial sodium caseinate mass concentration $C_\text{cas}$ as $\Delta\rho=C_\text{cas} e/h = \SI{130}{\kilo\gram\per\cubic\metre}$ leading to a gravity stress $\sigma_\perp^G \approx \SI{0.04}{\pascal}$. This is much lower than typical Darcy or Poiseuille stresses $\sigma_\perp^D \approx \sigma_\perp^P \approx \SI{0.15}{\pascal}$ and therefore gravity is dismissed.
 
@@ -166,14 +149,12 @@ Darcy and Poiseuille models yield wavelengths that are of the same order in most
 
 Our results are displayed in Figure~\ref{fig:DarcyPoiseuille}. Although they provide the correct order of magnitude for $\lambda$, neither model alone is able to quantitatively reproduce the full data set. However considering only the points where $H<H^*$ (respectively $H>H^*$), the Darcy (resp. Poiseuille) model fits the data well albeit with a prefactor. Note that it would be easy to miss out on the failure of the Poiseuille model at small wavelengths by adding an unexplained offset (dashed line in Figure~\ref{fig:DarcyPoiseuille}b). Nonetheless, a complete model (derived in Supplementary Methods), summing up the influence of both Poiseuille and Darcy dissipation provides a much better agreement for the whole $H/H^*$ range.
 
-\section*{Conclusion}
+\section{Conclusion}
 
 In conclusion we have taken advantage of the properties of the casein protein to engineer and study the wrinkling of a porous confined biogel. In particular, we have fine-tuned the interplay between the attraction and the repulsion at the protein level to assemble dense glassy networks that shrink and swell as a result of continuous acidification. Together with carefully controlled adhesion of the gels to the boundaries, this route to form permeable biogels is the key to produce an original cascade of wrinkling patterns. We developed a model that captures the dynamical origin of the constraints exerted on the gel and predicts the wrinkling wavelength: Poiseuille flows of the solvent above and below the gel when the film is far from any wall, Darcy flow of the solvent through the gel when the film is close to a wall. Such a model experiment, because it relies on pH-induced charge stabilisation/destabilisation, should be generalisable to different kinds of proteins. As such it illustrates daily life problems such as wrinkles encountered while putting up wall paper and could set a benchmark to explore potential applications in micro-fingerprinting~\cite{Bae2015} or in optical devices such as diffraction gratings or Fresnel lenses~\cite{Li2013}, and the possibility of wrinkling in confined porous soft materials immersed in a buoyancy-matched viscous medium such as biological tissues~\cite{Ma2004,Longley2013,Fleury2015}.
 
 
-%role of gravity
-
-\section*{Methods summary}
+\begin{materials}
 
 Sodium caseinate (Firmenich) is dissolved in deionised water by stirring for \SI{20}{\minute} at room temperature. The mixing of the caseine dispersion with glucono-$\delta$-lactone (GDL) in powder (Firmenich) sets the beginning of the experiments. We typically have about \SI{10}{\minute} to pipet the dispersion into the slit before gelation starts. Sodium caseinate (Firmenich) is labelled with Dylight~550 NHS ESTER (Thermo Scientific). Excess dye is removed by centrifugation. For confocal microscopy measurements, we add 10\% of fluorescently labelled caseins to the casein/GDL dispersion while it is fluid.
 
@@ -182,11 +163,11 @@ Home made optical cells are composed of a slide (RS) and a cover slip (Menzel-Gl
 3D data are collected on a Zeiss LSM510 confocal microscope using \SI{532}{\nano\meter} laser excitation. We use either a 10x (air) lens to measure the geometry of wrinkling, see Supplementary Material, or a 63x (oil) lens to observe the microstructure of the gel. Larger scope pictures, obtained either by stitching fluorescent microscopy images (Nikon Eclipse Ti) or by transmitted/reflected light macroscope (Nikon SMZ745T/Leica DMS1000) are used to measure the wavelength of the primary pattern, Supplementary Figures~\ref{S-fig:generations} and \ref{S-fig:patterns}. The secondary pattern wavelength is taken as half of the primary wavelength, according to Supplementary Figure~\ref{S-fig:generations}.
 Data shown in Figure~\ref{fig:acidification}a and c are obtained with a SevenCompact pH-meter (Mettler Toledo) and an MCR 301 rheometer (Anton Paar). For every gel composition we monitor the gelation by small amplitude oscillations (strain 0.1\%, frequency \SI{1}{\hertz}) and estimate the flexural modulus $B$ from the maximum value of the shear modulus $G^\prime$ as $B=2G^\prime/(1-\nu)$ taking $\nu=0.3$ for the Poisson ratio, a value typical of a spongy network~\cite{Greaves2011}.
 Permeability is measured using a protocol found in \cite{VanDijk1986}, see Supplementary Method and Supplementary Figure~\ref{S-fig:permeability}. The amount of free casein protein present in the gel during the GDL acidification process is measured by titration and UV-spectrometry (Ocean Optics) according to the protocol found in~\cite{Roefs1986} and detailed in Supplementary Method.
+\end{materials}
 
-\bibliographystyle{naturemag3}
-\bibliography{Yaourt}
 
-\paragraph*{Acknowledgements}
+
+\begin{acknowledgments}
 Confocal experiments were conducted at SFR BioSciences Gerland - Lyon Sud (US8 / UMS3444).
 The authors thank Jos\'e Bico, Arezeki Boudaoud, Cyprien Gay, L. Mahadevan and Olivier Pierre-Louis for theoretical insights at various stages of the research. 
 Precious experimental ideas came from Catherine Barentin, Denis Bartolo, Elisabeth Bouchaud and Thibaut Divoux.
@@ -195,15 +176,40 @@ Special thanks to Madame Biot who made M.A. Biot work accessible through the \hr
 ML thanks the Region Rhône Alpes and the Programme d'Avenir Lyon - Saint Etienne (PALSE NoGELPo) for postoctoral grant. 
 TG and MN acknowledge funding from the Agence Nationale de la Recherche (ANR-11-PDOC-027). 
 SM and ML acknowledge funding from the European Research Council under the European Union's Seventh Framework Program (FP7/2007-2013) / ERC grant agreement No. 258803 and from Institut Universitaire de France.
+\end{acknowledgments}
 
+\bibliographystyle{pnas2009}
+\bibliography{Yaourt}
 
-\paragraph*{Author Contributions}
-ML and MN conducted preliminary experiments. ML, SM and TG designed the experiments and interpreted the results. ML and TG performed quantitative experiments. ML performed data analysis and modelling. ML, SM and TG wrote the manuscript.
+\end{article}
 
+%\paragraph*{Author Information} 
+%The authors declare that they have no competing financial interests. 
+%Correspondence and requests for materials should be addressed to TG (\href{mailto:thomas.gibaud@ens-lyon.fr}{thomas.gibaud@ens-lyon.fr}).
 
-\paragraph*{Author Information} 
-The authors declare that they have no competing financial interests. 
-Correspondence and requests for materials should be addressed to TG (\href{mailto:thomas.gibaud@ens-lyon.fr}{thomas.gibaud@ens-lyon.fr}).
+\begin{figure}
+	\includegraphics{dynamics}%
+	\caption{Dynamics of pattern formation in a confined film of casein gel (caseinate 4\%w, GDL 4\%w in water). (a) Light transmission microscopy. Successive generations of patterns are highlighted in colour to stress the absence of coarsening after formation. (b) 3D reconstruction from fluorescent confocal microscopy. Scale bars are \SI{1}{\milli\metre}.}%
+	\label{fig:dynamics}%
+\end{figure}
+
+\begin{figure}
+	\includegraphics{acidification}%
+	\caption{Acid-induced protein gel properties behave non monotonically with pH. (a) pH decrease over time in a 4\%w sodium caseinate solution acidified by 4\%w GDL in water. The horizontal line indicates isoelectric pH of caseins. (b) Corresponding evolution of the fraction of free caseins. Symbols are direct measures upon addition of GDL. The continuous line is deduced from $x_\text{free}$ at the same pH obtained by addition of HCl 1 molar and waiting for equilibration (insert). (c) Evolution of the elastic modulus $G'$ measured in a rheometer with full adhesion to the cone-plane geometry. (d) Evolution of pore size measured by confocal microscopy in a slit geometry with either adhesion to all walls (black line) or no adhesion to top wall, i.e. allowed syn\ae{}resis and swelling (orange dashed line).}%
+	\label{fig:acidification}
+\end{figure}
+
+\begin{figure}
+	\includegraphics{sideview}
+	\caption{Measurements and modelling. (a) Confocal $(x,z)$ cuts showing syn\ae{}resis, swelling, wrinkling and cascade buckling. The scale bar is \SI{100}{\micro\metre} (real size ratio). (b) Schematic side view of the cell. The constant thickness gel film (orange) is surrounded by solvent. Yellow lines show the path of transmitted light through the gel phase. (c-d) Confocal microscopy measurement of the volume of the gel phase relative to cell volume and excess area. Crosses correspond to times in (a).}
+	\label{fig:sideview}
+\end{figure}
+
+\begin{figure*}
+	\includegraphics{Darcy_vs_Poiseuille}
+	\caption{Comparing model predictions $\lambda_D$, $\lambda_P$ and $\lambda_{D+P}$ with measured wavelengths $\lambda_\text{exp}$. Dots come from primary pattern, squares from secondary blisters. Lines are the best linear fits through the origin taking into account only the points that should be (a) in Darcy mode $H<H^*$, (b) in Poiseuille mode $H>H^*$ (c) all points. Prefactors are 0.63, 0.69 and 0.67 respectively. The dashed line in (b) is the best affine fit ($\lambda_{\rm exp}=0.52\lambda_{P}+\SI{0.33}{\milli\metre}$) to all data points.}
+	\label{fig:DarcyPoiseuille}
+\end{figure*}
 
 
 \end{document}
