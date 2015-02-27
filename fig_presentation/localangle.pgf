@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{scope}[rotate=80, every node/.style={circle, fill, color=Accent1!50, inner sep=0, minimum size=1.8\radius}]
+		%first neighbourhood
+		\fill node (a) {} +(30:2.1\radius) node (b) {} +(90:2.2\radius) node (c) {} +(150:2.05\radius) node (d) {} +(210:2.3\radius) node (e) {} +(270:2.2\radius) node (f) {} +(330:2.01\radius) node (g) {};
+		%second neighbourhood
+		\fill ++(g) ++(-70:2.01\radius) node (h) {} +(40:2.01\radius) node (i) {} +(220:2.2\radius) node (j) {} +(280:2.05\radius) node (k) {} +(340:2.05\radius) node (l) {};
+		\fill ++(j) ++(-70:2.2\radius) node (m) {} +(170:2.01\radius) node (n) {} +(230:2.2\radius) node (o) {} +(290:2.05\radius) node (p) {} +(350:2.05\radius) node (q) {};
+	\end{scope}
+	\coordinate (corner) at (e.west|-p.south);
+	\tikzset{ar/.style={->, draw=Main, thick}}
+	\draw[ar] (d.center) -- (a.center);
+	\draw[ar] (f.center) -- (h.center);
+	\draw[ar] (n.center) -- (m.center);
+	\begin{scope}[green!50!black]
+		\draw (c.center) -- (a.center) -- (b.center) (o.center) -- (m.center) -- (p.center);
+		\path[<->] (c.center) edge [bend left] (b.center);
+		\path[<->] (p.center) edge [bend left] (o.center);
+	\end{scope}
+\end{tikzpicture}
