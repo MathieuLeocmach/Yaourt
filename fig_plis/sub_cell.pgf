@@ -1,0 +1,9 @@
+\node[inner sep=0,minimum height=\e,minimum width=\lena] (cell) {};
+\begin{scope}[every node/.style={inner sep=0,minimum height=\e,minimum width=\parafilm, fill=gray}]
+	\node[left=-1pt of cell] (pl) {};
+	\node[right=-1pt of cell] (pr) {};
+\end{scope}
+\fill[pattern=north east lines,pattern color=Accent2] 
+	(pl.north west) ++(0,\baselineskip) rectangle (pr.north east) coordinate[midway] (midglass)
+	(pl.south west) ++(0,-\baselineskip) rectangle (pr.south east)
+	;

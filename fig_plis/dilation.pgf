@@ -1,0 +1,55 @@
+\begin{tikzpicture}
+\let\parafilm\relax
+\newlength\parafilm
+\pgfmathsetlength{\parafilm}{3.75em}
+\let\lena\relax
+\newlength\lena
+\pgfmathsetlength{\lena}{\columnwidth-2.5\parafilm}
+\let\e\relax
+\newlength\e
+\setlength{\e}{3em}
+
+%homogeneous solution
+\input{fig_plis/sub_cell.pgf}
+\node[font=\footnotesize, right=0 of pl.west] {parafilm};
+\node[fill=white, font=\footnotesize, inner sep=1pt] at (midglass) {coated glass};
+\fill[fill=Accent1!25] (cell.north west) rectangle (cell.south east) node[midway,font=\footnotesize] {homogeneous protein solution};
+\draw [<->] (cell.south west) ++(0,0.8em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {\SI{1}{\centi\metre}};
+\draw [<->] (cell.south west) ++(0.8em,0) -- +(0,\e) node[midway,left,font=\footnotesize, inner xsep=1pt] {$e$};
+
+%initial gel
+\begin{scope}[yshift=-7em]
+\input{fig_plis/sub_cell.pgf}
+\fill[pattern=crosshatch, pattern color=Accent1!60] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e) node[midway,font=\footnotesize, fill=white, inner sep=1pt] {gel};
+\end{scope}
+
+%shrunk gel
+\begin{scope}[yshift=-14em]
+\input{fig_plis/sub_cell.pgf}
+\fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.3\e) rectangle +(\lena, -0.4\e) node[midway,font=\footnotesize, fill=white, inner sep=1pt] {gel} node[midway, above=0.15\e,font=\footnotesize] {solvent};
+\end{scope}
+
+%buckled gel
+\begin{scope}[yshift=-21em, xshift=-0.5\parafilm]
+\input{fig_plis/sub_cell.pgf}
+\fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.3\e) ..controls +(0.5\lena,0.25\e) .. ++(\lena,0) -- ++(0, -0.4\e) ..controls +(-0.5\lena,0.25\e) .. ++(-\lena,0) -- cycle;
+\end{scope}
+
+%wrinkled gel
+\begin{scope}[yshift=-28em]
+\input{fig_plis/sub_cell.pgf}
+\fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e);
+\begin{axis}[
+	name=a,
+	anchor=south east, at={(cell.south east)},
+	width=\lena, height=\e, scale only axis,
+	domain=0:10*pi, samples=40, no markers, ymin=-4, ymax=4,xmin=0,xmax=10*pi,
+	axis lines=none, xtick=\empty,
+	]
+	\addplot[draw=none, fill=white, name path=top, yshift=0.2\e] {sin(deg(x))} coordinate[pos=0.25] (l) coordinate[pos=0.45] (r)-- (rel axis cs:1,1) -- (rel axis cs:0,1) -- cycle;
+	\addplot[draw=none, fill=white, name path=bot, yshift=-0.2\e] {sin(deg(x))} -- (rel axis cs:1,0) -- (rel axis cs:0,0) -- cycle;
+	\draw[<->] (l|-r)--(r) node[midway,fill=white, inner sep=1pt, font=\footnotesize] {$\lambda$};
+\end{axis}
+\end{scope}
+
+\end{tikzpicture}
