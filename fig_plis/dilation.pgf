@@ -4,13 +4,14 @@
 \pgfmathsetlength{\parafilm}{3.75em}
 \let\lena\relax
 \newlength\lena
-\pgfmathsetlength{\lena}{\columnwidth-2.5\parafilm}
+\pgfmathsetlength{\lena}{\columnwidth-2\parafilm}
 \let\e\relax
 \newlength\e
 \setlength{\e}{3em}
 
 %homogeneous solution
 \input{fig_plis/sub_cell.pgf}
+\node[white] at (pr) {(a)};
 \node[font=\footnotesize, right=0 of pl.west] {parafilm};
 \node[fill=white, font=\footnotesize, inner sep=1pt] at (midglass) {coated glass};
 \fill[fill=Accent1!25] (cell.north west) rectangle (cell.south east) node[midway,font=\footnotesize] {homogeneous protein solution};
@@ -20,24 +21,29 @@
 %initial gel
 \begin{scope}[yshift=-7em]
 \input{fig_plis/sub_cell.pgf}
+\node[white] at (pr) {(b)};
 \fill[pattern=crosshatch, pattern color=Accent1!60] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e) node[midway,font=\footnotesize, fill=white, inner sep=1pt] {gel};
 \end{scope}
 
 %shrunk gel
 \begin{scope}[yshift=-14em]
 \input{fig_plis/sub_cell.pgf}
+\node[white] at (pr) {(c)};
 \fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.3\e) rectangle +(\lena, -0.4\e) node[midway,font=\footnotesize, fill=white, inner sep=1pt] {gel} node[midway, above=0.15\e,font=\footnotesize] {solvent};
 \end{scope}
 
 %buckled gel
-\begin{scope}[yshift=-21em, xshift=-0.5\parafilm]
+\begin{scope}[yshift=-21em]%, xshift=-0.5\parafilm]
 \input{fig_plis/sub_cell.pgf}
+\node[white] at (pr) {(d)};
 \fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.3\e) ..controls +(0.5\lena,0.25\e) .. ++(\lena,0) -- ++(0, -0.4\e) ..controls +(-0.5\lena,0.25\e) .. ++(-\lena,0) -- cycle;
+\node[below] (bkl) {buckling};
 \end{scope}
 
 %wrinkled gel
 \begin{scope}[yshift=-28em]
 \input{fig_plis/sub_cell.pgf}
+\node[white] at (pr) {(e)};
 \fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e);
 \begin{axis}[
 	name=a,
@@ -51,5 +57,16 @@
 	\draw[<->] (l|-r)--(r) node[midway,fill=white, inner sep=1pt, font=\footnotesize] {$\lambda$};
 \end{axis}
 \end{scope}
+
+%processes
+\begin{scope}[->, ultra thick]
+	\draw (0,-3em) --+(0,-1em) node[midway,left] {gelation};
+	\draw (-1em,-10em) --+(0,-1em) node[midway,left] {syn\ae{}resis};
+	\draw (1em,-11em) --+(0,1em) node[midway,right] (rs){reverse swelling};
+	\draw (-1em,-17em) --+(0,-1em) node[midway,xshift=0.25\lena+0.5\parafilm-2pt+0.5em] {swelling from rest state};
+	\draw (0.5\lena+\parafilm-4pt,-17em) --+(0,-8em);
+\end{scope}
+\draw (rs.west)--(rs.east);
+\draw (bkl.west)--(bkl.east);
 
 \end{tikzpicture}
