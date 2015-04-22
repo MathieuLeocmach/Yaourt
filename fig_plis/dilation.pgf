@@ -1,10 +1,14 @@
+\begin{figure*}
 \begin{tikzpicture}
 \let\parafilm\relax
 \newlength\parafilm
 \pgfmathsetlength{\parafilm}{3.75em}
+\let\slide\relax
+\newlength\slide
+\pgfmathsetlength{\slide}{0.85\columnwidth}
 \let\lena\relax
 \newlength\lena
-\pgfmathsetlength{\lena}{\columnwidth-2\parafilm}
+\pgfmathsetlength{\lena}{\slide-2\parafilm}
 \let\e\relax
 \newlength\e
 \setlength{\e}{3em}
@@ -15,14 +19,17 @@
 \node[font=\footnotesize, right=0 of pl.west] {parafilm};
 \node[fill=white, font=\footnotesize, inner sep=1pt] at (midglass) {coated glass};
 \fill[fill=Accent1!25] (cell.north west) rectangle (cell.south east) node[midway,font=\footnotesize] {homogeneous protein solution};
-\draw [<->] (cell.south west) ++(0,0.8em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {\SI{1}{\centi\metre}};
+\draw [<->] (cell.south west) ++(0,0.8em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {$L\approx\SI{1}{\centi\metre}$};
 \draw [<->] (cell.south west) ++(0.8em,0) -- +(0,\e) node[midway,left,font=\footnotesize, inner xsep=1pt] {$e$};
+\coordinate (sols) at ($(cell.south)+(0,-\baselineskip)$);
 
 %initial gel
 \begin{scope}[yshift=-7em]
 \input{fig_plis/sub_cell.pgf}
 \node[white] at (pr) {(b)};
 \fill[pattern=crosshatch, pattern color=Accent1!60] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e) node[midway,font=\footnotesize, fill=white, inner sep=1pt] {gel};
+\coordinate (inits) at ($(cell.south)+(0,-\baselineskip)$);
+\coordinate (initn) at ($(cell.north)+(0,\baselineskip)$);
 \end{scope}
 
 %shrunk gel
@@ -30,20 +37,34 @@
 \input{fig_plis/sub_cell.pgf}
 \node[white] at (pr) {(c)};
 \fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.3\e) rectangle +(\lena, -0.4\e) node[midway,font=\footnotesize, fill=white, inner sep=1pt] {gel} node[midway, above=0.15\e,font=\footnotesize] {solvent};
+\coordinate (shrunke) at (pr.east);
+\coordinate (shrunkn) at ($(cell.north)+(0,\baselineskip)$);
+\end{scope}
+
+%swollen gel
+\begin{scope}[xshift=\textwidth-\slide]
+\input{fig_plis/sub_cell.pgf}
+\node[white] at (pr) {(d)};
+\fill[pattern=crosshatch, pattern color=Accent1!60] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e) node[midway,font=\footnotesize, fill=white, inner sep=1pt] {gel};
+%\draw[green] (pl.west) --+(\textwidth,0);
+\coordinate (swollenw)  at (pl.west);
+\node[anchor=north east, inner xsep=0] at ($(pr.south east)+(0,-\baselineskip)$) {reversible swelling};
 \end{scope}
 
 %buckled gel
-\begin{scope}[yshift=-21em]%, xshift=-0.5\parafilm]
+\begin{scope}[yshift=-7em, xshift=\textwidth-\slide]%, xshift=-0.5\parafilm]
 \input{fig_plis/sub_cell.pgf}
-\node[white] at (pr) {(d)};
+\node[white] at (pr) {(e)};
 \fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.3\e) ..controls +(0.5\lena,0.25\e) .. ++(\lena,0) -- ++(0, -0.4\e) ..controls +(-0.5\lena,0.25\e) .. ++(-\lena,0) -- cycle;
-\node[below] (bkl) {buckling};
+\draw[<->] (cell.west) ++(0,-0.25\e) -- +(\lena,0) node[midway,fill=white, inner sep=1pt, font=\footnotesize] (bkl) {$\lambda/2 = L$};
+\coordinate (buckledw) at (pl.west);
+\node[anchor=north east, inner xsep=0] at ($(pr.south east)+(0,-\baselineskip)$) {unbalanced bending};
 \end{scope}
 
 %wrinkled gel
-\begin{scope}[yshift=-28em]
+\begin{scope}[yshift=-14em, xshift=\textwidth-\slide]
 \input{fig_plis/sub_cell.pgf}
-\node[white] at (pr) {(e)};
+\node[white] at (pr) {(f)};
 \fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e);
 \begin{axis}[
 	name=a,
@@ -54,19 +75,27 @@
 	]
 	\addplot[draw=none, fill=white, name path=top, yshift=0.2\e] {sin(deg(x))} coordinate[pos=0.25] (l) coordinate[pos=0.45] (r)-- (rel axis cs:1,1) -- (rel axis cs:0,1) -- cycle;
 	\addplot[draw=none, fill=white, name path=bot, yshift=-0.2\e] {sin(deg(x))} -- (rel axis cs:1,0) -- (rel axis cs:0,0) -- cycle;
-	\draw[<->] (l|-r)--(r) node[midway,fill=white, inner sep=1pt, font=\footnotesize] {$\lambda$};
+	\draw[<->] (l|-r)--(r) node[midway,fill=white, inner sep=1pt, font=\footnotesize] (lam) {$\lambda$};
 \end{axis}
+\node[anchor=base] at (cell.south-|lam) {$\lambda \ll L$};
+\coordinate (wrinkledw) at (pl.west);
+\node[anchor=north east, inner xsep=0] at ($(pr.south east)+(0,-\baselineskip)$) {balance between bending and transverse load};
 \end{scope}
 
 %processes
 \begin{scope}[->, ultra thick]
-	\draw (0,-3em) --+(0,-1em) node[midway,left] {gelation};
-	\draw (-1em,-10em) --+(0,-1em) node[midway,left] {syn\ae{}resis};
-	\draw (1em,-11em) --+(0,1em) node[midway,right] (rs){reverse swelling};
-	\draw (-1em,-17em) --+(0,-1em) node[midway,xshift=0.25\lena+0.5\parafilm-2pt+0.5em] {swelling from rest state};
-	\draw (0.5\lena+\parafilm-4pt,-17em) --+(0,-8em);
+	\draw (sols) --(initn) node[midway,right] {gelation};
+	\draw (inits) --(shrunkn) node[midway,right] {syn\ae{}resis};
+	%\draw (shrunk) --(swollenn) node[midway,left] (rs){reverse swelling};
+	%\draw (shrunkse) --(buckledn) node[midway,right] {no resistance};
+	\draw (shrunke) --(wrinkledw) coordinate[pos=0.25] (midarrow) node[above left] {wrinkling};
+	\draw (midarrow) |- (buckledw) node[above left] {buckling};
+	\draw (midarrow) |- (swollenw) node[above left] {no buckling};
+	\node[fill=white, draw, circle] at (midarrow) {OR};
+	\node[fill=white, draw, circle] at (midarrow |- buckledw) {OR};
 \end{scope}
-\draw (rs.west)--(rs.east);
-\draw (bkl.west)--(bkl.east);
+%\draw (rs.west)--(rs.east);
+%\draw (bkl.west)--(bkl.east);
 
 \end{tikzpicture}
+\end{figure*}
