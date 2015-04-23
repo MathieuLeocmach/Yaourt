@@ -161,15 +161,31 @@ In our situation we now have to determine $\sigma_\perp$. We have already exclud
 
 Accordingly we consider two limit scenarios that leads to wrinkling patterns. In a first limit, the film of gel sits without sticking to the bottom wall of the cell, i.e. $H_1\rightarrow0$, see Supplementary Video~\ref{vid:cutDarcy}. Creating a two dimensional blister requires flowing solvent of viscosity $\eta$ through the gel of permeability $\alpha$. Darcy law~\cite{Darcy1856} relates the pressure gradient, $(p_2-p_1)/h$, to the volume flux per unit area $v = \frac{\alpha}{\eta}\frac{p_2-p_1}{h} = \frac{dA}{dt}$. Identifying $\sigma_{\perp}=p_2-p_1$ and injecting this expression in equation~(\ref{eq:lstar}) yields the wavelength of the Darcy mode as
 \begin{equation}
-\lambda_D \sim h^{1/2} \alpha^{1/4} \Upsilon^{1/4}
+\lambda_D \sim h^{1/2} \alpha^{1/4} \Upsilon^{1/4},\quad\text{with } \Upsilon = \frac{B\tau}{\eta}.
 \end{equation}
-where $\Upsilon = B\tau/\eta$ is a dimensionless viscoelastic factor quantifying the relative stiffness of the film and the solvent at a characteristic time $\tau$. This expression emphasises the kinetic nature of the wavelength selection through Darcy flow. However we note that the wavelength of a generation of the pattern does not evolve with time once the gel is touching both walls, see Figure~\ref{fig:dynamics}a and Supplementary Figure~\ref{fig:growth}. This arrest may be due to bending rigidity~\cite{LeGoff2014}. Here the relevant time scale $\tau$ corresponds to the times it takes for the wrinkle amplitude to saturate, see Supplementary Methods for the precise definition.
+$\Upsilon$ is a dimensionless viscoelastic factor quantifying the relative stiffness of the film and the solvent at a characteristic time $\tau$. 
 
 The opposite limiting case is when the gel film lies in the middle of the cell ($H\equiv H_1=H_2$, see Supplementary Video~\ref{vid:cutPoiseuille}) and impermeable ($\alpha\rightarrow 0$). Here destabilisation over a wavelength $\lambda$ creates a lubrication ($H\ll\lambda$) flow in the viscous layers. By symmetry the transverse load across the gel $\sigma_{\perp}=p_2-p_1$ is also the pressure difference over the wavelength. Using a Poiseuille profile for the flow, $\frac{dA}{dt} \sim \sigma_{\perp} \frac{H^3}{\eta\lambda^2}$~\cite{Poiseuille1842} and injecting this expression in equation~(\ref{eq:lstar}) yields the wavelength of the Poiseuille mode as
 \begin{equation}
 \lambda_P \sim (hH)^{1/2} \Upsilon^{1/6}
 \end{equation}
 where we recognise the scaling for the wrinkles of an elastic film on a thin ($H\ll\lambda$) elastic substrate~\cite{Cerda2003} where $\Upsilon$ would be the ratio between the flexural modulus of the film and that of the substrate. Indeed within the lubrication approximation or at low Reynolds numbers one can consider a viscous film as elastic with effective Young modulus $3\eta/\tau$~\cite{Biot1957,Boudaoud2001}.
+
+
+The characteristic time $\tau$ is the hallmark of the kinetic nature of the wavelength selection mechanisms and is present in the expressions of both $\lambda_D$ and $\lambda_D$. 
+
+This expression emphasises the kinetic nature of the wavelength selection through Darcy flow. 
+
+
+
+If the wrinkle amplitude is free, one thus expects coarsening of the pattern~\cite{Yoo2003}, i.e. an increase of the wavelength. We observe a slight increase of the wavelength between its birth and the time it touches both walls, see Supplementary Figure~\ref{fig:growth}.
+
+
+However we note that the wavelength does not evolve with time once the gel is touching both walls, see Figure~\ref{fig:dynamics}a and Supplementary Figure~\ref{fig:growth}.
+
+
+However we note that the wavelength of a generation of the pattern does not evolve with time once the gel is touching both walls, see Figure~\ref{fig:dynamics}a and Supplementary Figure~\ref{fig:growth}. This arrest may be due to bending rigidity~\cite{LeGoff2014}. Here the relevant time scale $\tau$ corresponds to the times it takes for the wrinkle amplitude to saturate, see Supplementary Methods for the precise definition.
+
 
 A more complete derivation of the models can be found in the Supplementary Methods and yields the following prefactors:
 \begin{align}
