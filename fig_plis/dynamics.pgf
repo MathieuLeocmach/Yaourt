@@ -39,19 +39,23 @@
 \setlength{\e}{3em}
 
 \input{fig_plis/sub_cell.pgf}
-\fill[pattern=crosshatch, pattern color=Accent1] (cell.north west) ++(0,-0.1\e) rectangle +(\lena, -0.8\e);
 \begin{axis}[
 	name=a,
 	anchor=south east, at={(cell.south east)},
 	width=\lena, height=\e, scale only axis,
-	domain=0:10*pi, samples=40, no markers, ymin=-4, ymax=4,xmin=0,xmax=10*pi,
+	domain=-pi:11*pi, samples=100, no markers, ymin=-4, ymax=4,xmin=0,xmax=10*pi,
 	axis lines=none, xtick=\empty,
 	]
-	\addplot[draw=none, fill=white, name path=top, yshift=0.2\e] {sin(deg(x))} coordinate[pos=0.25] (l) coordinate[pos=0.45] (r)-- (rel axis cs:1,1) -- (rel axis cs:0,1) -- cycle;
-	\addplot[draw=none, fill=white, name path=bot, yshift=-0.2\e] {sin(deg(x))} -- (rel axis cs:1,0) -- (rel axis cs:0,0) -- cycle;
-	\draw[<->] (l|-r)--(r) node[midway,fill=white, inner sep=1pt, font=\footnotesize] (lam) {$\lambda$};
+	\addplot[draw=Accent1, line width=0.4\e] {sin(deg(x))};
+	\draw[<->] (axis cs:0.5*pi,2.5)--(axis cs:2.5*pi,2.5) node[midway,fill=white, inner sep=1pt, font=\footnotesize] (lam) {$\lambda$};
+	\node[white, font=\footnotesize, inner sep=1pt] (g) at (axis cs:8.5*pi,0.75) {gel};
+	%h
+	\draw[<->] (axis cs:4.5*pi,2.5)--(axis cs:4.5*pi,-0.5) node[midway, right, font=\footnotesize] {$h$};
+	\draw[<->] (axis cs:5*pi,0) +(60:0.2\e)--+(60:-0.2\e);
+	\draw[Accent2, ultra thick] (axis cs:6.5*pi,-0.5) -- (axis cs:6.5*pi,2.5) (axis cs:7*pi,-2) -- (axis cs:7*pi,2);
 \end{axis}
 \node[anchor=base] at (cell.south-|lam) {$\lambda \ll L$};
+\node[anchor=base, Accent1, font=\footnotesize, inner sep=1pt] at (cell.south-|g) {solvent};
 \node[white] at (pr) {(a)};
 \node[font=\footnotesize, right=0 of pl.west] {parafilm};
 \node[fill=white, font=\footnotesize, inner sep=1pt] at (midglass) {coated glass};
