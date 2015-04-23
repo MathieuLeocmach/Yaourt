@@ -59,7 +59,7 @@
 \node[white] at (pr) {(a)};
 \node[font=\footnotesize, right=0 of pl.west] {parafilm};
 \node[fill=white, font=\footnotesize, inner sep=1pt] at (midglass) {coated glass};
-\draw [<->] (cell.south west) ++(0,-1.5em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {$L\approx\SI{1}{\centi\metre}$};
+\draw [<->] (cell.south west) ++(0,-1.5em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {$L>\SI{1}{\centi\metre}$};
 \draw [<->] (pl.south west) ++(-4pt,0) -- +(0,\e) node[midway,left,font=\footnotesize, inner xsep=1pt] {$e$};
 \coordinate (solse) at ($(pr.south east)+(0,-2.5\baselineskip)$);
 
