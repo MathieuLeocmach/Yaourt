@@ -1,4 +1,4 @@
-%\begin{figure}
+\begin{figure}
 \begin{tikzpicture}
 \newdimen\mydima
 \newdimen\mydimb
@@ -29,79 +29,9 @@
 
 
 
-\pgfmathsetlength{\mydima}{\columnwidth}
-\begin{axis}[
-	name=a,
-	anchor=south east,
-	at={($(g c1r1.above north east)+(0,\baselineskip)$)},
-	width=\mydima, height=0.4\mydima, scale only axis,
-	domain=-0.25*pi:2.25*pi, no markers, ymin=-2, ymax=3,xmin=0,xmax=2*pi,
-	axis lines=none, xtick=\empty,
-	]
-	%tranche d'interet
-	%\fill[lightgray] (axis cs:0.425*pi,-2) rectangle (axis cs:0.575*pi,3);
-	%gel et reperes
-	\addplot+[Accent1, line width=0.1\mydima] {sin(deg(x))};
-	\addplot+[draw=none,name path=top, yshift=0.055\mydima] {0.925*sin(deg(x))};
-	\addplot+[draw=none,name path=bot, yshift=-0.055\mydima] {1.05*sin(deg(x))};
-	\addplot+[name path=baseT, dashed, help lines,yshift=0.055\mydima, domain=1.85*pi:2*pi]{0};
-	\addplot+[name path=baseB, dashed, help lines, yshift=-0.055\mydima]{0};
-	%epaisseur penchee
- 	\path[name path=Z] (axis cs:pi-1,-40/pi^2) -- (axis cs:pi+1,40/pi^2);
-	%chemin optique penche
- 	\path[name path=D, name intersections={of=top and Z, by=Z2}] (Z2) -- +(0,-6\baselineskip);
-	%epaisseur au max
-	\path[name path=ZM] (axis cs:0.5*pi,-100/pi^2) -- (axis cs:0.5*pi,100/pi^2);
-	%trace les chemins optiques
- 	\draw[ultra thick, Accent2, name intersections={of=top and Z, by=Z2}, name intersections={of=bot and D, by=D1}, name intersections={of=top and ZM, by=ZM2}, name intersections={of=bot and ZM, by=ZM3}] (Z2) --(D1) (ZM2) -- (ZM3);
-	%trace les epaisseurs h
-	\draw[<->] (ZM2) -- (ZM3) node[midway, left] {$h$};
-  	\draw[<->, name intersections={of=bot and Z, by=Z1}] (Z1) -- (Z2) node[midway, anchor=south east, inner sep=0] {$h$};
-	%trace les autres epaisseurs
-	\draw[<->] (axis cs:1.85*pi,0.75) -- (axis cs:1.85*pi,3) node[midway, right] {$H_2$}; 
-	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,0.75) node[midway, right] {$h$};
-	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,-2) node[midway, right] {$H_1$};
-	\draw[->, name intersections={of=baseB and ZM, by=BW}] (BW) -- (ZM3) node[midway, left] {$A(t)$};
-	\draw[<->] (axis cs:0,2.75) -- (axis cs:2*pi,2.75) node[midway, right,fill=white] {$\lambda$};
-	
-	%noms
-	%\node[white] at (axis cs:1.5*pi,-1){gel};
-	\node[Accent1] at (axis cs:1.5*pi,1.25){viscous ($\eta$)};
-	\node[Accent1,above right] at (axis cs:0,-2){viscous ($\eta$)};
-% 	\node[left,white, rotate=-20,inner sep=0.75em] at (axis cs:pi,0) {elastic ($B$)};
-% 	\node[right,white, rotate=-20,inner sep=0.75em] at (axis cs:pi,0) {porous ($\alpha$)};
-	\node[white, rotate=-20]  at (axis cs:pi,0) {elastic ($B$) \hspace{1.5em} porous ($\alpha$)};
-	
-	%pressures
-	\node[above] at (axis cs:0.5*pi,1.75) {$p_2$};
-	\node[below] at (axis cs:0.5*pi,-0.75) {$p_1$};
-	\coordinate (Bm) at (axis cs:1.5*pi, -1.6);
-	\node[below] at (axis cs:1.5*pi,-1.5) {$p_2$};
-	\node[above] at (axis cs:1.5*pi,1.75) {$p_1$};
-	\node[single arrow, draw, anchor=tip, shape border rotate=270, inner xsep=0] at (axis cs:0.3*pi, 1.6) {$\sigma_\perp$};
-	%flows
-	\draw[->, lightgray, ultra thick] (axis cs:0.3*pi,1.4) -- (axis cs:0.3*pi, 0.3);
-	\draw[->, lightgray, ultra thick] (axis cs:1.5*pi,-1.5) -- (axis cs:1.5*pi, -0.4) node[above] {Darcy flow};
-	\draw[->, lightgray, ultra thick] (axis cs:1.45*pi,-1.8) -- (axis cs:0.6*pi, -1.8) node[pos=0.55, above] {Poiseuille flow};
-	\draw[<-, lightgray, ultra thick] (axis cs:1.45*pi,1.8) -- (axis cs:0.6*pi, 1.8) node[pos=0.55, above] {Poiseuille flow};
 
-	%axes
-	\coordinate (Oo) at (axis cs:1.6*pi,1.75);
-	\draw[->] (Oo) -- +(1.5em,0) node[right]{$x$};
-	\draw[->] (Oo) -- +(0,1.5em) node[right]{$z$};
-	
-	%\node[below] at (axis cs:90,-1.75) (pb1) {$P_1$};
-	%\node[above] at (axis cs:90,1.75) (ph2) {$P_2$};
-	%\node[above] at (axis cs:270,1.75) (ph1) {$P_1$};
-	%\node[below] at (axis cs:270,-1.75) (pb2) {$P_2$};
-	%\draw[line width=0.1em, ->] (ph2) -- (axis cs:90,0.25) node[midway, left] {Darcy} node[midway, right] {$v$};
-	%\draw[line width=0.1em, ->] (pb2) -- (pb1) node[midway, above] {Poiseuille} node[midway, below] {$u \sim \frac{\lambda}{H} v$};
-\end{axis}
-\fill[pattern=north east lines,pattern color=Accent2] (a.south west) rectangle +(\columnwidth,-\baselineskip) (a.north west) rectangle +(\columnwidth,\baselineskip);
-\node[single arrow, draw, anchor=tip, shape border rotate=90, inner xsep=0] at ($(Bm)+(1.5em,0)$) {$\sigma_\perp$};
-%
 
-	\matrix[matrix of nodes, matrix anchor=south east, inner sep=0, row sep=0.2em, nodes={anchor=west}, column sep=0.1em]  (m) at ($(a.north east) +(0,1.5\baselineskip)$) {
+	\matrix[matrix of nodes, matrix anchor=south east, inner sep=0, row sep=0.2em, nodes={anchor=west}, column sep=0.1em]  (m) at ($(g c1r1.above north east) +(0,\baselineskip)$) {
 	\SI{10}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.054\columnwidth]{coupe_cloque_t000.png}\\
 	\SI{23}{\minute} & \includegraphics[width=0.88\columnwidth, height=0.052\columnwidth]{coupe_plis_t016.png}\\
 	%\includegraphics[width=\columnwidth, height=0.052\columnwidth]{coupe_plis_t032.png} & \SI{32}{\minute}\\
@@ -121,10 +51,10 @@
 
 \begin{scope}[every node/.style={anchor=north east, text height=0.8em, text depth=0.2em}]
 \node[white] at (m-1-2.north east) {(a)};
-\node[anchor=south east, inner ysep=1pt] at (a.north east) {(b)};
-\node at (g c1r1.north east) {(c)};
-\node at (g c1r2.north east) {(d)};
+%\node[anchor=south east, inner ysep=1pt] at (a.north east) {(b)};
+\node at (g c1r1.north east) {(b)};
+\node at (g c1r2.north east) {(c)};
 \end{scope}
 \end{tikzpicture}
 	
-%\end{figure}
+\end{figure}
