@@ -65,8 +65,45 @@ Finally we show that the wavelength is selected by a purely viscous mechanism co
 	\label{fig:dynamics}%
 \end{figure}
 
+\section*{Dynamics of the wrinkling process}
 
-\section*{System design}
+To form a gel we start from an aqueous dispersion of caseins and GDL. GDL slowly acidify the medium and triggers gelation of the caseins~\cite{Roefs1986,Bremer1989,Lucey1998,Dickinson2002}. While still liquid, this yoghurt-forming suspension is injected into an home-made optical cell, as sketched in Figure~\ref{fig:dynamics}a. The cell is sealed an no external stimulus is applied during gelation or pattern formation. Both top and bottom walls are coated by acrylamide brushes, effectively turning off the casein adhesion so that the gel is only anchored to the remaining four sides of the cell.
+
+The dynamics of the pattern formation is followed by light transmission microscopy and confocal microscopy, see Methods. As shown in Figure~\ref{fig:dynamics}b and Supplementary Video~\ref{vid:transmitted}, we observe the spontaneous formation of a first pattern that appear with a characteristic wavelength $\lambda\ll L$. The 2D shape and size of this primary pattern are set as soon as the pattern forms and do not evolve in time. However inside the primary pattern a secondary pattern emerges, inside which a ternary forms. At each step of this Russian dolls-like cascade, the wavelength is divided by two, as show in Supplementary Figure~\ref{fig:generations}.
+
+3D confocal microscopy, as shown in Figure~\ref{fig:dynamics}c and Supplementary Video~\ref{vid:reconstructed}, reveals that those patterns are actually wrinkles of a gel film. Figure~\ref{fig:sideview}a shows successive side views of the same confocal measurements as in  Figure~\ref{fig:dynamics}c see also Supplementary Videos~\ref{vid:cutDarcy} and \ref{vid:cutPoiseuille}. Initially the dispersion is homogeneous and fills the entire slit. The black margins in Figure~\ref{fig:sideview}a correspond to the glass walls. Around \SI{23}{\minute}, the gel forms and simultaneously becomes thinner and more concentrated --the fluorescence signal which is proportional to the casein concentration is brighter compared to the initial situation. This effect is the fingerprint of syn\ae{}resis: as gelation proceeds, the solvent is expelled on both the upper and lower sides.
+
+Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume, Figure~\ref{fig:sideview}c, and excess surface area of the gel film, Figure~\ref{fig:sideview}d, see Supplementary Methods. The evolution of the gel volume is surprisingly non-monotonous. After reaching a minimum around 35\% of its initial value at \SI{23}{\minute}, the volume increases. Shortly after, at \SI{36}{\minute}, the planar film destabilises and starts to wrinkle in the $z$-direction creating excess area. This confirms that the instability leading to the primary pattern is due to swelling. Around \SI{38}{\minute}, the amplitude of the wrinkles reaches the thickness of the slit. As swelling continues, the gel flattens on both top and bottom walls (\SI{44}{\minute}) and finally buckles back (\SI{53}{\minute}) to form the secondary pattern (\SI{1}{\hour}21). When the excess area saturates, the dynamics stop (\SI{3}{\hour}). We note that at any given point in time the thickness $h$ of the film of gel is spatially homogeneous. %The amount of GDL controls the ability of the gel to swell: at low GDL concentrations we only observe the primary pattern, at high GDL concentrations we observe the formation of higher order patterns. 
+
+%Note that adhesion to side walls is necessary to prevent total syn\ae{}resis and thus allows subsequent planar stresses to develop while swelling: the only situation where we observe wrinkling is when the adhesion on both top and bottom wall is turned off. 
+
+
+\begin{figure}
+	\includegraphics{sideview}
+	\caption{Measurements and modelling. (a) Confocal $(x,z)$ cuts showing syn\ae{}resis, swelling, wrinkling and cascade buckling. The scale bar is \SI{100}{\micro\metre} (real size ratio). (b) Schematic side view of the cell. The constant thickness gel film (orange) is surrounded by solvent. Yellow lines show the path of transmitted light through the gel phase. (c-d) Confocal microscopy measurement of the volume of the gel phase relative to cell volume and excess area. Crosses correspond to times in (a).}
+	\label{fig:sideview}
+\end{figure}
+
+Based those observations, we examine possible scenarios upon shrinking and swelling of the gel. As the gel forms it expels the solvent and detaches from top and bottom wall, see Figure~\ref{fig:dilation}b and c. For the swelling back we consider three options: 
+
+\noindent
+(i) In Figure~\ref{fig:dilation}d, the swelling back is reversible, only releasing tensile stresses accumulated during shrinking, and the layer remains flat, as expected from chemical gels~\cite{Kim2010}. Since this case is not observed it means that in this physical gel, syn\ae{}resis and swelling processes foster irreversible stress dissipation and structural changes. In the following, we will therefore consider that the shrunk state is stress-free. 
+
+\noindent
+(ii) In Figure~\ref{fig:dilation}e, we assume that nothing hinders the buckling of the gel film. This simple buckling situation leads to a primary pattern composed of a single bump of size $L$. As the bump amplitude grows larger saturates on the top and bottom wall, buckling of smaller wavelength may appear, as observed by~\cite{Roman1999}. That is not what we observe since our primary wavelength $\lambda$ is much smaller that $L$. 
+
+\noindent
+(iii) We are left with the case of Figure~\ref{fig:dilation}f where a wrinkling pattern emerges spontaneously with a wavelength $\lambda\ll L$ selected before saturation on the top and bottom wall. To obtain such an instability, one must balance the bending rigidity of the gel film with a transverse load $\sigma_{\perp}$ that hinders buckling on large wavelengths. The transverse load could be gravity~\cite{Smoluchowski1910, Kolinski2009, Vella2009, Pineirua2013, Lucantonio2013}, however we confirm that it plays no significant role by successfully repeating the wrinkling pattern in a cell held vertically, i.e. with the weight acting longitudinally rather than transversely. Furthermore, the transverse load cannot be adhesion~\cite{Vella2009a} since the film is not adhering to the top and bottom walls. Influence of the side boundaries~\cite{Vandeparre2011a, Li2013} is also excluded since the wavelength of the pattern is uniform throughout the sample. Finally as the four side boundaries remain fixed $\sigma_{\perp}$ cannot come from the resistance to uniaxial stretching~\cite{Cerda2003}.
+
+At this point two points remain unclear: what triggers the the spontaneous syn\ae{}resis and swelling back processes? And what is the nature of $\sigma_{\perp}$ responsible for the selection of the primary wavelength?
+
+\begin{figure*}
+\includegraphics{dilation.pdf}
+\caption{The wrinkling experiment. (a) Initial configuration where the sealed cell contains an homogeneous protein solution. (b) Around the isoelectric pH, the gel forms and immediately expels solvent leading to (c). If tensile stresses were not released we would observe reversible swelling back leading to (d) a flat swollen gel layer. If tensile stresses are released, swelling back leads either to buckling (e) or to wrinkling (f) depending whether the bending is free or hindered by a transverse load.}
+\label{fig:dilation}
+\end{figure*}
+
+\section*{Syn\ae{}resis and swelling back mechanism}
 
 \begin{figure}
 	\includegraphics{acidification}%
@@ -75,7 +112,7 @@ Finally we show that the wavelength is selected by a purely viscous mechanism co
 \end{figure}
 
 
-To form wrinkled patterns such as the one observed in Figure~\ref{fig:dynamics}, ones needs (i) to take advantage of the pH sensitivity of caseins, (ii) to control the route to gelation, (iii) to fine tune the gel properties and the boundary conditions.
+Syn\ae{}resis and swelling back mechanism depends on (i) the pH sensitivity of caseins, (ii) the route to gelation, (iii) the gel properties and (iv) the boundary conditions.
 
 The stability of casein dispersions strongly depends on the pH. Supplementary Video~\ref{vid:titration} shows the titration of a casein dispersion at 4\%w by 1 molar HCl. At pH=7, the caseins are well dispersed then they flocculate between pH=5.5 to 4 and finally at pH=3 the solution becomes clearer as caseins partially redisperse. The state diagram of caseins as a function of pH is thus related to charge stabilisation. At neutral pH caseins are charged negatively and repel each other. As the pH decreases to the isoelectric point of the caseins (pH$\approx 4.6$), casein molecules loose their negative net charge and tend to stick to each other~\cite{Roefs1986,Bremer1989,Lucey1998,Dickinson2002}. Beyond the isoelectric point caseins acquire a positive net charge and therefore partially re-dissolve. In the inset of Figure~\ref{fig:acidification}b, we quantify this effect and measure with UV absorption spectroscopy the amount of free caseins within the 4\%w dispersion as a function of pH, see Supplementary Methods. Starting at pH=6.8 all the casein molecules are well dispersed and the free casein fraction $x_\text{free}$ is 1. Upon decreasing the pH to the isolectric point the free casein fraction drops to almost 0: almost all the casein molecules are aggregated. Further decrease of the pH of the solution leads to a partial redissolution of the casein aggregates. At pH=2 the fraction of free casein is 0.35.
 
@@ -91,22 +128,7 @@ To gain further insight into the mechanical properties of the gel we turn to mic
 
 Boundary conditions is the final parameter that is essential to form wrinkled patterns. In order to turn off the adsorption of the caseins on a surface, we coat the surface with polymer brushes, see Methods, effectively creating non adhesive boundary conditions for the gel. When the casein adhesion to the upper boundary is turned off, the gel still not wrinkles because it remains attached to the bottom wall, but it detaches from the top wall. In this situation we can monitor $\xi$, Figure~\ref{fig:acidification}d. $\xi$ remains mostly constant but the volume occupied by the gel varies, as will be reported below.
 
-\section*{Wrinkling experiment}
 
-\begin{figure*}
-\includegraphics{dilation.pdf}
-\caption{The wrinkling experiment. (a) Initial configuration where the sealed cell contains an homogeneous protein solution. (b) Around the isoelectric pH, the gel forms and immediately expels solvent leading to (c). If tensile stresses were not released we would observe reversible swelling back leading to (d) a flat swollen gel layer. If tensile stresses are released, swelling back leads either to buckling (e) or to wrinkling (f) depending whether the bending is free or hindered by a transverse load.}
-\label{fig:dilation}
-\end{figure*}
-
-The wrinkling patterns shown in Figure~\ref{fig:dynamics} are obtained in home made optical cells. A cell is composed of a slit and a cover slip  coated with polymer brushes and spaced by parafilm. The cell thickness $e$ is typically \SI{100}{\micro\metre} whereas other dimensions are $L$, typically \SI{1}{\centi\metre}. The cell is filled with the casein+GDL dispersion while it is fluid, and sealed with optical UV-glue, see Methods and Figure~\ref{fig:dilation}a. In such configuration, the adhesion to both top and bottom walls is turned off and therefore as the gel forms, it is only anchored to the remaining four sides of the cell (parafilm or cured glue).
-
-As the gel forms it expels the solvent and detaches from top and bottom wall, forming a thin film sandwiched between two solvent layers. Upon swelling back, the gel spontaneously wrinkles with a wavelength $\lambda\approx\SI{1}{\milli\metre}\ll L$, see first row of Figure~\ref{fig:dynamics}. As 
-
-
-Let us examine possible scenarios upon shrinking and swelling of the gel. As the gel forms it expels the solvent and detaches from top and bottom wall, see Figure~\ref{fig:dilation}b and c. Then we consider three options. (i) In Figure~\ref{fig:dilation}d, the swelling back is reversible, only releasing tensile stresses accumulated during shrinking, and the layer remains flat. Since this case is not observed it means that in this physical gel, syn\ae{}resis and swelling processes foster irreversible stress dissipation and structural changes. In the following, we will therefore consider that the shrunk state is stress-free. 
-(ii) In Figure~\ref{fig:dilation}e, we assume that nothing hinders the buckling of the gel film. This simple buckling situation leads to a primary composed of a single bump of size $L$. As the bump amplitude grows larger saturates on the top and bottom wall, buckling of smaller wavelength appear, as observed by~\cite{Roman1999}. That is not what we observe since our primary wavelength $\lambda$ is much smaller that $L$. 
-(iii) We are left with the case of Figure~\ref{fig:dilation}f where a wrinkling pattern emerges spontaneously with a wavelength $\lambda\ll L$ selected before saturation on the top and bottom wall. To obtain such an instability, one must balance the bending rigidity of the gel film with a transverse load that hinders buckling on large wavelengths, as described for example by~\cite{Biot1957,Vella2009,Kolinski2009}.
 
 
 
@@ -125,17 +147,6 @@ Finally, if the adhesion to both top and bottom walls is turned off, the film wr
 
 %The slow acidification of a protein (sodium caseinate) solution down to the isoelectric pH induces gelation~\cite{Bremer1989} (Fig.~\ref{fig:acidification}a). Since caseins strongly adsorb to interfaces, the resulting gel sticks to the container walls, allowing rheological measurements (Fig.~\ref{fig:acidification}b). Further decrease of the pH beyond the isoelectric point makes the casein aggregates swell (Supplementary Fig.~\ref{fig:nonmonotonic}), thus weakening the gel~\cite{Braga2006}. In a microscopy cell of slit geometry coated so that the casein cannot adsorb on the top wall, this microscopic nonmonotonic behaviour translates into little variation of the pore size $\xi$ but to solvent expulsion out of the gel phase (syn\ae{}resis) followed by global swelling (Fig.~\ref{fig:acidification}c and Supplementary Fig.~\ref{fig:nonmonotonic}).
 
-\section*{Dynamics of the wrinkling process}
-
-Figure~\ref{fig:sideview}a shows successive side views of confocal measurements in the case where both top and bottom walls are coated, adhesion turned off, a configuration that induces wrinkling, see also Supplementary Videos~\ref{vid:cutDarcy} and \ref{vid:cutPoiseuille}. Initially the dispersion is homogeneous and fills the entire slit. The black margins correspond to the glass walls. Around \SI{23}{\minute}, the gel forms and simultaneously becomes thinner and more concentrated --the fluorescence signal which is proportional to the casein concentration is brighter compared to the initial situation. This effect is the fingerprint of syn\ae{}resis: as gelation proceeds, the solvent is expelled on both the upper and lower sides. We describe this situation as a porous elastic film of thickness $h$ sandwiched between two viscous layers of respective thickness $H_1$ and $H_2$ in a cell of thickness $e=H_1+h+H_2$,  Figure~\ref{fig:sideview}b. Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume, Figure~\ref{fig:sideview}c, and excess surface area of the gel film, Figure~\ref{fig:sideview}d, see Supplementary Methods. As expected from the system design, the evolution of the gel volume is non-monotonous. After reaching a minimum around 35\% of its initial value at \SI{23}{\minute}, the volume increases. Shortly after,  at \SI{36}{\minute}, the planar film destabilises and starts to wrinkle in the $z$-direction creating excess area. This confirms that the instability is due to swelling. Around \SI{38}{\minute}, the amplitude of the wrinkles reaches the thickness of the slit. The size of the primary pattern is now fixed, Supplementary Figure~\ref{fig:growth}. However swelling continues, the gel flattens on both top and bottom walls (\SI{44}{\minute}) and finally buckles back (\SI{53}{\minute}) to form the secondary pattern (\SI{1}{\hour}21). When the excess area saturates, the dynamics stop (\SI{3}{\hour}). The amount of GDL controls the ability of the gel to swell: at low GDL concentrations we only observe the primary pattern, at high GDL concentrations we observe the formation of higher order patterns. 
-
-Note that adhesion to side walls is necessary to prevent total syn\ae{}resis and thus allows subsequent planar stresses to develop while swelling: the only situation where we observe wrinkling is when the adhesion on both top and bottom wall is turned off. We also confirm that at any given point in time the thickness $h$ of the film of gel is spatially homogeneous. The contrast in transmission microscopy, Figure~\ref{fig:dynamics}a, is therefore not due to thickness inhomogeneities but to altitude gradients. Indeed the length of the optical path along the vertical direction $z$ through the gel phase is larger where the gel makes a slope compared to a flat situation, as indicated by the yellow vertical lines in Figure~\ref{fig:sideview}b.
-
-\begin{figure}
-	\includegraphics{sideview}
-	\caption{Measurements and modelling. (a) Confocal $(x,z)$ cuts showing syn\ae{}resis, swelling, wrinkling and cascade buckling. The scale bar is \SI{100}{\micro\metre} (real size ratio). (b) Schematic side view of the cell. The constant thickness gel film (orange) is surrounded by solvent. Yellow lines show the path of transmitted light through the gel phase. (c-d) Confocal microscopy measurement of the volume of the gel phase relative to cell volume and excess area. Crosses correspond to times in (a).}
-	\label{fig:sideview}
-\end{figure}
 
 \section*{Models and scaling laws}
 
