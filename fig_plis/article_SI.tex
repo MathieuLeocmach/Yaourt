@@ -75,7 +75,10 @@ The dynamics of the pattern formation is followed by light transmission microsco
 
 Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume, Figure~\ref{fig:sideview}b, and excess surface area of the gel film, Figure~\ref{fig:sideview}c, see Supplementary Methods. The evolution of the gel volume is surprisingly non-monotonous. After reaching a minimum around 35\% of its initial value at \SI{23}{\minute}, the volume increases. Shortly after, at \SI{36}{\minute}, the planar film destabilises and starts to wrinkle in the $z$-direction creating excess area. This confirms that the instability leading to the primary pattern is due to swelling. Around \SI{38}{\minute}, the amplitude of the wrinkles reaches the thickness of the slit. As swelling continues, the gel flattens on both top and bottom walls (\SI{44}{\minute}) and finally buckles back (\SI{53}{\minute}) to form the secondary pattern (\SI{1}{\hour}21). When the excess area saturates, the dynamics stop (\SI{3}{\hour}). We note that at any given point in time the thickness $h$ of the film of gel is spatially homogeneous.
 
-The pattern formation is dynamic in essence. In Figure~\ref{fig:sideview}d, we thus report the velocity $v(t)$ of the wrinkles as it develops in the $z$-direction, see Supplementary Methods for the definition. We observe that the velocity peaks at different times corresponding to the syn\ae{}resis and the respective growths of the primary, secondary and tertiary patterns. We associate each growth with a characteristic time $\tau = e/v_\text{max}$. For example, in the present case the $\tau$ corresponding to the primary pattern is $\SI{123}{\second}$.
+The primary, secondary and tertiary patterns follow the same path: the birth of an instability of wavelength $\lambda$ of growing amplitude until saturation. Throughout the whole process, $\lambda$ remains constant. This path is dynamic in essence. In Figure~\ref{fig:sideview}d, we thus report the velocity $v(t)$ of the wrinkles as it develops in the $z$-direction, see Supplementary Methods for the definition. We observe that the velocity peaks at different times corresponding to the syn\ae{}resis and the respective growths of the primary, secondary and tertiary patterns. We associate each growth with a characteristic time $\tau = e/v_\text{max}$. For example, in the present case the $\tau$ corresponding to the primary pattern is $\SI{123}{\second}$.
+
+
+We do not observe coarsening of the patterns as in~\cite{Yoo2003}. We believe the wrinkling pattern is stable against coarsening because of the bending rigidity of the gel~\cite{LeGoff2014}. Indeed when the amplitude saturates the gel flattens against the walls and create sharp edges. To accommodate those sharp edges with finite bending rigidity, the flat part of the gel actually ripples, see Supplementary Figure~\ref{fig:growth}b. The ripples created by opposite sides of a same flat patch interfere, creating barriers against coarsening.
 
 
 \begin{figure}
@@ -177,27 +180,14 @@ The opposite limiting case is when the gel film lies in the middle of the cell (
 where we recognise the scaling for the wrinkles of an elastic film on a thin ($H\ll\lambda$) elastic substrate~\cite{Cerda2003} where $\Upsilon$ would be the ratio between the flexural modulus of the film and that of the substrate. Indeed within the lubrication approximation or at low Reynolds numbers one can consider a viscous film as elastic with effective Young modulus $3\eta/\tau$~\cite{Biot1957,Boudaoud2001}.
 
 
-The characteristic time $\tau$ is the hallmark of the kinetic nature of the wavelength selection mechanisms and is present in the expressions of both $\lambda_D$ and $\lambda_D$. 
-
-This expression emphasises the kinetic nature of the wavelength selection through Darcy flow. 
-
-
-
-If the wrinkle amplitude is free, one thus expects coarsening of the pattern~\cite{Yoo2003}, i.e. an increase of the wavelength. We observe a slight increase of the wavelength between its birth and the time it touches both walls, see Supplementary Figure~\ref{fig:growth}.
-
-
-However we note that the wavelength does not evolve with time once the gel is touching both walls, see Figure~\ref{fig:dynamics}a and Supplementary Figure~\ref{fig:growth}.
-
-
-However we note that the wavelength of a generation of the pattern does not evolve with time once the gel is touching both walls, see Figure~\ref{fig:dynamics}a and Supplementary Figure~\ref{fig:growth}. This arrest may be due to bending rigidity~\cite{LeGoff2014}. Here the relevant time scale $\tau$ corresponds to the times it takes for the wrinkle amplitude to saturate, see Supplementary Methods for the precise definition.
-
-
 A more complete derivation of the models can be found in the Supplementary Methods and yields the following prefactors:
 \begin{align}
 \lambda_D &= 2\pi h^{1/2}\alpha^{1/4}\left(\frac{\Upsilon}{12}\right)^{1/4}\label{eq:prefDarcy}\\
 \lambda_P &= \pi (hH)^{1/2}\left(\frac{2}{9}\Upsilon\right)^{1/6}\label{eq:prefPoiseuille}
 \end{align}
 where $H$ is redefined by $1/H^3 = 1/H_1^3 + 1/H_2^3$. The crossover between the two models where $\lambda_D=\lambda_P$ is found for $H = H^* \equiv 2^{2/3} 3^{1/6} \alpha^{1/2} \Upsilon^{1/6}$.
+
+The characteristic time $\tau$ is the hallmark of the kinetic nature of the wavelength selection mechanisms and is present in the expressions of both $\lambda_D$ and $\lambda_P$. 
 
 To sum up, we expect two regimes of viscosity-dominated wrinkling: for $H\ll H^*$, i.e. slow destabilisation of a highly permeable film close to a wall, the main dissipation mechanism would be the flow through the porous film; whereas for $H\gg H^*$, i.e. fast wrinkling of a poorly permeable film far from any wall, the flow in the viscous layers would dominate and set the wavelength.
 
