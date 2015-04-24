@@ -1,0 +1,61 @@
+\begin{figure}
+\begin{tikzpicture}
+\let\mydima\relax
+\newlength\mydima
+\pgfmathsetlength{\mydima}{0.6\columnwidth}
+\node[inner sep=0] (im){\includegraphics[width=\mydima]{ripples2D.jpg}};
+\draw[Accent1, ultra thick] (im.south west) ++ (0.4\mydima,0.8\mydima) rectangle +(0.1\mydima,0.1\mydima);
+%scale bar 100 microns
+\draw[line width=0.3em, white] (im.south west) ++(0.75em,0.75em) -- +(0.0786\mydima,0);
+
+\begin{axis}[
+	name=a,
+	anchor=outer north east,
+	at={(im.south east)},
+	width=\columnwidth,
+	xmin=0, xmax=1000, xtick={0,250, 500, 750}, xlabel={$x$ (\si{\micro\metre})},
+	ymin=0, ymax=50, ylabel={$z_\text{bottom}(x)$ (\si{\micro\metre})},
+	]
+	\addplot+[black, no marks] table[y index=8]{alts_bottom_cloque.txt};
+	\draw[Accent1, ultra thick] (axis cs:555,0) rectangle (axis cs: 670,5);
+		
+	%\draw[ultra thick, Accent1] (axis cs:580,0) -- (axis cs:580,50);
+\end{axis}
+
+%colorbar
+\begin{axis}[
+name=colorbar,
+height=\mydima-1em, width=1em, scale only axis,
+anchor=outer south west,
+at={(a.outer north west)},
+ymin=0, ymax=30, ylabel={$z_\text{bottom}(x)$ (\si{\micro\metre})},
+xmin=0, xmax=1, xtick=\empty,
+axis on top
+]
+\shade[top color=black, bottom color=white] (rel axis cs:0,0) rectangle (rel axis cs:1,1);
+\end{axis}
+
+%ripples
+\begin{axis}[
+	name=ripples,
+	width=\columnwidth,
+	height=0.5\columnwidth,
+	anchor=outer north,
+	at={(a.below south)},
+	xtick=\empty,
+	ytick=\empty,
+	xmin=-0.5*pi, xmax=1.5*pi,
+	]
+	\addplot+[Accent1, no marks] file{ripples.txt};
+	\draw[->] (axis cs:0.1*pi,0.8) -- (axis cs:0.4*pi,0.8);
+	\draw[->] (axis cs:0.9*pi,0.8) -- (axis cs:0.6*pi,0.8);
+	\node[anchor=north, text width=0.5\columnwidth,align=center] at (axis cs: 0.5*pi,0.75) {ripple interference create a barrier that prevents coarsening};
+\end{axis}
+
+\begin{scope}[every node/.style={anchor=north west, text height=0.8em, text depth=0.2em}]
+\node at (a.outer north west|-im.north) {(a)};
+\node at (a.outer north west) {(b)};
+\node at (a.outer north west|-ripples.north) {(c)};
+\end{scope}
+\end{tikzpicture}
+\end{figure}

@@ -75,10 +75,10 @@ The dynamics of the pattern formation is followed by light transmission microsco
 
 Extracting the top and bottom surface of the gel phase allows for quantitative measurements of the relative volume, Figure~\ref{fig:sideview}b, and excess surface area of the gel film, Figure~\ref{fig:sideview}c, see Supplementary Methods. The evolution of the gel volume is surprisingly non-monotonous. After reaching a minimum around 35\% of its initial value at \SI{23}{\minute}, the volume increases. Shortly after, at \SI{36}{\minute}, the planar film destabilises and starts to wrinkle in the $z$-direction creating excess area. This confirms that the instability leading to the primary pattern is due to swelling. Around \SI{38}{\minute}, the amplitude of the wrinkles reaches the thickness of the slit. As swelling continues, the gel flattens on both top and bottom walls (\SI{44}{\minute}) and finally buckles back (\SI{53}{\minute}) to form the secondary pattern (\SI{1}{\hour}21). When the excess area saturates, the dynamics stop (\SI{3}{\hour}). We note that at any given point in time the thickness $h$ of the film of gel is spatially homogeneous.
 
-The primary, secondary and tertiary patterns follow the same path: the birth of an instability of wavelength $\lambda$ of growing amplitude until saturation. Throughout the whole process, $\lambda$ remains constant. This path is dynamic in essence. In Figure~\ref{fig:sideview}d, we thus report the velocity $v(t)$ of the wrinkles as it develops in the $z$-direction, see Supplementary Methods for the definition. We observe that the velocity peaks at different times corresponding to the syn\ae{}resis and the respective growths of the primary, secondary and tertiary patterns. We associate each growth with a characteristic time $\tau = e/v_\text{max}$. For example, in the present case the $\tau$ corresponding to the primary pattern is $\SI{123}{\second}$.
+The primary, secondary and tertiary patterns follow the same path: the birth of an instability of wavelength $\lambda$ of growing amplitude $A(t)$ until saturation, see Figure~\ref{fig:sideview}a. Throughout the whole process, $\lambda$ remains constant. This path is dynamic in essence. In Figure~\ref{fig:sideview}d, we thus report the velocity $v(t)$ of the wrinkles as it develops in the $z$-direction, see Supplementary Methods for the definition. We observe that the velocity peaks at different times corresponding to the syn\ae{}resis and the respective growths of the primary, secondary and tertiary patterns. We associate each growth with a characteristic time $\tau = A_\text{max}/v_\text{max}$. For example, in the present case the $\tau$ corresponding to the primary pattern is $\SI{123}{\second}$.
 
 
-We do not observe coarsening of the patterns as in~\cite{Yoo2003}. We believe the wrinkling pattern is stable against coarsening because of the bending rigidity of the gel~\cite{LeGoff2014}. Indeed when the amplitude saturates the gel flattens against the walls and create sharp edges. To accommodate those sharp edges with finite bending rigidity, the flat part of the gel actually ripples, see Supplementary Figure~\ref{fig:growth}b. The ripples created by opposite sides of a same flat patch interfere, creating barriers against coarsening.
+We do not observe coarsening of the patterns as in~\cite{Yoo2003}. We believe the wrinkling pattern is stable against coarsening because of the bending rigidity of the gel~\cite{LeGoff2014}. Indeed when the amplitude saturates the gel flattens against the walls and create sharp edges. To accommodate those sharp edges with finite bending rigidity, the flat part of the gel actually ripples, see Supplementary Figure~\ref{fig:ripples}. The ripples created by opposite sides of a same flat patch interfere, creating barriers against coarsening.
 
 
 \begin{figure}
@@ -270,7 +270,7 @@ where $A_{280}$ is the absorption peak at \SI{280}{\nano\metre} due to aromatic 
 
 Above the isoelectric point, the homogeneous acidification by GDL continuously creates very small protein aggregates that are difficult to centrifuge. Such suspensions are too turbid and too rapidly evolving to reliably measure $x_\text{free}$.
 
-\section*{Microstructure measurements}
+\subsection*{Microstructure measurements}
 
 \begin{figure}
 	\includegraphics{nonmonotonic}%
@@ -323,20 +323,13 @@ We first de-noise each plane by a short-range Gaussian blur ($\sigma=\SI{2}{px}\
 
 From these data, we obtain for each stack the volume and thickness of the gel phase, area and peak-to-peak amplitude of the mid surface. Velocity is obtained by time differentiation. Once the instability has saturated on the top and bottom walls of the cell, peaks in the histograms of $z_\text{top}$ and $z_\text{bottom}$ yield the measure of the positions of both walls, thus of the cell thickness $e$ and retrospectively of $H_1$ and $H_2$.
 
-\section*{Characteristic time measurements}
-\begin{figure}
-	\includegraphics{growth}
-	\caption{Growth of the instability. (a) Evolution of the peak-to-peak amplitude $A(t)$ in semi logarithmic scales. The black line is the best exponential fit with $\tau=\SI{90}{\second}$. (b) Evolution of the bottom profile of the gel from onset of instability (yellow) to contact to both walls (brown). The longitudinal size of the blister evolves in this regime. The thick black curve is the profile at much longer times and is at lower altitude due to swelling. The blister foot, highlighted by the orange vertical line, does not move after contact.}
-	\label{fig:growth}
-\end{figure}
+\subsection*{Characteristic time measurements}
 
 In most of our samples it is possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both the highest and lowest points of the surface. Even when valid, such a local measurement is rather noisy and we prefer to focus on the measure of the vertical velocity $v$ of the gel that can be integrated over the whole field of view:
 \begin{equation}
 v(t) = \frac{\int \left|\frac{dz}{dt}\right| dxdy}{\int dxdy},
 \end{equation}
 where $z(x,y,t)$ is the altitude of the mid surface of the gel.
-
-We note that when both measurements were available (as in Figure~\ref{fig:sideview}d of the main text and inset of Supplementary Figure~\ref{fig:growth}), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ is about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls and $v_\text{max}$ is the maximum velocity of the gel. We use this approximation of $\tau$ for all our samples. This is consistent with the fact that the blister size ($\propto\lambda$) does not evolve after contact, see Supplementary Figure~\ref{fig:growth}, thus the kinetic wavelength is set when $A(t) = A_\text{max}$.
 
 
 
@@ -522,12 +515,18 @@ i & 4 & 4 & 50 & 95.3 && 5.4 & 4660 & 5700 & 1.5 && 65.1 & 7.9 & 14.4 & 0.02 && 
 \label{tab:data}
 \end{table*}
 
-\section*{Wavelength measurements}
+\subsection*{Wavelength measurements}
 
 \begin{figure}
 	\includegraphics{generations}%
 	\caption{Fourier spectra of binary altitudes of Main Figure~\ref{fig:dynamics}a corresponding to primary, secondary and tertiary patterns. Inset: reconstructed binary altitudes at time \SI{2}{\hour}. The scale bar is \SI{1}{\milli\metre}.}%
 	\label{fig:generations}%
+\end{figure}
+
+\begin{figure}
+\includegraphics{ripples.pdf}
+\caption{Evidence of the ripples generated by the junction to flat patches, see~\cite{LeGoff2014}. Position of the bottom surface of the gel in (a) 2D and (b) 1D. Only first ripple is visible, highlighted by orange rectangles. (c) Schematic view of the interference between ripples.}
+\label{fig:ripples}
 \end{figure}
 
 \begin{figure*}
