@@ -4,27 +4,44 @@
 \newdimen\mydimb
 	\begin{groupplot}[%
 		group style={
-			group name=g, group size=1 by 2,
+			group name=g, group size=1 by 3,
 			x descriptions at=edge bottom,
 			vertical sep=0.5em,
 			},
 		xmin=0, xmax=180, xtick={0,30,...,150},
+		xlabel={time (min)},
 		extra tick style={grid=major},%
 		extra x tick labels={},%
 		scale only axis,
 		width=\columnwidth-4em,
 		height=6\baselineskip,
-		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em, xshift=0.5em}
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-1em, xshift=0.5em},
 		]
 	
 	\nextgroupplot[ylabel={Volume (\%)}, ymin=20, ymax=100, ytick={40,60,80,100}]
 	\addplot+[no marks,black] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{1}*100}]{relative_volume_excess_area_plis.txt}  coordinate[pos=0] (V0) (V0) |- (axis cs:0,100);
-	\addplot+[only marks,Accent1, mark=+] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{1}*100}]{relative_volume_excess_area_plis_toi.txt};
+	\addplot+[only marks,Accent1, mark=+, mark options={scale=2}] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{1}*100}]{relative_volume_excess_area_plis_toi.txt};
 	
-	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=6, ytick={0,2,4,6}, 
-	xlabel={time (min)}, every axis y label/.append style={xshift=-1em}]
+	\nextgroupplot[ylabel={Excess area (\%)}, ymin=0, ymax=6, ytick={0,2,4,6}]
 	\addplot+[no marks,black] table[x expr={\thisrowno{0}+15}, y expr={\thisrowno{2}*100}]{relative_volume_excess_area_plis.txt};
-	\addplot+[only marks,Accent1, mark=+] table[x expr={\thisrowno{0}+15},y expr={\thisrowno{2}*100}]{relative_volume_excess_area_plis_toi.txt};
+	\addplot+[only marks,Accent1, mark=+, mark options={scale=2}] table[x expr={\thisrowno{0}+15},y expr={\thisrowno{2}*100}]{relative_volume_excess_area_plis_toi.txt};
+
+	\nextgroupplot[
+		height=8\baselineskip,
+		ylabel={$v$ (\si{\micro\metre\per\second})},
+		ymin=0, ymax=0.16,
+		y tick label style={
+                /pgf/number format/fixed,
+                /pgf/number format/fixed zerofill,
+                /pgf/number format/precision=2},
+		]
+	\addplot+[no marks,black] table[x expr={\thisrowno{0}/60.+15}]{cas3p2_fluo0p8_GDL4.vel};
+	\addplot+[only marks,Accent1, mark=+, mark options={scale=2}] table[x expr={\thisrowno{0}/60.+15}]{cas3p2_fluo0p8_GDL4_toi.vel};
+	\draw[<-] (axis cs:28, 0.02) -- +(0,1em) node[right, rotate=90] {syn\ae{}resis};
+	\draw[<-] (axis cs:54.6, 0.06) |- +(45:1em) node[right] {secondary};
+	\draw[<-] (axis cs:39, 0.139) -- +(1em,0) node[right] {primary};
+	\draw[<-] (axis cs:81, 0.015) |- +(45:1em) node[right] {tertiary};
+
 	\end{groupplot}
 
 
@@ -54,6 +71,7 @@
 %\node[anchor=south east, inner ysep=1pt] at (a.north east) {(b)};
 \node at (g c1r1.north east) {(b)};
 \node at (g c1r2.north east) {(c)};
+\node at (g c1r3.north east) {(d)};
 \end{scope}
 \end{tikzpicture}
 	
