@@ -95,7 +95,7 @@ Based those observations, we examine possible scenarios upon shrinking and swell
 \noindent
 (iii) We are left with the case of Figure~\ref{fig:dilation}f where a wrinkling pattern emerges spontaneously with a wavelength $\lambda\ll L$ selected before saturation on the top and bottom wall. To obtain such an instability, one must balance the bending rigidity of the gel film with a transverse load $\sigma_{\perp}$ that hinders buckling on large wavelengths. The transverse load could be gravity~\cite{Smoluchowski1910, Kolinski2009, Vella2009, Pineirua2013, Lucantonio2013}, however we confirm that it plays no significant role by successfully repeating the wrinkling pattern in a cell held vertically, i.e. with the weight acting longitudinally rather than transversely. Furthermore, the transverse load cannot be adhesion~\cite{Vella2009a} since the film is not adhering to the top and bottom walls. Influence of the side boundaries~\cite{Vandeparre2011a, Li2013} is also excluded since the wavelength of the pattern is uniform throughout the sample. Finally as the four side boundaries remain fixed $\sigma_{\perp}$ cannot come from the resistance to uniaxial stretching~\cite{Cerda2003}.
 
-At this point two points remain unclear: what triggers the the spontaneous syn\ae{}resis and swelling back processes? And what is the nature of $\sigma_{\perp}$ responsible for the selection of the primary wavelength?
+Now, two points remain unclear: what triggers the the spontaneous syn\ae{}resis and swelling back processes? And what is the nature of $\sigma_{\perp}$ responsible for the selection of the primary wavelength?
 
 \begin{figure*}
 \includegraphics{dilation.pdf}
@@ -126,9 +126,8 @@ To gain further insight into the mechanical properties of the gel we turn to mic
 
 Boundary conditions is the final parameter that is essential to form wrinkled patterns. In order to turn off the adsorption of the caseins on a surface, we coat the surface with polymer brushes, see Methods, effectively creating non adhesive boundary conditions for the gel. When the casein adhesion to the upper boundary is turned off, the gel still not wrinkles because it remains attached to the bottom wall, but it detaches from the top wall. In this situation we can monitor $\xi$, Figure~\ref{fig:acidification}d. $\xi$ remains mostly constant and variations manifests themselves at the macroscopic level, on the volume occupied by the gel.
 
-Therefore, the syn\ae{}resis and swelling back mechanism is related to charge stabilisation of the casein proteins with the pH. Such mechanism is only effective to produce wrinkle when adhesion of the caseins to both top and bottom walls is turned off.
 
-
+Therefore, the syn\ae{}resis and swelling back mechanism is related to charge stabilisation of the casein proteins with the pH. Such mechanism is only effective to produce wrinkle when adhesion of the caseins to both top and bottom walls is turned off. Coherently with our explanation, the amount of GDL, and thus the final pH reached by the suspension, controls the amount of swelling back. Therefore at low GDL concentrations we only observe the primary pattern, at high GDL concentrations we observe the formation of higher order patterns.
 
 
 
@@ -195,8 +194,8 @@ However we note that the wavelength of a generation of the pattern does not evol
 
 A more complete derivation of the models can be found in the Supplementary Methods and yields the following prefactors:
 \begin{align}
-\lambda_D &= 2\pi h^{1/2}\alpha^{1/4}\left(\frac{\Upsilon}{12}\right)^{1/4}\\
-\lambda_P &= \pi (hH)^{1/2}\left(\frac{2}{9}\Upsilon\right)^{1/6}
+\lambda_D &= 2\pi h^{1/2}\alpha^{1/4}\left(\frac{\Upsilon}{12}\right)^{1/4}\label{eq:prefDarcy}\\
+\lambda_P &= \pi (hH)^{1/2}\left(\frac{2}{9}\Upsilon\right)^{1/6}\label{eq:prefPoiseuille}
 \end{align}
 where $H$ is redefined by $1/H^3 = 1/H_1^3 + 1/H_2^3$. The crossover between the two models where $\lambda_D=\lambda_P$ is found for $H = H^* \equiv 2^{2/3} 3^{1/6} \alpha^{1/2} \Upsilon^{1/6}$.
 
@@ -207,11 +206,15 @@ To sum up, we expect two regimes of viscosity-dominated wrinkling: for $H\ll H^*
 For a typical gel sheet, the buoyancy after syn\ae{}resis is estimated from the initial sodium caseinate mass concentration $C_\text{cas}$ as $\Delta\rho=C_\text{cas} e/h = \SI{130}{\kilo\gram\per\cubic\metre}$ leading to a gravity stress $\sigma_\perp^G \approx \SI{0.04}{\pascal}$. This is much lower than typical Darcy or Poiseuille stresses $\sigma_\perp^D \approx \sigma_\perp^P \approx \SI{0.15}{\pascal}$ and therefore gravity is dismissed.
 
 
-Darcy and Poiseuille models yield wavelengths that are of the same order in most of the cases under study. Thus only systematic measurements of the experimental $\lambda$ together with estimates for all the parameters involved in either model shall allow one to discriminate between them, see Supplementary Methods about such measurements. As summarised in Supplementary Table~\ref{tab:data} we systematically vary (i) the thickness of the cell, impacting $h$ and the maximal amplitude, (ii) the gel composition and thus both its stiffness and its permeability, (iii) the viscosity of the solvent by adding glycerol, which also impacts the gel stiffness, permeability and $\tau$. Finally, the only parameter that we have no control upon is the initial altitude $H$ of the gel before wrinkling that varies randomly. However we are able to obtain more data at small $H/H^*$ ratios by considering not only the primary patterns but also the secondary ones. Since the saturation of the primary pattern flattens the gel on the top and bottom walls, the secondary blisters always appear in a Darcy situation ($H\ll H^*$). Here the wavelength associated to the secondary blister is taken as half of that of the primary pattern as shown in Supplementary Figure~\ref{fig:generations}.
+Darcy and Poiseuille models yield wavelengths that are of the same order in most of the cases under study. Thus only systematic measurements of the experimental $\lambda$ together with estimates for all the parameters involved in either model shall allow one to discriminate between them, see Supplementary Methods about such measurements. As summarised in Supplementary Table~\ref{tab:data} we systematically vary (i) the thickness of the cell, impacting $h$ and the maximal amplitude, (ii) the gel composition and thus both its stiffness and its permeability, (iii) the viscosity of the solvent by adding glycerol, which also impacts the gel stiffness, permeability and $\tau$. Finally, the only parameter that we have no control upon is the initial altitude $H$ of the gel before wrinkling that varies randomly. 
 
-XXX The amount of GDL controls the ability of the gel to swell: at low GDL concentrations we only observe the primary pattern, at high GDL concentrations we observe the formation of higher order patterns.
+For each experiment we measure independently $\lambda$ and all the parameter that go into the expressions of $\lambda_D$, Equation~(\ref{eq:prefDarcy}) and $\lambda_P$, Equation~(\ref{eq:prefPoiseuille}). $\lambda$ is measured by optical microscopy; $e$, $h$, $H_1$, $H_2$, $\tau$ are measured by confocal microscopy; $\alpha$ is measured via capillary experiment and $B$ by rheology, see Methods and Supplementary methods.
 
-Our results are displayed in Figure~\ref{fig:DarcyPoiseuille}. Although they provide the correct order of magnitude for $\lambda$, neither model alone is able to quantitatively reproduce the full data set. However considering only the points where $H<H^*$ (respectively $H>H^*$), the Darcy (resp. Poiseuille) model fits the data well albeit with a prefactor. Note that it would be easy to miss out on the failure of the Poiseuille model at small wavelengths by adding an unexplained offset (dashed line in Figure~\ref{fig:DarcyPoiseuille}b). Nonetheless, a complete model (derived in Supplementary Methods), summing up the influence of both Poiseuille and Darcy dissipation provides a much better agreement for the whole $H/H^*$ range.
+
+The beauty of this approach is that it is not only valid to model the primary wavelength, but that it describes also the growth of the secondary pattern. Although the wavelength $\lambda_2$ of the secondary pattern is fully determined by the primary pattern $\lambda_2 = \lambda_1/2$, Figure~\ref{fig:dynamics} and Supplementary Figure~\ref{fig:generations}, the secondary pattern has its own dynamics with its own characteristic time $\tau_2\neq\tau_1$. Since the saturation of the primary pattern flattens the gel on the top and bottom walls, the secondary blisters always appear in a Darcy situation ($H\ll H^*$). Therefore, we are able to obtain more data at small $H/H^*$ ratios by considering not only the primary patterns but also the secondary ones.
+
+
+Despite changing the gel properties and the cell geometry we always observe wrinkling proving the robustness of this approach to form wrinkling patterns. We are in the position to vary $H/H^\star$ from 0.1 to 10 so that we can test the crossover between Darcy and Poiseuille mechanism. In Figure~\ref{fig:DarcyPoiseuille}a and b we have plotted the measure wavelength as a function of the model prediction $\lambda_D$ and $\lambda_P$ respectively. If the prediction are correct we expect $\lambda_\text{exp}=\lambda_D$ when $H<H^*$ and $\lambda_\text{exp}=\lambda_P$ when $H>H^*$. Indeed, both model seems to apply in their domain of validity albeit with a prefactor. The failure of the Poiseuille model is only visible at small wavelengths where an unexplained offset (dashed line in Figure~\ref{fig:DarcyPoiseuille}b) is necessary to fit the data. To go further, we derive a complete model summing up the influence of both Poiseuille and Darcy dissipation, see Supplementary Methods. The results of this new model are displayed in Figure~\ref{fig:DarcyPoiseuille}c and agree with $\lambda_\text{exp}$ for the whole $H/H^*$ range.
 
 \section*{Conclusion}
 
@@ -337,9 +340,13 @@ From these data, we obtain for each stack the volume and thickness of the gel ph
 	\label{fig:growth}
 \end{figure}
 
-In most of our samples it is possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both the highest and lowest points of the surface. Even when valid, such a local measurement is rather noisy and we prefer to focus on the measure of the vertical velocity $v$ of the gel that can be integrated over the whole field of view.
+In most of our samples it is possible to measure directly the peak-to-peak amplitude $A(t)$ from our confocal measurements. However when the wavelength is too large compared to the field of view, this approach breaks down since we cannot observe both the highest and lowest points of the surface. Even when valid, such a local measurement is rather noisy and we prefer to focus on the measure of the vertical velocity $v$ of the gel that can be integrated over the whole field of view:
+\begin{equation}
+v(t) = \frac{\int \left|\frac{dz}{dt}\right| dxdy}{\int dxdy},
+\end{equation}
+where $z(x,y,t)$ is the altitude of the mid surface of the gel.
 
-We note that when both measurements were available (as in Supplementary Figure~\ref{fig:growth}a), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ is about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls and $v_\text{max}$ is the maximum velocity of the gel. We use this approximation of $\tau$ for all our samples. This is consistent with the fact that the blister size ($\propto\lambda$) does not evolve after contact, see Supplementary Figure~\ref{fig:growth}b, thus the kinetic wavelength is set when $A(t) = A_\text{max}$.
+We note that when both measurements were available (as in Figure~\ref{fig:sideview}d of the main text and inset of Supplementary Figure~\ref{fig:growth}), the characteristic time $\tau$ obtained from the fit of the exponential growth of $A(t)$ is about $4A_\text{max}/v_\text{max}$, where $A_\text{max} = e-h$ is the amplitude when the gel comes in contact with both walls and $v_\text{max}$ is the maximum velocity of the gel. We use this approximation of $\tau$ for all our samples. This is consistent with the fact that the blister size ($\propto\lambda$) does not evolve after contact, see Supplementary Figure~\ref{fig:growth}, thus the kinetic wavelength is set when $A(t) = A_\text{max}$.
 
 
 
