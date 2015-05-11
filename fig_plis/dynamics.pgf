@@ -57,7 +57,7 @@
 \node[anchor=base] at (cell.south-|lam) {$\lambda \ll L$};
 \node[anchor=base, Accent1, font=\footnotesize, inner sep=1pt] at (cell.south-|g) {solvent};
 \node[white] at (pr) {(a)};
-\node[font=\footnotesize, right=0 of pl.west] {parafilm};
+\node[font=\footnotesize, right=0 of pl.west] {paraffin};
 \node[fill=white, font=\footnotesize, inner sep=1pt] at (midglass) {coated glass};
 \draw [<->] (cell.south west) ++(0,-1.5em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {$L>\SI{1}{\centi\metre}$};
 \draw [<->] (pl.south west) ++(-4pt,0) -- +(0,\e) node[midway,left,font=\footnotesize, inner xsep=1pt] {$e$};

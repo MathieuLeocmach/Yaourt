@@ -1,5 +1,5 @@
 \node[inner sep=0,minimum height=\e,minimum width=\lena] (cell) {};
-\begin{scope}[every node/.style={inner sep=0,minimum height=\e,minimum width=\parafilm, fill=gray}]
+\begin{scope}[every node/.style={inner sep=0,minimum height=\e,minimum width=\parafilm, fill=gray!80}]
 	\node[left=-1pt of cell] (pl) {};
 	\node[right=-1pt of cell] (pr) {};
 \end{scope}

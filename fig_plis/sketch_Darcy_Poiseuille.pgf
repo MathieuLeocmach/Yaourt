@@ -90,7 +90,7 @@
 	%trace les autres epaisseurs
 	%trace les autres epaisseurs
 	\draw[<->] (axis cs:1.85*pi,0.75) -- (axis cs:1.85*pi,3) node[midway, right] {$H$}; 
-	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,0.75) node[midway, right] {$h$};
+	%\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,0.75) node[midway, right] {$h$};
 	\draw[<->] (axis cs:1.85*pi,-0.75) -- (axis cs:1.85*pi,-3) node[midway, right] {$H$};
 	\draw[->, name intersections={of=baseB and ZM, by=BW}, name intersections={of=bot and ZM, by=ZM3}] (BW) -- (ZM3) node[midway, left] {$A(t)$};
 	

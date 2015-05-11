@@ -16,11 +16,11 @@
 %homogeneous solution
 \input{fig_plis/sub_cell.pgf}
 \node[white] at (pr) {(a)};
-\node[font=\footnotesize, right=0 of pl.west] {parafilm};
+\node[font=\footnotesize, right=0 of pl.west] {paraffin};
 \node[fill=white, font=\footnotesize, inner sep=1pt] at (midglass) {coated glass};
 \fill[fill=Accent1!25] (cell.north west) rectangle (cell.south east) node[midway,font=\footnotesize] {homogeneous protein solution};
-\draw [<->] (cell.south west) ++(0,0.8em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {$L\approx\SI{1}{\centi\metre}$};
-\draw [<->] (cell.south west) ++(0.8em,0) -- +(0,\e) node[midway,left,font=\footnotesize, inner xsep=1pt] {$e$};
+\draw [<->] (cell.south west) ++(0,0.8em) -- +(\lena,0) node[midway,below,font=\footnotesize, inner ysep=1pt] {$L>\SI{1}{\centi\metre}$};
+\draw [<->] (pr.south east) ++(3pt,0) -- +(0,\e) node[midway,below,font=\footnotesize, inner ysep=2pt, rotate=90] {$e\approx\SI{100}{\micro\metre}$};
 \coordinate (sols) at ($(cell.south)+(0,-\baselineskip)$);
 
 %initial gel
