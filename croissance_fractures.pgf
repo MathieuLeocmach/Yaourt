@@ -1,0 +1,19 @@
+\begin{tikzpicture}[inner sep=0]
+\let\mylena\relax
+\newlength\mylena
+\pgfmathsetlength{\mylena}{0.32\textwidth}
+\matrix[matrix of nodes, column sep=0.5*\textwidth-1.5\mylena, nodes={inner sep=0}, row sep=0.5em]{
+$t=\SI{0}{\second}$&
+$t=\SI{677}{\second}$&
+$t=\SI{1476}{\second}$\\
+\includegraphics[width=\mylena]{Y110_2013-03-01_02-55-11.jpg}&
+\includegraphics[width=\mylena]{Y110_2013-03-01_03-06-28.jpg}&
+\includegraphics[width=\mylena]{Y110_2013-03-01_03-19-47.jpg}\\
+$t=\SI{1559}{\second}$&
+$t=\SI{1567}{\second}$&
+$t=\SI{1568}{\second}$\\
+\includegraphics[width=\mylena]{Y110_2013-03-01_03-21-10.jpg}&
+\includegraphics[width=\mylena]{Y110_2013-03-01_03-21-18.jpg}&
+\includegraphics[width=\mylena]{Y110_2013-03-01_03-21-19.jpg}\\
+};
+\end{tikzpicture}
