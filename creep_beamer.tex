@@ -1,8 +1,5 @@
-\begin{frame}{Creep and yielding}
-\textit{Leocmach et al. PRL 113, 038303 (2014), ArXiv 1401.8234}
-
-\bigskip
-\structure{Merciless yoghurt breakers}
+\begin{frame}{Merciless yoghurt breakers}
+\textit{Leocmach et al. PRL 113, 038303 (2014), \footnotesize ArXiv 1401.8234}
 
 \bigskip
 \begin{tabu}{X[c]X[c]c}
@@ -79,6 +76,36 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 }{Yaourt141_enhanced.avi}
 \end{frame}
 %\tikzset{external/force remake=false}
+
+\begin{frame}{The yoghurt creep experiment}
+\includegraphics[width=\textwidth]{creep/Fig3}
+\begin{center}\tikzsetnextfilename{creep_xp_snapshot}
+\begin{tikzpicture}
+\begin{groupplot}[
+	group style={
+		group name=g, group size=2 by 1,
+		horizontal sep=4\baselineskip,
+		},
+	xmode=log,
+	ymode=log,
+	xlabel={$t$ (\si{\second})},
+	xmin=0.1,
+	%restrict x to domain=0.05:3e3,
+	]
+	\nextgroupplot[ylabel={strain rate $\dot\gamma$ (\si{\per\second})}, ymin=1e-4, ymax=2e-1]
+	\addplot[Accent1] table {Y110_300Pa.gdot}; 
+	\addplot[Accent2, only marks, mark=o] coordinates {(31, 1.6e-3) (889, 2e-4) (1442, 5.5e-4) (1509, 1.1e-2)};
+
+	\nextgroupplot[
+		ylabel={strain $\gamma$},ymin=0.16,ymax=2,
+		ytick={0.2, 0.4,0.8,1.6}, yticklabels={0.2, 0.4,0.8,1.6},]
+	\addplot[Accent1] table {Y110_300Pa.txt}; 
+	\addplot[Accent2, only marks, mark=o] coordinates {(31, 0.37481) (880, 0.70529) (1459, 0.87393) (1526,0.93622)};
+
+\end{groupplot}
+\end{tikzpicture}
+\end{center}
+\end{frame}
 
 \begin{frame}{Creep rheology: Three regimes}
 \tikzsetnextfilename{three_regimes}
