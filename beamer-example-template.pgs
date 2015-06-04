@@ -59,7 +59,7 @@
 % Allow the usage of graphics (.jpg, .png, etc.) in the document
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, matrix,patterns,mindmap,fit}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, shapes.callouts, matrix,patterns,mindmap,fit}
 %\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
 
 \usepackage{pgfplots}

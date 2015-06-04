@@ -165,6 +165,15 @@ red!40!yellow,
 
 \setcounter{framenumber}{0}
 
+\begin{frame}{Texture as important as taste}
+\begin{tikzpicture}[inner sep=0, callout pointer segments=3]
+\node(ishichan) {\includegraphics[height=8\baselineskip]{ishichan}};
+\node[above=of ishichan] {\includegraphics[height=8\baselineskip]{calamar}};
+\node[cloud callout,anchor=west, draw, callout relative pointer={(-30:2\baselineskip)}] at ($(ishichan.north)+(-0.5\textwidth,0)$) {\includegraphics[height=5\baselineskip]{aldente}};
+\node[cloud callout, aspect=0.75, anchor=east, draw, callout relative pointer={(-150:2\baselineskip)}] at ($(ishichan.north)+(0.5\textwidth-10pt,0)$) {\includegraphics[height=5\baselineskip]{chewie}};
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}{Mouth feel}
 \begin{columns}
 \column{0.8\textwidth}
