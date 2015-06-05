@@ -247,9 +247,9 @@ Any plastic event in yoghurt?
 	
 \end{loglogaxis}
 \end{tikzpicture}
-\[ \sigma \propto  \gamma f^\alpha \xrightarrow{\mathrm{Fourier}} \sigma \propto \gamma t^{-\alpha} \]
+\[ \boxed{\sigma \propto  \gamma f^\alpha} \xrightarrow{\mathrm{Fourier}} \boxed{\sigma \propto \gamma t^{-\alpha}} \]
 Constant $\sigma$
-\[ \gamma(t) \propto \sigma t^{\alpha} \xrightarrow{\frac{d}{dt}} \dot\gamma(t) \propto \sigma t^{\alpha-1}\]
+\[ \boxed{\gamma(t) \propto \sigma t^{\alpha}} \xrightarrow{\frac{d}{dt}} \boxed{\dot\gamma(t) \propto \sigma t^{\alpha-1}}\]
 
 \column{0.55\textwidth}
 \tikzsetnextfilename{primary_rescaled}
@@ -406,11 +406,35 @@ $\Rightarrow$ no room for plasticity
 
 
 
-\begin{frame}{What about theories and models?}
-\begin{columns}
-\column{0.35\textwidth}
-\structure{Fibre bundle model~\#1}
+\begin{frame}{Fibre bundle models}
+\tikzsetnextfilename{FBM_Jagla}
+\begin{tikzpicture}
+\let\mydima\relax
+\newlength\mydima
+\setlength{\mydima}{0.3\textwidth}
+\let\mydimb\relax
+\newlength\mydimb
+\setlength{\mydimb}{2\baselineskip}
 
+\node[fill=black, inner sep=0, minimum height=0.2em, minimum width=\mydima] at (0,\mydimb)  (top) {};
+\node[fill=black, inner sep=0, minimum height=0.2em, minimum width=\mydima] at (0,-\mydimb)  (bot) {};
+
+\foreach \x in {0.1,0.2,...,0.9}\draw[Accent1, line width=0.1em*sin(1500*\x)+0.3em] (top.south west) ++(\x\mydima, 0) -- +(0, -2\mydimb+0.2em);
+
+\node[above=0 of top, single arrow, draw, shape border rotate=90] {$\sigma$};
+\node[starburst, draw=Accent2, inner sep=0pt,  minimum width=0.1\mydima, minimum height=0.5\mydimb, starburst point height=0.15em] at (-0.1\mydima,0) {};
+\node[double arrow,draw, anchor=west, text width=0.21\textwidth, align=center] at (0.5\mydima,-0.5\mydimb) (model) {\structure{model}};
+\node[above left=\baselineskip and 0of model.east, text width=0.31\textwidth, inner sep=0] {\begin{itemize}
+	\item elastic fibres
+	\item local yield strain
+	\item local coupling
+	\end{itemize}};
+\end{tikzpicture}
+\includegraphics[height=6\baselineskip, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
+
+\bigskip
+\begin{columns}[b]
+\column{0.3\textwidth}
 \textit{\footnotesize Jagla et al., PRE 2011}
 
 \begin{minipage}[b][10\baselineskip][c]{1em}
@@ -420,19 +444,56 @@ $\dot\gamma$
 $\dot\gamma$
 \end{minipage}\includegraphics[height=10\baselineskip, clip=true, trim=7mm 0 0 6cm]{Jagla_2011_3regimes}
 
-
+\column{0.3\textwidth}
+\structure{But}
 \begin{itemize}
-\item elastic fibres
-\item local yield strain
-\item local coupling
+\item yield stress
+\item built in power-law creep
+\item no master curve
 \end{itemize}
 
-%\hspace{1em}\includegraphics[width=\textwidth-1em]{Jagla_2011_gamma}
-
-\column{0.35\textwidth}
-\includegraphics[width=\textwidth, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
+\column{0.4\textwidth}\tikzsetnextfilename{creep_1_3}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 2,
+			vertical sep=2.5em,
+			},
+		height=6.5\baselineskip,
+		width=9\baselineskip,
+		cycle list name=earthy,
+		clip mode=individual,
+		ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+		xlabel shift=-0.5em,
+		]
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
+		xmode=log,ymode=log,
+		xtick={1e-4, 1e-2, 1},
+		]
+		\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*x^(-0.85) + 0.187/(1-x)};
+		
+		
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
+		x dir=reverse,
+		xmode=log,ymode=log,
+		xtick={1e-4, 1e-2, 1},
+	]
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt};
+		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*(1-x)^(-0.85) + 0.187/x};
+	\end{groupplot}
+\end{tikzpicture}
 \end{columns}
-predicts Andrade creep and failure \alert{but} critical stress $\tau_f\sim\left(\sigma-\alert{\sigma_c}\right)^{-1.25}$
 \end{frame}
 
 
