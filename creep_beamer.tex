@@ -407,131 +407,147 @@ $\Rightarrow$ no room for plasticity
 
 
 \begin{frame}{Fibre bundle models}
-\tikzsetnextfilename{FBM_Jagla}
-\begin{tikzpicture}
-\let\mydima\relax
-\newlength\mydima
-\setlength{\mydima}{0.3\textwidth}
-\let\mydimb\relax
-\newlength\mydimb
-\setlength{\mydimb}{2\baselineskip}
-
-\node[fill=black, inner sep=0, minimum height=0.2em, minimum width=\mydima] at (0,\mydimb)  (top) {};
-\node[fill=black, inner sep=0, minimum height=0.2em, minimum width=\mydima] at (0,-\mydimb)  (bot) {};
-
-\foreach \x in {0.1,0.2,...,0.9}\draw[Accent1, line width=0.1em*sin(1500*\x)+0.3em] (top.south west) ++(\x\mydima, 0) -- +(0, -2\mydimb+0.2em);
-
-\node[above=0 of top, single arrow, draw, shape border rotate=90] {$\sigma$};
-\node[starburst, draw=Accent2, inner sep=0pt,  minimum width=0.1\mydima, minimum height=0.5\mydimb, starburst point height=0.15em] at (-0.1\mydima,0) {};
-\node[double arrow,draw, anchor=west, text width=0.21\textwidth, align=center] at (0.5\mydima,-0.5\mydimb) (model) {\structure{model}};
-\node[above left=\baselineskip and 0of model.east, text width=0.31\textwidth, inner sep=0] {\begin{itemize}
-	\item elastic fibres
-	\item local yield strain
-	\item local coupling
-	\end{itemize}};
-\end{tikzpicture}
-\includegraphics[height=6\baselineskip, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
-
-\bigskip
-\begin{columns}[b]
-\column{0.3\textwidth}
-\textit{\footnotesize Jagla et al., PRE 2011}
-
-\begin{minipage}[b][10\baselineskip][c]{1em}
-$\dot\gamma$
-
-\vspace{4\baselineskip}
-$\dot\gamma$
-\end{minipage}\includegraphics[height=10\baselineskip, clip=true, trim=7mm 0 0 6cm]{Jagla_2011_3regimes}
-
-\column{0.3\textwidth}
-\structure{But}
-\begin{itemize}
-\item yield stress
-\item built in power-law creep
-\item no master curve
-\end{itemize}
-
-\column{0.4\textwidth}\tikzsetnextfilename{creep_1_3}
-\begin{tikzpicture}
-	\begin{groupplot}[%
-		group style={
-			group name=g, group size=1 by 2,
-			vertical sep=2.5em,
-			},
-		height=6.5\baselineskip,
-		width=9\baselineskip,
-		cycle list name=earthy,
-		clip mode=individual,
-		ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
-		xlabel shift=-0.5em,
+	\tikzsetnextfilename{FBM_Jagla}
+	\begin{tikzpicture}
+	\let\mydima\relax
+	\newlength\mydima
+	\setlength{\mydima}{0.3\textwidth}
+	\let\mydimb\relax
+	\newlength\mydimb
+	\setlength{\mydimb}{2\baselineskip}
+	
+	\node[fill=black, inner sep=0, minimum height=0.2em, minimum width=\mydima] at (0,\mydimb)  (top) {};
+	\node[fill=black, inner sep=0, minimum height=0.2em, minimum width=\mydima] at (0,-\mydimb)  (bot) {};
+	
+	\foreach \x in {0.1,0.2,...,0.9}\draw[Accent1, line width=0.1em*sin(1500*\x)+0.3em] (top.south west) ++(\x\mydima, 0) -- +(0, -2\mydimb+0.2em);
+	
+	\node[above=0 of top, single arrow, draw, shape border rotate=90] {$\sigma$};
+	\node[starburst, draw=Accent2, inner sep=0pt,  minimum width=0.1\mydima, minimum height=0.5\mydimb, starburst point height=0.15em] at (-0.1\mydima,0) {};
+	\node[double arrow,draw, anchor=west, text width=0.21\textwidth, align=center] at (0.5\mydima,-0.5\mydimb) (model) {\structure{model}};
+	\node[above left=\baselineskip and 0of model.east, text width=0.31\textwidth, inner sep=0] {\begin{itemize}
+		\item elastic fibres
+		\item local yield strain
+		\item local coupling
+		\end{itemize}};
+	\end{tikzpicture}
+	\includegraphics[height=6\baselineskip, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
+	
+	\bigskip
+	\begin{columns}[b]
+	\column{0.3\textwidth}
+	\textit{\footnotesize Jagla et al., PRE 2011}
+	
+	\begin{minipage}[b][10\baselineskip][c]{1em}
+	$\dot\gamma$
+	
+	\vspace{4\baselineskip}
+	$\dot\gamma$
+	\end{minipage}\includegraphics[height=10\baselineskip, clip=true, trim=7mm 0 0 6cm]{Jagla_2011_3regimes}
+	
+	\column{0.3\textwidth}
+	\structure{But}
+	\begin{itemize}
+	\item yield stress
+	\item built in power-law creep
+	\item no master curve
+	\end{itemize}
+	
+	\column{0.4\textwidth}\tikzsetnextfilename{creep_1_3}
+	\begin{tikzpicture}
+		\begin{groupplot}[%
+			group style={
+				group name=g, group size=1 by 2,
+				vertical sep=2.5em,
+				},
+			height=6.5\baselineskip,
+			width=9\baselineskip,
+			cycle list name=earthy,
+			clip mode=individual,
+			ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+			xlabel shift=-0.5em,
+			]
+		\nextgroupplot[
+			xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
+			xmode=log,ymode=log,
+			xtick={1e-4, 1e-2, 1},
+			]
+			\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt};
+			\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt};
+			\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt};
+			\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt};
+			\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+			\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*x^(-0.85) + 0.187/(1-x)};
+			
+			
+		\nextgroupplot[
+			xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
+			x dir=reverse,
+			xmode=log,ymode=log,
+			xtick={1e-4, 1e-2, 1},
 		]
-	\nextgroupplot[
-		xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
-		xmode=log,ymode=log,
-		xtick={1e-4, 1e-2, 1},
-		]
-		\addplot table[x index=1, y index=3]{Y27_200Pa_gdot_decimated.txt};
-		\addplot table[x index=1, y index=3]{Y38_300Pa_gdot_decimated.txt};
-		\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt};
-		\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt};
-		\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt};
-		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*x^(-0.85) + 0.187/(1-x)};
-		
-		
-	\nextgroupplot[
-		xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
-		x dir=reverse,
-		xmode=log,ymode=log,
-		xtick={1e-4, 1e-2, 1},
-	]
-		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt};
-		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt};
-		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt};
-		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt};
-		\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt};
-		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*(1-x)^(-0.85) + 0.187/x};
-	\end{groupplot}
-\end{tikzpicture}
-\end{columns}
+			\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y27_200Pa_gdot_decimated.txt};
+			\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y38_300Pa_gdot_decimated.txt};
+			\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y25_400Pa_gdot_decimated.txt};
+			\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y32_550Pa_gdot_decimated.txt};
+			\addplot table[x expr=1-\thisrowno{1}, y index=3]{Y39_1000Pa_gdot_decimated.txt};
+			\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*(1-x)^(-0.85) + 0.187/x};
+		\end{groupplot}
+	\end{tikzpicture}
+	\end{columns}
 \end{frame}
 
 
-\begin{frame}{What about theories and models?}
-\structure{Fibre bundle model~\#2}
-
-elastic fibres + local yield strain + damage accumulation
-\begin{block}{\textit{\footnotesize Kun et al. J. Stat Mech 2006, PRL 2008}}
-\begin{columns}
-\column{0.7\textwidth}
-\tikzsetnextfilename{Kun_2006_basquin}
-\begin{tikzpicture}[inner sep=0]
-\node(a){\includegraphics[height=5\baselineskip]{Kun_2006_basquin.png}};
-\node[fill=white,yshift=-0.5em] at (a) {$\tau_f \sim \sigma^{-\beta}$};
-\end{tikzpicture}\,
-\includegraphics[height=5\baselineskip]{Kun_2008_Basquin}\,
-\includegraphics[height=5\baselineskip]{asphalt}
-\column{0.3\textwidth}
-$\beta$ exponent of damage accumulation
-\[\dot{\gamma}\sim \left(\tau_f-t\right)^{-1/(1+\beta)}\]
-\end{columns}
-\end{block}
-
-\begin{columns}
-\column{0.65\textwidth}
-\begin{block}{\textit{\footnotesize Halász et al., PRE 2012}}
-\tikzsetnextfilename{Halasz}
-\begin{tikzpicture}[inner sep=0, ultra thick, font=\footnotesize]
-\node (g) {\includegraphics[height=7\baselineskip]{Halasz_2012_Basquin}};
-\node[draw=green!50!black, below right=0 and \baselineskip of g.north east] (c) {\includegraphics[height=4\baselineskip]{Halasz_2012_crack}};
-\node[draw=red, above right=0 and 6\baselineskip of g.south east] (d) {\includegraphics[height=4\baselineskip]{Halasz_2012_disordered}};
-\draw[->,green!50!black] (c.west) -- ++(-2\baselineskip,0) node[above] {$\beta=5$} node[below right=0 of c.north east, text width=5\baselineskip]{single crack propagation};
-\draw[->, red] (d.south west) -- +(-5\baselineskip,0) --($(g.south east) +(0, \baselineskip)$) node[below=1em] {$\beta=1$} node[above left=0 of d.south west] {diffusive damage};
-\end{tikzpicture}
-\end{block}
-\column{0.35\textwidth}
-Predicts Basquin law \& fractures \alert{but} no Andrade creep \& too slow divergence
-\end{columns}
+\begin{frame}{Fibre bundle models}
+	\begin{columns}[T]
+	\column{0.27\textwidth}
+	\textit{\footnotesize Kun et al.  PRL 2008}
+	
+	\includegraphics[height=6\baselineskip]{Kun_2008_Basquin}
+	
+	\textit{\footnotesize Halász et al., PRE 2012}
+	
+	\includegraphics[height=6\baselineskip]{Halasz_2012_crack}
+	
+	\column{0.35\textwidth}
+	\begin{itemize}
+		\item elastic fibres
+		\item local yield strain
+		\item local coupling
+		\item[+] damage accumulation
+		\end{itemize}
+	
+	\tikzsetnextfilename{model_arrow}
+	\begin{tikzpicture}
+	\node[double arrow,draw, anchor=west, text width=\textwidth-1\baselineskip, align=center] (model) {\structure{model}};
+	\end{tikzpicture}
+	
+	\bigskip
+	\structure{But}
+	\begin{itemize}
+	\item no power-law creep 
+	\item too slow divergence
+	\item 2D fractures
+	\end{itemize}
+	
+	\column{0.38\textwidth}
+	\tikzsetnextfilename{basquin_fracture}
+	\begin{tikzpicture}
+	\begin{loglogaxis}[
+		name=a,
+		width=\textwidth,
+		height=0.8\textwidth,
+		xlabel={$\sigma$ (\si{\pascal})},
+		ylabel={$\tau_f$ (\si{\second})},
+		xmin=100, ymin=10, ymax=1e6,
+		xtick={100, 200,..., 1000}, xticklabels={100, 200,,, 500,,,,, 1000},
+		]
+		\addplot[only marks, Accent1] table[y index=3]{creep_cas4_gdl1_MCR.txt};
+		\addplot[no marks, black, domain={100:1000}] {4.2e17*x^(-5.45)};
+	\end{loglogaxis}
+	\node[below = of a]{\includegraphics[height=6\baselineskip]{Y110_2013-03-01_03-21-15.jpg}};
+	\end{tikzpicture}
+	
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Creep and yielding summary}
