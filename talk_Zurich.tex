@@ -243,8 +243,8 @@ Irreversible deformation
 
 
 %\tikzset{external/force remake}
-\begin{frame}{Acid-set protein gel (Yoghurt)}
-\begin{block}{Recipe: take your time}
+\begin{frame}{The simplest yoghurt}
+\begin{block}{Acid-set protein gel}
 \begin{itemize}
 \item Water (\SI{30}{\celsius})
 \item Sodium caseinate (milk protein) 4\%
@@ -396,6 +396,55 @@ E.N.S. Lyon &  CRPP Bordeaux & E.N.S. Lyon\\
 
 \end{frame}
 
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
 
+\begin{frame}[plain]
+\end{frame}
+
+\begin{frame}{Creep rheology: Three regimes}
+\tikzsetnextfilename{three_regimes}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+   name=g,
+	width=\textwidth,
+	height=0.8\textheight,
+	xmin=2e-2, xmax=4e5, xlabel={time (\si{\second})},
+	ymin=0.2,ymax=2,
+	ytick={0.2, 0.4,0.8,1.6}, yticklabels={0.2, 0.4,0.8,1.6},
+	ylabel={strain $\gamma$},
+	extra tick style={grid=major},%
+	extra y ticks={1}, extra y tick labels={1.0},
+	cycle list name=earthy,
+	axis on top,
+	]
+	\fill[Accent1!20]
+		(axis cs:10,0.4) ellipse[rotate=-30, x radius=0.2\textwidth, y radius=0.12\textwidth]
+		(axis cs:2e2,1.6) ellipse[x radius=0.35\textwidth, y radius=0.05\textwidth]
+		(axis cs:3e3,0.85) ellipse[rotate=-7.5, x radius=0.3\textwidth, y radius=0.07\textwidth]
+		;
+	\node[above right] at (axis cs:1e1,0.2) {primary};
+	\node[below left] at (axis cs:4e5,0.7) {secondary};
+	\node[left] at (axis cs:5,1.6) {tertiary};
+	\addplot table{Y27_200Pa_gamma_decimated.txt} node (s200){};
+	\addplot table{Y38_300Pa_gamma_decimated.txt} node (s300){};
+	\addplot table{Y25_400Pa_gamma_decimated.txt}  node (s400){};
+	\addplot table{Y32_550Pa_gamma_decimated.txt}  node (s550){};
+	\addplot table{Y39_1000Pa_gamma_decimated.txt} node (s1000){};
+\end{loglogaxis}
+\begin{scope}[anchor=base, every node/.style={yshift=0.2em}]
+	\node[red!40!black] at (s200 |- g.outer north) {\SI{200}{\pascal}};
+	\node[red!60!black] at (s300 |- g.outer north) {300};
+	\node[red!80!black] at (s400 |- g.outer north) {400};
+	\node[red] at (s550 |- g.outer north) {550};
+	\node[red!80!yellow] at (s1000 |- g.outer north) {1000};
+\end{scope}
+\end{tikzpicture}
+
+Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
+\end{frame}
+
+\setcounter{framenumber}{\value{finalframe}}
 \end{document}
 
