@@ -16,12 +16,14 @@
 \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}]{ech17_pore_size.txt};
 \pgfplotsset{cycle list shift=4};
 \addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}]{ech19_pore_size.txt};
+
 \nextgroupplot[ylabel={$\chi$ (a.u.)}]
 \begin{scope}[every node/.style={anchor=base west}]
-\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e7}]{ech17_pore_size.txt} node (l1) {\textsc{gdl} 1\%};
+\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e3}]{ech17_pore_size.txt} node (l1) {\textsc{gdl} 1\%};
 \pgfplotsset{cycle list shift=4};
-\addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e7}]{ech19_pore_size.txt} node at ($(l1.base west)-(axis cs:0,1.8)$) {\textsc{gdl} 4\%};
+\addplot table[skip coords between index={0}{15}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e3}]{ech19_pore_size.txt} node at ($(l1.base west)-(axis cs:0,1.8)$) {\textsc{gdl} 4\%};
 \end{scope}
+
 \nextgroupplot[xlabel={time (\si{\hour})}, ylabel={$\gamma$}]
 \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y index=3]{ech17_pore_size.txt};
 \pgfplotsset{cycle list shift=4};
