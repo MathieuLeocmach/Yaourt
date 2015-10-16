@@ -64,6 +64,7 @@
 %\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
 
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \pgfplotsset{compat=1.9}
 \usepgfplotslibrary{groupplots}
 \usepgfplotslibrary{external}
@@ -388,6 +389,53 @@ Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
 \begin{frame}{Acidifying casein solutions with \textup{HCl}}
 \tikzsetnextfilename{dosage}
 \input{fig_presentation/dosage.pgf}
+\end{frame}
+
+\begin{frame}{Over-acidified protein gels: beyond isoelectric pH}
+	\tikzsetnextfilename{prise_cas4}
+	\input{fig_soundbite_palavas/prise_cas4.pgf}
+	\begin{itemize}
+	\item[$\Rightarrow$] still solid
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Linear rheology, from power-law to soft glassy}
+	\tikzsetnextfilename{sweep_cas4}
+	\input{fig_soundbite_palavas/sweep_cas4.pgf}
+	\begin{itemize}
+	\item Near isoelectric, power law rheology $G^\prime, G^{\prime\prime}$ typical of gels 
+	\item Over-acidification lowers exponent and creates a minimum in $G^{\prime\prime}$
+	\item Transition to soft-glassy behaviour \\\textit{\footnotesize Sollich, PRE (1998); Mason, Curr. Opin. Colloid Interface Sci. (1999)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Questions}
+\begin{description}
+\item[What] is the change in microstructure?
+\item[How] does it affects the failure mechanism?
+\end{description}
+\end{frame}
+
+\begin{frame}{Microscructure: fluorescent confocal microscopy}
+	\tikzsetnextfilename{structure_confocal}
+	\input{fig_soundbite_palavas/structure_confocal.pgf}
+	\begin{itemize}
+	\item Maximum $G^\prime$ corresponds to maximum contrast between phases
+	\item Characteristic size $\xi$ increases during over-acidification
+	\item Casein aggregates swell $\sim$ over compressed gel $\Rightarrow$ soft glassy
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Three creep regimes + softness\hfill\textsc{gdl} 4\%}
+\vfill
+	\tikzsetnextfilename{creep_cas4_gdl4}
+	\input{fig_soundbite_palavas/creep_cas4_gdl4.pgf}
+\begin{itemize}
+%\item Failure scenario almost conserved: ``fibre bundle'' network
+%\item Other dissipation due to softness: overcompressed gel
+\item More difficult to predict failure time from fractures nucleation time
+\end{itemize}
+
 \end{frame}
 
 

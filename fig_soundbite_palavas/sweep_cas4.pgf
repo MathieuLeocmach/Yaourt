@@ -22,11 +22,11 @@
 	xmode=log, ymode=log,
 	xmin=5e-2, xmax=1e3,
 	xlabel={$f$ (\si{\hertz})},
-	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-0.5em}
+	xlabel absolute, every axis x label/.append style={anchor=base, yshift=-0.5em},
 	]
 
 %%%%Elastic%%%%
-\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}, ymin=18, ymax=3e3]
+\nextgroupplot[ylabel={$G^\prime$ (\si{\pascal})}, ymin=18, ymax=3e3, no marks]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
 	every node/.style={anchor=west, ,font=\scriptsize, pos=0}
@@ -55,13 +55,13 @@
 	ymode=linear,
 	xmin=0, xmax=4.5,
 	ylabel={exponent}, ymin=0,ymax=0.15,
-	ytick={0,0.05,0.1}, yticklabels={0,0.05,0.10}
+	ytick={0,0.05,0.1}, yticklabels={0,0.05,0.10},
 ]
 \addplot[mark=*] file{sweep_exponents.txt};
 
 
 %%%Loss%%%
-\nextgroupplot[ylabel={$G^{\prime\prime}$ (\si{\pascal})}, ymin=3, ymax=5e2]
+\nextgroupplot[ylabel={$G^{\prime\prime}$ (\si{\pascal})}, ymin=3, ymax=5e2, no marks]
 \begin{scope}[
 	every axis plot post/.append style={only marks, mark=*, mark options={scale=0.1}},
 	every node/.style={anchor=west,font=\scriptsize, pos=0}
@@ -88,6 +88,7 @@
 	ymode=linear, ymin=0.5,
 	xmin=0.05,xmax=100, xtick={0.1,1,10},
 	%xmin=0, xmax=60,
+	no marks,
 ]
 \begin{scope}[
 	%every axis plot post/.append style={mark=*, mark options={scale=0.1}},
@@ -102,6 +103,11 @@
 \end{scope}
 \draw[->, thick] (axis cs: 20,1.8) -- (axis cs:60,1.2) node[pos=0, above left=-0.5em and 0]{\textsc{gdl}$\searrow$};
 \end{groupplot}
-
+\let\GDLa\relax
+\let\GDLb\relax
+\let\GDLc\relax
+\let\GDLd\relax
+\let\GDLe\relax
+\let\GDLf\relax
 \end{tikzpicture}
 \end{figure}
