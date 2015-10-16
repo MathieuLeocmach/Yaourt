@@ -1,0 +1,41 @@
+\let\imw\relax
+\newlength\imw
+\setlength{\imw}{0.15\textwidth}
+\begin{tikzpicture}
+\matrix[matrix of nodes, ampersand replacement=\&, column sep=0.3em, row sep=0.3em, nodes={anchor=center, inner sep=0em}, column 1/.style={anchor=base}] (m){
+pH\&7 \& 5 \&\alert{pI}\& 3.5 \& 3.0 \& 2.5\\ 
+cas \alt<1>{1}{4}\%wt\&
+{\alt<1>{\includegraphics[width=\imw]{cas1_pH70}}{\includegraphics[width=\imw]{cas4_pH67}}}\&
+{\alt<1>{\includegraphics[width=\imw]{cas1_pH49}}{\includegraphics[width=\imw]{cas4_pH50}}}\&\&
+{\alt<1>{\includegraphics[width=\imw]{cas1_pH35}}{\includegraphics[width=\imw]{cas4_pH35}}}\&
+{\alt<1>{\includegraphics[width=\imw]{cas1_pH30}}{\includegraphics[width=\imw]{cas4_pH30}}}\&
+{\alt<1>{\includegraphics[width=\imw]{cas1_pH25}}{\includegraphics[width=\imw]{cas4_pH25}}}\\
+};
+\let\mydima\relax
+\newdimen\mydima
+\let\mydimb\relax
+\newdimen\mydimb
+\pgfextractx{\mydima}{\pgfpointanchor{m-2-2}{west}}
+\pgfextractx{\mydimb}{\pgfpointanchor{m-2-7}{east}}
+\pgfmathsetlength{\mydima}{\mydimb-\mydima}
+\pause
+\begin{axis}[
+	at={($(m-2-7.south east)+(0,-\baselineskip)$)},
+	anchor=above north east,
+	scale only axis,
+	height=5\baselineskip,
+	width=\mydima,
+	xlabel={pH}, xmin=1, xmax=7,xtick={1,2,...,7},x dir=reverse,
+	ylabel={solubility (\%wt)}, ymin=0, ymax=4, 
+	axis on top,
+	]
+	\fill<3>[Accent2!30] (axis cs:3.5,0) rectangle (axis cs:5.1,4);
+	\fill<3>[Accent1!30] (axis cs:0,0) rectangle (axis cs:3.5,4);
+	\addplot+[no marks, black, thick] table[y expr={4*\thisrowno{1}}]{freefraction_cas4_HCL_tinf.txt} coordinate[pos=0.52] (pi) coordinate[pos=0.8] (oa);
+\end{axis}
+
+\draw<3>[ultra thick, Accent2] (m-2-3.north west) rectangle (m-2-5.south east) node[below] at (m-1-4|-m.south) (cg) {critical gel};
+%\draw[->,ultra thick, Accent2] (m-2-5.south east) -- (pi);
+\draw<3>[ultra thick, Accent1] (m-2-6.north west) rectangle (m-2-7.south east) node[below left]  at (m.south east){over acidified gel};
+%\draw[->,ultra thick, Accent1] (m-2-6.south) -- (oa);
+\end{tikzpicture}
