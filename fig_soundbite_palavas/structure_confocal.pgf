@@ -12,10 +12,10 @@
 	cycle list name=earthy,
 	no marks,
 	]
-\nextgroupplot[ylabel={$\xi$ (\si{\micro\metre})}, height=3\baselineskip, ymax=2]
-\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600.}]{ech17_pore_size.txt};
+\nextgroupplot[ylabel={$\xi$ (\si{\micro\metre})}, height=3\baselineskip, ymax=10, ytick={0,3,6,9}]
+\addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600.}, y expr={6.28*\thisrowno{1}}]{ech17_pore_size.txt};
 \pgfplotsset{cycle list shift=4};
-\addplot table[skip coords between index={0}{2}, x expr={\thisrowno{0}/3600}]{ech26_pore_size.txt};
+\addplot table[skip coords between index={0}{2}, x expr={\thisrowno{0}/3600}, y expr={6.28*\thisrowno{1}}]{ech26_pore_size.txt};
 
 \nextgroupplot[ylabel={$\chi$ (a.u.)}]
 \begin{scope}%[every node/.style={anchor=base west}]
