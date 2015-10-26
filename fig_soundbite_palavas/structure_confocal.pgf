@@ -43,6 +43,8 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 };
 \draw[ultra thick, white] (m-1-1.south east) ++(-0.25\baselineskip,1em) -- +(-2\baselineskip,0) node[midway, above] {\SI{20}{\micro\metre}};
 
+\let\mydima\relax
+\let\mydimb\relax
 \newdimen\mydima
 \newdimen\mydimb
 \pgfextracty{\mydima}{\pgfpointanchor{g c1r1}{north}}
@@ -56,7 +58,7 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 	at={($(g c1r3.right of south east)+(-\textwidth,0)$)},
 	cycle list name=earthy,
 	xlabel={$q$ (\si{\per\micro\metre})},
-	ylabel={$I(q)$ (a.u.)},
+	ylabel={$|I(q)|$ (a.u.)},
 	domain=0.3:10,
 	xmin=0.08, xmax=4e3,
 	ymin=1e2, ymax=2e4,
@@ -101,5 +103,37 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 
 \end{loglogaxis}
 \node[anchor=south west] at (Sq.outer south west) (gdl) {\textcolor{red!60!yellow}{\textsc{gdl} 4\%}};
+
+\pause
+\fill[white] (g c1r2.outer north east) rectangle (Sq.outer south east);
+
+\begin{loglogaxis}[
+	name={Sq1},
+	anchor=north east,
+	at={(g c1r2.north east)},
+	scale only axis,
+	height=7\baselineskip+0.5em,
+	width=0.5\textwidth-3em,,
+	xmin=0.1, xmax=10,
+	ymin=2e-2, ymax=1.1,
+	domain=0.1:10,
+	xlabel={$q$ (\si{\per\micro\metre})},
+	ytick={0.1,1}, yticklabels={0.1,1},
+	ylabel={$|I(q)|$ (a.u.)},
+	axis background/.style={fill=white},
+	]
+ 	\addplot[no marks] {1/(1+(0.5 * x)^2)};
+
+	\node[anchor=south west] (sketch) at (rel axis cs:0,0) {\includegraphics[width=0.25\columnwidth,angle=90]{gel_sketch}};
+	\begin{scope}[every node/.style={anchor=south, circle, draw=gray, shift=(sketch.south west), xshift=0.125\columnwidth, yshift=0.06\columnwidth, rotate=15}]
+		\node[minimum height=0.025\columnwidth] (c1){};
+		\node[minimum height=0.09\columnwidth] (c2){};
+		\node[minimum height=0.18\columnwidth] (c3){};
+	\end{scope}
+	\draw[->,gray] (c1) -- (axis cs:8,0.055);
+ 	\draw[->,gray] (c2) -- (axis cs:1,0.7);
+ 	\draw[->,gray] (c3) -- (axis cs:0.3,0.9);
+	
+ \end{loglogaxis}
 
 \end{tikzpicture}
