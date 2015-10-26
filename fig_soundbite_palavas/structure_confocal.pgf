@@ -3,11 +3,12 @@
 	group style={
 			group name=g, group size=1 by 3,
 			vertical sep=0.5em,
-			xticklabels at=edge bottom,
+			x descriptions at=edge bottom,
 		},
 	scale only axis,
 	height=3.5\baselineskip,
 	width=0.5\textwidth-3em,
+	xlabel={time (\si{\hour})},
 	xmin=0, xmax=8, ymin=0,
 	cycle list name=earthy,
 	no marks,
@@ -17,19 +18,24 @@
 \pgfplotsset{cycle list shift=4};
 \addplot table[skip coords between index={0}{2}, x expr={\thisrowno{0}/3600}, y expr={6.28*\thisrowno{1}}]{ech26_pore_size.txt};
 
+\only<1>{
 \nextgroupplot[ylabel={$\chi$ (a.u.)}]
 \begin{scope}%[every node/.style={anchor=base west}]
 \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/1e3}]{ech17_pore_size.txt} node[anchor=north east, pos=0.65] (l1) {\textsc{gdl} 1\%};
 \pgfplotsset{cycle list shift=4};
 \addplot table[x expr={\thisrowno{0}/3600}, y expr={\thisrowno{2}/2e3}]{ech26_pore_size.txt} node[anchor=base west, pos=0.3] {\textsc{gdl} 4\%};
 \end{scope}
-
-\nextgroupplot[xlabel={time (\si{\hour})}, ylabel={$d$}]
+%
+%
+\nextgroupplot[ ylabel={$d$}]
 \addplot table[skip coords between index={0}{64}, x expr={\thisrowno{0}/3600}, y index=3]{ech17_pore_size.txt};
 \pgfplotsset{cycle list shift=4};
 \addplot table[x expr={\thisrowno{0}/3600}, y index=3]{ech26_pore_size.txt};
 \node[anchor=south east, font=\scriptsize] at (rel axis cs:1,0) {$\displaystyle I(q) = \frac{2\chi\Gamma(d)}{\left(1+\left((d+1)\xi q\right)^2\right)^{d/2}}$};
+}
 \end{groupplot}
+
+\coordinate (sec) at ($(g c1r1.right of south east)+(0,-7\baselineskip-1em)$);
 
 
 \matrix[matrix of nodes, inner sep=0, row sep=0.2em, column sep=0.2em, matrix anchor=north west] 
@@ -43,19 +49,14 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 };
 \draw[ultra thick, white] (m-1-1.south east) ++(-0.25\baselineskip,1em) -- +(-2\baselineskip,0) node[midway, above] {\SI{20}{\micro\metre}};
 
-\let\mydima\relax
-\let\mydimb\relax
-\newdimen\mydima
-\newdimen\mydimb
-\pgfextracty{\mydima}{\pgfpointanchor{g c1r1}{north}}
-\pgfextracty{\mydimb}{\pgfpointanchor{g c1r3}{south}}
+
 \begin{loglogaxis}[
 	name=Sq,
 	scale only axis,
 	width=0.3\textwidth,
 	height=4.5\baselineskip,
 	anchor=left of south west,
-	at={($(g c1r3.right of south east)+(-\textwidth,0)$)},
+	at={($(sec)+(-\textwidth,0)$)},
 	cycle list name=earthy,
 	xlabel={$q$ (\si{\per\micro\metre})},
 	ylabel={$|I(q)|$ (a.u.)},
@@ -105,12 +106,12 @@ at ($(g c1r1.right of north east)+(-\textwidth,0)$)
 \node[anchor=south west] at (Sq.outer south west) (gdl) {\textcolor{red!60!yellow}{\textsc{gdl} 4\%}};
 
 \pause
-\fill[white] (g c1r2.outer north east) rectangle (Sq.outer south east);
+%\fill[white] (g c1r2.outer north east) rectangle (Sq.outer south east);
 
 \begin{loglogaxis}[
 	name={Sq1},
 	anchor=north east,
-	at={(g c1r2.north east)},
+	at={($(g c1r1.south east)+(0,-0.5em)$)},
 	scale only axis,
 	height=7\baselineskip+0.5em,
 	width=0.5\textwidth-3em,,
