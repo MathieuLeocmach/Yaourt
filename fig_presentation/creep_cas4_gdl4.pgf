@@ -1,0 +1,56 @@
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=3 by 1,
+			horizontal sep=3em,
+			},
+		width=0.35\textwidth,
+		cycle list name=earthy,
+		clip mode=individual,
+		]
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$t/\tau_f$},
+		ylabel={$\dot{\gamma}/\dot{\gamma}_\text{min}$},
+		xmode=log,ymode=log,
+		xtick={1e-4, 1e-2, 1},
+		]
+		\addplot table {Y242_20Pa_gdot_decimated.txt};
+        \addplot table {Y239_40Pa_gdot_decimated.txt};
+        \addplot table {Y238_50Pa_gdot_decimated.txt};
+        \addplot table {Y246_60Pa_gdot_decimated.txt};
+        \addplot table {Y236_100Pa_gdot_decimated.txt};
+        \addplot+[restrict x to domain=-2.75:1] table {Y249_120Pa_gdot_decimated.txt};
+	    \addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*x^(-0.96) + 0.187/(1-x)};
+		\addplot[domain=1e-3:1e-1] {x^(-0.96)} node[pos=0, right] {$\alpha-1$};
+		
+	\nextgroupplot[
+		xmin=0, xmax=1, xlabel={$t/\tau_f$},
+		ymin=0.5,ymax=10, 
+	xtick={0, 0.2, ..., 1}, ytick={2,4,6,8}
+		]
+		\begin{scope}[/pgfplots/restrict y to domain=0:11,]
+		\addplot table {Y242_20Pa_gdot_decimated.txt};
+        \addplot table {Y239_40Pa_gdot_decimated.txt};
+        \addplot table {Y238_50Pa_gdot_decimated.txt};
+        \addplot table {Y246_60Pa_gdot_decimated.txt};
+        \addplot table {Y236_100Pa_gdot_decimated.txt};
+        \addplot table {Y249_120Pa_gdot_decimated.txt};
+		\end{scope}
+		\addplot[yellow, ultra thick, domain={0.001:0.99}] {0.378*x^(-0.96) + 0.187/(1-x)};
+		
+	\nextgroupplot[
+		xmin=1e-5, xmax=2, xlabel={$(\tau_f-t)/\tau_f$},
+		x dir=reverse,
+		xmode=log,ymode=log,
+		xtick={1e-4, 1e-2, 1},
+	]
+        \addplot table[x expr={1-\thisrowno{0}}] {Y242_20Pa_gdot_decimated.txt};
+        \addplot table[x expr={1-\thisrowno{0}}] {Y239_40Pa_gdot_decimated.txt};
+        \addplot table[x expr={1-\thisrowno{0}}] {Y238_50Pa_gdot_decimated.txt};
+        \addplot table[x expr={1-\thisrowno{0}}] {Y246_60Pa_gdot_decimated.txt};
+        \addplot table[x expr={1-\thisrowno{0}}] {Y236_100Pa_gdot_decimated.txt};
+        \addplot table[x expr={1-\thisrowno{0}}] {Y249_120Pa_gdot_decimated.txt};
+		\addplot[yellow, ultra thick, samples at={1e-5,1e-4, 1e-3,1e-2,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 0.99, 0.999, 0.9999, 0.99999}] {0.378*(1-x)^(-0.96) + 0.187/x};
+		\addplot[domain=1e-4:1e-2] {0.1*x^(-1)} node[midway, below] {-1};
+	\end{groupplot}
+\end{tikzpicture}
