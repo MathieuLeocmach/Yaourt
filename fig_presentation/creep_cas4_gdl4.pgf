@@ -2,9 +2,9 @@
 	\begin{groupplot}[%
 		group style={
 			group name=g, group size=3 by 1,
-			horizontal sep=3em,
+			horizontal sep=2.5em,
 			},
-		width=0.35\textwidth,
+		width=0.375\textwidth,
 		cycle list name=earthy,
 		clip mode=individual,
 		]

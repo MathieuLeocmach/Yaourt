@@ -1,0 +1,137 @@
+% ILM presentation theme for beamer
+%
+% Miguel A.L. Marques
+%
+% based on the Cyberjaya theme from
+% http://liantze.penguinattack.org/latextypesetting
+
+\ProvidesPackage{beamerthemeilm}[2013/04/29]
+
+\usefonttheme[onlylarge]{structurebold}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Images
+%%%%%%%%%%%%%%%%%%%%%%%
+\pgfdeclareimage[interpolate=true,width=\paperwidth]{bgd}{img/ilm-background}
+%\pgfdeclareimage[interpolate=true,width=\paperwidth]{ucbl-large}{img/Logo_UCBL_background}
+\pgfdeclareimage[interpolate=true,width=.5\paperheight]{ilm-logo}{img/Logo_ILM}
+\pgfdeclareimage[height=0.6cm]{cnrs-logo}{img/Logo_CNRS_fond_blanc_small}
+\pgfdeclareimage[height=0.6cm]{ucbl-logo}{img/Logo_UCBL_court}
+\pgfdeclareimage[height=0.6cm]{etsf-logo}{img/logo_etsf}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ilmcolor}{RGB}{177,37,159}
+\definecolor{ilmorange}{RGB}{255,116,40}
+
+\usecolortheme[named=ilmcolor]{structure}
+\setbeamercolor{titlelike}{fg=ilmcolor!65!black}
+\setbeamercolor{subtitle}{fg=ilmcolor!70!black}
+\setbeamercolor{author in head/foot}{fg=ilmcolor!70!black}
+\setbeamercolor{author}{fg=ilmorange}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{item}{fg=ilmorange}
+\setbeamercolor{block body}{bg=ilmcolor!5}
+\setbeamercolor{block title}{bg=ilmcolor, fg=white}
+%\setbeamercovered{dynamic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Inner theme
+%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{pifont} % for the ding thing
+\useinnertheme{rounded}
+\setbeamertemplate{itemize items}{\ding{220}}
+\setbeamertemplate{enumerate items}[default]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Outer theme
+%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{background canvas}{%
+%\ifnum\c@framenumber=1%
+%\begin{pgfpicture}{0cm}{0cm}{\paperwidth}{\paperheight}
+%  %\pgftext[at=\pgfpoint{0cm}{0cm},left,base]{\pgfuseimage{ucbl-large}}
+%  \pgftext[at=\pgfpoint{0.5cm}{3.2cm},left,base]{\rotatebox{90}{\pgfuseimage{ilm-logo}}}
+%\end{pgfpicture}
+%\else%
+  \pgfuseimage{bgd}
+%\fi%
+}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{frametitle}{\vskip0.1cm\hfill\insertframetitle}
+\setbeamerfont{frametitle}{series=\mdseries}
+
+
+%\setbeamertemplate{headline}{%
+%  %\providecommand\insertframetitle{}
+%  %\leavevmode%
+%  \vskip0.2cm\hfill%
+%  \insertframetitle\hspace*{0.5cm}%
+%  \vskip0pt%
+%  \par%
+%}
+
+%\setbeamertemplate{footline}{%
+%  \usebeamerfont{author in head/foot}\bfseries\scriptsize%
+%  \ifnum\c@framenumber>1%
+%  \hskip10pt\insertshortauthor%
+%  \hskip5pt //
+%  \hskip5pt\insertshorttitle
+%  \hskip5pt //
+%  \hskip5pt \insertshortdate%
+%  \fi%
+%  \hfill
+%  \pgfuseimage{cnrs-logo}\hspace*{0.3cm}\pgfuseimage{ucbl-logo}\hspace*{0.3cm}%\pgfuseimage{etsf-logo}\hspace*{0.3cm}
+%  \vskip5pt%
+%  \par%
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page
+%%%%%%%%%%%%%%%%%%%%%%%%
+%\setbeamertemplate{title page}{%
+%  \hskip3cm
+%  \begin{minipage}{7cm}
+%    \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+%    \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+%    \vspace{1cm}
+%    \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par
+%    \vspace{0.2cm}
+%    \usebeamerfont{institute}\usebeamercolor[fg]{subtitle}\insertinstitute\par
+%    \vspace{0.6cm}
+%    \usebeamercolor{date}\insertdate
+%  \end{minipage}
+%}
+
+\setbeamertemplate{title page}{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+%      \ifx\insertsubtitle\@empty%
+%      \else%
+%        \vskip0.25em%
+%        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+%      \fi%     
+    \end{beamercolorbox}%
+    %\vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \endgroup
+  \vfill
+}

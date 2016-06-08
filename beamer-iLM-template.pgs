@@ -1,0 +1,68 @@
+\documentclass[xcolor=table]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+%\usetheme{Boadilla}
+%\usecolortheme{rose}
+%\usecolortheme{crane}
+%\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{navigation symbols}{}
+
+\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
+\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
+\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
+
+\mode<presentation>{\usetheme{ilm}}
+
+%font
+\usepackage[T1]{fontenc}
+\usepackage{times}
+
+
+%proper math and math symbols
+%\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{datenumber,fp}
+
+\usepackage{siunitx}
+
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, shapes.geometric, shapes.callouts, matrix,patterns,mindmap,fit}
+%\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{groupplots}
+\usepackage{pgfplotstable}
+
+
+%link or play movies
+\usepackage{multimedia}
+
+
+\begin{document}
+\tikzset{every mark/.append style={scale=0.8}}
+\pgfplotsset{every axis/.append style={footnotesize}}
+
+\pgfplotscreateplotcyclelist{earthy}{%
+red!40!black,
+red!60!black,
+red!80!black,
+red,
+red!80!yellow,
+red!60!yellow,
+red!40!yellow,
+}
+
+\begin{frame}{Frame}
+<>
+\end{frame}
+
+\end{document}
+

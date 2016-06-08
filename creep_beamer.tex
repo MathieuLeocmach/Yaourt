@@ -14,7 +14,7 @@
 	\newlength\mydimb
 	\pgfmathsetlength{\mydimb}{6\baselineskip}
 
-\node[shape=cylinder, draw, shape border rotate=90,minimum width=\mydimb, minimum height=7\baselineskip, anchor=north, aspect=2] at (rheometer.north-|webcam.north) (Stator) {};
+\node[shape=cylinder, draw, shape border rotate=90,minimum width=\mydimb, minimum height=7\baselineskip, anchor=north, aspect=2, yshift=-1.5em] at (rheometer.north-|webcam.north) (Stator) {};
 
 \node[shape=cylinder, draw, shape border rotate=90,minimum width=\mydimb-1em, minimum height=6.75\baselineskip, anchor=before bottom , aspect=1.5] at ($(Stator.before bottom)+(-0.5em,0)$) (Rotor){};
 
@@ -34,6 +34,7 @@
 
 
 \begin{frame}{The yoghurt creep experiment}
+\vspace{1.25\baselineskip}
 \let\mylena\relax
 \newlength\mylena
 \pgfmathsetlength{\mylena}{0.19\textwidth}
@@ -71,8 +72,20 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Different (constant) stresses: universality}
+\begin{frame}{Different stresses: universality}
 \begin{columns}
+\column{0.4\textwidth}
+\textit{\footnotesize constant stresses}\\
+\vspace{\baselineskip}
+\structure{Normalisation}
+\begin{description}[$\dot\gamma_\text{min}$]
+\item[$\tau_f$] failure time 
+\item[$\dot\gamma_\mathrm{min}$] minimum strain rate 
+\end{description}
+
+\smallskip
+\hfill\begin{beamercolorbox}[rounded=true]{block title}\Large $\Rightarrow$Physical origin?\end{beamercolorbox}
+
 \column{0.6\textwidth}
 \tikzsetnextfilename{gdots_not_normed}%
 \begin{tikzpicture}
@@ -106,16 +119,6 @@
 	\node[red!80!yellow] at (s1000 |- g.outer north) {1000};
 \end{scope}
 \end{tikzpicture}
-
-\column{0.4\textwidth}
-\structure{Normalisation}
-\begin{description}[$\dot\gamma_\text{min}$]
-\item[$\tau_f$] failure time 
-\item[$\dot\gamma_\mathrm{min}$] minimum strain rate 
-\end{description}
-
-\smallskip
-\hfill$\Rightarrow$ \colorbox{Accent1}{\color{white}\Large Physical origin?}
 \end{columns}
 
 \tikzsetnextfilename{gdots_normed}%
@@ -179,7 +182,7 @@
 \begin{itemize}
 \item Power-law creep known in \alert{ductile solids} for over a century
 \item Classically explained by disinclination dynamics in crystals
-\item Recently explained by plastic events in glasses \textit{\footnotesize Miguel et al., PRL 2002}
+\item Recently explained by plastic events in glasses\\\hfill \textit{\footnotesize Miguel et al., PRL 2002}
 \end{itemize}
 \end{block}
 
@@ -189,14 +192,15 @@ Any plastic event in yoghurt?
 \movie[externalviewer]{\structure{Ultrasound velocimetry}}{Yaourt110_primary.avi} $\Rightarrow$ local velocity maps\\\hfill\textit{\footnotesize T. Gallot et al., Rev. Sci. Instrum. 84, 045107 (2013)}
 \begin{itemize}
 	\item homogeneous \movie[externalviewer]{strain field}{Yaourt110_profils.avi} (no wall slip, no shear band)
-	\item if present, plastic events are below our resolution (a few \si{\micro\metre})
+	\item if present, plastic events are below our resolution {\small (a~few~\si{\micro\metre})}
 \end{itemize}
 \end{frame}
 
 
 
 
-\begin{frame}{Is power-law creep damaging the structure?}
+\begin{frame}{Is creep damaging the structure?}
+\vspace{0.25\baselineskip}
 \begin{itemize}
 \item Stop creep much before ($\gamma<0.3$) fracture nucleation ($\gamma\approx 1$)
 \item Let relax $\Rightarrow$ No complete recovery
@@ -223,7 +227,7 @@ Any plastic event in yoghurt?
 \end{tikzpicture}
 
 \begin{itemize}
-\item Undamaged structure\raisebox{-0.6\baselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.\baselineskip}\right\}\Rightarrow\text{Plasticity cannot explain power law}$}
+\item Undamaged structure\raisebox{-0.6\baselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.\baselineskip}\right\}\Rightarrow\begin{array}{c}\text{Plasticity cannot explain}\\ \text{power law}\end{array}$}
 \item Viscous dissipation
 \end{itemize}
 \end{frame}
@@ -407,7 +411,8 @@ $\Rightarrow$ no room for plasticity
 
 
 \begin{frame}{Fibre bundle models}
-	\tikzsetnextfilename{FBM_Jagla}
+	\vspace{\baselineskip}
+	\tikzsetnextfilename{FBM_Jagla}%
 	\begin{tikzpicture}
 	\let\mydima\relax
 	\newlength\mydima
@@ -423,14 +428,14 @@ $\Rightarrow$ no room for plasticity
 	
 	\node[above=0 of top, single arrow, draw, shape border rotate=90] {$\sigma$};
 	\node[starburst, draw=Accent2, inner sep=0pt,  minimum width=0.1\mydima, minimum height=0.5\mydimb, starburst point height=0.15em] at (-0.1\mydima,0) {};
-	\node[double arrow,draw, anchor=west, text width=0.21\textwidth, align=center] at (0.5\mydima,-0.5\mydimb) (model) {\structure{model}};
-	\node[above left=\baselineskip and 0of model.east, text width=0.31\textwidth, inner sep=0] {\begin{itemize}
+		\node[double arrow,draw, anchor=west, text width=0.25\textwidth, align=center] at (0.5\mydima,-0.5\mydimb) (model) {\structure{model}};
+	\node[above left=\baselineskip and 0of model.east, text width=0.35\textwidth, inner sep=0] {\begin{itemize}
 		\item elastic fibres
 		\item local yield strain
 		\item local coupling
 		\end{itemize}};
 	\end{tikzpicture}
-	\includegraphics[height=6\baselineskip, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
+	\includegraphics[width=0.35\textwidth, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
 	
 	\bigskip
 	\begin{columns}[b]
@@ -444,7 +449,7 @@ $\Rightarrow$ no room for plasticity
 	$\dot\gamma$
 	\end{minipage}\includegraphics[height=10\baselineskip, clip=true, trim=7mm 0 0 6cm]{Jagla_2011_3regimes}
 	
-	\column{0.3\textwidth}
+	\column{0.34\textwidth}
 	\structure{But}
 	\begin{itemize}
 	\item yield stress
@@ -452,7 +457,7 @@ $\Rightarrow$ no room for plasticity
 	\item no master curve
 	\end{itemize}
 	
-	\column{0.4\textwidth}\tikzsetnextfilename{creep_1_3}
+	\column{0.4\textwidth}\tikzsetnextfilename{creep_1_3}%
 	\begin{tikzpicture}
 		\begin{groupplot}[%
 			group style={
@@ -498,13 +503,14 @@ $\Rightarrow$ no room for plasticity
 
 
 \begin{frame}{Fibre bundle models}
-	\begin{columns}[T]
+	\begin{columns}
 	\column{0.27\textwidth}
-	\textit{\footnotesize Kun et al.  PRL 2008}
+	\vspace{0.5\baselineskip}
+	\textit{\scriptsize Kun et al.  PRL 2008}
 	
 	\includegraphics[height=6\baselineskip]{Kun_2008_Basquin}
 	
-	\textit{\footnotesize Halász et al., PRE 2012}
+	\textit{\scriptsize Halász et al. PRE 2012}
 	
 	\includegraphics[height=6\baselineskip]{Halasz_2012_crack}
 	
@@ -516,7 +522,7 @@ $\Rightarrow$ no room for plasticity
 		\item[+] damage accumulation
 		\end{itemize}
 	
-	\tikzsetnextfilename{model_arrow}
+	\tikzsetnextfilename{model_arrow}%
 	\begin{tikzpicture}
 	\node[double arrow,draw, anchor=west, text width=\textwidth-1\baselineskip, align=center] (model) {\structure{model}};
 	\end{tikzpicture}
@@ -530,7 +536,7 @@ $\Rightarrow$ no room for plasticity
 	\end{itemize}
 	
 	\column{0.38\textwidth}
-	\tikzsetnextfilename{basquin_fracture}
+	\tikzsetnextfilename{basquin_fracture}%
 	\begin{tikzpicture}
 	\begin{loglogaxis}[
 		name=a,
@@ -553,7 +559,7 @@ $\Rightarrow$ no room for plasticity
 \begin{frame}{Creep and yielding summary}
 \begin{itemize}
 \item failure involves a single time scale $\tau_f \sim \sigma^{-5.5}$ Basquin law
-\item reversible, homogeneous creep $\rightarrow$ irreversible fracture growth
+\item \begin{minipage}{0.4\textwidth}\center reversible,\\ homogeneous creep\end{minipage} \hfill\textcolor{ilmorange}{$\rightarrow$}\hfill \begin{minipage}{0.4\textwidth}\center irreversible fracture growth\end{minipage}
 \item a single expression captures all the global rheological response
 \end{itemize}
 \tikzsetnextfilename{creep_summary}
@@ -561,9 +567,9 @@ $\Rightarrow$ no room for plasticity
 	\begin{groupplot}[%
 		group style={
 			group name=g, group size=3 by 1,
-			horizontal sep=3em,
+			horizontal sep=2.5em,
 			},
-		width=0.35\textwidth,
+		width=0.375\textwidth,
 		cycle list name=earthy,
 		clip mode=individual,
 		]

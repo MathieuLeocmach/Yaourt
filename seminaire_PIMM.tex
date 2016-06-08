@@ -1,0 +1,523 @@
+\documentclass[xcolor=table]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[super]{nth}
+%\usetheme{Boadilla}
+%\usecolortheme{rose}
+%\usecolortheme{crane}
+%\usefonttheme{structuresmallcapsserif}
+\setbeamertemplate{navigation symbols}{}
+
+\definecolor{Main}{rgb}{0.74, 0.13, 0.19}
+\definecolor{Accent1}{rgb}{0.76,0.36,0.13}
+\definecolor{Accent2}{rgb}{0.54,0.1,0.4}
+
+\mode<presentation>{\usetheme{ilm}}
+
+%\usecolortheme{rose}
+%%\useinnertheme[shadow]{circles}
+%\usecolortheme{whale}
+%%\useoutertheme{infolines}
+%
+%\usecolortheme[named=Accent1]{structure}
+%
+%\setbeamercolor{alerted text}{fg=Accent2}
+%\setbeamercolor{palette primary}{fg=white}
+\setbeamercolor{palette secondary}{bg=ilmcolor!10!white}
+%\setbeamercolor{palette tertiary}{bg=Accent2,fg=white}
+
+
+%\setbeamerfont{page number in head/foot}{size=\large}
+%\setbeamercolor{page number in head/foot}{fg=Main}
+%% page/total
+%%\setbeamertemplate{footline}[frame number]
+%% pas de total
+%\setbeamertemplate{footline}{%
+%    	\hfill%
+%	\usebeamercolor[fg]{page number in head/foot}%
+%	\usebeamerfont{page number in head/foot}%
+%	\insertframenumber\kern1em\vskip2pt%
+%}
+%
+%\setbeamersize{text margin left=1em}
+%\setbeamersize{text margin right=1em}
+
+%font
+\usepackage[T1]{fontenc}
+\usepackage{times}
+
+
+%proper math and math symbols
+%\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{datenumber,fp}
+
+\usepackage{siunitx}
+
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% Allow the usage of graphics (.jpg, .png, etc.) in the document
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,backgrounds, calc, positioning, topaths,chains, intersections, decorations.markings, decorations.text, shapes.geometric, matrix,patterns,mindmap}
+%\usetikzlibrary{positioning, patterns,topaths,chains,matrix}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.9}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{external}
+\makeatletter
+\newcommand*{\overlaynumber}{\number\beamer@slideinframe}
+\tikzset{
+  beamer externalizing/.style={%
+    execute at end picture={%
+      \tikzifexternalizing{%
+        \ifbeamer@anotherslide
+        \pgfexternalstorecommand{\string\global\string\beamer@anotherslidetrue}%
+        \fi
+      }{}%
+    }%
+  },
+  external/optimize=false
+}
+\let\orig@tikzsetnextfilename=\tikzsetnextfilename
+\renewcommand\tikzsetnextfilename[1]{\orig@tikzsetnextfilename{#1-\overlaynumber}}
+\makeatother
+
+\tikzset{every picture/.style={beamer externalizing}}
+\tikzexternalize
+\tikzsetexternalprefix{fig_iLM/}
+%\tikzset{external/optimize=false}
+%\tikzset{external/force remake}
+
+
+%link or play movies
+\usepackage{multimedia}
+
+
+
+%beamer related package
+
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
+
+
+%bibliography
+\usepackage[style=authoryear-comp, language=british,eprint=false, url=false, doi=false, sortcites=true, sorting=none, isbn=false, firstinits=true,maxcitenames=6]{biblatex}
+%minimal citations
+\AtEveryCitekey{%
+	\clearfield{title}
+	\clearfield{pages}
+	\clearfield{volume}
+	\clearfield{number}
+	\clearfield{month}}
+\newcommand{\myfullcite}[1]{{\scriptsize\fullcite{#1}}}
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+%\bibliography{biblio}
+
+
+\newcolumntype{P}[1]{>{\raggedright}p{#1}}
+
+\institute[Lyon]{iLM, Univ. Claude Bernard Lyon 1 and CNRS, France}
+\title[Yoghurt under stress]{Acid-induced protein gels: from gelation to stress-induced failure}
+\author[M. Leocmach]{Mathieu Leocmach}
+\date{9 June 2016}
+\titlegraphic{
+	\begin{tabu}{X[c]X[c]X[c]X[c]}
+		\includegraphics[height=3\baselineskip]{Chris}&
+		\includegraphics[height=3\baselineskip]{Thomas}&
+		\includegraphics[height=3\baselineskip]{Thibaut}&
+		\includegraphics[height=3\baselineskip]{Seb}\\
+		Christophe Perge & Thomas\linebreak Gibaud & Thibaut\linebreak Divoux & Sebastien Manneville\\
+	\end{tabu}
+	
+	\vfill
+	\includegraphics[height=2\baselineskip]{logo_ens-lyon}\quad
+	\includegraphics[height=2\baselineskip]{logo_ums_grand}\quad
+	\includegraphics[height=2\baselineskip]{CNRSfilaire-Q}\quad
+	\includegraphics[height=2\baselineskip]{CRPP}\quad
+	\includegraphics[height=2\baselineskip,clip=true, trim=6mm 14mm 6mm 0]{NEW-Logo-ERC-OUTLINE}
+	}
+
+
+\newlength{\mylength}
+
+%\includeonly{creep_beamer}
+
+\begin{document}
+\tikzset{every mark/.append style={scale=0.8}}
+\pgfplotsset{every axis/.append style={footnotesize}}
+
+\pgfplotscreateplotcyclelist{earthy}{%
+{red!40!black,mark=o},
+{red!60!black,mark=triangle, every mark/.append style={rotate=180}},
+{red!80!black,mark=square},
+{red,mark=triangle},
+{red!80!yellow, mark=diamond},
+red!60!yellow,
+red!40!yellow,
+}
+
+\AtBeginSection[]{
+	\addtocounter{framenumber}{-1}
+	\begin{frame}[plain]
+		\tableofcontents[currentsection, hideothersubsections]
+	\end{frame}
+}
+
+\begin{frame}{\pgfuseimage{cnrs-logo}\hspace*{0.3cm}\pgfuseimage{ucbl-logo}}%[plain]
+	\titlepage
+\end{frame}
+
+\setcounter{framenumber}{0}
+
+\begin{frame}{Texture as important as taste}
+\vspace{1.25\baselineskip}
+\tikzsetnextfilename{texture}%
+\begin{tikzpicture}[inner sep=0, callout pointer segments=3]
+\node(ishichan) {\includegraphics[height=8\baselineskip]{ishichan}};
+\node[above=1em of ishichan] {\includegraphics[height=8\baselineskip]{calamar}};
+\node[cloud callout,anchor=west, draw, callout relative pointer={(-30:2\baselineskip)}] at ($(ishichan.north)+(-0.5\textwidth-10pt,0)$) {\includegraphics[height=5\baselineskip]{aldente}};
+\node[cloud callout, aspect=0.75, anchor=east, draw, callout relative pointer={(-150:2\baselineskip)}] at ($(ishichan.north)+(0.5\textwidth-10pt,0)$) {\includegraphics[height=5\baselineskip]{chewie}};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Mouth feel}
+\begin{columns}
+\column{0.8\textwidth}
+\begin{itemize}
+\item A very complex, multidimensional sensation
+\item Behaviour of the food at large deformation?
+\item How does food break into pieces?
+\end{itemize}
+\column{0.2\textwidth}
+\includegraphics[width=\textwidth]{violon}
+\end{columns}
+
+\bigskip
+\begin{columns}[T]
+\column{0.475\textwidth}
+\begin{block}{Ductile fracture}
+\includegraphics[height=5\baselineskip]{deflated_balloon}
+
+Irreversible deformation
+\begin{itemize}
+\item rubber
+\item lead
+\item butter
+\end{itemize}
+\end{block}
+
+\column{0.5\textwidth}
+\begin{block}{Brittle fracture}
+\includegraphics[height=6\baselineskip]{spaghetti_breaking}\hfill
+\includegraphics[height=6\baselineskip]{Tea_bowl_fixed_in_the_Kintsugi_method}
+\begin{itemize}
+\item concrete
+\item asphalt
+\item glass
+\end{itemize}
+
+\end{block}
+\end{columns}
+\end{frame}
+
+
+
+%
+%
+%
+%\begin{frame}{Fundamental issues in biogels}
+%\begin{itemize}
+%\item Linear elasticity is not well understood \textit{\scriptsize Gardel et al. Science 2004}
+%\item Strain and stress stiffening \textit{\scriptsize Storm et al. Nature 2005}
+%\item Fractures \textit{\scriptsize Bonn et al. Science 1998, Baumberger et al. Nature Material 2006}
+%\item Mechanical instabilities and morphogenesis \textit{\scriptsize Shyer et al. Science 2013}
+%\end{itemize}
+%\begin{tabu}{X[c]X[c]}
+%\includegraphics[height=6\baselineskip]{Bonn_fracture} &
+%\includegraphics[height=6\baselineskip]{Villi_sq}
+%\end{tabu}
+%\begin{block}{Our questions}
+%\begin{itemize}
+%\item What is the behaviour of a biogel under shear deep into the nonlinear regime?
+%\item What is the role of the solvent in mechanical instabilities?
+%\end{itemize}
+%\end{block}
+%\end{frame}
+
+%\section{Our system: Yoghurt}
+
+
+%\tikzset{external/force remake}
+\begin{frame}{The simplest yoghurt}
+\begin{block}{Acid-set protein gel}
+\begin{itemize}
+\item Water (\SI{30}{\celsius})
+\item Sodium caseinate (milk protein) 4\%
+\raisebox{0.6\normalbaselineskip}[0pt][0pt]{$\left.\rule{0pt}{1.1\normalbaselineskip}\right\}$ stable solution}
+\item Glucono-$\delta$-lactone (GDL) 1\% $\Rightarrow$ slow homogeneous acidification
+\end{itemize}
+\end{block}
+
+\begin{columns}
+\column{0.5\textwidth}
+\tikzsetnextfilename{gelation_gdl1}
+\begin{tikzpicture}
+	\begin{groupplot}[%
+		group style={
+			group name=g, group size=1 by 2,
+			xticklabels at=edge bottom,
+			vertical sep=0,
+			},
+		%xmode=log,
+		%xmin=1e2,xmax=3e5,
+		xmin=0, xmax=20,
+		scale only axis,
+		width=\textwidth-4em,
+		height=0.3\textwidth,
+		extra tick style={grid=major},%
+		ylabel absolute, every axis y label/.append style={anchor=base, yshift=-0.5em}
+		]
+	\nextgroupplot[
+		ymin=0, ymax=7, ylabel={pH},
+		extra y ticks={4.6}, extra y tick labels={},%
+		]
+	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600}]{Y190_cas4_gdl1.pH};
+	\draw[help lines] (axis cs:0,4.6) -- (axis cs:3.88,4.6) node[pos=1, above right, font=\scriptsize] {isoelectric point $pH\approx 4.6$}  -- (axis cs:3.88,0);
+	
+
+	\nextgroupplot[
+		xlabel={time (\si{\hour})},
+		ymin=0, ylabel={$\textcolor{Accent2}{G^\prime}, \textcolor{Main}{G^{\prime\prime}}$ (\si{\pascal})},
+		extra x ticks={17}, extra x tick labels={},
+		]
+	\addplot+[no marks,Accent2] table[x expr={\thisrowno{0}/3600}]{cas4_GDL1_Y22.prise};
+	\addplot+[no marks,Main] table[x expr={\thisrowno{0}/3600}, y index=2]{cas4_GDL1_Y22.prise};
+	\begin{scope}[font=\scriptsize]
+		%\node[above right] at (rel axis cs:0,0) {casein ``micelles''};
+		%\draw[<-] (axis cs:3.88,654) -- +(1em,0) node[right] {gelation};
+		\node[anchor=base,rotate=80] at (axis cs:2.5,400) {gelation};
+	\end{scope}
+	\end{groupplot}
+	%\draw[<-] (g c1r2.south west) ++(0.5em,0) -- +(0,-1em) node[below,font=\footnotesize] {casein ``micelles''};
+\end{tikzpicture}
+
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth, clip=true, trim=0 0 0 10cm]{MEB_cas4_gdl1_22}
+
+\begin{scriptsize}
+\textit{Kaláb (1983),\linebreak Roefs \& van Vliet (1990),\linebreak Lucey \& Singh (1998)}
+\end{scriptsize}
+\end{columns}
+\end{frame}
+%\tikzset{external/force remake=false}
+
+\begin{frame}{Power law linear rheology}
+\[\text{stress}\rightarrow \sigma = G \gamma\leftarrow\text{strain}\]
+\[\textcolor{Accent1}{\text{storage}\rightarrow} G^\prime + \imath G^{\prime\prime} \textcolor{Accent2}{\leftarrow\text{loss}}\]
+\tikzsetnextfilename{powerlaw}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+	height=0.8\textheight,
+	width=\textwidth,
+	xlabel={Frequency (\si{\hertz})}, ylabel={\textcolor{Accent1}{Storage} and \textcolor{Accent2}{loss} moduli (\si{\pascal})},
+	domain={6e-2:70},
+	]
+	\addplot[Accent1, only marks, mark=*] table{freqsweep_Y265_cas4_GDL1.txt};
+	\addplot[Accent2, only marks, mark=o] table[y=LossModulus]{freqsweep_Y265_cas4_GDL1.txt};
+	\addplot[Main, no marks]{300*x^0.15}  node[midway, below right] {$G^\prime\sim G^{\prime\prime}\sim f^{0.15}$};
+	\node[below right] at (rel axis cs:0.1,0.9) {(visco)elastic solid};
+\end{loglogaxis}
+\end{tikzpicture}
+\end{frame}
+
+
+
+
+
+\section*{Creep and yielding}
+
+\include{creep_beamer}
+
+\begin{frame}{Can we generalise to biogels?}
+\hfill\textup{\footnotesize\usebeamercolor[fg]{titlelike}(physical gels
+$E_{bond}\gg k_B T$)}
+\begin{tabu}{cX[c]c}
+\includegraphics[height=0.3\textheight]{cell_mech} &
+\includegraphics[height=0.3\textheight]{electrophoresis} &
+\includegraphics[height=0.3\textheight]{cosmetics} \\
+Cell mechanics & Electrophoresis & Cosmetics\\
+\end{tabu}
+\begin{tabu}{X[c]X[c]}
+\includegraphics[height=0.3\textheight]{bacterial_culture} &
+\includegraphics[height=0.3\textheight]{food} \\
+Bacterial culture & Food\\
+\end{tabu}
+
+\begin{footnotesize}
+\begin{block}{Sources}
+\begin{tabu}{lXl}
+Wikimedia Commons & www.madaboutscience.com & www.keautystore.com\\
+\end{tabu}
+\end{block}
+\end{footnotesize}
+\end{frame}
+
+\section*{Beyond critical gels}
+
+\begin{frame}{Acidifying casein solutions with \textup{HCl}}
+\vspace{1.25\baselineskip}
+\tikzsetnextfilename{dosage}%
+\input{fig_presentation/dosage.pgf}
+\end{frame}
+
+\begin{frame}{Over-acidified protein gels}
+	\hfill beyond isoelectric pH
+	\tikzsetnextfilename{prise_cas4}
+	\input{fig_soundbite_palavas/prise_cas4.pgf}
+	\begin{itemize}
+	\item[$\Rightarrow$] still solid
+	\item From critical to super-critical gels?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Linear rheology $\rightarrow$ to soft glassy}
+	\vspace{\baselineskip}
+	\tikzsetnextfilename{sweep_cas4}%
+\input{fig_soundbite_palavas/sweep_cas4.pgf}
+	\begin{itemize}
+	\item Near isoelectric, power law rheology typical of critical gels 
+	\item Over-acidification: exponent $\searrow$ \hfill\textcolor{ilmorange}{\&}\hfill minimum in $G^{\prime\prime}$
+	\item Transition from power-law to soft-glassy behaviour \\\textit{\footnotesize Sollich, PRE (1998); Mason, Curr. Opin. Colloid Interface Sci. (1999)}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Questions}
+\begin{description}
+\item[What] is the change in microstructure?
+\item[How] does it affects the failure mechanism?
+\end{description}
+\end{frame}
+
+\begin{frame}{Microscructure: confocal microscopy}
+	\vspace{\baselineskip}
+	\tikzsetnextfilename{structure_confocal}%
+\input{fig_soundbite_palavas/structure_confocal.pgf}
+	\vspace{-1em}
+	\begin{itemize}
+	\item Maximum $G^\prime$\hfill\textcolor{ilmorange}{$\leftrightarrow$}\hfill Maximum contrast between phases
+	\item Pore size $\xi$ decrease during over-acidification
+	\item<2> Casein aggregates swell $\sim$ over compressed $\Rightarrow$ soft glassy
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{3 creep regimes + softness\textsc{gdl} 4\%}
+\vfill
+	\tikzsetnextfilename{creep_cas4_gdl4}
+	\input{fig_presentation/creep_cas4_gdl4.pgf}
+\begin{itemize}
+\item reversible, homogeneous creep $\rightarrow$ irreversible fracture growth
+\item nucleation regime \alert{NOT universal}
+\begin{itemize}
+	\item possible to reform bond?
+	\item friction between swollen strands?
+	\item glassy dissipation?
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Over-acidification summary}
+\begin{itemize}
+\item The critical network is still there but over-compressed
+\item Transition to soft glassy rheology
+\item Power-law creep and fracture growth still present but do not rule everything
+\item[$\Rightarrow$] Rupture scenario of critical gel only partially valid for other gels.
+\end{itemize}
+
+\bigskip
+\begin{center}
+\structure{\huge Thank you for your attention}
+\end{center}
+\end{frame}
+
+\appendix
+\newcounter{finalframe}
+\setcounter{finalframe}{\value{framenumber}}
+
+\begin{frame}[plain]
+\end{frame}
+
+\begin{frame}{Creep rheology: Three regimes}
+\tikzsetnextfilename{three_regimes}
+\begin{tikzpicture}
+\begin{loglogaxis}[
+   name=g,
+	width=\textwidth,
+	height=0.8\textheight,
+	xmin=2e-2, xmax=4e5, xlabel={time (\si{\second})},
+	ymin=0.2,ymax=2,
+	ytick={0.2, 0.4,0.8,1.6}, yticklabels={0.2, 0.4,0.8,1.6},
+	ylabel={strain $\gamma$},
+	extra tick style={grid=major},%
+	extra y ticks={1}, extra y tick labels={1.0},
+	cycle list name=earthy,
+	axis on top,
+	]
+	\fill[Accent1!20]
+		(axis cs:10,0.4) ellipse[rotate=-30, x radius=0.2\textwidth, y radius=0.12\textwidth]
+		(axis cs:2e2,1.6) ellipse[x radius=0.35\textwidth, y radius=0.05\textwidth]
+		(axis cs:3e3,0.85) ellipse[rotate=-7.5, x radius=0.3\textwidth, y radius=0.07\textwidth]
+		;
+	\node[above right] at (axis cs:1e1,0.2) {primary};
+	\node[below left] at (axis cs:4e5,0.7) {secondary};
+	\node[left] at (axis cs:5,1.6) {tertiary};
+	\addplot table{Y27_200Pa_gamma_decimated.txt} node (s200){};
+	\addplot table{Y38_300Pa_gamma_decimated.txt} node (s300){};
+	\addplot table{Y25_400Pa_gamma_decimated.txt}  node (s400){};
+	\addplot table{Y32_550Pa_gamma_decimated.txt}  node (s550){};
+	\addplot table{Y39_1000Pa_gamma_decimated.txt} node (s1000){};
+\end{loglogaxis}
+\begin{scope}[anchor=base, every node/.style={yshift=0.2em}]
+	\node[red!40!black] at (s200 |- g.outer north) {\SI{200}{\pascal}};
+	\node[red!60!black] at (s300 |- g.outer north) {300};
+	\node[red!80!black] at (s400 |- g.outer north) {400};
+	\node[red] at (s550 |- g.outer north) {550};
+	\node[red!80!yellow] at (s1000 |- g.outer north) {1000};
+\end{scope}
+\end{tikzpicture}
+
+Failure at $\gamma\approx 1$ for a well defined time $\tau_f$
+\end{frame}
+
+\begin{frame}{Basquin law rescaling}
+	\vspace{0.5\baselineskip}
+	\tikzsetnextfilename{basquin_rescale}%
+	\input{fig_soundbite_palavas/basquin.pgf}
+\end{frame}
+
+\begin{frame}{Monkman-Grant}
+	\vspace{0.5\baselineskip}
+	\hfill Predict failure from nucleation
+	\tikzsetnextfilename{MonkmanGrant}
+	\input{fig_soundbite_palavas/MonkmanGrant.pgf}
+\end{frame}
+
+\begin{frame}{Wavelength}
+	\vspace{1.25\baselineskip}
+	\tikzsetnextfilename{lambda}%
+	\input{fig_soundbite_palavas/lambda.pgf}
+	\textcolor{Accent1}{$\blacktriangleright$} $\lambda\propto e$ compatible with nucleation rate
+
+\end{frame}
+
+\setcounter{framenumber}{\value{finalframe}}
+\end{document}
+
