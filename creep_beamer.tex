@@ -271,7 +271,7 @@ Constant $\sigma$
 	\addplot table[x index=1, y index=3]{Y25_400Pa_gdot_decimated.txt}  node (s400){};
 	\addplot table[x index=1, y index=3]{Y32_550Pa_gdot_decimated.txt}  node (s550){};
 	\addplot table[x index=1, y index=3]{Y39_1000Pa_gdot_decimated.txt} node (s1000){};
-	\addplot[yellow, ultra thick, domain={1e-4:0.1}] {0.378*x^(-0.85)} node[Accent2,pos=0.75, below left] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{t}{\tau_f}\right)^{-0.85}$};
+	\addplot[yellow, ultra thick, domain={1e-4:0.1}] {0.378*x^(-0.85)} node[Accent2,pos=0.75, below left, font=\footnotesize] {$\frac{\dot{\gamma}(t)}{\dot{\gamma}_\text{min}}\sim \left(\frac{t}{\tau_f}\right)^{-0.85}$};
 \end{loglogaxis}
 \end{tikzpicture}
 
