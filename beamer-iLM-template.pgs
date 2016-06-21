@@ -40,6 +40,8 @@
 \pgfplotsset{compat=1.9}
 \usepgfplotslibrary{groupplots}
 \usepackage{pgfplotstable}
+%mute \tikzsetnextfilename commands because we are not using tikz externalise
+\newcommand\tikzsetnextfilename[1]{}
 
 
 %link or play movies
