@@ -24,7 +24,7 @@
 
 \usepackage{datenumber,fp}
 
-\usepackage{siunitx}
+\usepackage[separate-uncertainty = true]{siunitx}
 
 \usepackage{tabu}
 \usepackage{multirow}
@@ -42,6 +42,10 @@
 \usepackage{pgfplotstable}
 %mute \tikzsetnextfilename commands because we are not using tikz externalise
 \newcommand\tikzsetnextfilename[1]{}
+
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}} %
+}}%
 
 
 %link or play movies
