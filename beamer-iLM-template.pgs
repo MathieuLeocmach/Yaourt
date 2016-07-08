@@ -19,8 +19,10 @@
 
 
 %proper math and math symbols
-%\usepackage{amsmath}
+\usepackage{amsmath,mathtools}
 \usepackage{amssymb}
+
+\usepackage{ifthen}
 
 \usepackage{datenumber,fp}
 
@@ -50,6 +52,10 @@
 
 %link or play movies
 \usepackage{multimedia}
+
+\usepackage[version=3]{mhchem}
+\usepackage{chemfig}
+\usepackage{setspace}
 
 
 \begin{document}
